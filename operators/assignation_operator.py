@@ -1,4 +1,6 @@
+import copy
 from datetime import timedelta, datetime
+from operators.range_operator import RangeOperator
 
 class AssignationOperator(object):
     """A class with method to operate assignation mappers.
@@ -19,11 +21,10 @@ class AssignationOperator(object):
 
             :rtype: True or False
         """
-        aux_ending_date = assign2.ending_date + timedelta(days = 1)
-        aux_starting_date = assign2.starting_date - timedelta(days = 1)
 
-        return (assign1.starting_date <= aux_ending_date and
-            assign1.ending_date >= aux_starting_date)
+        return RangeOperator.are_neighbors(
+            assign1.range_mapper,
+            assign2.range_mapper)
 
     @staticmethod
     def are_multiple_neighbors(assign, assigns):
@@ -257,3 +258,33 @@ class AssignationOperator(object):
             return "middle"
         else:
             return "one_side"
+
+    @staticmethod
+    def copy_assign(assign):
+        """
+        .. function:: copy_assign(assign)
+
+            To get a deep copy of an assign
+
+            :param assign: An assign mapper object
+            :type assign: AssignationMapper
+
+            :rtype: a new assign mapper object
+        """
+        return copy.deepcopy(assign)
+
+    @staticmethod
+    def remove(assign, starting_date, ending_date):
+        removing_type = AssignationOperator.get_removing_type(
+            assign, starting_date, ending_date)
+
+        resp = {'delete': [], 'update': [], 'create': []}
+
+        if removing_type == 'complete':
+            resp['delete'].append(assign)
+        elif removing_type == 'middle':
+            pass
+        elif removing_type == 'one_side':
+            pass
+        else:
+            return None

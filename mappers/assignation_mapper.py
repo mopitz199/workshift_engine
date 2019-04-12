@@ -1,16 +1,18 @@
 from mapper import Mapper
 from operators.assignation_operator import AssignationOperator
+from mappers.range_mapper import RangeMapper
+
 class AssignationMapper(Mapper):
 
     def __init__(self, obj, attr_mapping):
         super(AssignationMapper, self).__init__(obj, attr_mapping)
-        self.eaten_assignments = []
+        self.range_mapper = RangeMapper(self.starting_date, self.ending_date)
 
     def __len__(self):
-        return (self.ending_date - self.starting_date).days
+        return len(self.range_mapper)
 
     def __repr__(self):
-        return "{} - {}".format(self.starting_date, self.ending_date)
+        return self.range_mapper
 
     def __add__(self, other_assign):
         if AssignationOperator.are_compatible(self, other_assign):
