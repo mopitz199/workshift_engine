@@ -5,19 +5,7 @@ from datetime import datetime
 from operators.assignation_operator import *
 from mappers.assignation_mapper import *
 
-class DumbAssignation:
-
-    def __init__(self, **kwargs):
-        for kwarg in kwargs:
-            val = kwargs.get(kwarg, None)
-            setattr(self, kwarg, val)
-        self.range_mapper = RangeMapper(self.starting_date, self.ending_date)
-
-data = {
-    'starting_date': datetime(2019, 1, 1).date(),
-    'ending_date': datetime(2019, 1, 5).date()}
-conf = {key:key for key in data.keys()}
-assign1 = AssignationMapper(DumbAssignation(**data), conf)
+from test_utils.utils import *
 
 class TestAreNeighbors(object):
     """This class are to test the method are_neighbors"""
@@ -26,14 +14,13 @@ class TestAreNeighbors(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date()}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 5).date(),
             'ending_date': datetime(2019, 1, 10).date()}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assert AssignationOperator.are_neighbors(assign1, assign2) == True
 
@@ -41,14 +28,14 @@ class TestAreNeighbors(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date()}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 6).date(),
             'ending_date': datetime(2019, 1, 10).date()}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assert AssignationOperator.are_neighbors(assign1, assign2) == True
 
@@ -56,14 +43,14 @@ class TestAreNeighbors(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 4).date()}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 6).date(),
             'ending_date': datetime(2019, 1, 10).date()}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assert AssignationOperator.are_neighbors(assign1, assign2) == False
 
@@ -76,20 +63,20 @@ class TestAreMultipleNeighbors(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date()}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 8).date(),
             'ending_date': datetime(2019, 1, 10).date()}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 4).date(),
             'ending_date': datetime(2019, 1, 7).date()}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         assign_list = [assign1, assign2]
 
@@ -99,20 +86,20 @@ class TestAreMultipleNeighbors(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date()}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 8).date(),
             'ending_date': datetime(2019, 1, 10).date()}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 4).date(),
             'ending_date': datetime(2019, 1, 6).date()}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         assign_list = [assign1, assign2]
 
@@ -122,20 +109,20 @@ class TestAreMultipleNeighbors(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date()}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 9).date(),
             'ending_date': datetime(2019, 1, 10).date()}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 7).date()}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         assign_list = [assign1, assign2]
 
@@ -150,14 +137,14 @@ class TestGetAssignationGenerator(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date()}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 5).date(),
             'ending_date': datetime(2019, 1, 10).date()}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assign_list = [assign1, assign2]
 
@@ -181,14 +168,14 @@ class TestGetMaxEndingDate(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date()}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 5).date(),
             'ending_date': datetime(2019, 1, 10).date()}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assign_list = [assign1,  assign2]
         assign_generator = AssignationOperator.get_assignation_generator(
@@ -199,14 +186,14 @@ class TestGetMaxEndingDate(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 10).date()}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 5).date(),
             'ending_date': datetime(2019, 1, 6).date()}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assign_list = [assign1,  assign2]
         assign_generator = AssignationOperator.get_assignation_generator(
@@ -222,14 +209,14 @@ class TestGetMinStartingDate(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date()}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 5).date(),
             'ending_date': datetime(2019, 1, 10).date()}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assign_list = [assign1,  assign2]
         assign_generator = AssignationOperator.get_assignation_generator(
@@ -240,14 +227,14 @@ class TestGetMinStartingDate(object):
         data = {
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 8).date()}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 3).date(),
             'ending_date': datetime(2019, 1, 10).date()}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assign_list = [assign1,  assign2]
         assign_generator = AssignationOperator.get_assignation_generator(
@@ -265,8 +252,8 @@ class TestSimulateStartingDay(object):
             'ending_date': datetime(2019, 1, 31).date(),
             'start_day': 1,
             'total_workshift_days': 7}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         date_obj = datetime(2019, 1, 12).date()
         
@@ -281,8 +268,8 @@ class TestSimulateStartingDay(object):
             'ending_date': datetime(2019, 1, 31).date(),
             'start_day': 3,
             'total_workshift_days': 6}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         date_obj = datetime(2019, 1, 14).date()
         
@@ -297,8 +284,8 @@ class TestSimulateStartingDay(object):
             'ending_date': datetime(2019, 1, 31).date(),
             'start_day': 2,
             'total_workshift_days': 8}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         date_obj = datetime(2019, 1, 23).date()
         
@@ -313,8 +300,8 @@ class TestSimulateStartingDay(object):
             'ending_date': datetime(2019, 1, 31).date(),
             'start_day': 2,
             'total_workshift_days': 6}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         date_obj = datetime(2019, 1, 6).date()
         
@@ -329,8 +316,8 @@ class TestSimulateStartingDay(object):
             'ending_date': datetime(2019, 1, 1).date(),
             'start_day': 4,
             'total_workshift_days': 6}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         date_obj = datetime(2019, 1, 1).date()
         
@@ -345,8 +332,8 @@ class TestSimulateStartingDay(object):
             'ending_date': datetime(2019, 1, 1).date(),
             'start_day': None,
             'total_workshift_days': 6}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         date_obj = datetime(2019, 1, 1).date()
         
@@ -364,22 +351,22 @@ class TestAreCompatible(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 3).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 6,
             'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 4).date(),
             'ending_date': datetime(2019, 1, 6).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 6,
             'start_day': 4}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assert AssignationOperator.are_compatible(assign1, assign2)
 
@@ -387,22 +374,22 @@ class TestAreCompatible(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 6).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 6,
             'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 3).date(),
             'ending_date': datetime(2019, 1, 6).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 6,
             'start_day': 3}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assert AssignationOperator.are_compatible(assign1, assign2)
 
@@ -410,22 +397,22 @@ class TestAreCompatible(object):
         data = {
             'starting_date': datetime(2019, 1, 3).date(),
             'ending_date': datetime(2019, 1, 6).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 6,
             'start_day': 3}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 6).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 6,
             'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assert AssignationOperator.are_compatible(assign1, assign2)
 
@@ -433,22 +420,22 @@ class TestAreCompatible(object):
         data = {
             'starting_date': datetime(2018, 12, 28).date(),
             'ending_date': datetime(2019, 1, 10).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 6,
             'start_day': 3}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 6).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 6,
             'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assert AssignationOperator.are_compatible(assign1, assign2)
 
@@ -456,22 +443,22 @@ class TestAreCompatible(object):
         data = {
             'starting_date': datetime(2018, 12, 28).date(),
             'ending_date': datetime(2019, 1, 10).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 6,
             'start_day': None}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 6).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 6,
             'start_day': None}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assert AssignationOperator.are_compatible(assign1, assign2)
 
@@ -479,22 +466,22 @@ class TestAreCompatible(object):
         data = {
             'starting_date': datetime(2018, 12, 28).date(),
             'ending_date': datetime(2019, 1, 10).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 6,
             'start_day': None}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 6).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 6,
             'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assert not AssignationOperator.are_compatible(assign1, assign2)
 
@@ -503,22 +490,22 @@ class TestAreCompatible(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 3).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 6,
             'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 4).date(),
             'ending_date': datetime(2019, 1, 6).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 6,
             'start_day': 3}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assert not AssignationOperator.are_compatible(assign1, assign2)
 
@@ -526,22 +513,22 @@ class TestAreCompatible(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 3).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 3,
             'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 4).date(),
             'ending_date': datetime(2019, 1, 6).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 3,
             'start_day': 2}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assert not AssignationOperator.are_compatible(assign1, assign2)
 
@@ -555,32 +542,32 @@ class TestAreMultipleCompatible(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 6}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 11).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 4}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 6).date(),
             'ending_date': datetime(2019, 1, 6).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 3}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         list_assigns = [assign1, assign2]
 
@@ -592,32 +579,32 @@ class TestAreMultipleCompatible(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 6}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 11).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 4}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 4).date(),
             'ending_date': datetime(2019, 1, 6).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         list_assigns = [assign1, assign2]
 
@@ -629,32 +616,32 @@ class TestAreMultipleCompatible(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 6}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 11).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 5}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 4).date(),
             'ending_date': datetime(2019, 1, 6).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         list_assigns = [assign1, assign2]
 
@@ -666,32 +653,32 @@ class TestAreMultipleCompatible(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 6}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 11).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 4}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2018, 12, 31).date(),
             'ending_date': datetime(2019, 1, 8).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 5}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         list_assigns = [assign1, assign2]
 
@@ -707,20 +694,20 @@ class TestGetBiggestAssign(object):
         data = {
             'starting_date': datetime(2018, 12, 31).date(),
             'ending_date': datetime(2019, 1, 8).date()}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 2, 1).date(),
             'ending_date': datetime(2019, 3, 8).date()}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2018, 12, 31).date(),
             'ending_date': datetime(2019, 1, 7).date()}
-        conf = {key:key for key in data.keys()}
-        assign3 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign3 = create_an_assignation(data)
 
         assign_list = [assign1, assign2, assign3]
 
@@ -731,14 +718,14 @@ class TestGetBiggestAssign(object):
         data = {
             'starting_date': datetime(2018, 12, 31).date(),
             'ending_date': datetime(2019, 1, 8).date()}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 3, 1).date(),
             'ending_date': datetime(2019, 3, 20).date()}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assign_list = [assign1, assign2]
 
@@ -748,14 +735,14 @@ class TestGetBiggestAssign(object):
         data = {
             'starting_date': datetime(2018, 12, 31).date(),
             'ending_date': datetime(2019, 1, 8).date()}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2018, 12, 31).date(),
             'ending_date': datetime(2019, 1, 8).date()}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         assign_list = [assign1, assign2]
 
@@ -770,42 +757,42 @@ class TestGetCandidates(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 6}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 11).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 2}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 13).date(),
             'ending_date': datetime(2019, 1, 16).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 2}
-        conf = {key:key for key in data.keys()}
-        assign3 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign3 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 4).date(),
             'ending_date': datetime(2019, 1, 14).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         assign_list = [assign1, assign2, assign3] 
 
@@ -817,42 +804,42 @@ class TestGetCandidates(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 6}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 11).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 2}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 13).date(),
             'ending_date': datetime(2019, 1, 16).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 2}
-        conf = {key:key for key in data.keys()}
-        assign3 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign3 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 14).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 4}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         assign_list = [assign1, assign2, assign3] 
 
@@ -864,42 +851,42 @@ class TestGetCandidates(object):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 6}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign1 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 11).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 4}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign2 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 13).date(),
             'ending_date': datetime(2019, 1, 16).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 2}
-        conf = {key:key for key in data.keys()}
-        assign3 = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign3 = create_an_assignation(data)
 
         data = {
             'starting_date': datetime(2019, 1, 12).date(),
             'ending_date': datetime(2019, 1, 12).date(),
-            'workshift': 4,
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
             'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+    
+        assign = create_an_assignation(data)
 
         assign_list = [assign1, assign2, assign3] 
 
@@ -907,129 +894,28 @@ class TestGetCandidates(object):
 
         assert best == assign2 and others == [assign3]
 
+class TestRemove(object):
 
-class TestGetRemovingType(object):
-    """To test if the function can get the type of how to
-    handle an assign remove."""
-
-    def test_get_removing_type1(self):
+    def test_remove(self):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
-            'ending_date': datetime(2019, 1, 22).date(),
-            'workshift': 4,
+            'ending_date': datetime(2019, 1, 5).date(),
+            'workshift_id': 4,
             'person': 1,
             'total_workshift_days': 8,
-            'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
+            'start_day': 6}
+    
+        assign = create_an_assignation(data)
 
-        starting_date = datetime(2019, 1, 3).date()
-        ending_date = datetime(2019, 1, 21).date()
+        resp = AssignationOperator.remove(
+            assign,
+            datetime(2019, 1, 1).date(),
+            datetime(2019, 1, 1).date())
 
-        removing_type = AssignationOperator.get_removing_type(
-            assign, starting_date, ending_date
-        )
-
-        assert removing_type == 'middle'
-
-    def test_get_removing_type2(self):
-        data = {
-            'starting_date': datetime(2019, 1, 1).date(),
-            'ending_date': datetime(2019, 1, 22).date(),
-            'workshift': 4,
-            'person': 1,
-            'total_workshift_days': 8,
-            'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
-
-        starting_date = datetime(2018, 12, 15).date()
-        ending_date = datetime(2019, 1, 21).date()
-
-        removing_type = AssignationOperator.get_removing_type(
-            assign, starting_date, ending_date
-        )
-
-        assert removing_type == 'one_side'
-
-    def test_get_removing_type3(self):
-        data = {
-            'starting_date': datetime(2019, 1, 1).date(),
-            'ending_date': datetime(2019, 1, 22).date(),
-            'workshift': 4,
-            'person': 1,
-            'total_workshift_days': 8,
-            'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
-
-        starting_date = datetime(2019, 1, 1).date()
-        ending_date = datetime(2019, 1, 22).date()
-
-        removing_type = AssignationOperator.get_removing_type(
-            assign, starting_date, ending_date
-        )
-
-        assert removing_type == 'complete'
-
-    def test_get_removing_type3(self):
-        data = {
-            'starting_date': datetime(2019, 1, 1).date(),
-            'ending_date': datetime(2019, 1, 22).date(),
-            'workshift': 4,
-            'person': 1,
-            'total_workshift_days': 8,
-            'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
-
-        starting_date = datetime(2019, 1, 22).date()
-        ending_date = datetime(2019, 1, 23).date()
-
-        removing_type = AssignationOperator.get_removing_type(
-            assign, starting_date, ending_date
-        )
-
-        assert removing_type == 'one_side'
-
-
-class TestCopyAssign(object):
-    """To test if the function can get the best and the other candidates from
-    a given list of assignments mappers."""
-
-    def test_copy_assign1(self):
-        data = {
-            'starting_date': datetime(2019, 1, 1).date(),
-            'ending_date': datetime(2019, 1, 22).date(),
-            'workshift': 4,
-            'person': 1,
-            'total_workshift_days': 8,
-            'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign = AssignationMapper(DumbAssignation(**data), conf)
-
-        data = {
-            'starting_date': datetime(2019, 1, 1).date(),
-            'ending_date': datetime(2019, 1, 22).date(),
-            'workshift': 4,
-            'person': 1,
-            'total_workshift_days': 8,
-            'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign1 = AssignationMapper(DumbAssignation(**data), conf)
-
-        data = {
-            'starting_date': datetime(2019, 1, 1).date(),
-            'ending_date': datetime(2019, 1, 22).date(),
-            'workshift': 4,
-            'person': 1,
-            'total_workshift_days': 8,
-            'start_day': 1}
-        conf = {key:key for key in data.keys()}
-        assign2 = AssignationMapper(DumbAssignation(**data), conf)
-
-        assign.eaten_assignments = [assign1, assign2]
-
-        copy_assign = AssignationOperator.copy_assign(assign)
-
-        assert id(copy_assign) != id(assign)
+        resp_assign = resp['update'][0]
+        
+        assert (resp['create'] == [] and 
+            resp['delete'] == [] and
+            resp_assign.start_day == 7 and
+            resp_assign.starting_date == datetime(2019, 1, 2).date() and
+            resp_assign.ending_date == datetime(2019, 1, 5).date())

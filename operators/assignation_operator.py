@@ -1,11 +1,10 @@
 import copy
 from datetime import timedelta, datetime
 from operators.range_operator import RangeOperator
+from mappers.range_mapper import RangeMapper
 
 class AssignationOperator(object):
-    """A class with method to operate assignation mappers.
-    Is importante to know that every list that some function will recieve
-    as a assignation list, it must be sorted by staring_date from min to max"""
+    """A class with method to operate assignation mappers."""
 
     @staticmethod
     def are_neighbors(assign1, assign2):
@@ -41,14 +40,10 @@ class AssignationOperator(object):
             :rtype: A list of neigbors
         """
 
-        max_date = assign.ending_date + timedelta(days = 1)
         resp = []
         for aux_assign in assigns:
-            if aux_assign.starting_date > max_date:
-                return resp
-            else:
-                if AssignationOperator.are_neighbors(aux_assign, assign):
-                    resp.append(aux_assign)
+            if AssignationOperator.are_neighbors(aux_assign, assign):
+                resp.append(aux_assign)
         return resp
 
 
@@ -68,9 +63,9 @@ class AssignationOperator(object):
         min_date = datetime(2090, 1, 1).date()
         resp = None
         for assign in assigns:
-            if assign.starting_date < min_date:
+            if assign.range_mapper.starting_date < min_date:
                 resp = assign
-                min_date = assign.starting_date
+                min_date = assign.range_mapper.starting_date
         return resp
 
     @staticmethod
@@ -89,9 +84,9 @@ class AssignationOperator(object):
         max_date = datetime(1900, 1, 1).date()
         resp = None
         for assign in assigns:
-            if assign.ending_date > max_date:
+            if assign.range_mapper.ending_date > max_date:
                 resp = assign
-                max_date = assign.ending_date
+                max_date = assign.range_mapper.ending_date
         return resp
 
     @staticmethod
@@ -127,7 +122,7 @@ class AssignationOperator(object):
             :rtype: a True or False
         """
 
-        has_same_workshift = assign1.workshift == assign2.workshift
+        has_same_workshift = assign1.workshift_id == assign2.workshift_id
         has_same_person = assign1.person == assign2.person
 
         if (AssignationOperator.are_neighbors(assign1, assign2) and
@@ -227,64 +222,47 @@ class AssignationOperator(object):
         """
 
         if assign.start_day:
-            aux_starting_date = assign.starting_date - timedelta(days = assign.start_day - 1)
+            aux_starting_date = assign.range_mapper.starting_date - timedelta(days = assign.start_day - 1)
 
             range_days = (date_obj - aux_starting_date).days + 1
-            total_days = assign.total_workshift_days
+            total_days = assign.workshift.total_workshift_days
             
             return (range_days % total_days) or total_days
         else:
             return None
 
     @staticmethod
-    def get_removing_type(assign, starting_date, ending_date):
-        """
-        .. function:: get_remove_type(assign, starting_date, ending_date)
-
-            To determine the removing type to handle an resize of an assignment
-
-            :param assign: An assign mapper object
-            :type assign: AssignationMapper
-            :param starting_date: The starting date of remove
-            :type starting_date: Date
-            :param ending_date: The ending date fo remove
-            :type ending_date: Date
-
-            :rtype: the removing type
-        """
-        if assign.starting_date >= starting_date and assign.ending_date <= ending_date:
-            return "complete"
-        elif assign.starting_date < starting_date and assign.ending_date > ending_date:
-            return "middle"
-        else:
-            return "one_side"
-
-    @staticmethod
-    def copy_assign(assign):
-        """
-        .. function:: copy_assign(assign)
-
-            To get a deep copy of an assign
-
-            :param assign: An assign mapper object
-            :type assign: AssignationMapper
-
-            :rtype: a new assign mapper object
-        """
+    def copy(assign):
         return copy.deepcopy(assign)
 
     @staticmethod
     def remove(assign, starting_date, ending_date):
-        removing_type = AssignationOperator.get_removing_type(
-            assign, starting_date, ending_date)
-
         resp = {'delete': [], 'update': [], 'create': []}
-
-        if removing_type == 'complete':
+        copy_range_mapper = copy.copy(assign.range_mapper)
+        other_range_mapper = RangeMapper(starting_date, ending_date)
+        updated_range, new_range = copy_range_mapper - other_range_mapper
+        if not updated_range:
             resp['delete'].append(assign)
-        elif removing_type == 'middle':
-            pass
-        elif removing_type == 'one_side':
-            pass
+        elif new_range:
+            new_assign = AssignationOperator.copy(assign)
+            new_assign.range_mapper = new_range
+            
+            new_assign.start_day = AssignationOperator.simulate_starting_day(
+                assign,
+                new_assign.range_mapper.starting_date)
+            assign.range_mapper = updated_range
+            resp['update'].append(assign)
+            resp['create'].append(new_assign)
+        elif updated_range.starting_date > assign.starting_date:
+            new_start_day = AssignationOperator.simulate_starting_day(
+                assign,
+                updated_range.starting_date)
+            assign.range_mapper = updated_range
+            assign.start_day = new_start_day
+            resp['update'].append(assign)
+        elif updated_range.ending_date < assign.ending_date:
+            assign.range_mapper = updated_range
+            resp['update'].append(assign)
         else:
-            return None
+            pass
+        return resp

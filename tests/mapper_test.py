@@ -70,3 +70,7 @@ class TestSetAttr(object):
     def test_set_attr2(self, mapper):
         mapper.hola = 4
         assert mapper.hola == 4
+
+    def test_set_attr3(self, mapper):
+        mapper.starting_date = datetime(2019, 4, 5).date()
+        assert mapper.starting_date == mapper.range_mapper.starting_date
