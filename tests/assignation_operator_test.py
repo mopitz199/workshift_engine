@@ -896,7 +896,7 @@ class TestGetCandidates(object):
 
 class TestRemove(object):
 
-    def test_remove(self):
+    def test_remove1(self):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
@@ -912,10 +912,87 @@ class TestRemove(object):
             datetime(2019, 1, 1).date(),
             datetime(2019, 1, 1).date())
 
-        resp_assign = resp['update'][0]
+        resp_assign = resp['update']
         
-        assert (resp['create'] == [] and 
-            resp['delete'] == [] and
+        assert (resp['create'] == None and 
+            resp['delete'] == None and
+            resp['update'] == assign and
             resp_assign.start_day == 7 and
             resp_assign.starting_date == datetime(2019, 1, 2).date() and
             resp_assign.ending_date == datetime(2019, 1, 5).date())
+
+
+    def test_remove2(self):
+        data = {
+            'starting_date': datetime(2019, 1, 1).date(),
+            'ending_date': datetime(2019, 1, 10).date(),
+            'workshift_id': 4,
+            'person': 1,
+            'total_workshift_days': 8,
+            'start_day': 6}
+    
+        assign = create_an_assignation(data)
+
+        resp = AssignationOperator.remove(
+            assign,
+            datetime(2019, 1, 4).date(),
+            datetime(2019, 1, 6).date())
+
+        resp_assign = resp['update']
+        new_assign = resp['create']
+        
+        assert (resp_assign.starting_date == datetime(2019, 1, 1).date() and 
+            resp_assign.ending_date == datetime(2019, 1, 3).date() and
+            resp_assign.start_day == 6 and
+            new_assign.starting_date == datetime(2019, 1, 7).date() and
+            new_assign.ending_date == datetime(2019, 1, 10).date() and
+            new_assign.start_day == 4 and
+            resp['update'] == assign and
+            resp['delete'] == None)
+
+    def test_remove3(self):
+        data = {
+            'starting_date': datetime(2019, 1, 1).date(),
+            'ending_date': datetime(2019, 1, 10).date(),
+            'workshift_id': 4,
+            'person': 1,
+            'total_workshift_days': 8,
+            'start_day': 6}
+    
+        assign = create_an_assignation(data)
+
+        resp = AssignationOperator.remove(
+            assign,
+            datetime(2019, 1, 4).date(),
+            datetime(2019, 1, 14).date())
+
+        resp_assign = resp['update']
+        
+        assert (resp_assign.starting_date == datetime(2019, 1, 1).date() and 
+            resp_assign.ending_date == datetime(2019, 1, 3).date() and
+            resp_assign.start_day == 6 and
+            resp['update'] == assign and
+            resp['create'] == None and
+            resp['delete'] == None)
+
+    def test_remove4(self):
+        data = {
+            'starting_date': datetime(2019, 1, 1).date(),
+            'ending_date': datetime(2019, 1, 10).date(),
+            'workshift_id': 4,
+            'person': 1,
+            'total_workshift_days': 8,
+            'start_day': 6}
+    
+        assign = create_an_assignation(data)
+
+        resp = AssignationOperator.remove(
+            assign,
+            datetime(2019, 1, 1).date(),
+            datetime(2019, 1, 14).date())
+
+        resp_assign = resp['update']
+        
+        assert (resp['delete'] == assign and
+            resp['update'] == None and
+            resp['create'] == None)

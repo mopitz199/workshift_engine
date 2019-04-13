@@ -237,12 +237,12 @@ class AssignationOperator(object):
 
     @staticmethod
     def remove(assign, starting_date, ending_date):
-        resp = {'delete': [], 'update': [], 'create': []}
+        resp = {'delete': None, 'update': None, 'create': None}
         copy_range_mapper = copy.copy(assign.range_mapper)
         other_range_mapper = RangeMapper(starting_date, ending_date)
         updated_range, new_range = copy_range_mapper - other_range_mapper
         if not updated_range:
-            resp['delete'].append(assign)
+            resp['delete'] = assign
         elif new_range:
             new_assign = AssignationOperator.copy(assign)
             new_assign.range_mapper = new_range
@@ -251,18 +251,18 @@ class AssignationOperator(object):
                 assign,
                 new_assign.range_mapper.starting_date)
             assign.range_mapper = updated_range
-            resp['update'].append(assign)
-            resp['create'].append(new_assign)
+            resp['update'] = assign
+            resp['create'] = new_assign
         elif updated_range.starting_date > assign.starting_date:
             new_start_day = AssignationOperator.simulate_starting_day(
                 assign,
                 updated_range.starting_date)
             assign.range_mapper = updated_range
             assign.start_day = new_start_day
-            resp['update'].append(assign)
+            resp['update'] = assign
         elif updated_range.ending_date < assign.ending_date:
             assign.range_mapper = updated_range
-            resp['update'].append(assign)
+            resp['update'] = assign
         else:
             pass
         return resp
