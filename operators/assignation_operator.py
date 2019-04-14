@@ -233,10 +233,34 @@ class AssignationOperator(object):
 
     @staticmethod
     def copy(assign):
+        """
+        .. function:: copy(assign)
+
+            To create a deep copy of a given assign
+
+            :param assign: An assign mapper object
+            :type assign: AssignationMapper
+
+            :rtype: <AssignationMapper>
+        """
+
         return copy.deepcopy(assign)
 
     @staticmethod
     def remove(assign, starting_date, ending_date):
+        """
+        .. function:: remove(assign, starting_date, ending_date)
+
+            Function to remove a range from a given assignation
+
+            :param assign: An assign mapper object
+            :type assign: AssignationMapper
+            :param starting_date: The starting date from where you want to start removing
+            :type starting_date: AssignationMapper
+
+            :rtype: Dict
+        """
+
         resp = {'delete': None, 'update': None, 'create': None}
         copy_range_mapper = copy.copy(assign.range_mapper)
         other_range_mapper = RangeMapper(starting_date, ending_date)

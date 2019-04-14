@@ -895,6 +895,8 @@ class TestGetCandidates(object):
         assert best == assign2 and others == [assign3]
 
 class TestRemove(object):
+    """To test if the function to remove a range from a given assignation
+    works properly"""
 
     def test_remove1(self):
         data = {

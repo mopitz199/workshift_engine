@@ -2,7 +2,8 @@ from datetime import datetime, timedelta
 
 
 class RangeOperator:
-
+    """A class with functions to handle and make operations with ranges"""
+    
     @staticmethod
     def are_neighbors(r1, r2):
         """
