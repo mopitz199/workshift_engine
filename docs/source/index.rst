@@ -7,11 +7,10 @@ Welcome to Workshift Engine's documentation!
 ============================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
-   assignation_operator
-   range_operator
+   operators/index
 
 
 
