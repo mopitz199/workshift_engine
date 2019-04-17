@@ -1,9 +1,8 @@
-Operators
+Tests
 ============================================
 
 .. toctree::
    :maxdepth: 1
-   :caption: Operators:
+   :caption: Tests:
 
    assignation_operator
-   range_operator

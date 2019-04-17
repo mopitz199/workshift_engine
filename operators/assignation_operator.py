@@ -9,8 +9,6 @@ class AssignationOperator(object):
     @staticmethod
     def are_neighbors(assign1, assign2):
         """
-        .. function:: are_neighbors(assign1, assign2)
-
             To check if two assignations intersect or are next to the other.
 
             :param assign1: an assignation mapper object
@@ -28,8 +26,6 @@ class AssignationOperator(object):
     @staticmethod
     def are_multiple_neighbors(assign, assigns):
         """
-        .. function:: are_multiple_neighbors(assign, assigns)
-
             To check how many assigns are neighbor of the given assign
 
             :param assign: an assignation mapper object
@@ -50,8 +46,6 @@ class AssignationOperator(object):
     @staticmethod
     def get_min_starting_date(assigns):
         """
-        .. function:: get_min_starting_date(assigns)
-
             To get the minimun starting date from all the given assigns.
 
             :param assigns: An iterator with assigns
@@ -71,8 +65,6 @@ class AssignationOperator(object):
     @staticmethod
     def get_max_ending_date(assigns):
         """
-        .. function:: get_max_ending_date(assigns)
-
             To get the maximum ending date from all the given assigns.
 
             :param assigns: An iterator with assigns
@@ -92,8 +84,6 @@ class AssignationOperator(object):
     @staticmethod
     def get_assignation_generator(assign_list):
         """
-        .. function:: get_assignation_generator(assign_list)
-
             To transform an assign list into an iterator
 
             :param assign_list: A list of assigns
@@ -110,8 +100,6 @@ class AssignationOperator(object):
     @staticmethod
     def are_compatible(assign1, assign2):
         """
-        .. function:: are_compatible(assign1, assign2)
-
             To check if two assignments are compatible to be joined
 
             :param assign1: An assign mapper object
@@ -147,8 +135,6 @@ class AssignationOperator(object):
     @staticmethod
     def are_multiple_compatible(assign, assigns):
         """
-        .. function:: are_multiple_compatible(assign, assigns)
-
             To check of how many assigns are compatable with the given assign
 
             :param assign: An assign mapper object
@@ -168,8 +154,6 @@ class AssignationOperator(object):
     @staticmethod
     def get_biggest_assign(assigns):
         """
-        .. function:: get_biggest_assign(assigns)
-
             To get the assign with the more quantity of days
 
             :param assigns: A list of assigns
@@ -188,8 +172,6 @@ class AssignationOperator(object):
     @staticmethod
     def get_candidates(assign, assigns):
         """
-        .. function:: get_candidates(assign, assigns)
-
             Get all the other canididates and the best canidate from a given
             list of assignments
 
@@ -209,8 +191,6 @@ class AssignationOperator(object):
     @staticmethod
     def simulate_starting_day(assign, date_obj):
         """
-        .. function:: simulate_starting_day(assign, date_obj)
-
             To simulate an start_day in an specific date
 
             :param assign: An assign mapper object
@@ -234,8 +214,6 @@ class AssignationOperator(object):
     @staticmethod
     def copy(assign):
         """
-        .. function:: copy(assign)
-
             To create a deep copy of a given assign
 
             :param assign: An assign mapper object
@@ -249,8 +227,6 @@ class AssignationOperator(object):
     @staticmethod
     def remove(assign, starting_date, ending_date):
         """
-        .. function:: remove(assign, starting_date, ending_date)
-
             Function to remove a range from a given assignation
 
             :param assign: An assign mapper object

@@ -7,8 +7,6 @@ class RangeOperator:
     @staticmethod
     def are_neighbors(r1, r2):
         """
-        .. function:: are_neighbors(r1, r2)
-
             Function to check of two ranges intersect or are next to the other
 
             :param r1: a range of dates
@@ -24,8 +22,6 @@ class RangeOperator:
     @staticmethod
     def are_intersection(r1, r2):
         """
-        .. function:: are_intersection(r1, r2)
-
             Function to check of two ranges intersect
 
             :param r1: a range of dates

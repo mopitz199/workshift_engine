@@ -11,6 +11,7 @@ Welcome to Workshift Engine's documentation!
    :caption: Contents:
 
    operators/index
+   tests/index
 
 
 
