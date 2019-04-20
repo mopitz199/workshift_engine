@@ -13,6 +13,7 @@ For a simple use of these library let's go by parts. First you need to create th
 
 Let assume that you assignation obj has these attr:
 
+    * id
     * startingDate
     * endingDate
     * workshiftId
@@ -24,6 +25,7 @@ We need to mapping to these names:
 .. code-block:: python
 
     mapping = {
+        'id': 'id',
         'starting_date': 'startingDate',
         'ending_date': 'endingDate',
         'workshift_id': 'workshift_id,
@@ -38,6 +40,7 @@ is called *'Assignation'*:
     from mappers.assignation_mapper import AssignationMapper
 
     mapping = {
+            'id': 'id',
             'starting_date': 'startingDate',
             'ending_date': 'endingDate',
             'workshift_id': 'workshift_id,

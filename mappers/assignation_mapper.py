@@ -2,10 +2,13 @@ from mapper import Mapper
 from operators.assignation_operator import AssignationOperator
 from mappers.range_mapper import RangeMapper
 
-class AssignationMapper(Mapper):
+from database.db_extension import DBExtension
+
+class AssignationMapper(Mapper, DBExtension):
     """This class is to map the attributes of an assignation and their relations.
     Some requirements from the assignation are:
 
+    * id: The id of the assignation (if is created in the database)
     * starting_date: The starting date of the assignation
     * ending_date: The ending date of the assignation
     * workshift_id: The workshift id of the assignation

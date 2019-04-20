@@ -9,14 +9,14 @@ class AssignationOperator(object):
     @staticmethod
     def are_neighbors(assign1, assign2):
         """
-            To check if two assignations intersect or are next to the other.
+        To check if two assignations intersect or are next to the other.
 
-            :param assign1: an assignation mapper object
-            :type assign1: AssignationMapper
-            :param assign2: an assignation mapper object
-            :type assign2: AssignationMapper
+        :param assign1: an assignation mapper object
+        :type assign1: AssignationMapper
+        :param assign2: an assignation mapper object
+        :type assign2: AssignationMapper
 
-            :rtype: True or False
+        :rtype: Boolean
         """
 
         return RangeOperator.are_neighbors(
@@ -26,14 +26,14 @@ class AssignationOperator(object):
     @staticmethod
     def are_multiple_neighbors(assign, assigns):
         """
-            To check how many assigns are neighbor of the given assign
+        To check how many assigns are neighbor of the given assign
 
-            :param assign: an assignation mapper object
-            :type assign: AssignationMapper
-            :param assigns: An iterator of assigns to check
-            :type assigns: Iterator
+        :param assign: an assignation mapper object
+        :type assign: AssignationMapper
+        :param assigns: An iterator of assigns to check
+        :type assigns: Iterator
 
-            :rtype: A list of neigbors
+        :rtype: List<AssignationMapper>
         """
 
         resp = []
@@ -46,12 +46,12 @@ class AssignationOperator(object):
     @staticmethod
     def get_min_starting_date(assigns):
         """
-            To get the minimun starting date from all the given assigns.
+        To get the minimun starting date from all the given assigns.
 
-            :param assigns: An iterator with assigns
-            :type assigns: Iterator
+        :param assigns: An iterator with assigns
+        :type assigns: Iterator
 
-            :rtype: the assign with the minimum starting date
+        :rtype: AssignationMapper
         """
 
         min_date = datetime(2090, 1, 1).date()
@@ -65,12 +65,12 @@ class AssignationOperator(object):
     @staticmethod
     def get_max_ending_date(assigns):
         """
-            To get the maximum ending date from all the given assigns.
+        To get the maximum ending date from all the given assigns.
 
-            :param assigns: An iterator with assigns
-            :type assigns: Iterator
+        :param assigns: An iterator with assigns
+        :type assigns: Iterator
 
-            :rtype: the assign with the maximum ending date
+        :rtype: AssignationMapper
         """
 
         max_date = datetime(1900, 1, 1).date()
@@ -84,12 +84,12 @@ class AssignationOperator(object):
     @staticmethod
     def get_assignation_generator(assign_list):
         """
-            To transform an assign list into an iterator
+        To transform an assign list into an iterator
 
-            :param assign_list: A list of assigns
-            :type assigns: List
+        :param assign_list: A list of assigns
+        :type assigns: List
 
-            :rtype: the generator
+        :rtype: Generator
         """
 
         def assignation_generator():
@@ -100,18 +100,18 @@ class AssignationOperator(object):
     @staticmethod
     def are_compatible(assign1, assign2):
         """
-            To check if two assignments are compatible to be joined
+        To check if two assignments are compatible to be joined
 
-            :param assign1: An assign mapper object
-            :type assign1: AssignationMapper
-            :param assign2: An assign mapper object
-            :type assign2: AssignationMapper
+        :param assign1: An assign mapper object
+        :type assign1: AssignationMapper
+        :param assign2: An assign mapper object
+        :type assign2: AssignationMapper
 
-            :rtype: a True or False
+        :rtype: Boolean
         """
 
         has_same_workshift = assign1.workshift_id == assign2.workshift_id
-        has_same_person = assign1.person == assign2.person
+        has_same_person = assign1.person_id == assign2.person_id
 
         if (AssignationOperator.are_neighbors(assign1, assign2) and
             has_same_workshift and has_same_person):
@@ -135,14 +135,14 @@ class AssignationOperator(object):
     @staticmethod
     def are_multiple_compatible(assign, assigns):
         """
-            To check of how many assigns are compatable with the given assign
+        To check of how many assigns are compatable with the given assign
 
-            :param assign: An assign mapper object
-            :type assign: AssignationMapper
-            :param assigns: A list of assigns
-            :type assigns: Iterator
+        :param assign: An assign mapper object
+        :type assign: AssignationMapper
+        :param assigns: A list of assigns
+        :type assigns: Iterator
 
-            :rtype: a list with the compatible assigns
+        :rtype: List<AssignationMapper>
         """
 
         resp = []
@@ -154,12 +154,12 @@ class AssignationOperator(object):
     @staticmethod
     def get_biggest_assign(assigns):
         """
-            To get the assign with the more quantity of days
+        To get the assign with the more quantity of days
 
-            :param assigns: A list of assigns
-            :type assigns: Iterator
+        :param assigns: A list of assigns
+        :type assigns: Iterator
 
-            :rtype: An assignation mapper
+        :rtype: AssignationMapper
         """
 
         biggest = None
@@ -172,15 +172,15 @@ class AssignationOperator(object):
     @staticmethod
     def get_candidates(assign, assigns):
         """
-            Get all the other canididates and the best canidate from a given
-            list of assignments
+        Get all the other canididates and the best canidate from a given
+        list of assignments
 
-            :param assign: An assign mapper object
-            :type assign: AssignationMapper
-            :param assigns: A list of assigns
-            :type assigns: Iterator
+        :param assign: An assign mapper object
+        :type assign: AssignationMapper
+        :param assigns: A list of assigns
+        :type assigns: Iterator
 
-            :rtype: An assignation mapper and a list of assignation mappers
+        :rtype: (AssignationMapper, List<AssignationMapper>)
         """
 
         candidates = AssignationOperator.are_multiple_compatible(assign, assigns)
@@ -191,14 +191,14 @@ class AssignationOperator(object):
     @staticmethod
     def simulate_starting_day(assign, date_obj):
         """
-            To simulate an start_day in an specific date
+        To simulate an start_day in an specific date
 
-            :param assign: An assign mapper object
-            :type assign: AssignationMapper
-            :param date_obj: The date which want to simulate
-            :type date_obj: date
+        :param assign: An assign mapper object
+        :type assign: AssignationMapper
+        :param date_obj: The date which want to simulate
+        :type date_obj: date
 
-            :rtype: the simulated start_day
+        :rtype: Int
         """
 
         if assign.start_day:
@@ -214,12 +214,12 @@ class AssignationOperator(object):
     @staticmethod
     def copy(assign):
         """
-            To create a deep copy of a given assign
+        To create a deep copy of a given assign
 
-            :param assign: An assign mapper object
-            :type assign: AssignationMapper
+        :param assign: An assign mapper object
+        :type assign: AssignationMapper
 
-            :rtype: <AssignationMapper>
+        :rtype: AssignationMapper
         """
 
         return copy.deepcopy(assign)
@@ -227,14 +227,14 @@ class AssignationOperator(object):
     @staticmethod
     def remove(assign, starting_date, ending_date):
         """
-            Function to remove a range from a given assignation
+        Function to remove a range from a given assignation
 
-            :param assign: An assign mapper object
-            :type assign: AssignationMapper
-            :param starting_date: The starting date from where you want to start removing
-            :type starting_date: AssignationMapper
+        :param assign: An assign mapper object
+        :type assign: AssignationMapper
+        :param starting_date: The starting date from where you want to start removing
+        :type starting_date: AssignationMapper
 
-            :rtype: Dict
+        :rtype: Dict
         """
 
         resp = {'delete': None, 'update': None, 'create': None}
