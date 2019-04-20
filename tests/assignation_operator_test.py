@@ -998,3 +998,25 @@ class TestRemove(object):
         assert (resp['delete'] == assign and
             resp['update'] == None and
             resp['create'] == None)
+
+    def test_remove5(self):
+        data = {
+            'starting_date': datetime(2019, 1, 1).date(),
+            'ending_date': datetime(2019, 1, 10).date(),
+            'workshift_id': 4,
+            'person_id': 1,
+            'total_workshift_days': 8,
+            'start_day': 6}
+    
+        assign = create_an_assignation(data)
+
+        resp = AssignationOperator.remove(
+            assign,
+            datetime(2019, 1, 12).date(),
+            datetime(2019, 1, 14).date())
+
+        resp_assign = resp['update']
+        
+        assert (resp['delete'] == None and
+            resp['update'] == None and
+            resp['create'] == None)
