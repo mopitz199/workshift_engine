@@ -352,7 +352,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 3).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 6,
             'start_day': 1}
     
@@ -362,7 +362,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2019, 1, 4).date(),
             'ending_date': datetime(2019, 1, 6).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 6,
             'start_day': 4}
     
@@ -375,7 +375,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 6).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 6,
             'start_day': 1}
     
@@ -385,7 +385,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2019, 1, 3).date(),
             'ending_date': datetime(2019, 1, 6).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 6,
             'start_day': 3}
     
@@ -398,7 +398,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2019, 1, 3).date(),
             'ending_date': datetime(2019, 1, 6).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 6,
             'start_day': 3}
     
@@ -408,7 +408,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 6).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 6,
             'start_day': 1}
     
@@ -421,7 +421,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2018, 12, 28).date(),
             'ending_date': datetime(2019, 1, 10).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 6,
             'start_day': 3}
     
@@ -431,7 +431,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 6).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 6,
             'start_day': 1}
     
@@ -444,7 +444,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2018, 12, 28).date(),
             'ending_date': datetime(2019, 1, 10).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 6,
             'start_day': None}
     
@@ -454,7 +454,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 6).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 6,
             'start_day': None}
     
@@ -467,7 +467,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2018, 12, 28).date(),
             'ending_date': datetime(2019, 1, 10).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 6,
             'start_day': None}
     
@@ -477,7 +477,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 6).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 6,
             'start_day': 1}
     
@@ -491,7 +491,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 3).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 6,
             'start_day': 1}
     
@@ -501,7 +501,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2019, 1, 4).date(),
             'ending_date': datetime(2019, 1, 6).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 6,
             'start_day': 3}
     
@@ -514,7 +514,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 3).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 3,
             'start_day': 1}
     
@@ -524,7 +524,7 @@ class TestAreCompatible(object):
             'starting_date': datetime(2019, 1, 4).date(),
             'ending_date': datetime(2019, 1, 6).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 3,
             'start_day': 2}
     
@@ -543,7 +543,7 @@ class TestAreMultipleCompatible(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 6}
     
@@ -553,7 +553,7 @@ class TestAreMultipleCompatible(object):
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 11).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 4}
     
@@ -563,7 +563,7 @@ class TestAreMultipleCompatible(object):
             'starting_date': datetime(2019, 1, 6).date(),
             'ending_date': datetime(2019, 1, 6).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 3}
     
@@ -580,7 +580,7 @@ class TestAreMultipleCompatible(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 6}
     
@@ -590,7 +590,7 @@ class TestAreMultipleCompatible(object):
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 11).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 4}
     
@@ -600,7 +600,7 @@ class TestAreMultipleCompatible(object):
             'starting_date': datetime(2019, 1, 4).date(),
             'ending_date': datetime(2019, 1, 6).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 1}
     
@@ -617,7 +617,7 @@ class TestAreMultipleCompatible(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 6}
     
@@ -627,7 +627,7 @@ class TestAreMultipleCompatible(object):
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 11).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 5}
     
@@ -637,7 +637,7 @@ class TestAreMultipleCompatible(object):
             'starting_date': datetime(2019, 1, 4).date(),
             'ending_date': datetime(2019, 1, 6).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 1}
     
@@ -654,7 +654,7 @@ class TestAreMultipleCompatible(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 6}
     
@@ -664,7 +664,7 @@ class TestAreMultipleCompatible(object):
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 11).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 4}
     
@@ -674,7 +674,7 @@ class TestAreMultipleCompatible(object):
             'starting_date': datetime(2018, 12, 31).date(),
             'ending_date': datetime(2019, 1, 8).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 5}
     
@@ -758,7 +758,7 @@ class TestGetCandidates(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 6}
     
@@ -768,7 +768,7 @@ class TestGetCandidates(object):
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 11).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 2}
     
@@ -778,7 +778,7 @@ class TestGetCandidates(object):
             'starting_date': datetime(2019, 1, 13).date(),
             'ending_date': datetime(2019, 1, 16).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 2}
     
@@ -788,7 +788,7 @@ class TestGetCandidates(object):
             'starting_date': datetime(2019, 1, 4).date(),
             'ending_date': datetime(2019, 1, 14).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 1}
     
@@ -805,7 +805,7 @@ class TestGetCandidates(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 6}
     
@@ -815,7 +815,7 @@ class TestGetCandidates(object):
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 11).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 2}
     
@@ -825,7 +825,7 @@ class TestGetCandidates(object):
             'starting_date': datetime(2019, 1, 13).date(),
             'ending_date': datetime(2019, 1, 16).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 2}
     
@@ -835,7 +835,7 @@ class TestGetCandidates(object):
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 14).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 4}
     
@@ -852,7 +852,7 @@ class TestGetCandidates(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 6}
     
@@ -862,7 +862,7 @@ class TestGetCandidates(object):
             'starting_date': datetime(2019, 1, 7).date(),
             'ending_date': datetime(2019, 1, 11).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 4}
     
@@ -872,7 +872,7 @@ class TestGetCandidates(object):
             'starting_date': datetime(2019, 1, 13).date(),
             'ending_date': datetime(2019, 1, 16).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 2}
     
@@ -882,7 +882,7 @@ class TestGetCandidates(object):
             'starting_date': datetime(2019, 1, 12).date(),
             'ending_date': datetime(2019, 1, 12).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 1}
     
@@ -903,7 +903,7 @@ class TestRemove(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 6}
     
@@ -929,7 +929,7 @@ class TestRemove(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 10).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 6}
     
@@ -957,7 +957,7 @@ class TestRemove(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 10).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 6}
     
@@ -982,7 +982,7 @@ class TestRemove(object):
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 10).date(),
             'workshift_id': 4,
-            'person': 1,
+            'person_id': 1,
             'total_workshift_days': 8,
             'start_day': 6}
     

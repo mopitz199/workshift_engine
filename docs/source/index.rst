@@ -12,6 +12,7 @@ Welcome to Workshift Engine's documentation!
 
    operators/index
    tests/index
+   mappers/index
 
 
 

@@ -3,11 +3,22 @@ from operators.assignation_operator import AssignationOperator
 from mappers.range_mapper import RangeMapper
 
 class AssignationMapper(Mapper):
+    """This class is to map the attributes of an assignation and their relations.
+    Some requirements from the assignation are:
+
+    * starting_date: The starting date of the assignation
+    * ending_date: The ending date of the assignation
+    * workshift_id: The workshift id of the assignation
+    * person_id: The person id of the assignation
+    * start_day: The starting day of the assignation
+
+    """
 
     def __init__(self, obj, attr_mapping):
         super(AssignationMapper, self).__init__(obj, attr_mapping)
         self.range_mapper = RangeMapper(self.starting_date, self.ending_date)
         self.workshift_obj = None
+        self.person_obj = None
 
     def __len__(self):
         return len(self.range_mapper)
@@ -38,14 +49,26 @@ class AssignationMapper(Mapper):
     @property
     def workshift(self):
         """
-        .. function:: workshift(self)
+        To get the workshift associated with the assignation
 
-            To get the workshift associated with the assignation
-
-            :rtype: <WorkshiftMapper>
+        :rtype: WorkshiftMapper
         """
         if not self.workshift_obj:
             # Search for the workshift object in db
             pass
         return self.workshift_obj
+
+    @property
+    def person(self):
+        """
+        To get the person associated with the assignation
+
+        :rtype: PersonMapper
+        """
+
+        if not self.person_obj:
+            # Search for the person object in db
+            pass
+        return self.person_obj.id
+
     
