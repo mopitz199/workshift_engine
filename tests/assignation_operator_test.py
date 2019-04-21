@@ -105,7 +105,7 @@ class TestAreMultipleNeighbors(object):
 
         assert AssignationOperator.are_multiple_neighbors(assign, assign_list) == [assign1]
 
-    def test_are_multiple_neighbors2(self):
+    def test_are_multiple_neighbors3(self):
         data = {
             'starting_date': datetime(2019, 1, 1).date(),
             'ending_date': datetime(2019, 1, 5).date()}

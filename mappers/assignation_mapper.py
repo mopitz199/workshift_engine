@@ -1,4 +1,4 @@
-from mapper import Mapper
+from mappers.mapper import Mapper
 from operators.assignation_operator import AssignationOperator
 from mappers.range_mapper import RangeMapper
 
@@ -57,8 +57,7 @@ class AssignationMapper(Mapper, DBExtension):
         :rtype: WorkshiftMapper
         """
         if not self.workshift_obj:
-            # Search for the workshift object in db
-            pass
+            self.workshift_obj = self.obj.workshift
         return self.workshift_obj
 
     @property
@@ -70,8 +69,7 @@ class AssignationMapper(Mapper, DBExtension):
         """
 
         if not self.person_obj:
-            # Search for the person object in db
-            pass
+            self.person_obj = self.obj.person
         return self.person_obj.id
 
     

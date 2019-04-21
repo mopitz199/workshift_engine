@@ -14,7 +14,7 @@ class DB(object):
         self.to_be_deleted = []
 
     def hash_function(self, element):
-        pass
+        return ""
 
     def build_database(self):
         """Function to build the database of all given elements according to the hash_function"""
@@ -37,7 +37,6 @@ class DB(object):
         if not element.is_in_real_db():
             self.to_be_created.append(element)
 
-    
     def remove(self, element):
         """
         To remove an element in the RAM database
@@ -48,10 +47,14 @@ class DB(object):
 
         hash_str = self.hash_function(element)
         hash_elements = self.db.get(hash_str, [])
-        hash_elements.remove(element)
+        if element in hash_elements:
+            hash_elements.remove(element)
+        if not hash_elements:
+            del self.db[hash_str]
         if element.is_in_real_db():
             self.to_be_deleted.append(element)
-            self.to_be_updated.remove(element)
+            if element in self.to_be_updated:
+                self.to_be_updated.remove(element)
         else:
             self.to_be_created.remove(element)
 
@@ -62,7 +65,7 @@ class DB(object):
         :param element: The element to update
         :type element: Class
         """
-
-        self.to_be_updated.append(element)
+        if element.is_in_real_db():
+            self.to_be_updated.append(element)
 
 

@@ -30,10 +30,11 @@ def create_an_assignation(data):
 
     person_mapper = create_a_person_mapper({'id': data.get('person_id', 1)})
     
+    data['workshift'] = workshift_mapper.obj
+    data['person'] = person_mapper.obj
+
     conf = {key:key for key in data.keys()}
     assignation_mapper = AssignationMapper(DumbAssignation(**data), conf)
-    assignation_mapper.workshift_obj = workshift_mapper
-    assignation_mapper.person_obj = person_mapper
     return assignation_mapper
 
 def create_a_workshift_mapper(workshift_data):

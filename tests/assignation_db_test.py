@@ -152,10 +152,130 @@ class TestAssignationAddDatabase(object):
             '8_1': [assign3]} and
             assignation_db.to_be_created == [assign3])
 
+
 class TestAssignationRemoveDatabase(object):
     """Class to test if the function to remove an assignation to the database works well"""
-    pass
+    
+    def test_remove1(self):
+        data = {
+            'id': 1,
+            'starting_date': datetime(2019, 2, 24).date(),
+            'ending_date': datetime(2019, 2, 28).date(),
+            'workshift_id': 6,
+            'person_id': 1,}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'id': 2,
+            'starting_date': datetime(2019, 2, 24).date(),
+            'ending_date': datetime(2019, 2, 28).date(),
+            'workshift_id': 7,
+            'person_id': 1,}
+        assign2 = create_an_assignation(data)
+
+        assignations = [assign1, assign2]
+
+        assignation_db = AssignationDB(assignations, None)
+        assignation_db.remove(assign1)
+
+        assert (assignation_db.db == {'7_1': [assign2]} and
+            assignation_db.to_be_deleted == [assign1])
+
+    def test_remove2(self):
+        data = {
+            'id': 1,
+            'starting_date': datetime(2019, 2, 24).date(),
+            'ending_date': datetime(2019, 2, 28).date(),
+            'workshift_id': 6,
+            'person_id': 1,}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'id': 2,
+            'starting_date': datetime(2019, 2, 24).date(),
+            'ending_date': datetime(2019, 2, 28).date(),
+            'workshift_id': 6,
+            'person_id': 1,}
+        assign2 = create_an_assignation(data)
+
+        assignations = [assign1, assign2]
+
+        assignation_db = AssignationDB(assignations, None)
+        assignation_db.remove(assign1)
+
+        assert (assignation_db.db == {'6_1': [assign2]} and
+            assignation_db.to_be_deleted == [assign1])
+
+    def test_remove3(self):
+        data = {
+            'id': 1,
+            'starting_date': datetime(2019, 2, 24).date(),
+            'ending_date': datetime(2019, 2, 28).date(),
+            'workshift_id': 6,
+            'person_id': 1,}
+        assign1 = create_an_assignation(data)
+
+        assignations = [assign1]
+
+        assignation_db = AssignationDB(assignations, None)
+        assignation_db.remove(assign1)
+
+        assert (assignation_db.db == {} and
+            assignation_db.to_be_deleted == [assign1])
+
+    def test_remove4(self):
+        data = {
+            'starting_date': datetime(2019, 2, 24).date(),
+            'ending_date': datetime(2019, 2, 28).date(),
+            'workshift_id': 6,
+            'person_id': 1,}
+        assign1 = create_an_assignation(data)
+
+        assignations = []
+
+        assignation_db = AssignationDB(assignations, None)
+        assignation_db.add(assign1)
+        assignation_db.remove(assign1)
+
+        assert (assignation_db.db == {} and
+            assignation_db.to_be_deleted == [] and
+            assignation_db.to_be_updated == [] and
+            assignation_db.to_be_created == [])
 
 class TestAssignationUpdateDatabase(object):
     """Class to test if the function to update an assignation to the database works well"""
-    pass
+    
+    def test_update1(self):
+        data = {
+            'id': 1,
+            'starting_date': datetime(2019, 2, 24).date(),
+            'ending_date': datetime(2019, 2, 28).date(),
+            'workshift_id': 6,
+            'person_id': 1,}
+        assign1 = create_an_assignation(data)
+
+        assignations = [assign1]
+
+        assignation_db = AssignationDB(assignations, None)
+        assignation_db.update(assign1)
+
+        assert (assignation_db.db == {'6_1': [assign1]} and
+            assignation_db.to_be_updated == [assign1])
+
+    def test_update2(self):
+        data = {
+            'starting_date': datetime(2019, 2, 24).date(),
+            'ending_date': datetime(2019, 2, 28).date(),
+            'workshift_id': 6,
+            'person_id': 1,}
+        assign1 = create_an_assignation(data)
+
+        assignations = []
+
+        assignation_db = AssignationDB(assignations, None)
+        assignation_db.add(assign1)
+        assignation_db.update(assign1)
+
+        assert (assignation_db.db == {'6_1': [assign1]} and
+            assignation_db.to_be_updated == [] and
+            assignation_db.to_be_created == [assign1])

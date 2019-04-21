@@ -11,6 +11,7 @@ class Mapper(object):
     """
 
     def __init__(self, obj, attr_mapping):
+        super(Mapper, self).__init__()
         self.attr_mapping = attr_mapping
         self.obj = obj
 

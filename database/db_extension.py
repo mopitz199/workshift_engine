@@ -1,8 +1,4 @@
 class DBExtension(object):
-    """
-    Class to extend the functionalities of a mapper
-    in order to work with a database class
-    """
 
     def is_in_real_db(self):
         """

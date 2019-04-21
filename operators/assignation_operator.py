@@ -221,8 +221,12 @@ class AssignationOperator(object):
 
         :rtype: AssignationMapper
         """
-
-        return copy.deepcopy(assign)
+        copied = copy.copy(assign)
+        copied.obj = copy.deepcopy(assign.obj)
+        copied.range_mapper = copy.deepcopy(assign.range_mapper)
+        copied.workshift_obj = copy.deepcopy(assign.workshift_obj)
+        copied.person_obj = copy.deepcopy(assign.person_obj)
+        return copied
 
     @staticmethod
     def remove(assign, starting_date, ending_date):
