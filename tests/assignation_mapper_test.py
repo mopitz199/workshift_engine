@@ -12,21 +12,29 @@ class TestAssignationMapperAdd(object):
 
     def test_add1(self):
         data = {
-            'starting_date': datetime(2019, 1, 1).date(),
-            'ending_date': datetime(2019, 1, 22).date(),
-            'workshift_id': 4,
-            'person_id': 1,
-            'total_workshift_days': 8,
-            'start_day': None}
+            'assignation': {
+                'starting_date': datetime(2019, 1, 1).date(),
+                'ending_date': datetime(2019, 1, 22).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
         assign1 = create_an_assignation(data)
 
         data = {
-            'starting_date': datetime(2019, 1, 23).date(),
-            'ending_date': datetime(2019, 1, 28).date(),
-            'workshift_id': 4,
-            'person_id': 1,
-            'total_workshift_days': 8,
-            'start_day': None}
+            'assignation': {
+                'starting_date': datetime(2019, 1, 23).date(),
+                'ending_date': datetime(2019, 1, 28).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
         assign2 = create_an_assignation(data)
 
         assign1 += assign2
@@ -38,21 +46,29 @@ class TestAssignationMapperAdd(object):
 
     def test_add2(self):
         data = {
-            'starting_date': datetime(2019, 1, 1).date(),
-            'ending_date': datetime(2019, 1, 22).date(),
-            'workshift_id': 4,
-            'person_id': 1,
-            'total_workshift_days': 8,
-            'start_day': None}
+            'assignation': {
+                'starting_date': datetime(2019, 1, 1).date(),
+                'ending_date': datetime(2019, 1, 22).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
         assign1 = create_an_assignation(data)
 
         data = {
-            'starting_date': datetime(2019, 1, 24).date(),
-            'ending_date': datetime(2019, 1, 28).date(),
-            'workshift_id': 4,
-            'person_id': 1,
-            'total_workshift_days': 8,
-            'start_day': None}
+            'assignation': {
+                'starting_date': datetime(2019, 1, 24).date(),
+                'ending_date': datetime(2019, 1, 28).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
         assign2 = create_an_assignation(data)
 
         assign1 += assign2
@@ -64,21 +80,29 @@ class TestAssignationMapperAdd(object):
 
     def test_add3(self):
         data = {
-            'starting_date': datetime(2019, 1, 1).date(),
-            'ending_date': datetime(2019, 1, 22).date(),
-            'workshift_id': 4,
-            'person_id': 1,
-            'total_workshift_days': 8,
-            'start_day': 1}
+            'assignation': {
+                'starting_date': datetime(2019, 1, 1).date(),
+                'ending_date': datetime(2019, 1, 22).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
         assign1 = create_an_assignation(data)
 
         data = {
-            'starting_date': datetime(2019, 1, 22).date(),
-            'ending_date': datetime(2019, 1, 28).date(),
-            'workshift_id': 4,
-            'person_id': 1,
-            'total_workshift_days': 8,
-            'start_day': 5}
+            'assignation': {
+                'starting_date': datetime(2019, 1, 22).date(),
+                'ending_date': datetime(2019, 1, 28).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 5
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
         assign2 = create_an_assignation(data)
 
         assign1 += assign2
@@ -90,21 +114,29 @@ class TestAssignationMapperAdd(object):
 
     def test_add4(self):
         data = {
-            'starting_date': datetime(2019, 1, 10).date(),
-            'ending_date': datetime(2019, 1, 15).date(),
-            'workshift_id': 4,
-            'person_id': 1,
-            'total_workshift_days': 8,
-            'start_day': None}
+            'assignation': {
+                'starting_date': datetime(2019, 1, 10).date(),
+                'ending_date': datetime(2019, 1, 15).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
         assign1 = create_an_assignation(data)
 
         data = {
-            'starting_date': datetime(2019, 1, 5).date(),
-            'ending_date': datetime(2019, 1, 28).date(),
-            'workshift_id': 4,
-            'person_id': 1,
-            'total_workshift_days': 8,
-            'start_day': None}
+            'assignation': {
+                'starting_date': datetime(2019, 1, 5).date(),
+                'ending_date': datetime(2019, 1, 28).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
         assign2 = create_an_assignation(data)
 
         assign1 += assign2
@@ -116,21 +148,29 @@ class TestAssignationMapperAdd(object):
 
     def test_add5(self):
         data = {
-            'starting_date': datetime(2019, 1, 10).date(),
-            'ending_date': datetime(2019, 1, 15).date(),
-            'workshift_id': 4,
-            'person_id': 1,
-            'total_workshift_days': 8,
-            'start_day': 8}
+            'assignation': {
+                'starting_date': datetime(2019, 1, 10).date(),
+                'ending_date': datetime(2019, 1, 15).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 8
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
         assign1 = create_an_assignation(data)
 
         data = {
-            'starting_date': datetime(2019, 1, 5).date(),
-            'ending_date': datetime(2019, 1, 28).date(),
-            'workshift_id': 4,
-            'person_id': 1,
-            'total_workshift_days': 8,
-            'start_day': 3}
+            'assignation': {
+                'starting_date': datetime(2019, 1, 5).date(),
+                'ending_date': datetime(2019, 1, 28).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 3
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
         assign2 = create_an_assignation(data)
 
         assign1 += assign2

@@ -20,8 +20,8 @@ class AssignationMapper(Mapper, DBExtension):
     def __init__(self, obj, attr_mapping):
         super(AssignationMapper, self).__init__(obj, attr_mapping)
         self.range_mapper = RangeMapper(self.starting_date, self.ending_date)
-        self.workshift_obj = None
-        self.person_obj = None
+        self.workshift_mapper = None
+        self.person_mapper = None
 
     def __len__(self):
         return len(self.range_mapper)
@@ -56,9 +56,8 @@ class AssignationMapper(Mapper, DBExtension):
 
         :rtype: WorkshiftMapper
         """
-        if not self.workshift_obj:
-            self.workshift_obj = self.obj.workshift
-        return self.workshift_obj
+        
+        return self.workshift_mapper
 
     @property
     def person(self):
@@ -68,8 +67,6 @@ class AssignationMapper(Mapper, DBExtension):
         :rtype: PersonMapper
         """
 
-        if not self.person_obj:
-            self.person_obj = self.obj.person
-        return self.person_obj.id
+        return self.person_ampper
 
     

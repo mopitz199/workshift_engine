@@ -2,6 +2,8 @@ from mappers.workshift_mapper import WorkshiftMapper
 from mappers.person_mapper import PersonMapper
 from mappers.assignation_mapper import AssignationMapper
 
+from mappers.mapper_factory import FactoryMapper
+
 class DumbAssignation:
 
     def __init__(self, **kwargs):
@@ -23,26 +25,25 @@ class DumbPerson:
             val = kwargs.get(kwarg, None)
             setattr(self, kwarg, val)
 
+def build_conf(data):
+    resp = {}
+    for model_name in data:
+        resp[model_name] = {key:key for key in data[model_name].keys()}
+    resp['assignation']['workshift_obj'] = 'workshift'
+    resp['assignation']['person_obj'] = 'person'
+    return resp
+
 def create_an_assignation(data):
-    workshift_data = {
-        'total_workshift_days': data.pop('total_workshift_days', None)}
-    workshift_mapper = create_a_workshift_mapper(workshift_data)
+    conf = build_conf(data)
 
-    person_mapper = create_a_person_mapper({'id': data.get('person_id', 1)})
+    assignation_data = data.get('assignation')
+    assignation = DumbAssignation(**assignation_data)
     
-    data['workshift'] = workshift_mapper.obj
-    data['person'] = person_mapper.obj
+    workshift_data = data.get('workshift', {})
+    assignation.workshift = DumbWorkshift(**workshift_data)
 
-    conf = {key:key for key in data.keys()}
-    assignation_mapper = AssignationMapper(DumbAssignation(**data), conf)
-    return assignation_mapper
+    person_data = data.get('person', {})
+    assignation.person = DumbPerson(**person_data)
 
-def create_a_workshift_mapper(workshift_data):
-    workshift = DumbWorkshift(**workshift_data)
-    conf = {key:key for key in workshift_data.keys()}
-    return WorkshiftMapper(workshift, conf)
-
-def create_a_person_mapper(person_data):
-    person = DumbPerson(**person_data)
-    conf = {key:key for key in person_data.keys()}
-    return PersonMapper(person, conf)
+    factory_mapper = FactoryMapper()
+    return factory_mapper.create_assignation_mapper(assignation, conf)

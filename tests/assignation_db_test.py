@@ -8,23 +8,32 @@ class TestAssignationBuildDatabase(object):
 
     def test_init1(self):
         data = {
-            'id': 1,
-            'starting_date': datetime(2019, 1, 1).date(),
-            'ending_date': datetime(2019, 1, 22).date(),
-            'workshift_id': 4,
-            'person_id': 1,
-            'total_workshift_days': 8,
-            'start_day': None}
+            'assignation': {
+                'id': 1,
+                'starting_date': datetime(2019, 1, 1).date(),
+                'ending_date': datetime(2019, 1, 22).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'total_workshift_days': 8,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
         assign1 = create_an_assignation(data)
 
         data = {
-            'id': 2,
-            'starting_date': datetime(2019, 1, 23).date(),
-            'ending_date': datetime(2019, 1, 28).date(),
-            'workshift_id': 4,
-            'person_id': 1,
-            'total_workshift_days': 8,
-            'start_day': None}
+            'assignation':{
+                'id': 2,
+                'starting_date': datetime(2019, 1, 23).date(),
+                'ending_date': datetime(2019, 1, 28).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
         assign2 = create_an_assignation(data)
 
         assignations = [assign1, assign2]
@@ -35,23 +44,33 @@ class TestAssignationBuildDatabase(object):
 
     def test_init2(self):
         data = {
-            'id': 1,
-            'starting_date': datetime(2019, 1, 1).date(),
-            'ending_date': datetime(2019, 1, 22).date(),
-            'workshift_id': 4,
-            'person_id': 1,
-            'total_workshift_days': 8,
-            'start_day': None}
+            'assignation':{
+                'id': 1,
+                'starting_date': datetime(2019, 1, 1).date(),
+                'ending_date': datetime(2019, 1, 22).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+
         assign1 = create_an_assignation(data)
 
         data = {
-            'id': 2,
-            'starting_date': datetime(2019, 1, 23).date(),
-            'ending_date': datetime(2019, 1, 28).date(),
-            'workshift_id': 5,
-            'person_id': 1,
-            'total_workshift_days': 8,
-            'start_day': None}
+            'assignation':{
+                'id': 2,
+                'starting_date': datetime(2019, 1, 23).date(),
+                'ending_date': datetime(2019, 1, 28).date(),
+                'workshift_id': 5,
+                'person_id': 1,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+
         assign2 = create_an_assignation(data)
 
         assignations = [assign1, assign2]
@@ -66,26 +85,29 @@ class TestAssignationAddDatabase(object):
 
     def test_add1(self):
         data = {
-            'id': 1,
-            'starting_date': datetime(2019, 1, 1).date(),
-            'ending_date': datetime(2019, 1, 22).date(),
-            'workshift_id': 4,
-            'person_id': 1}
+            'assignation':{
+                'id': 1,
+                'starting_date': datetime(2019, 1, 1).date(),
+                'ending_date': datetime(2019, 1, 22).date(),
+                'workshift_id': 4,
+                'person_id': 1}}
         assign1 = create_an_assignation(data)
 
         data = {
-            'id': 2,
-            'starting_date': datetime(2019, 1, 24).date(),
-            'ending_date': datetime(2019, 1, 28).date(),
-            'workshift_id': 4,
-            'person_id': 1}
+            'assignation':{
+                'id': 2,
+                'starting_date': datetime(2019, 1, 24).date(),
+                'ending_date': datetime(2019, 1, 28).date(),
+                'workshift_id': 4,
+                'person_id': 1}}
         assign2 = create_an_assignation(data)
 
         data = {
-            'starting_date': datetime(2019, 2, 24).date(),
-            'ending_date': datetime(2019, 2, 28).date(),
-            'workshift_id': 4,
-            'person_id': 1,}
+            'assignation':{
+                'starting_date': datetime(2019, 2, 24).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 4,
+                'person_id': 1}}
         assign3 = create_an_assignation(data)
 
         assignations = [assign1, assign2]
@@ -100,11 +122,12 @@ class TestAssignationAddDatabase(object):
 
     def test_add2(self):
         data = {
-            'id': 1,
-            'starting_date': datetime(2019, 2, 24).date(),
-            'ending_date': datetime(2019, 2, 28).date(),
-            'workshift_id': 4,
-            'person_id': 1,}
+            'assignation':{
+                'id': 1,
+                'starting_date': datetime(2019, 2, 24).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 4,
+                'person_id': 1}}
         assign = create_an_assignation(data)
 
         assignations = []
@@ -119,26 +142,30 @@ class TestAssignationAddDatabase(object):
     
     def test_add3(self):
         data = {
-            'id': 1,
-            'starting_date': datetime(2019, 2, 24).date(),
-            'ending_date': datetime(2019, 2, 28).date(),
-            'workshift_id': 6,
-            'person_id': 1,}
+            'assignation':{
+                'id': 1,
+                'starting_date': datetime(2019, 2, 24).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 6,
+                'person_id': 1}}
         assign1 = create_an_assignation(data)
 
         data = {
-            'id': 2,
-            'starting_date': datetime(2019, 2, 24).date(),
-            'ending_date': datetime(2019, 2, 28).date(),
-            'workshift_id': 7,
-            'person_id': 1,}
+            'assignation': {
+                'id': 2,
+                'starting_date': datetime(2019, 2, 24).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 7,
+                'person_id': 1}}
+            
         assign2 = create_an_assignation(data)
 
         data = {
-            'starting_date': datetime(2019, 2, 24).date(),
-            'ending_date': datetime(2019, 2, 28).date(),
-            'workshift_id': 8,
-            'person_id': 1,}
+            'assignation': {
+                'starting_date': datetime(2019, 2, 24).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 8,
+                'person_id': 1}}
         assign3 = create_an_assignation(data)
 
         assignations = [assign1, assign2]
@@ -158,19 +185,21 @@ class TestAssignationRemoveDatabase(object):
     
     def test_remove1(self):
         data = {
-            'id': 1,
-            'starting_date': datetime(2019, 2, 24).date(),
-            'ending_date': datetime(2019, 2, 28).date(),
-            'workshift_id': 6,
-            'person_id': 1,}
+            'assignation':{
+                'id': 1,
+                'starting_date': datetime(2019, 2, 24).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 6,
+                'person_id': 1}}
         assign1 = create_an_assignation(data)
 
         data = {
-            'id': 2,
-            'starting_date': datetime(2019, 2, 24).date(),
-            'ending_date': datetime(2019, 2, 28).date(),
-            'workshift_id': 7,
-            'person_id': 1,}
+            'assignation':{
+                'id': 2,
+                'starting_date': datetime(2019, 2, 24).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 7,
+                'person_id': 1}}
         assign2 = create_an_assignation(data)
 
         assignations = [assign1, assign2]
@@ -183,19 +212,21 @@ class TestAssignationRemoveDatabase(object):
 
     def test_remove2(self):
         data = {
-            'id': 1,
-            'starting_date': datetime(2019, 2, 24).date(),
-            'ending_date': datetime(2019, 2, 28).date(),
-            'workshift_id': 6,
-            'person_id': 1,}
+            'assignation':{
+                'id': 1,
+                'starting_date': datetime(2019, 2, 24).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 6,
+                'person_id': 1}}
         assign1 = create_an_assignation(data)
 
         data = {
-            'id': 2,
-            'starting_date': datetime(2019, 2, 24).date(),
-            'ending_date': datetime(2019, 2, 28).date(),
-            'workshift_id': 6,
-            'person_id': 1,}
+            'assignation':{
+                'id': 2,
+                'starting_date': datetime(2019, 2, 24).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 6,
+                'person_id': 1}}
         assign2 = create_an_assignation(data)
 
         assignations = [assign1, assign2]
@@ -208,11 +239,12 @@ class TestAssignationRemoveDatabase(object):
 
     def test_remove3(self):
         data = {
-            'id': 1,
-            'starting_date': datetime(2019, 2, 24).date(),
-            'ending_date': datetime(2019, 2, 28).date(),
-            'workshift_id': 6,
-            'person_id': 1,}
+            'assignation':{
+                'id': 1,
+                'starting_date': datetime(2019, 2, 24).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 6,
+                'person_id': 1}}
         assign1 = create_an_assignation(data)
 
         assignations = [assign1]
@@ -225,10 +257,12 @@ class TestAssignationRemoveDatabase(object):
 
     def test_remove4(self):
         data = {
-            'starting_date': datetime(2019, 2, 24).date(),
-            'ending_date': datetime(2019, 2, 28).date(),
-            'workshift_id': 6,
-            'person_id': 1,}
+            'assignation':{
+                'starting_date': datetime(2019, 2, 24).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 6,
+                'person_id': 1
+            }}
         assign1 = create_an_assignation(data)
 
         assignations = []
@@ -247,11 +281,12 @@ class TestAssignationUpdateDatabase(object):
     
     def test_update1(self):
         data = {
-            'id': 1,
-            'starting_date': datetime(2019, 2, 24).date(),
-            'ending_date': datetime(2019, 2, 28).date(),
-            'workshift_id': 6,
-            'person_id': 1,}
+            'assignation':{
+                'id': 1,
+                'starting_date': datetime(2019, 2, 24).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 6,
+                'person_id': 1}}
         assign1 = create_an_assignation(data)
 
         assignations = [assign1]
@@ -264,10 +299,12 @@ class TestAssignationUpdateDatabase(object):
 
     def test_update2(self):
         data = {
-            'starting_date': datetime(2019, 2, 24).date(),
-            'ending_date': datetime(2019, 2, 28).date(),
-            'workshift_id': 6,
-            'person_id': 1,}
+            'assignation':{
+                'starting_date': datetime(2019, 2, 24).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 6,
+                'person_id': 1
+            }}
         assign1 = create_an_assignation(data)
 
         assignations = []

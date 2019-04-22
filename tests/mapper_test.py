@@ -7,13 +7,18 @@ from test_utils.utils import create_an_assignation
 @pytest.fixture
 def mapper():
     data = {
-        'person': 5,
-        'starting_date': datetime(2019, 1, 1).date(),
-        'start_day': 1,
-        'ending_date': datetime(2019, 1, 10).date(),
-        'total_workshift_days': 7,
-        'workshift_id': 10,
-        'fake_attr': 'badAttr'}
+        'assignation': {
+            'person': 5,
+            'starting_date': datetime(2019, 1, 1).date(),
+            'start_day': 1,
+            'ending_date': datetime(2019, 1, 10).date(),
+            'workshift_id': 10,
+            'fake_attr': 'badAttr'
+        },
+        'workshift': {
+            'total_workshift_days': 7
+        }
+    }
     
     return create_an_assignation(data)
 
