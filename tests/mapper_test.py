@@ -1,7 +1,7 @@
 import pytest
 from datetime import datetime
-from mappers.assignation_mapper import *
-from test_utils.utils import create_an_assignation
+from workshift_engine.mappers.assignation_mapper import *
+from workshift_engine.test_utils.utils import create_an_assignation
 
 
 @pytest.fixture
@@ -33,7 +33,7 @@ class TestGetAttr(object):
             except:
                 assert True
 
-    def test_mapped_attr2(self, mapper):
+    def test_mapped_attr1(self, mapper):
             try:
                 mapper.starting_date
                 assert True

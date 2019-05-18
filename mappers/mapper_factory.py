@@ -1,6 +1,6 @@
-from mappers.workshift_mapper import WorkshiftMapper
-from mappers.assignation_mapper import AssignationMapper
-from mappers.person_mapper import PersonMapper
+from workshift_engine.mappers.workshift_mapper import WorkshiftMapper
+from workshift_engine.mappers.assignation_mapper import AssignationMapper
+from workshift_engine.mappers.person_mapper import PersonMapper
 
 class FactoryMapper(object):
     

@@ -1,8 +1,8 @@
-from mappers.workshift_mapper import WorkshiftMapper
-from mappers.person_mapper import PersonMapper
-from mappers.assignation_mapper import AssignationMapper
+from workshift_engine.mappers.workshift_mapper import WorkshiftMapper
+from workshift_engine.mappers.person_mapper import PersonMapper
+from workshift_engine.mappers.assignation_mapper import AssignationMapper
 
-from mappers.mapper_factory import FactoryMapper
+from workshift_engine.mappers.mapper_factory import FactoryMapper
 
 class DumbAssignation:
 

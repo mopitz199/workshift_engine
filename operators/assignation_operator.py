@@ -1,7 +1,7 @@
 import copy
 from datetime import timedelta, datetime
-from operators.range_operator import RangeOperator
-from mappers.range_mapper import RangeMapper
+from workshift_engine.operators.range_operator import RangeOperator
+from workshift_engine.mappers.range_mapper import RangeMapper
 
 class AssignationOperator(object):
     """A class with method to operate assignation mappers."""

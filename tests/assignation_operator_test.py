@@ -2,10 +2,10 @@ import pytest
 import types
 from datetime import datetime
 
-from operators.assignation_operator import *
-from mappers.assignation_mapper import *
+from workshift_engine.operators.assignation_operator import *
+from workshift_engine.mappers.assignation_mapper import *
 
-from test_utils.utils import *
+from workshift_engine.test_utils.utils import *
 
 class TestAreNeighbors(object):
     """This class are to test the method are_neighbors"""

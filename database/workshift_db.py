@@ -1,4 +1,4 @@
-from database.generic_database import DB
+from workshift_engine.database.generic_database import DB
 
 class WorkshiftDB(DB):
     """
