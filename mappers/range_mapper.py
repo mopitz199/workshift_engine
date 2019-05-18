@@ -1,6 +1,6 @@
 import copy
 from datetime import datetime, timedelta
-from workshift_engine.operators.range_operator import RangeOperator
+from operators.range_operator import RangeOperator
 
 
 class RangeMapper(object):

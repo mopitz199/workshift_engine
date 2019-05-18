@@ -2,10 +2,10 @@ import pytest
 import types
 from datetime import datetime
 
-from workshift_engine.mappers.assignation_mapper import AssignationMapper
-from workshift_engine.test_utils.utils import create_an_assignation
+from mappers.assignation_mapper import AssignationMapper
+from test_utils.utils import create_an_assignation
 
-from workshift_engine.operators.assignation_operator import AssignationOperator
+from operators.assignation_operator import AssignationOperator
 
 
 class TestAssignationMapperAdd(object):

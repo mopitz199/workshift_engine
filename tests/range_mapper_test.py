@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from workshift_engine.mappers.range_mapper import RangeMapper
+from mappers.range_mapper import RangeMapper
 
 
 class TestRangeMapperSub(object):

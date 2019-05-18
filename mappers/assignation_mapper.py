@@ -1,8 +1,8 @@
-from workshift_engine.mappers.mapper import Mapper
-from workshift_engine.operators.assignation_operator import AssignationOperator
-from workshift_engine.mappers.range_mapper import RangeMapper
+from mappers.mapper import Mapper
+from operators.assignation_operator import AssignationOperator
+from mappers.range_mapper import RangeMapper
 
-from workshift_engine.database.db_extension import DBExtension
+from database.db_extension import DBExtension
 
 
 class AssignationMapper(Mapper, DBExtension):

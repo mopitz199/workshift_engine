@@ -1,4 +1,4 @@
-from workshift_engine.database.generic_database import DB
+from database.generic_database import DB
 
 
 class AssignationDB(DB):

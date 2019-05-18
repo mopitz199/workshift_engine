@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from workshift_engine.database.assignation_db import AssignationDB
-from workshift_engine.test_utils.utils import create_an_assignation
+from database.assignation_db import AssignationDB
+from test_utils.utils import create_an_assignation
 
 
 class TestAssignationBuildDatabase(object):

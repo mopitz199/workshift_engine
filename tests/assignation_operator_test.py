@@ -1,10 +1,10 @@
 import types
 from datetime import datetime
 
-from workshift_engine.operators.assignation_operator import AssignationOperator
-from workshift_engine.mappers.assignation_mapper import AssignationMapper
+from operators.assignation_operator import AssignationOperator
+from mappers.assignation_mapper import AssignationMapper
 
-from workshift_engine.test_utils.utils import create_an_assignation
+from test_utils.utils import create_an_assignation
 
 
 class TestAreNeighbors(object):

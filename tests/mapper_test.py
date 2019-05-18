@@ -1,6 +1,6 @@
 import pytest
 from datetime import datetime
-from workshift_engine.test_utils.utils import create_an_assignation
+from test_utils.utils import create_an_assignation
 
 
 @pytest.fixture
