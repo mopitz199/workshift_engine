@@ -1,3 +1,6 @@
+import pdb
+
+
 class Mapper(object):
     """
     This class allow us to mapper any object.
@@ -19,6 +22,8 @@ class Mapper(object):
         self.obj = obj
 
     def __getattr__(self, attr):
+        if attr == '__setstate__':
+            raise AttributeError(attr)
         attr_name = self.attr_mapping.get(attr, attr)
         return getattr(self.obj, attr_name)
 

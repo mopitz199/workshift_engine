@@ -1,4 +1,4 @@
-from mapper import Mapper
+from workshift_engine.mappers.mapper import Mapper
 from workshift_engine.operators.assignation_operator import AssignationOperator
 from workshift_engine.mappers.range_mapper import RangeMapper
 

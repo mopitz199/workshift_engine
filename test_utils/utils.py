@@ -5,7 +5,7 @@ from workshift_engine.mappers.assignation_mapper import AssignationMapper
 from workshift_engine.mappers.mapper_factory import FactoryMapper
 
 
-class DumbAssignation:
+class DumbAssignation(object):
 
     def __init__(self, **kwargs):
         for kwarg in kwargs:
@@ -13,7 +13,7 @@ class DumbAssignation:
             setattr(self, kwarg, val)
 
 
-class DumbWorkshift:
+class DumbWorkshift(object):
 
     def __init__(self, **kwargs):
         for kwarg in kwargs:
@@ -21,7 +21,7 @@ class DumbWorkshift:
             setattr(self, kwarg, val)
 
 
-class DumbPerson:
+class DumbPerson(object):
 
     def __init__(self, **kwargs):
         for kwarg in kwargs:

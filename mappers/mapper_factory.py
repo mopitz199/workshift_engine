@@ -6,15 +6,15 @@ from workshift_engine.mappers.person_mapper import PersonMapper
 class FactoryMapper(object):
 
     def create_workshift_mapper(self, obj, conf):
-        print obj
-        print conf
-        print "----------"
+        print(obj)
+        print(conf)
+        print("----------")
         return WorkshiftMapper(obj, conf.get('workshift', {}))
 
     def create_person_mapper(self, obj, conf):
-        print obj
-        print conf
-        print "----------"
+        print(obj)
+        print(conf)
+        print("----------")
         return PersonMapper(obj, conf.get('person', {}))
 
     def create_assignation_mapper(self, obj, conf):
