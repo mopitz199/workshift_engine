@@ -3,6 +3,7 @@ from datetime import timedelta, datetime
 from workshift_engine.operators.range_operator import RangeOperator
 from workshift_engine.mappers.range_mapper import RangeMapper
 
+
 class AssignationOperator(object):
     """A class with method to operate assignation mappers."""
 
@@ -41,7 +42,6 @@ class AssignationOperator(object):
             if AssignationOperator.are_neighbors(aux_assign, assign):
                 resp.append(aux_assign)
         return resp
-
 
     @staticmethod
     def get_min_starting_date(assigns):
@@ -114,14 +114,16 @@ class AssignationOperator(object):
         has_same_person = assign1.person_id == assign2.person_id
 
         if (AssignationOperator.are_neighbors(assign1, assign2) and
-            has_same_workshift and has_same_person):
+                has_same_workshift and has_same_person):
 
-            if (assign1.start_day or assign2.start_day) is None: return True
+            if (assign1.start_day or assign2.start_day) is None:
+                return True
 
             assign_generator = AssignationOperator.get_assignation_generator(
                 [assign1, assign2])
 
-            assign = AssignationOperator.get_min_starting_date(assign_generator)
+            assign = AssignationOperator.get_min_starting_date(
+                assign_generator)
 
             other_assign = assign2 if assign == assign1 else assign1
 
@@ -164,7 +166,8 @@ class AssignationOperator(object):
 
         biggest = None
         for assign in assigns:
-            if not biggest: biggest = assign
+            if not biggest:
+                biggest = assign
             else:
                 biggest = assign if len(assign) > len(biggest) else biggest
         return biggest
@@ -183,7 +186,10 @@ class AssignationOperator(object):
         :rtype: (AssignationMapper, List<AssignationMapper>)
         """
 
-        candidates = AssignationOperator.are_multiple_compatible(assign, assigns)
+        candidates = AssignationOperator.are_multiple_compatible(
+            assign,
+            assigns)
+
         best_candidate = AssignationOperator.get_biggest_assign(candidates)
         candidates.remove(best_candidate)
         return best_candidate, candidates
@@ -202,11 +208,13 @@ class AssignationOperator(object):
         """
 
         if assign.start_day:
-            aux_starting_date = assign.range_mapper.starting_date - timedelta(days = assign.start_day - 1)
+            starting_date = assign.range_mapper.starting_date
+            delta = timedelta(days=assign.start_day - 1)
+            aux_starting_date = starting_date - delta
 
             range_days = (date_obj - aux_starting_date).days + 1
             total_days = assign.workshift.total_workshift_days
-            
+
             return (range_days % total_days) or total_days
         else:
             return None
@@ -235,7 +243,8 @@ class AssignationOperator(object):
 
         :param assign: An assign mapper object
         :type assign: AssignationMapper
-        :param starting_date: The starting date from where you want to start removing
+        :param starting_date: The starting date from
+            where you want to start removing
         :type starting_date: AssignationMapper
 
         :rtype: Dict
@@ -250,7 +259,7 @@ class AssignationOperator(object):
         elif new_range:
             new_assign = AssignationOperator.copy(assign)
             new_assign.range_mapper = new_range
-            
+
             new_assign.start_day = AssignationOperator.simulate_starting_day(
                 assign,
                 new_assign.range_mapper.starting_date)

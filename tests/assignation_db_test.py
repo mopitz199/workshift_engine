@@ -3,6 +3,7 @@ from datetime import datetime
 from workshift_engine.database.assignation_db import AssignationDB
 from workshift_engine.test_utils.utils import create_an_assignation
 
+
 class TestAssignationBuildDatabase(object):
     """Class to test if the init function works well"""
 
@@ -23,7 +24,7 @@ class TestAssignationBuildDatabase(object):
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'id': 2,
                 'starting_date': datetime(2019, 1, 23).date(),
                 'ending_date': datetime(2019, 1, 28).date(),
@@ -44,7 +45,7 @@ class TestAssignationBuildDatabase(object):
 
     def test_init2(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'id': 1,
                 'starting_date': datetime(2019, 1, 1).date(),
                 'ending_date': datetime(2019, 1, 22).date(),
@@ -59,7 +60,7 @@ class TestAssignationBuildDatabase(object):
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'id': 2,
                 'starting_date': datetime(2019, 1, 23).date(),
                 'ending_date': datetime(2019, 1, 28).date(),
@@ -81,11 +82,14 @@ class TestAssignationBuildDatabase(object):
 
 
 class TestAssignationAddDatabase(object):
-    """Class to test if the function to add an assignation to the database works well"""
+    """
+    Class to test if the function to add an assignation
+    to the database works well
+    """
 
     def test_add1(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'id': 1,
                 'starting_date': datetime(2019, 1, 1).date(),
                 'ending_date': datetime(2019, 1, 22).date(),
@@ -94,7 +98,7 @@ class TestAssignationAddDatabase(object):
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'id': 2,
                 'starting_date': datetime(2019, 1, 24).date(),
                 'ending_date': datetime(2019, 1, 28).date(),
@@ -103,7 +107,7 @@ class TestAssignationAddDatabase(object):
         assign2 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 2, 24).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 4,
@@ -118,11 +122,11 @@ class TestAssignationAddDatabase(object):
         total_assignations = [assign1, assign2, assign3]
 
         assert (assignation_db.db == {'4_1': total_assignations} and
-            assignation_db.to_be_created == [assign3])
+                assignation_db.to_be_created == [assign3])
 
     def test_add2(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'id': 1,
                 'starting_date': datetime(2019, 2, 24).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
@@ -138,11 +142,11 @@ class TestAssignationAddDatabase(object):
         total_assignations = [assign]
 
         assert (assignation_db.db == {'4_1': total_assignations} and
-            assignation_db.to_be_created == [])
-    
+                assignation_db.to_be_created == [])
+
     def test_add3(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'id': 1,
                 'starting_date': datetime(2019, 2, 24).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
@@ -157,7 +161,7 @@ class TestAssignationAddDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 7,
                 'person_id': 1}}
-            
+
         assign2 = create_an_assignation(data)
 
         data = {
@@ -181,11 +185,14 @@ class TestAssignationAddDatabase(object):
 
 
 class TestAssignationRemoveDatabase(object):
-    """Class to test if the function to remove an assignation to the database works well"""
-    
+    """
+    Class to test if the function to remove
+    an assignation to the database works well
+    """
+
     def test_remove1(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'id': 1,
                 'starting_date': datetime(2019, 2, 24).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
@@ -194,7 +201,7 @@ class TestAssignationRemoveDatabase(object):
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'id': 2,
                 'starting_date': datetime(2019, 2, 24).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
@@ -208,11 +215,11 @@ class TestAssignationRemoveDatabase(object):
         assignation_db.remove(assign1)
 
         assert (assignation_db.db == {'7_1': [assign2]} and
-            assignation_db.to_be_deleted == [assign1])
+                assignation_db.to_be_deleted == [assign1])
 
     def test_remove2(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'id': 1,
                 'starting_date': datetime(2019, 2, 24).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
@@ -221,7 +228,7 @@ class TestAssignationRemoveDatabase(object):
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'id': 2,
                 'starting_date': datetime(2019, 2, 24).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
@@ -235,11 +242,11 @@ class TestAssignationRemoveDatabase(object):
         assignation_db.remove(assign1)
 
         assert (assignation_db.db == {'6_1': [assign2]} and
-            assignation_db.to_be_deleted == [assign1])
+                assignation_db.to_be_deleted == [assign1])
 
     def test_remove3(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'id': 1,
                 'starting_date': datetime(2019, 2, 24).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
@@ -253,11 +260,11 @@ class TestAssignationRemoveDatabase(object):
         assignation_db.remove(assign1)
 
         assert (assignation_db.db == {} and
-            assignation_db.to_be_deleted == [assign1])
+                assignation_db.to_be_deleted == [assign1])
 
     def test_remove4(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 2, 24).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
@@ -272,16 +279,20 @@ class TestAssignationRemoveDatabase(object):
         assignation_db.remove(assign1)
 
         assert (assignation_db.db == {} and
-            assignation_db.to_be_deleted == [] and
-            assignation_db.to_be_updated == [] and
-            assignation_db.to_be_created == [])
+                assignation_db.to_be_deleted == [] and
+                assignation_db.to_be_updated == [] and
+                assignation_db.to_be_created == [])
+
 
 class TestAssignationUpdateDatabase(object):
-    """Class to test if the function to update an assignation to the database works well"""
-    
+    """
+    Class to test if the function to update an
+    assignation to the database works well
+    """
+
     def test_update1(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'id': 1,
                 'starting_date': datetime(2019, 2, 24).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
@@ -295,11 +306,11 @@ class TestAssignationUpdateDatabase(object):
         assignation_db.update(assign1)
 
         assert (assignation_db.db == {'6_1': [assign1]} and
-            assignation_db.to_be_updated == [assign1])
+                assignation_db.to_be_updated == [assign1])
 
     def test_update2(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 2, 24).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
@@ -314,5 +325,5 @@ class TestAssignationUpdateDatabase(object):
         assignation_db.update(assign1)
 
         assert (assignation_db.db == {'6_1': [assign1]} and
-            assignation_db.to_be_updated == [] and
-            assignation_db.to_be_created == [assign1])
+                assignation_db.to_be_updated == [] and
+                assignation_db.to_be_created == [assign1])

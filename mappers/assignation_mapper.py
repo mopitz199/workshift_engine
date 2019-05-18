@@ -4,6 +4,7 @@ from workshift_engine.mappers.range_mapper import RangeMapper
 
 from workshift_engine.database.db_extension import DBExtension
 
+
 class AssignationMapper(Mapper, DBExtension):
     """This class is to map the attributes of an assignation and their relations.
     Some requirements from the assignation are:
@@ -56,7 +57,7 @@ class AssignationMapper(Mapper, DBExtension):
 
         :rtype: WorkshiftMapper
         """
-        
+
         return self.workshift_mapper
 
     @property
@@ -68,5 +69,3 @@ class AssignationMapper(Mapper, DBExtension):
         """
 
         return self.person_ampper
-
-    

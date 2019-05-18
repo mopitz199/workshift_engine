@@ -1,8 +1,9 @@
 class DB(object):
     """
-    A base class to operate a class with a lot of instances as a random access memory database
+    A base class to operate a class with a lot of instances
+    as a random access memory database
     """
-    
+
     def __init__(self, elements, base_class):
         self.elements = elements
         self.base_class = base_class
@@ -17,7 +18,10 @@ class DB(object):
         return ""
 
     def build_database(self):
-        """Function to build the database of all given elements according to the hash_function"""
+        """
+        Function to build the database of all given elements
+        according to the hash_function
+        """
 
         for element in self.elements:
             self.add(element)
@@ -25,7 +29,7 @@ class DB(object):
     def add(self, element):
         """
         To add an element in the RAM database
-        
+
         :param element: The element to add
         :type element: Class
         """
@@ -40,7 +44,7 @@ class DB(object):
     def remove(self, element):
         """
         To remove an element in the RAM database
-        
+
         :param element: The element to remove
         :type element: Class
         """
@@ -61,11 +65,9 @@ class DB(object):
     def update(self, element):
         """
         To update an element in the RAM database
-        
+
         :param element: The element to update
         :type element: Class
         """
         if element.is_in_real_db():
             self.to_be_updated.append(element)
-
-

@@ -17,24 +17,28 @@ class RangeMapper(object):
 
         if left > 0 and right > 0:
             new = copy.deepcopy(self)
-            new.starting_date = other_range.ending_date + timedelta(days = 1)
+            new.starting_date = other_range.ending_date + timedelta(days=1)
             new.ending_date = self.ending_date
 
-            self.ending_date = other_range.starting_date - timedelta(days = 1)
+            self.ending_date = other_range.starting_date - timedelta(days=1)
 
             return self, new
         elif left > 0:
-            self.ending_date = other_range.starting_date - timedelta(days = 1)
+            self.ending_date = other_range.starting_date - timedelta(days=1)
             return self, None
         elif right > 0:
-            self.starting_date = other_range.ending_date + timedelta(days = 1)
+            self.starting_date = other_range.ending_date + timedelta(days=1)
             return self, None
         else:
             return None, None
 
     def __add__(self, other_range):
         if RangeOperator.are_neighbors(self, other_range):
-            self.starting_date = min(self.starting_date, other_range.starting_date)
+
+            self.starting_date = min(
+                self.starting_date,
+                other_range.starting_date)
+
             self.ending_date = max(self.ending_date, other_range.ending_date)
         return self
 

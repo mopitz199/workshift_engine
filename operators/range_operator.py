@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 
 class RangeOperator:
     """A class with functions to handle and make operations with ranges"""
-    
+
     @staticmethod
     def are_neighbors(r1, r2):
         """
@@ -16,8 +16,8 @@ class RangeOperator:
             :rtype: True or False
         """
 
-        return (r1.starting_date <= (r2.ending_date + timedelta(days = 1)) and
-            (r1.ending_date + timedelta(days = 1)) >= r2.starting_date)
+        return (r1.starting_date <= (r2.ending_date + timedelta(days=1)) and
+                (r1.ending_date + timedelta(days=1)) >= r2.starting_date)
 
     @staticmethod
     def are_intersection(r1, r2):
@@ -32,4 +32,4 @@ class RangeOperator:
         """
 
         return (r1.starting_date <= r2.ending_date and
-            r1.ending_date >= r2.starting_date)
+                r1.ending_date >= r2.starting_date)

@@ -1,6 +1,5 @@
 import pytest
 from datetime import datetime
-from workshift_engine.mappers.assignation_mapper import *
 from workshift_engine.test_utils.utils import create_an_assignation
 
 
@@ -19,7 +18,7 @@ def mapper():
             'total_workshift_days': 7
         }
     }
-    
+
     return create_an_assignation(data)
 
 

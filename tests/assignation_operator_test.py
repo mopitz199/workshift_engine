@@ -1,64 +1,64 @@
-import pytest
 import types
 from datetime import datetime
 
-from workshift_engine.operators.assignation_operator import *
-from workshift_engine.mappers.assignation_mapper import *
+from workshift_engine.operators.assignation_operator import AssignationOperator
+from workshift_engine.mappers.assignation_mapper import AssignationMapper
 
-from workshift_engine.test_utils.utils import *
+from workshift_engine.test_utils.utils import create_an_assignation
+
 
 class TestAreNeighbors(object):
     """This class are to test the method are_neighbors"""
 
     def test_are_neighbors1(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),
                 'ending_date': datetime(2019, 1, 5).date()}}
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 5).date(),
                 'ending_date': datetime(2019, 1, 10).date()}}
-    
+
         assign2 = create_an_assignation(data)
 
-        assert AssignationOperator.are_neighbors(assign1, assign2) == True
+        assert AssignationOperator.are_neighbors(assign1, assign2)
 
     def test_are_neighbors2(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),
                 'ending_date': datetime(2019, 1, 5).date()}}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 6).date(),
                 'ending_date': datetime(2019, 1, 10).date()}}
-    
+
         assign2 = create_an_assignation(data)
 
-        assert AssignationOperator.are_neighbors(assign1, assign2) == True
+        assert AssignationOperator.are_neighbors(assign1, assign2)
 
     def test_arent_neighbors1(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),
                 'ending_date': datetime(2019, 1, 4).date()}}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 6).date(),
                 'ending_date': datetime(2019, 1, 10).date()}}
-    
+
         assign2 = create_an_assignation(data)
 
-        assert AssignationOperator.are_neighbors(assign1, assign2) == False
+        assert not AssignationOperator.are_neighbors(assign1, assign2)
 
 
 class TestAreMultipleNeighbors(object):
@@ -67,81 +67,84 @@ class TestAreMultipleNeighbors(object):
 
     def test_are_multiple_neighbors1(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),
                 'ending_date': datetime(2019, 1, 5).date()}}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 8).date(),
                 'ending_date': datetime(2019, 1, 10).date()}}
-    
+
         assign2 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 4).date(),
                 'ending_date': datetime(2019, 1, 7).date()}}
-    
+
         assign = create_an_assignation(data)
 
         assign_list = [assign1, assign2]
 
-        assert AssignationOperator.are_multiple_neighbors(assign, assign_list) == assign_list
+        resp = AssignationOperator.are_multiple_neighbors(assign, assign_list)
+        assert resp == assign_list
 
     def test_are_multiple_neighbors2(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),
                 'ending_date': datetime(2019, 1, 5).date()}}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 8).date(),
                 'ending_date': datetime(2019, 1, 10).date()}}
-    
+
         assign2 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 4).date(),
                 'ending_date': datetime(2019, 1, 6).date()}}
-    
+
         assign = create_an_assignation(data)
 
         assign_list = [assign1, assign2]
 
-        assert AssignationOperator.are_multiple_neighbors(assign, assign_list) == [assign1]
+        resp = AssignationOperator.are_multiple_neighbors(assign, assign_list)
+        assert resp == [assign1]
 
     def test_are_multiple_neighbors3(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),
                 'ending_date': datetime(2019, 1, 5).date()}}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 9).date(),
                 'ending_date': datetime(2019, 1, 10).date()}}
-    
+
         assign2 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 7).date(),
                 'ending_date': datetime(2019, 1, 7).date()}}
-    
+
         assign = create_an_assignation(data)
 
         assign_list = [assign1, assign2]
 
-        assert AssignationOperator.are_multiple_neighbors(assign, assign_list) == []
+        resp = AssignationOperator.are_multiple_neighbors(assign, assign_list)
+        assert resp == []
 
 
 class TestGetAssignationGenerator(object):
@@ -150,17 +153,17 @@ class TestGetAssignationGenerator(object):
 
     def test_get_assignation_generator1(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),
                 'ending_date': datetime(2019, 1, 5).date()}}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 5).date(),
                 'ending_date': datetime(2019, 1, 10).date()}}
-    
+
         assign2 = create_an_assignation(data)
 
         assign_list = [assign1, assign2]
@@ -172,7 +175,7 @@ class TestGetAssignationGenerator(object):
         for idx, assign in enumerate(assign_generator):
             if assign != assign_list[idx]:
                 all_assign = False
-                break 
+                break
 
         assert all_assign and isinstance(assign_generator, types.GeneratorType)
 
@@ -183,88 +186,96 @@ class TestGetMaxEndingDate(object):
 
     def test_get_max_ending_date1(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),
                 'ending_date': datetime(2019, 1, 5).date()}}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 5).date(),
                 'ending_date': datetime(2019, 1, 10).date()}}
-    
+
         assign2 = create_an_assignation(data)
 
         assign_list = [assign1,  assign2]
         assign_generator = AssignationOperator.get_assignation_generator(
             assign_list)
-        assert AssignationOperator.get_max_ending_date(assign_generator) == assign2
+
+        resp = AssignationOperator.get_max_ending_date(assign_generator)
+        assert resp == assign2
 
     def test_get_max_ending_date2(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),
                 'ending_date': datetime(2019, 1, 10).date()}}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 5).date(),
                 'ending_date': datetime(2019, 1, 6).date()}}
-    
+
         assign2 = create_an_assignation(data)
 
         assign_list = [assign1,  assign2]
         assign_generator = AssignationOperator.get_assignation_generator(
             assign_list)
-        assert AssignationOperator.get_max_ending_date(assign_generator) == assign1
 
-    
+        resp = AssignationOperator.get_max_ending_date(assign_generator)
+        assert resp == assign1
+
+
 class TestGetMinStartingDate(object):
     """To Test if the function return the assign with the
     minimum starting date from all the assignments"""
 
     def test_get_min_starting_date1(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),
                 'ending_date': datetime(2019, 1, 5).date()}}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 5).date(),
                 'ending_date': datetime(2019, 1, 10).date()}}
-    
+
         assign2 = create_an_assignation(data)
 
         assign_list = [assign1,  assign2]
         assign_generator = AssignationOperator.get_assignation_generator(
             assign_list)
-        assert AssignationOperator.get_min_starting_date(assign_generator) == assign1
+
+        resp = AssignationOperator.get_min_starting_date(assign_generator)
+        assert resp == assign1
 
     def test_get_min_starting_date2(self):
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 7).date(),
                 'ending_date': datetime(2019, 1, 8).date()}}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
-            'assignation':{
+            'assignation': {
                 'starting_date': datetime(2019, 1, 3).date(),
                 'ending_date': datetime(2019, 1, 10).date()}}
-    
+
         assign2 = create_an_assignation(data)
 
         assign_list = [assign1,  assign2]
         assign_generator = AssignationOperator.get_assignation_generator(
             assign_list)
-        assert AssignationOperator.get_min_starting_date(assign_generator) == assign2
+
+        resp = AssignationOperator.get_min_starting_date(assign_generator)
+        assert resp == assign2
 
 
 class TestSimulateStartingDay(object):
@@ -280,11 +291,11 @@ class TestSimulateStartingDay(object):
             },
             'workshift': {
                 'total_workshift_days': 7}}
-    
+
         assign = create_an_assignation(data)
 
         date_obj = datetime(2019, 1, 12).date()
-        
+
         simulated_start_day = AssignationOperator.simulate_starting_day(
             assign, date_obj)
 
@@ -299,11 +310,11 @@ class TestSimulateStartingDay(object):
             },
             'workshift': {
                 'total_workshift_days': 6}}
-    
+
         assign = create_an_assignation(data)
 
         date_obj = datetime(2019, 1, 14).date()
-        
+
         simulated_start_day = AssignationOperator.simulate_starting_day(
             assign, date_obj)
 
@@ -318,11 +329,11 @@ class TestSimulateStartingDay(object):
             },
             'workshift': {
                 'total_workshift_days': 8}}
-    
+
         assign = create_an_assignation(data)
 
         date_obj = datetime(2019, 1, 23).date()
-        
+
         simulated_start_day = AssignationOperator.simulate_starting_day(
             assign, date_obj)
 
@@ -337,11 +348,11 @@ class TestSimulateStartingDay(object):
             },
             'workshift': {
                 'total_workshift_days': 6}}
-    
+
         assign = create_an_assignation(data)
 
         date_obj = datetime(2019, 1, 6).date()
-        
+
         simulated_start_day = AssignationOperator.simulate_starting_day(
             assign, date_obj)
 
@@ -356,11 +367,11 @@ class TestSimulateStartingDay(object):
             },
             'workshift': {
                 'total_workshift_days': 6}}
-    
+
         assign = create_an_assignation(data)
 
         date_obj = datetime(2019, 1, 1).date()
-        
+
         simulated_start_day = AssignationOperator.simulate_starting_day(
             assign, date_obj)
 
@@ -375,15 +386,15 @@ class TestSimulateStartingDay(object):
             },
             'workshift': {
                 'total_workshift_days': 6}}
-    
+
         assign = create_an_assignation(data)
 
         date_obj = datetime(2019, 1, 1).date()
-        
+
         simulated_start_day = AssignationOperator.simulate_starting_day(
             assign, date_obj)
 
-        assert None == simulated_start_day
+        assert simulated_start_day is None
 
 
 class TestAreCompatible(object):
@@ -402,7 +413,7 @@ class TestAreCompatible(object):
             'workshift': {
                 'total_workshift_days': 6
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -416,7 +427,7 @@ class TestAreCompatible(object):
             'workshift': {
                 'total_workshift_days': 6
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         assert AssignationOperator.are_compatible(assign1, assign2)
@@ -433,7 +444,7 @@ class TestAreCompatible(object):
             'workshift': {
                 'total_workshift_days': 6
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -447,7 +458,7 @@ class TestAreCompatible(object):
             'workshift': {
                 'total_workshift_days': 6
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         assert AssignationOperator.are_compatible(assign1, assign2)
@@ -464,7 +475,7 @@ class TestAreCompatible(object):
             'workshift': {
                 'total_workshift_days': 6
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -478,7 +489,7 @@ class TestAreCompatible(object):
             'workshift': {
                 'total_workshift_days': 6
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         assert AssignationOperator.are_compatible(assign1, assign2)
@@ -495,7 +506,7 @@ class TestAreCompatible(object):
             'workshift': {
                 'total_workshift_days': 6
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -509,7 +520,7 @@ class TestAreCompatible(object):
             'workshift': {
                 'total_workshift_days': 6
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         assert AssignationOperator.are_compatible(assign1, assign2)
@@ -526,7 +537,7 @@ class TestAreCompatible(object):
             'workshift': {
                 'total_workshift_days': 6
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -540,7 +551,7 @@ class TestAreCompatible(object):
             'workshift': {
                 'total_workshift_days': 6
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         assert AssignationOperator.are_compatible(assign1, assign2)
@@ -571,11 +582,10 @@ class TestAreCompatible(object):
             'workshift': {
                 'total_workshift_days': 6
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         assert not AssignationOperator.are_compatible(assign1, assign2)
-
 
     def test_arent_compatible1(self):
         data = {
@@ -589,7 +599,7 @@ class TestAreCompatible(object):
             'workshift': {
                 'total_workshift_days': 6
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -603,7 +613,7 @@ class TestAreCompatible(object):
             'workshift': {
                 'total_workshift_days': 6
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         assert not AssignationOperator.are_compatible(assign1, assign2)
@@ -620,7 +630,7 @@ class TestAreCompatible(object):
             'workshift': {
                 'total_workshift_days': 3
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -634,11 +644,10 @@ class TestAreCompatible(object):
             'workshift': {
                 'total_workshift_days': 3
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         assert not AssignationOperator.are_compatible(assign1, assign2)
-
 
 
 class TestAreMultipleCompatible(object):
@@ -657,7 +666,7 @@ class TestAreMultipleCompatible(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -671,7 +680,7 @@ class TestAreMultipleCompatible(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         data = {
@@ -685,12 +694,14 @@ class TestAreMultipleCompatible(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign = create_an_assignation(data)
 
         list_assigns = [assign1, assign2]
 
-        resp = AssignationOperator.are_multiple_compatible(assign, list_assigns)
+        resp = AssignationOperator.are_multiple_compatible(
+            assign,
+            list_assigns)
 
         assert list_assigns == resp
 
@@ -706,7 +717,7 @@ class TestAreMultipleCompatible(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -720,7 +731,7 @@ class TestAreMultipleCompatible(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         data = {
@@ -734,12 +745,14 @@ class TestAreMultipleCompatible(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign = create_an_assignation(data)
 
         list_assigns = [assign1, assign2]
 
-        resp = AssignationOperator.are_multiple_compatible(assign, list_assigns)
+        resp = AssignationOperator.are_multiple_compatible(
+            assign,
+            list_assigns)
 
         assert list_assigns == resp
 
@@ -755,7 +768,7 @@ class TestAreMultipleCompatible(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -769,7 +782,7 @@ class TestAreMultipleCompatible(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         data = {
@@ -783,12 +796,14 @@ class TestAreMultipleCompatible(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign = create_an_assignation(data)
 
         list_assigns = [assign1, assign2]
 
-        resp = AssignationOperator.are_multiple_compatible(assign, list_assigns)
+        resp = AssignationOperator.are_multiple_compatible(
+            assign,
+            list_assigns)
 
         assert resp == [assign1]
 
@@ -804,7 +819,7 @@ class TestAreMultipleCompatible(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -818,7 +833,7 @@ class TestAreMultipleCompatible(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         data = {
@@ -832,15 +847,18 @@ class TestAreMultipleCompatible(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign = create_an_assignation(data)
 
         list_assigns = [assign1, assign2]
 
-        resp = AssignationOperator.are_multiple_compatible(assign, list_assigns)
+        resp = AssignationOperator.are_multiple_compatible(
+            assign,
+            list_assigns)
+
         assert resp == list_assigns
 
-    
+
 class TestGetBiggestAssign(object):
     """To test if the function determine the assignment with the more
     quantity of days"""
@@ -851,7 +869,7 @@ class TestGetBiggestAssign(object):
                 'starting_date': datetime(2018, 12, 31).date(),
                 'ending_date': datetime(2019, 1, 8).date()
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -859,7 +877,7 @@ class TestGetBiggestAssign(object):
                 'starting_date': datetime(2019, 2, 1).date(),
                 'ending_date': datetime(2019, 3, 8).date()
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         data = {
@@ -867,21 +885,20 @@ class TestGetBiggestAssign(object):
                 'starting_date': datetime(2018, 12, 31).date(),
                 'ending_date': datetime(2019, 1, 7).date()
             }}
-    
+
         assign3 = create_an_assignation(data)
 
         assign_list = [assign1, assign2, assign3]
 
         assert AssignationOperator.get_biggest_assign(assign_list) == assign2
 
-    
     def test_get_biggest_assign2(self):
         data = {
             'assignation': {
                 'starting_date': datetime(2018, 12, 31).date(),
                 'ending_date': datetime(2019, 1, 8).date()
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -889,7 +906,7 @@ class TestGetBiggestAssign(object):
                 'starting_date': datetime(2019, 3, 1).date(),
                 'ending_date': datetime(2019, 3, 20).date()
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         assign_list = [assign1, assign2]
@@ -902,7 +919,7 @@ class TestGetBiggestAssign(object):
                 'starting_date': datetime(2018, 12, 31).date(),
                 'ending_date': datetime(2019, 1, 8).date()
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -910,14 +927,14 @@ class TestGetBiggestAssign(object):
                 'starting_date': datetime(2018, 12, 31).date(),
                 'ending_date': datetime(2019, 1, 8).date()
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         assign_list = [assign1, assign2]
 
         assert AssignationOperator.get_biggest_assign(assign_list) == assign1
 
-        
+
 class TestGetCandidates(object):
     """To test if the function can get the best and the other candidates from
     a given list of assignments mappers."""
@@ -934,7 +951,7 @@ class TestGetCandidates(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -948,7 +965,7 @@ class TestGetCandidates(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         data = {
@@ -962,7 +979,7 @@ class TestGetCandidates(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign3 = create_an_assignation(data)
 
         data = {
@@ -976,7 +993,7 @@ class TestGetCandidates(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign = create_an_assignation(data)
 
         assign_list = [assign1, assign2, assign3] 
@@ -997,7 +1014,7 @@ class TestGetCandidates(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -1011,7 +1028,7 @@ class TestGetCandidates(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         data = {
@@ -1025,7 +1042,7 @@ class TestGetCandidates(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign3 = create_an_assignation(data)
 
         data = {
@@ -1039,7 +1056,7 @@ class TestGetCandidates(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign = create_an_assignation(data)
 
         assign_list = [assign1, assign2, assign3] 
@@ -1060,7 +1077,7 @@ class TestGetCandidates(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign1 = create_an_assignation(data)
 
         data = {
@@ -1074,7 +1091,7 @@ class TestGetCandidates(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign2 = create_an_assignation(data)
 
         data = {
@@ -1088,7 +1105,7 @@ class TestGetCandidates(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign3 = create_an_assignation(data)
 
         data = {
@@ -1102,7 +1119,7 @@ class TestGetCandidates(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign = create_an_assignation(data)
 
         assign_list = [assign1, assign2, assign3] 
@@ -1110,6 +1127,7 @@ class TestGetCandidates(object):
         best, others = AssignationOperator.get_candidates(assign, assign_list)
 
         assert best == assign2 and others == [assign3]
+
 
 class TestRemove(object):
     """To test if the function to remove a range from a given assignation
@@ -1127,7 +1145,7 @@ class TestRemove(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign = create_an_assignation(data)
 
         resp = AssignationOperator.remove(
@@ -1136,14 +1154,13 @@ class TestRemove(object):
             datetime(2019, 1, 1).date())
 
         resp_assign = resp['update']
-        
-        assert (resp['create'] == None and 
-            resp['delete'] == None and
-            resp['update'] == assign and
-            resp_assign.start_day == 7 and
-            resp_assign.starting_date == datetime(2019, 1, 2).date() and
-            resp_assign.ending_date == datetime(2019, 1, 5).date())
 
+        assert (resp['create'] is None and 
+                resp['delete'] is None and
+                resp['update'] == assign and
+                resp_assign.start_day == 7 and
+                resp_assign.starting_date == datetime(2019, 1, 2).date() and
+                resp_assign.ending_date == datetime(2019, 1, 5).date())
 
     def test_remove2(self):
         data = {
@@ -1157,7 +1174,7 @@ class TestRemove(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign = create_an_assignation(data)
 
         resp = AssignationOperator.remove(
@@ -1167,15 +1184,15 @@ class TestRemove(object):
 
         resp_assign = resp['update']
         new_assign = resp['create']
-        
+
         assert (resp_assign.starting_date == datetime(2019, 1, 1).date() and 
-            resp_assign.ending_date == datetime(2019, 1, 3).date() and
-            resp_assign.start_day == 6 and
-            new_assign.starting_date == datetime(2019, 1, 7).date() and
-            new_assign.ending_date == datetime(2019, 1, 10).date() and
-            new_assign.start_day == 4 and
-            resp['update'] == assign and
-            resp['delete'] == None)
+                resp_assign.ending_date == datetime(2019, 1, 3).date() and
+                resp_assign.start_day == 6 and
+                new_assign.starting_date == datetime(2019, 1, 7).date() and
+                new_assign.ending_date == datetime(2019, 1, 10).date() and
+                new_assign.start_day == 4 and
+                resp['update'] == assign and
+                resp['delete'] is None)
 
     def test_remove3(self):
         data = {
@@ -1189,7 +1206,7 @@ class TestRemove(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign = create_an_assignation(data)
 
         resp = AssignationOperator.remove(
@@ -1198,13 +1215,13 @@ class TestRemove(object):
             datetime(2019, 1, 14).date())
 
         resp_assign = resp['update']
-        
+
         assert (resp_assign.starting_date == datetime(2019, 1, 1).date() and 
-            resp_assign.ending_date == datetime(2019, 1, 3).date() and
-            resp_assign.start_day == 6 and
-            resp['update'] == assign and
-            resp['create'] == None and
-            resp['delete'] == None)
+                resp_assign.ending_date == datetime(2019, 1, 3).date() and
+                resp_assign.start_day == 6 and
+                resp['update'] == assign and
+                resp['create'] is None and
+                resp['delete'] is None)
 
     def test_remove4(self):
         data = {
@@ -1218,7 +1235,7 @@ class TestRemove(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign = create_an_assignation(data)
 
         resp = AssignationOperator.remove(
@@ -1226,11 +1243,9 @@ class TestRemove(object):
             datetime(2019, 1, 1).date(),
             datetime(2019, 1, 14).date())
 
-        resp_assign = resp['update']
-        
         assert (resp['delete'] == assign and
-            resp['update'] == None and
-            resp['create'] == None)
+                resp['update'] is None and
+                resp['create'] is None)
 
     def test_remove5(self):
         data = {
@@ -1244,7 +1259,7 @@ class TestRemove(object):
             'workshift': {
                 'total_workshift_days': 8
             }}
-    
+
         assign = create_an_assignation(data)
 
         resp = AssignationOperator.remove(
@@ -1252,8 +1267,6 @@ class TestRemove(object):
             datetime(2019, 1, 12).date(),
             datetime(2019, 1, 14).date())
 
-        resp_assign = resp['update']
-        
-        assert (resp['delete'] == None and
-            resp['update'] == None and
-            resp['create'] == None)
+        assert (resp['delete'] is None and
+                resp['update'] is None and
+                resp['create'] is None)
