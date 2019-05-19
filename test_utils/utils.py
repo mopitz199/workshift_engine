@@ -30,6 +30,28 @@ class DumbPerson(object):
 
 
 def build_conf(data):
+    """
+    conf = {
+        'assignation': {
+            'id': 'id',
+            'starting_date': 'startingDate',
+            'ending_date': 'endingDate',
+            'workshift_id': 'workshiftId,
+            'workshift_obj': 'workshift',
+            'person_id': 'personId',
+            'person_obj': 'person',
+            'start_day': 'startDay'
+        },
+        'workshift': {
+            'id': 'id',
+            'total_workshift_days': 'total_workshift_days'
+        },
+        'person': {
+            'id': 'id',
+        }
+
+    }
+    """
     resp = {}
     for model_name in data:
         resp[model_name] = {key: key for key in data[model_name].keys()}
@@ -50,5 +72,4 @@ def create_an_assignation(data):
     person_data = data.get('person', {})
     assignation.person = DumbPerson(**person_data)
 
-    factory_mapper = FactoryMapper()
-    return factory_mapper.create_assignation_mapper(assignation, conf)
+    return FactoryMapper.create_assignation_mapper(assignation, conf)

@@ -13,7 +13,9 @@ class AssignationMapper(Mapper, DBExtension):
     * starting_date: The starting date of the assignation
     * ending_date: The ending date of the assignation
     * workshift_id: The workshift id of the assignation
-    * person_id: The person id of the assignation
+    * workshift: The workshift obj
+    * person_id: The person if of the assignation
+    * person: The person obj
     * start_day: The starting day of the assignation
 
     """
@@ -49,23 +51,3 @@ class AssignationMapper(Mapper, DBExtension):
 
     def __sub__(self, other_assign):
         pass
-
-    @property
-    def workshift(self):
-        """
-        To get the workshift associated with the assignation
-
-        :rtype: WorkshiftMapper
-        """
-
-        return self.workshift_mapper
-
-    @property
-    def person(self):
-        """
-        To get the person associated with the assignation
-
-        :rtype: PersonMapper
-        """
-
-        return self.person_ampper

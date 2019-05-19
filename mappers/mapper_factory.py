@@ -5,26 +5,32 @@ from mappers.person_mapper import PersonMapper
 
 class FactoryMapper(object):
 
-    def create_workshift_mapper(self, obj, conf):
+    @staticmethod
+    def create_workshift_mapper(obj, conf):
         print(obj)
         print(conf)
         print("----------")
         return WorkshiftMapper(obj, conf.get('workshift', {}))
 
-    def create_person_mapper(self, obj, conf):
+    @staticmethod
+    def create_person_mapper(obj, conf):
         print(obj)
         print(conf)
         print("----------")
         return PersonMapper(obj, conf.get('person', {}))
 
-    def create_assignation_mapper(self, obj, conf):
+    @staticmethod
+    def create_assignation_mapper(obj, conf):
         assignation_mapper = AssignationMapper(obj, conf.get('assignation'))
-        assignation_mapper.workshift_mapper = self.create_workshift_mapper(
+        workshift_mapper = FactoryMapper.create_workshift_mapper(
             assignation_mapper.workshift_obj,
             conf.get('workshift', {})
         )
-        assignation_mapper.person_mapper = self.create_person_mapper(
+        assignation_mapper.workshift_mapper = workshift_mapper
+
+        person_mapper = FactoryMapper.create_person_mapper(
             assignation_mapper.person_obj,
             conf.get('person', {})
         )
+        assignation_mapper.person_mapper = person_mapper
         return assignation_mapper
