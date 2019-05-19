@@ -20,11 +20,9 @@ class AssignationMapper(Mapper, DBExtension):
 
     """
 
-    def __init__(self, obj, attr_mapping):
-        super(AssignationMapper, self).__init__(obj, attr_mapping)
+    def __init__(self, obj):
+        super(AssignationMapper, self).__init__(obj)
         self.range_mapper = RangeMapper(self.starting_date, self.ending_date)
-        self.workshift_mapper = None
-        self.person_mapper = None
 
     def __len__(self):
         return len(self.range_mapper)

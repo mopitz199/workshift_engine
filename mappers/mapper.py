@@ -16,24 +16,20 @@ class Mapper(object):
     otherwise it will set it in the mapper
     """
 
-    def __init__(self, obj, attr_mapping):
+    def __init__(self, obj):
         super(Mapper, self).__init__()
-        self.attr_mapping = attr_mapping
         self.obj = obj
 
     def __getattr__(self, attr):
         if attr == '__setstate__':
             raise AttributeError(attr)
-        attr_name = self.attr_mapping.get(attr, attr)
-        return getattr(self.obj, attr_name)
+        return getattr(self.obj, attr)
 
     def __setattr__(self, attr, val):
-        if attr in ['attr_mapping', 'obj']:
+        if attr in ['obj']:
             return super(Mapper, self).__setattr__(attr, val)
         else:
-            mapping = self.attr_mapping
-            attr_name = mapping.get(attr, attr)
-            if hasattr(self.obj, attr_name):
-                return setattr(self.obj, attr_name, val)
+            if hasattr(self.obj, attr):
+                return setattr(self.obj, attr, val)
             else:
-                return super(Mapper, self).__setattr__(attr_name, val)
+                return super(Mapper, self).__setattr__(attr, val)
