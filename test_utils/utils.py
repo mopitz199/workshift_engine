@@ -1,5 +1,3 @@
-from mappers.workshift_mapper import WorkshiftMapper
-from mappers.person_mapper import PersonMapper
 from mappers.assignation_mapper import AssignationMapper
 
 from mappers.mapper_factory import FactoryMapper
