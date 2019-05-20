@@ -1,4 +1,6 @@
 import copy
+import pdb
+
 from datetime import timedelta, datetime
 from operators.range_operator import RangeOperator
 from mappers.range_mapper import RangeMapper
@@ -191,7 +193,8 @@ class AssignationOperator(object):
             assigns)
 
         best_candidate = AssignationOperator.get_biggest_assign(candidates)
-        candidates.remove(best_candidate)
+        if best_candidate:
+            candidates.remove(best_candidate)
         return best_candidate, candidates
 
     @staticmethod

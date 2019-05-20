@@ -9,51 +9,21 @@ Welcome to Workshift Engine's documentation!
 Getting started
 ###############
 
-For a simple use of these library let's go by parts. First you need to create the asignation mapper.
+to getting started and use this package, we must have an *'Assignation model'* with at least these attributes:
 
-Let assume that you assignation obj has these attr:
+    * strating_date
+    * ending_date
+    * person(FK)
+    * person_id
+    * workshift(FK)
+    * workshift_id
+    * start_day
 
-    * id
-    * startingDate
-    * endingDate
-    * workshiftId
-    * personId
-    * startDay
+Where *'person'* and *'workshift'* are relations. Also the you'll need a *'Workshift model'* with at least this attribute:
 
-We need to mapping to these names:
+    * total_workshift_days
 
-.. code-block:: python
-
-    mapping = {
-        'id': 'id',
-        'starting_date': 'startingDate',
-        'ending_date': 'endingDate',
-        'workshift_id': 'workshift_id,
-        'person_id': 'person_id',
-        'start_day': 'startDay'}
-
-With we are ready to create our assignation mapper. Assume that you assignaton model
-is called *'Assignation'*:
-
-.. code-block:: python
-
-    from mappers.assignation_mapper import AssignationMapper
-
-    mapping = {
-            'id': 'id',
-            'starting_date': 'startingDate',
-            'ending_date': 'endingDate',
-            'workshift_id': 'workshift_id,
-            'person_id': 'person_id',
-            'start_day': 'startDay'}
-
-    my_assignation_obj = Assignation()
-
-    assignation_mapper = AssignationMapper(my_assignation_obj, mapping)
-
-And that's it, now we are ready to operate through this mapper
-
-From here until the end we will call the assination mapper, just assignation.
+This attributes is the number of days that the workshift has.
 
 Joining assignations
 ####################

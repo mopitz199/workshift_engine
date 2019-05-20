@@ -7,4 +7,3 @@ Mappers
 
    mapper
    assignation_mapper
-   workshift_mapper
