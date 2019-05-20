@@ -331,7 +331,7 @@ class TestAssignationUpdateDatabase(object):
 
 class TestAssignateDatabse(object):
 
-    def build_db(self):
+    def build_db_1(self):
         data = {
             'assignation': {
                 'id': 1,
@@ -366,8 +366,43 @@ class TestAssignateDatabse(object):
         assignation_db = AssignationDB(assignations, None)
         return assignation_db
 
+    def build_db_2(self):
+        data = {
+            'assignation': {
+                'id': 1,
+                'starting_date': datetime(2019, 1, 1).date(),
+                'ending_date': datetime(2019, 1, 22).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'total_workshift_days': 8,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'id': 2,
+                'starting_date': datetime(2019, 1, 26).date(),
+                'ending_date': datetime(2019, 1, 30).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 7
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign2 = create_an_assignation(data)
+
+        assignations = [assign1, assign2]
+
+        assignation_db = AssignationDB(assignations, None)
+        return assignation_db
+
     def test_assignate1(self):
-        db_obj = self.build_db()
+        db_obj = self.build_db_1()
 
         data = {
             'assignation': {
@@ -393,7 +428,7 @@ class TestAssignateDatabse(object):
                 len(db_obj.to_be_created) == 0)
 
     def test_assignate2(self):
-        db_obj = self.build_db()
+        db_obj = self.build_db_1()
 
         data = {
             'assignation': {
@@ -416,7 +451,7 @@ class TestAssignateDatabse(object):
                 len(db_obj.to_be_created) == 1)
 
     def test_assignate3(self):
-        db_obj = self.build_db()
+        db_obj = self.build_db_1()
 
         data = {
             'assignation': {
@@ -426,6 +461,75 @@ class TestAssignateDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign = create_an_assignation(data)
+        db_obj.assignate(assign)
+
+        assert (len(db_obj.db['4_1']) == 2 and
+                len(db_obj.to_be_deleted) == 0 and
+                len(db_obj.to_be_updated) == 1 and
+                len(db_obj.to_be_created) == 0)
+
+    def test_assignate4(self):
+        db_obj = self.build_db_2()
+
+        data = {
+            'assignation': {
+                'id': None,
+                'starting_date': datetime(2019, 1, 23).date(),
+                'ending_date': datetime(2019, 1, 30).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 7
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign = create_an_assignation(data)
+        db_obj.assignate(assign)
+
+        assert (len(db_obj.db['4_1']) == 2 and
+                len(db_obj.to_be_deleted) == 0 and
+                len(db_obj.to_be_updated) == 1 and
+                len(db_obj.to_be_created) == 0)
+
+    def test_assignate5(self):
+        db_obj = self.build_db_2()
+
+        data = {
+            'assignation': {
+                'id': None,
+                'starting_date': datetime(2019, 1, 23).date(),
+                'ending_date': datetime(2019, 1, 30).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 6
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign = create_an_assignation(data)
+        db_obj.assignate(assign)
+
+        assert (len(db_obj.db['4_1']) == 3 and
+                len(db_obj.to_be_deleted) == 0 and
+                len(db_obj.to_be_updated) == 0 and
+                len(db_obj.to_be_created) == 1)
+
+    def test_assignate6(self):
+        db_obj = self.build_db_2()
+
+        data = {
+            'assignation': {
+                'id': None,
+                'starting_date': datetime(2019, 1, 25).date(),
+                'ending_date': datetime(2019, 1, 25).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 6
             },
             'workshift': {
                 'total_workshift_days': 8,
