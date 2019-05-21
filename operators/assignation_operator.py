@@ -237,6 +237,7 @@ class AssignationOperator(object):
         copied.range_mapper = copy.deepcopy(assign.range_mapper)
         copied.workshift = assign.workshift
         copied.person = assign.person
+        copied.obj.id = None
         return copied
 
     @staticmethod
