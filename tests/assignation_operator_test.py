@@ -1270,3 +1270,135 @@ class TestRemove(object):
         assert (resp['delete'] is None and
                 resp['update'] is None and
                 resp['create'] is None)
+
+
+class TestSortAscStartingDate(object):
+
+    def test_sort_asc_starting_date1(self):
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 1).date(),
+                'ending_date': datetime(2019, 1, 10).date()
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 13).date(),
+                'ending_date': datetime(2019, 1, 18).date()
+            }}
+        assign2 = create_an_assignation(data)
+
+        assigns = [assign2, assign1]
+
+        resp = AssignationOperator.sort_asc_starting_date(assigns)
+
+        assert resp == [assign1, assign2]
+
+    def test_sort_asc_starting_date2(self):
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 1).date(),
+                'ending_date': datetime(2019, 1, 10).date()
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 4).date(),
+                'ending_date': datetime(2019, 1, 18).date()
+            }}
+        assign2 = create_an_assignation(data)
+
+        assigns = [assign2, assign1]
+
+        resp = AssignationOperator.sort_asc_starting_date(assigns)
+
+        assert resp == [assign1, assign2]
+
+    def test_sort_asc_starting_date3(self):
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 1).date(),
+                'ending_date': datetime(2019, 1, 10).date()
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 4).date(),
+                'ending_date': datetime(2019, 1, 18).date()
+            }}
+        assign2 = create_an_assignation(data)
+
+        assigns = [assign1, assign2]
+
+        resp = AssignationOperator.sort_asc_starting_date(assigns)
+
+        assert resp == assigns
+
+
+class TestSortDescStartingDate(object):
+
+    def test_sort_desc_starting_date1(self):
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 1).date(),
+                'ending_date': datetime(2019, 1, 10).date()
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 13).date(),
+                'ending_date': datetime(2019, 1, 18).date()
+            }}
+        assign2 = create_an_assignation(data)
+
+        assigns = [assign1, assign2]
+
+        resp = AssignationOperator.sort_desc_starting_date(assigns)
+
+        assert resp == [assign2, assign1]
+
+    def test_sort_desc_starting_date2(self):
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 1).date(),
+                'ending_date': datetime(2019, 1, 10).date()
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 4).date(),
+                'ending_date': datetime(2019, 1, 18).date()
+            }}
+        assign2 = create_an_assignation(data)
+
+        assigns = [assign1, assign2]
+
+        resp = AssignationOperator.sort_desc_starting_date(assigns)
+
+        assert resp == [assign2, assign1]
+
+    def test_sort_desc_starting_date3(self):
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 1).date(),
+                'ending_date': datetime(2019, 1, 10).date()
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 4).date(),
+                'ending_date': datetime(2019, 1, 18).date()
+            }}
+        assign2 = create_an_assignation(data)
+
+        assigns = [assign2, assign1]
+
+        resp = AssignationOperator.sort_desc_starting_date(assigns)
+
+        assert resp == assigns

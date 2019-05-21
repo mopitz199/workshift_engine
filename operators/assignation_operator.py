@@ -284,3 +284,21 @@ class AssignationOperator(object):
         else:
             pass
         return resp
+
+    @staticmethod
+    def sort_asc_starting_date(assigns):
+
+        def get_starting_date(assign):
+            return assign.starting_date
+
+        assigns.sort(key=get_starting_date)
+        return assigns
+
+    @staticmethod
+    def sort_desc_starting_date(assigns):
+
+        def get_starting_date(assign):
+            return assign.starting_date
+
+        assigns.sort(key=get_starting_date, reverse=True)
+        return assigns
