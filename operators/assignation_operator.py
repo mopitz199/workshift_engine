@@ -257,6 +257,7 @@ class AssignationOperator(object):
         copy_range_mapper = copy.copy(assign.range_mapper)
         other_range_mapper = RangeMapper(starting_date, ending_date)
         updated_range, new_range = copy_range_mapper - other_range_mapper
+
         if not updated_range:
             resp['delete'] = assign
         elif new_range:

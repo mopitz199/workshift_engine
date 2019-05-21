@@ -544,4 +544,278 @@ class TestAssignateDatabse(object):
 
 
 class TestUnassignDatabse(object):
-    pass
+
+    def build_db_1(self):
+        data = {
+            'assignation': {
+                'id': 1,
+                'starting_date': datetime(2019, 1, 1).date(),
+                'ending_date': datetime(2019, 1, 22).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'total_workshift_days': 8,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'id': 2,
+                'starting_date': datetime(2019, 1, 26).date(),
+                'ending_date': datetime(2019, 1, 30).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign2 = create_an_assignation(data)
+
+        assignations = [assign1, assign2]
+
+        assignation_db = AssignationDB(assignations, None)
+        return assignation_db
+
+    def build_db_2(self):
+        data = {
+            'assignation': {
+                'id': 1,
+                'starting_date': datetime(2019, 1, 1).date(),
+                'ending_date': datetime(2019, 1, 22).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'total_workshift_days': 8,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'id': 2,
+                'starting_date': datetime(2019, 1, 26).date(),
+                'ending_date': datetime(2019, 1, 30).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 7
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign2 = create_an_assignation(data)
+
+        assignations = [assign1, assign2]
+
+        assignation_db = AssignationDB(assignations, None)
+        return assignation_db
+    
+    def test_unassign1(self):
+        db_obj = self.build_db_1()
+
+        data = {
+            'assignation': {
+                'id': None,
+                'starting_date': datetime(2019, 1, 26).date(),
+                'ending_date': datetime(2019, 1, 26).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign = create_an_assignation(data)
+        db_obj.unassign(assign)
+
+        rm = db_obj.to_be_updated[0].range_mapper
+        assert (len(db_obj.db['4_1']) == 2 and
+                len(db_obj.to_be_deleted) == 0 and
+                len(db_obj.to_be_updated) == 1 and
+                len(db_obj.to_be_created) == 0 and
+                rm.starting_date == datetime(2019, 1, 27).date() and
+                rm.ending_date == datetime(2019, 1, 30).date())
+
+    def test_unassign2(self):
+        db_obj = self.build_db_1()
+
+        data = {
+            'assignation': {
+                'id': None,
+                'starting_date': datetime(2019, 1, 20).date(),
+                'ending_date': datetime(2019, 1, 28).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign = create_an_assignation(data)
+        db_obj.unassign(assign)
+
+        rm1 = db_obj.to_be_updated[0].range_mapper
+        rm2 = db_obj.to_be_updated[1].range_mapper
+        assert (len(db_obj.db['4_1']) == 2 and
+                len(db_obj.to_be_deleted) == 0 and
+                len(db_obj.to_be_updated) == 2 and
+                len(db_obj.to_be_created) == 0 and
+                rm1.starting_date == datetime(2019, 1, 1).date() and
+                rm1.ending_date == datetime(2019, 1, 19).date() and
+                rm2.starting_date == datetime(2019, 1, 29).date() and
+                rm2.ending_date == datetime(2019, 1, 30).date())
+
+    def test_unassign3(self):
+        db_obj = self.build_db_1()
+
+        data = {
+            'assignation': {
+                'id': None,
+                'starting_date': datetime(2019, 1, 26).date(),
+                'ending_date': datetime(2019, 1, 30).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign = create_an_assignation(data)
+        db_obj.unassign(assign)
+
+        rm = db_obj.to_be_deleted[0].range_mapper
+
+        assert (len(db_obj.db['4_1']) == 1 and
+                len(db_obj.to_be_deleted) == 1 and
+                len(db_obj.to_be_updated) == 0 and
+                len(db_obj.to_be_created) == 0 and
+                rm.starting_date == datetime(2019, 1, 26).date() and
+                rm.ending_date == datetime(2019, 1, 30).date())
+
+    def test_unassign4(self):
+        db_obj = self.build_db_1()
+
+        data = {
+            'assignation': {
+                'id': None,
+                'starting_date': datetime(2019, 1, 24).date(),
+                'ending_date': datetime(2019, 1, 24).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': None
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign = create_an_assignation(data)
+        db_obj.unassign(assign)
+
+        assert (len(db_obj.db['4_1']) == 2 and
+                len(db_obj.to_be_deleted) == 0 and
+                len(db_obj.to_be_updated) == 0 and
+                len(db_obj.to_be_created) == 0)
+
+    def test_unassign5(self):
+        db_obj = self.build_db_2()
+
+        data = {
+            'assignation': {
+                'id': None,
+                'starting_date': datetime(2019, 1, 26).date(),
+                'ending_date': datetime(2019, 1, 29).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign = create_an_assignation(data)
+        db_obj.unassign(assign)
+
+        assert (len(db_obj.db['4_1']) == 2 and
+                len(db_obj.to_be_deleted) == 0 and
+                len(db_obj.to_be_updated) == 0 and
+                len(db_obj.to_be_created) == 0)
+
+    def test_unassign6(self):
+        db_obj = self.build_db_2()
+
+        data = {
+            'assignation': {
+                'id': None,
+                'starting_date': datetime(2019, 1, 23).date(),
+                'ending_date': datetime(2019, 1, 29).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 4
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign = create_an_assignation(data)
+        db_obj.unassign(assign)
+
+        rm = db_obj.to_be_updated[0].range_mapper
+
+        assert (len(db_obj.db['4_1']) == 2 and
+                len(db_obj.to_be_deleted) == 0 and
+                len(db_obj.to_be_updated) == 1 and
+                len(db_obj.to_be_created) == 0 and
+                rm.starting_date == datetime(2019, 1, 30).date() and
+                rm.ending_date == datetime(2019, 1, 30).date())
+
+    def test_unassign7(self):
+        db_obj = self.build_db_2()
+
+        data = {
+            'assignation': {
+                'id': None,
+                'starting_date': datetime(2019, 1, 10).date(),
+                'ending_date': datetime(2019, 1, 29).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 2
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign = create_an_assignation(data)
+        db_obj.unassign(assign)
+
+        rm = db_obj.to_be_updated[0].range_mapper
+
+        assert (len(db_obj.db['4_1']) == 2 and
+                len(db_obj.to_be_deleted) == 0 and
+                len(db_obj.to_be_updated) == 1 and
+                len(db_obj.to_be_created) == 0 and
+                rm.starting_date == datetime(2019, 1, 1).date() and
+                rm.ending_date == datetime(2019, 1, 9).date())
+
+    def test_unassign8(self):
+        db_obj = self.build_db_2()
+
+        data = {
+            'assignation': {
+                'id': None,
+                'starting_date': datetime(2019, 1, 10).date(),
+                'ending_date': datetime(2019, 1, 29).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 5
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign = create_an_assignation(data)
+        db_obj.unassign(assign)
+
+        assert (len(db_obj.db['4_1']) == 2 and
+                len(db_obj.to_be_deleted) == 0 and
+                len(db_obj.to_be_updated) == 0 and
+                len(db_obj.to_be_created) == 0)

@@ -12,6 +12,10 @@ class RangeMapper(object):
         super(RangeMapper, self).__init__()
 
     def __sub__(self, other_range):
+
+        if not RangeOperator.are_intersection(self, other_range):
+            return self, None
+
         left = (other_range.starting_date - self.starting_date).days
         right = (self.ending_date - other_range.ending_date).days
 
@@ -32,6 +36,10 @@ class RangeMapper(object):
         else:
             return None, None
 
+    def __eq__(self, other):
+        return (self.starting_date == other.starting_date and
+                self.ending_date == other.ending_date)
+
     def __add__(self, other_range):
         if RangeOperator.are_neighbors(self, other_range):
 
@@ -49,4 +57,4 @@ class RangeMapper(object):
         return "{} {}".format(self.starting_date, self.ending_date)
 
     def __len__(self):
-        return (self.ending_date - self.starting_date).days
+        return (self.ending_date - self.starting_date).days + 1
