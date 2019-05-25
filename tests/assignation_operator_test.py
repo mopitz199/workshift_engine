@@ -401,7 +401,7 @@ class TestAreCompatible(object):
     """To test if the function can determine if two assigns are
     comptaible to join"""
 
-    def test_are_compatible1(self):
+    def test_can_be_joined1(self):
         data = {
             'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),
@@ -430,9 +430,9 @@ class TestAreCompatible(object):
 
         assign2 = create_an_assignation(data)
 
-        assert AssignationOperator.are_compatible(assign1, assign2)
+        assert AssignationOperator.can_be_joined(assign1, assign2)
 
-    def test_are_compatible2(self):
+    def test_can_be_joined2(self):
         data = {
             'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),
@@ -461,9 +461,9 @@ class TestAreCompatible(object):
 
         assign2 = create_an_assignation(data)
 
-        assert AssignationOperator.are_compatible(assign1, assign2)
+        assert AssignationOperator.can_be_joined(assign1, assign2)
 
-    def test_are_compatible3(self):
+    def test_can_be_joined3(self):
         data = {
             'assignation': {
                 'starting_date': datetime(2019, 1, 3).date(),
@@ -492,9 +492,9 @@ class TestAreCompatible(object):
 
         assign2 = create_an_assignation(data)
 
-        assert AssignationOperator.are_compatible(assign1, assign2)
+        assert AssignationOperator.can_be_joined(assign1, assign2)
 
-    def test_are_compatible4(self):
+    def test_can_be_joined4(self):
         data = {
             'assignation': {
                 'starting_date': datetime(2018, 12, 28).date(),
@@ -523,9 +523,9 @@ class TestAreCompatible(object):
 
         assign2 = create_an_assignation(data)
 
-        assert AssignationOperator.are_compatible(assign1, assign2)
+        assert AssignationOperator.can_be_joined(assign1, assign2)
 
-    def test_are_compatible5(self):
+    def test_can_be_joined5(self):
         data = {
             'assignation': {
                 'starting_date': datetime(2018, 12, 28).date(),
@@ -554,9 +554,9 @@ class TestAreCompatible(object):
 
         assign2 = create_an_assignation(data)
 
-        assert AssignationOperator.are_compatible(assign1, assign2)
+        assert AssignationOperator.can_be_joined(assign1, assign2)
 
-    def test_are_compatible6(self):
+    def test_can_be_joined6(self):
         data = {
             'assignation': {
                 'starting_date': datetime(2018, 12, 28).date(),
@@ -585,7 +585,7 @@ class TestAreCompatible(object):
 
         assign2 = create_an_assignation(data)
 
-        assert not AssignationOperator.are_compatible(assign1, assign2)
+        assert not AssignationOperator.can_be_joined(assign1, assign2)
 
     def test_arent_compatible1(self):
         data = {
@@ -616,7 +616,7 @@ class TestAreCompatible(object):
 
         assign2 = create_an_assignation(data)
 
-        assert not AssignationOperator.are_compatible(assign1, assign2)
+        assert not AssignationOperator.can_be_joined(assign1, assign2)
 
     def test_arent_compatible2(self):
         data = {
@@ -647,14 +647,14 @@ class TestAreCompatible(object):
 
         assign2 = create_an_assignation(data)
 
-        assert not AssignationOperator.are_compatible(assign1, assign2)
+        assert not AssignationOperator.can_be_joined(assign1, assign2)
 
 
 class TestAreMultipleCompatible(object):
     """To test if the function can determine if two assigns are
     comptaible to join"""
 
-    def test_are_compatible1(self):
+    def test_can_be_joined1(self):
         data = {
             'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),
@@ -705,7 +705,7 @@ class TestAreMultipleCompatible(object):
 
         assert list_assigns == resp
 
-    def test_are_compatible2(self):
+    def test_can_be_joined2(self):
         data = {
             'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),
@@ -756,7 +756,7 @@ class TestAreMultipleCompatible(object):
 
         assert list_assigns == resp
 
-    def test_are_compatible3(self):
+    def test_can_be_joined3(self):
         data = {
             'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),
@@ -807,7 +807,7 @@ class TestAreMultipleCompatible(object):
 
         assert resp == [assign1]
 
-    def test_are_compatible4(self):
+    def test_can_be_joined4(self):
         data = {
             'assignation': {
                 'starting_date': datetime(2019, 1, 1).date(),

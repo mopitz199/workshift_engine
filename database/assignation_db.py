@@ -9,6 +9,34 @@ class AssignationDB(DB):
     Class to operate instances of AssignationMapper class as a RAM database
     """
 
+    def add(self, element):
+        compatible_list = []
+        for deleted_element in self.to_be_deleted:
+            intersect = AssignationOperator.are_intersection(
+                element,
+                deleted_element)
+
+            are_compatible = AssignationOperator.are_compatible(
+                element,
+                deleted_element
+            )
+
+            if intersect and are_compatible:
+                compatible_list.append(deleted_element)
+
+        best = AssignationOperator.get_biggest_assign(compatible_list)
+
+        if best:
+            best.range_mapper = element.range_mapper
+            self.to_be_deleted.remove(best)
+            self.to_be_updated.append(best)
+            hash_key = self.hash_function(best)
+            if hash_key not in self.db:
+                self.db[hash_key] = []
+            self.db[hash_key].append(best)
+        else:
+            super().add(element)
+
     def hash_function(self, element):
         """A function to et the key from where we must save and get the data"""
 

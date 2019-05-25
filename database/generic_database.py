@@ -1,3 +1,6 @@
+from operators.assignation_operator import AssignationOperator
+
+
 class DB(object):
     """
     A base class to operate a class with a lot of instances
@@ -8,11 +11,12 @@ class DB(object):
         self.elements = elements
         self.base_class = base_class
         self.db = {}
-        self.build_database()
 
         self.to_be_updated = []
         self.to_be_created = []
         self.to_be_deleted = []
+
+        self.build_database()
 
     def hash_function(self, element):
         return ""

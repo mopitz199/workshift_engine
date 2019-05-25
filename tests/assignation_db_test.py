@@ -322,11 +322,95 @@ class TestAssignationUpdateDatabase(object):
 
         assignation_db = AssignationDB(assignations, None)
         assignation_db.add(assign1)
-        assignation_db.update(assign1)
 
         assert (assignation_db.db == {'6_1': [assign1]} and
                 assignation_db.to_be_updated == [] and
                 assignation_db.to_be_created == [assign1])
+
+
+class TestAssignationOperatorDatabase(object):
+    """Class to test a combiation off add, remove and update
+    in special circunstances"""
+
+    def test_opetrator_databse1(self):
+        data = {
+            'assignation': {
+                'id': 3,
+                'starting_date': datetime(2019, 2, 18).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': None
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'id': 3,
+                'starting_date': datetime(2019, 2, 24).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': None
+            }}
+        assign2 = create_an_assignation(data)
+
+        assignations = [assign1]
+
+        assignation_db = AssignationDB(assignations, None)
+        assignation_db.remove(assign1)
+        assignation_db.add(assign2)
+
+        assert (assignation_db.db == {'6_1': [assign1]} and
+                assignation_db.to_be_updated == [assign1] and
+                assignation_db.to_be_created == [] and
+                assignation_db.to_be_deleted == [])
+
+    def test_opetrator_databse2(self):
+        data = {
+            'assignation': {
+                'id': 3,
+                'starting_date': datetime(2019, 2, 18).date(),
+                'ending_date': datetime(2019, 2, 20).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': None
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'id': 3,
+                'starting_date': datetime(2019, 2, 24).date(),
+                'ending_date': datetime(2019, 2, 28).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': None
+            }}
+        assign2 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'id': 3,
+                'starting_date': datetime(2019, 2, 19).date(),
+                'ending_date': datetime(2019, 2, 25).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': None
+            }}
+        assign3 = create_an_assignation(data)
+
+        assignations = [assign1, assign2]
+
+        assignation_db = AssignationDB(assignations, None)
+        assignation_db.remove(assign1)
+        assignation_db.remove(assign2)
+        assignation_db.add(assign3)
+
+        assert (assignation_db.db == {'6_1': [assign2]} and
+                assignation_db.to_be_updated == [assign2] and
+                assignation_db.to_be_created == [] and
+                assignation_db.to_be_deleted == [assign1])
 
 
 class TestAssignateDatabse(object):

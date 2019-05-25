@@ -27,6 +27,23 @@ class AssignationOperator(object):
             assign2.range_mapper)
 
     @staticmethod
+    def are_intersection(assign1, assign2):
+        """
+        To check if two assignations intersect.
+
+        :param assign1: an assignation mapper object
+        :type assign1: AssignationMapper
+        :param assign2: an assignation mapper object
+        :type assign2: AssignationMapper
+
+        :rtype: Boolean
+        """
+
+        return RangeOperator.are_intersection(
+            assign1.range_mapper,
+            assign2.range_mapper)
+
+    @staticmethod
     def are_multiple_neighbors(assign, assigns):
         """
         To check how many assigns are neighbor of the given assign
@@ -115,8 +132,7 @@ class AssignationOperator(object):
         has_same_workshift = assign1.workshift_id == assign2.workshift_id
         has_same_person = assign1.person_id == assign2.person_id
 
-        if (AssignationOperator.are_neighbors(assign1, assign2) and
-                has_same_workshift and has_same_person):
+        if has_same_workshift and has_same_person:
 
             if (assign1.start_day or assign2.start_day) is None:
                 return True
@@ -137,6 +153,24 @@ class AssignationOperator(object):
             return False
 
     @staticmethod
+    def can_be_joined(assign1, assign2):
+        """
+        To check if two assignments can be joined. For that
+        we considerer that are compatible and are intersection or
+        next to the other
+
+        :param assign1: An assign mapper object
+        :type assign1: AssignationMapper
+        :param assign2: An assign mapper object
+        :type assign2: AssignationMapper
+
+        :rtype: Boolean
+        """
+
+        return (AssignationOperator.are_neighbors(assign1, assign2) and
+                AssignationOperator.are_compatible(assign1, assign2))
+
+    @staticmethod
     def are_multiple_compatible(assign, assigns):
         """
         To check of how many assigns are compatable with the given assign
@@ -151,7 +185,7 @@ class AssignationOperator(object):
 
         resp = []
         for aux_assign in assigns:
-            if AssignationOperator.are_compatible(assign, aux_assign):
+            if AssignationOperator.can_be_joined(assign, aux_assign):
                 resp.append(aux_assign)
         return resp
 

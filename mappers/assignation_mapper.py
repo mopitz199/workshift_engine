@@ -43,7 +43,7 @@ class AssignationMapper(Mapper, DBExtension):
             setattr(self, 'ending_date', self.range_mapper.ending_date)
 
     def __add__(self, other_assign):
-        if AssignationOperator.are_compatible(self, other_assign):
+        if AssignationOperator.can_be_joined(self, other_assign):
             self.range_mapper += other_assign.range_mapper
         return self
 
