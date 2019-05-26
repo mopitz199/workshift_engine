@@ -16,8 +16,7 @@ class Mapper(object):
     otherwise it will set it in the mapper
     """
 
-    def __init__(self, obj):
-        super(Mapper, self).__init__()
+    def __init__(self, obj, *args, **kwargs):
         self.obj = obj
 
     def __getattr__(self, attr):

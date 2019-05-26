@@ -1,3 +1,5 @@
+import copy
+
 from mappers.mapper import Mapper
 from operators.assignation_operator import AssignationOperator
 from mappers.range_mapper import RangeMapper
@@ -20,9 +22,10 @@ class AssignationMapper(Mapper, DBExtension):
 
     """
 
-    def __init__(self, obj):
+    def __init__(self, obj, *args, **kwargs):
         super(AssignationMapper, self).__init__(obj)
         self.range_mapper = RangeMapper(self.starting_date, self.ending_date)
+        self.init_range = copy.copy(self.range_mapper)
 
     def __len__(self):
         return len(self.range_mapper)

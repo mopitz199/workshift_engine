@@ -9,7 +9,6 @@ class RangeMapper(object):
     def __init__(self, *args):
         self.starting_date = args[0]
         self.ending_date = args[1]
-        super(RangeMapper, self).__init__()
 
     def __sub__(self, other_range):
 
