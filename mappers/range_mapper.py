@@ -25,6 +25,13 @@ class RangeMapper(object):
 
             self.ending_date = other_range.starting_date - timedelta(days=1)
 
+            if len(self) < len(new):
+                aux_starting_date = new.starting_date
+                aux_ending_date = new.ending_date
+                new.starting_date = self.starting_date
+                new.ending_date = self.ending_date
+                self.starting_date = aux_starting_date
+                self.ending_date = aux_ending_date
             return self, new
         elif left > 0:
             self.ending_date = other_range.starting_date - timedelta(days=1)

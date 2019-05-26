@@ -770,6 +770,126 @@ class TestAssignationOperatorDatabase(object):
                 rm5.starting_date == datetime(2019, 2, 14).date() and
                 rm5.ending_date == datetime(2019, 2, 14).date())
 
+    def test_opetrator_database8(self):
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 10).date(),
+                'ending_date': datetime(2019, 2, 16).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': None
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 10).date(),
+                'ending_date': datetime(2019, 2, 13).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': None
+            }}
+        fake_assign = create_an_assignation(data)
+
+        assignations = []
+
+        assignation_db = AssignationDB(assignations, None)
+        assignation_db.assignate(assign1)
+        assignation_db.unassign(fake_assign)
+
+        rm1 = assign1.range_mapper
+
+        assert (assignation_db.db == {'6_1': [assign1]} and
+                assignation_db.to_be_updated == [] and
+                assignation_db.to_be_created == [assign1] and
+                assignation_db.to_be_deleted == [] and
+                rm1.starting_date == datetime(2019, 2, 14).date() and
+                rm1.ending_date == datetime(2019, 2, 16).date())
+
+    def test_opetrator_database9(self):
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 10).date(),
+                'ending_date': datetime(2019, 2, 16).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 10).date(),
+                'ending_date': datetime(2019, 2, 13).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        fake_assign = create_an_assignation(data)
+
+        assignations = []
+
+        assignation_db = AssignationDB(assignations, None)
+        assignation_db.assignate(assign1)
+        assignation_db.unassign(fake_assign)
+
+        rm1 = assign1.range_mapper
+
+        assert (assignation_db.db == {'6_1': [assign1]} and
+                assignation_db.to_be_updated == [] and
+                assignation_db.to_be_created == [assign1] and
+                assignation_db.to_be_deleted == [] and
+                rm1.starting_date == datetime(2019, 2, 14).date() and
+                rm1.ending_date == datetime(2019, 2, 16).date())
+
+    def test_opetrator_database10(self):
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 10).date(),
+                'ending_date': datetime(2019, 2, 16).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 12).date(),
+                'ending_date': datetime(2019, 2, 13).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 3
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        fake_assign = create_an_assignation(data)
+
+        assignations = []
+
+        assignation_db = AssignationDB(assignations, None)
+        assignation_db.assignate(assign1)
+        assignation_db.unassign(fake_assign)
+
+        rm1 = assign1.range_mapper
+
+        assert (len(assignation_db.db['6_1']) == 2 and
+                assignation_db.to_be_updated == [] and
+                len(assignation_db.to_be_created) == 2 and
+                assignation_db.to_be_deleted == [] and
+                rm1.starting_date == datetime(2019, 2, 14).date() and
+                rm1.ending_date == datetime(2019, 2, 16).date())
+
 
 class TestAssignateDatabse(object):
 

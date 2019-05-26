@@ -298,11 +298,18 @@ class AssignationOperator(object):
         elif new_range:
             new_assign = AssignationOperator.copy(assign)
             new_assign.range_mapper = new_range
-
-            new_assign.start_day = AssignationOperator.simulate_starting_day(
-                assign,
-                new_assign.range_mapper.starting_date)
             assign.range_mapper = updated_range
+
+            if new_assign.starting_date > assign.starting_date:
+                new_assign.start_day = AssignationOperator.\
+                    simulate_starting_day(
+                        assign,
+                        new_assign.range_mapper.starting_date)
+            else:
+                assign.start_day = AssignationOperator.simulate_starting_day(
+                    new_assign,
+                    assign.range_mapper.starting_date)
+
             resp['update'] = assign
             resp['create'] = new_assign
         elif updated_range.starting_date > assign.starting_date:

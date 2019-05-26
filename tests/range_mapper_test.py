@@ -49,6 +49,22 @@ class TestRangeMapperSub(object):
 
         assert r1 is None and new is None
 
+    def test_sub4(self):
+        r1 = RangeMapper(
+            datetime(2019, 5, 5).date(),
+            datetime(2019, 5, 17).date())
+
+        r2 = RangeMapper(
+            datetime(2019, 5, 6).date(),
+            datetime(2019, 5, 8).date())
+
+        r1, new = r1 - r2
+
+        assert (r1.starting_date == datetime(2019, 5, 9).date() and
+                r1.ending_date == datetime(2019, 5, 17).date() and
+                new.starting_date == datetime(2019, 5, 5).date() and
+                new.ending_date == datetime(2019, 5, 5).date())
+
 
 class TestRangeMapperAdd(object):
     """To test if the __add__ function work properly"""

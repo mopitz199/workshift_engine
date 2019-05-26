@@ -1185,12 +1185,12 @@ class TestRemove(object):
         resp_assign = resp['update']
         new_assign = resp['create']
 
-        assert (resp_assign.starting_date == datetime(2019, 1, 1).date() and 
-                resp_assign.ending_date == datetime(2019, 1, 3).date() and
-                resp_assign.start_day == 6 and
-                new_assign.starting_date == datetime(2019, 1, 7).date() and
-                new_assign.ending_date == datetime(2019, 1, 10).date() and
-                new_assign.start_day == 4 and
+        assert (resp_assign.starting_date == datetime(2019, 1, 7).date() and
+                resp_assign.ending_date == datetime(2019, 1, 10).date() and
+                resp_assign.start_day == 4 and
+                new_assign.starting_date == datetime(2019, 1, 1).date() and
+                new_assign.ending_date == datetime(2019, 1, 3).date() and
+                new_assign.start_day == 6 and
                 resp['update'] == assign and
                 resp['delete'] is None)
 
@@ -1216,7 +1216,7 @@ class TestRemove(object):
 
         resp_assign = resp['update']
 
-        assert (resp_assign.starting_date == datetime(2019, 1, 1).date() and 
+        assert (resp_assign.starting_date == datetime(2019, 1, 1).date() and
                 resp_assign.ending_date == datetime(2019, 1, 3).date() and
                 resp_assign.start_day == 6 and
                 resp['update'] == assign and
