@@ -47,7 +47,15 @@ class AssignationMapper(Mapper, DBExtension):
 
     def __add__(self, other_assign):
         if AssignationOperator.can_be_joined(self, other_assign):
+            starting_date = self.range_mapper.starting_date
+            other_starting_date = other_assign.range_mapper.starting_date
+
+            if starting_date > other_starting_date:
+                start_day = other_assign.start_day
+                self.start_day = start_day
+
             self.range_mapper += other_assign.range_mapper
+
         return self
 
     def __sub__(self, other_assign):

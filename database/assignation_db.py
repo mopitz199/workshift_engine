@@ -28,6 +28,8 @@ class AssignationDB(DB):
 
         if best:
             best.range_mapper = element.range_mapper
+            best.start_day = element.start_day
+
             self.to_be_deleted.remove(best)
             self.to_be_updated.append(best)
             hash_key = self.hash_function(best)
