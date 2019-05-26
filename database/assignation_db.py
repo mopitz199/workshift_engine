@@ -49,7 +49,7 @@ class AssignationDB(DB):
         """
 
         key = self.hash_function(assign)
-        return self.db[key]
+        return self.db.get(key, [])
 
     def assignate(self, new_assign):
         """

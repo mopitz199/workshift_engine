@@ -73,5 +73,5 @@ class DB(object):
         :param element: The element to update
         :type element: Class
         """
-        if element.is_in_real_db():
+        if element.is_in_real_db() and element not in self.to_be_updated:
             self.to_be_updated.append(element)
