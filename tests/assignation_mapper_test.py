@@ -2,9 +2,9 @@ import types
 from datetime import datetime
 
 from mappers.assignation_mapper import AssignationMapper
-from test_utils.utils import create_an_assignation
-
+from mappers.range_mapper import Range
 from operators.assignation_operator import AssignationOperator
+from test_utils.utils import create_an_assignation
 
 
 class TestAssignationMapperAdd(object):
@@ -184,3 +184,160 @@ class TestAssignationMapperAdd(object):
                 assign1.ending_date == datetime(2019, 1, 28).date() and
                 range_mapper.starting_date == datetime(2019, 1, 5).date() and
                 range_mapper.ending_date == datetime(2019, 1, 28).date())
+
+    def test_get_difference1(self):
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 10).date(),
+                'ending_date': datetime(2019, 1, 15).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 8
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
+        assign = create_an_assignation(data)
+        assign.starting_date = datetime(2019, 1, 13).date()
+
+        left, right = assign.get_difference()
+
+        resp_left = Range(
+            datetime(2019, 1, 10).date(),
+            datetime(2019, 1, 12).date())
+
+        resp_right = None
+
+        return left == resp_left and right == resp_right
+
+    def test_get_difference2(self):
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 10).date(),
+                'ending_date': datetime(2019, 1, 15).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 8
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
+        assign = create_an_assignation(data)
+        assign.ending_date = datetime(2019, 1, 13).date()
+
+        left, right = assign.get_difference()
+
+        resp_right = Range(
+            datetime(2019, 1, 14).date(),
+            datetime(2019, 1, 15).date())
+
+        resp_left = None
+
+        return left == resp_left and right == resp_right
+
+    def test_get_difference3(self):
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 10).date(),
+                'ending_date': datetime(2019, 1, 15).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 8
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
+        assign = create_an_assignation(data)
+        assign.starting_date = datetime(2019, 1, 10).date()
+        assign.ending_date = datetime(2019, 1, 15).date()
+
+        left, right = assign.get_difference()
+
+        resp_right = None
+        resp_left = None
+
+        return left == resp_left and right == resp_right
+
+    def test_get_difference4(self):
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 10).date(),
+                'ending_date': datetime(2019, 1, 20).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 8
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
+        assign = create_an_assignation(data)
+        assign.starting_date = datetime(2019, 1, 13).date()
+        assign.ending_date = datetime(2019, 1, 18).date()
+
+        left, right = assign.get_difference()
+
+        resp_right = Range(
+            datetime(2019, 1, 10).date(),
+            datetime(2019, 1, 12).date())
+
+        resp_left = Range(
+            datetime(2019, 1, 19).date(),
+            datetime(2019, 1, 20).date())
+
+        return left == resp_left and right == resp_right
+
+    def test_get_difference5(self):
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 10).date(),
+                'ending_date': datetime(2019, 1, 15).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 8
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
+        assign = create_an_assignation(data)
+        assign.starting_date = datetime(2019, 1, 13).date()
+        assign.ending_date = datetime(2019, 1, 18).date()
+
+        left, right = assign.get_difference()
+
+        resp_right = Range(
+            datetime(2019, 1, 10).date(),
+            datetime(2019, 1, 12).date())
+
+        resp_left = Range(
+            datetime(2019, 1, 16).date(),
+            datetime(2019, 1, 18).date())
+
+        return left == resp_left and right == resp_right
+
+    def test_get_difference6(self):
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 1, 10).date(),
+                'ending_date': datetime(2019, 1, 15).date(),
+                'workshift_id': 4,
+                'person_id': 1,
+                'start_day': 8
+            },
+            'workshift': {
+                'total_workshift_days': 8
+            }}
+        assign = create_an_assignation(data)
+        assign.starting_date = datetime(2019, 1, 7).date()
+        assign.ending_date = datetime(2019, 1, 12).date()
+
+        left, right = assign.get_difference()
+
+        resp_right = Range(
+            datetime(2019, 1, 7).date(),
+            datetime(2019, 1, 9).date())
+
+        resp_left = Range(
+            datetime(2019, 1, 13).date(),
+            datetime(2019, 1, 15).date())
+
+        return left == resp_left and right == resp_right

@@ -1,5 +1,7 @@
 import copy
 
+from datetime import timedelta
+
 from mappers.mapper import Mapper
 from operators.assignation_operator import AssignationOperator
 from mappers.range_mapper import Range
@@ -65,3 +67,36 @@ class AssignationMapper(Mapper, DBExtension):
     def has_change(self):
         return (self.init_range != self.range_mapper or
                 self.start_day != self.init_start_day)
+
+    def get_difference(self):
+        """
+        This function return the difference of range
+        between the init range and the current range
+        """
+
+        init_range = self.init_range
+        range_mapper = self.range_mapper
+
+        left_range = None
+        if init_range.starting_date != range_mapper.starting_date:
+
+            min_date = min(init_range.starting_date,
+                           range_mapper.starting_date)
+
+            max_date = max(init_range.starting_date,
+                           range_mapper.starting_date - timedelta(days=1))
+
+            left_range = Range(min_date, max_date)
+
+        right_range = None
+        if init_range.ending_date != range_mapper.ending_date:
+
+            min_date = min(init_range.ending_date,
+                           range_mapper.ending_date + timedelta(days=1))
+
+            max_date = max(init_range.ending_date,
+                           range_mapper.ending_date)
+
+            right_range = Range(min_date, max_date)
+
+        return left_range, right_range
