@@ -25,13 +25,13 @@ class AssignationDB(DB):
                 compatible_list.append(deleted_element)
 
         best = AssignationOperator.get_biggest_assign(compatible_list)
-
         if best:
             best.range_mapper = element.range_mapper
             best.start_day = element.start_day
 
             self.to_be_deleted.remove(best)
-            self.to_be_updated.append(best)
+            if best.has_change():
+                self.to_be_updated.append(best)
             hash_key = self.hash_function(best)
             if hash_key not in self.db:
                 self.db[hash_key] = []
@@ -68,7 +68,8 @@ class AssignationDB(DB):
             for other in others:
                 best += other
                 self.remove(other)
-            self.update(best)
+            if best.has_change:
+                self.update(best)
         else:
             self.add(new_assign)
 

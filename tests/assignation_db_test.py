@@ -346,7 +346,6 @@ class TestAssignationOperatorDatabase(object):
 
         data = {
             'assignation': {
-                'id': 3,
                 'starting_date': datetime(2019, 2, 24).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
@@ -380,7 +379,7 @@ class TestAssignationOperatorDatabase(object):
 
         data = {
             'assignation': {
-                'id': 3,
+                'id': 2,
                 'starting_date': datetime(2019, 2, 24).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
@@ -391,7 +390,6 @@ class TestAssignationOperatorDatabase(object):
 
         data = {
             'assignation': {
-                'id': 3,
                 'starting_date': datetime(2019, 2, 19).date(),
                 'ending_date': datetime(2019, 2, 25).date(),
                 'workshift_id': 6,
@@ -426,7 +424,7 @@ class TestAssignationOperatorDatabase(object):
 
         data = {
             'assignation': {
-                'id': 3,
+                'id': 4,
                 'starting_date': datetime(2019, 2, 24).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
@@ -437,7 +435,6 @@ class TestAssignationOperatorDatabase(object):
 
         data = {
             'assignation': {
-                'id': 3,
                 'starting_date': datetime(2019, 2, 19).date(),
                 'ending_date': datetime(2019, 2, 25).date(),
                 'workshift_id': 6,
@@ -472,7 +469,7 @@ class TestAssignationOperatorDatabase(object):
 
         data = {
             'assignation': {
-                'id': 3,
+                'id': 4,
                 'starting_date': datetime(2019, 2, 20).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
@@ -535,7 +532,7 @@ class TestAssignationOperatorDatabase(object):
 
         data = {
             'assignation': {
-                'id': 3,
+                'id': 4,
                 'starting_date': datetime(2019, 2, 20).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
@@ -609,7 +606,7 @@ class TestAssignationOperatorDatabase(object):
 
         data = {
             'assignation': {
-                'id': 3,
+                'id': 4,
                 'starting_date': datetime(2019, 2, 20).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
@@ -695,7 +692,7 @@ class TestAssignationOperatorDatabase(object):
 
         data = {
             'assignation': {
-                'id': 3,
+                'id': 4,
                 'starting_date': datetime(2019, 2, 20).date(),
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
@@ -890,7 +887,365 @@ class TestAssignationOperatorDatabase(object):
                 rm1.starting_date == datetime(2019, 2, 14).date() and
                 rm1.ending_date == datetime(2019, 2, 16).date())
 
+    def test_opetrator_database11(self):
+        data = {
+            'assignation': {
+                'id': 1,
+                'starting_date': datetime(2019, 2, 10).date(),
+                'ending_date': datetime(2019, 2, 16).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign1 = create_an_assignation(data)
 
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 10).date(),
+                'ending_date': datetime(2019, 2, 16).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        fake_assign = create_an_assignation(data)
+
+        assignations = [assign1]
+        assignation_db = AssignationDB(assignations, None)
+
+        assignation_db.unassign(fake_assign)
+        assignation_db.assignate(fake_assign)
+
+        assert (assignation_db.db['6_1'] == assignations and
+                assignation_db.to_be_updated == [] and
+                assignation_db.to_be_created == [] and
+                assignation_db.to_be_deleted == [])
+
+    def test_opetrator_database12(self):
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 16).date(),
+                'ending_date': datetime(2019, 2, 16).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign2 = create_an_assignation(data)
+
+        assignations = []
+        assignation_db = AssignationDB(assignations, None)
+
+        assignation_db.assignate(assign2)
+
+        assert (assignation_db.db['6_1'] == [assign2] and
+                assignation_db.to_be_updated == [] and
+                assignation_db.to_be_created == [assign2] and
+                assignation_db.to_be_deleted == [])
+
+    def test_opetrator_database13(self):
+        data = {
+            'assignation': {
+                'id': 1,
+                'starting_date': datetime(2019, 2, 1).date(),
+                'ending_date': datetime(2019, 2, 7).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'id': 2,
+                'starting_date': datetime(2019, 2, 11).date(),
+                'ending_date': datetime(2019, 2, 17).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 3
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign2 = create_an_assignation(data)
+
+        assignations = [assign1, assign2]
+        assignation_db = AssignationDB(assignations, None)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 5).date(),
+                'ending_date': datetime(2019, 2, 8).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 5
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        fake_assign = create_an_assignation(data)
+        assignation_db.unassign(fake_assign)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 7).date(),
+                'ending_date': datetime(2019, 2, 9).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 7
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign3 = create_an_assignation(data)
+        assignation_db.assignate(assign3)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 9).date(),
+                'ending_date': datetime(2019, 2, 13).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        fake_assign = create_an_assignation(data)
+        assignation_db.unassign(fake_assign)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 15).date(),
+                'ending_date': datetime(2019, 2, 15).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 7
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        fake_assign = create_an_assignation(data)
+        assignation_db.unassign(fake_assign)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 2).date(),
+                'ending_date': datetime(2019, 2, 4).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 2
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign4 = create_an_assignation(data)
+        assignation_db.assignate(assign4)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 12).date(),
+                'ending_date': datetime(2019, 2, 12).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 4
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign5 = create_an_assignation(data)
+        assignation_db.assignate(assign5)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 9).date(),
+                'ending_date': datetime(2019, 2, 10).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign6 = create_an_assignation(data)
+        assignation_db.assignate(assign6)
+
+        assert (len(assignation_db.db['6_1']) == 5 and
+                assignation_db.to_be_updated == [assign1, assign2] and
+                len(assignation_db.to_be_created) == 3 and
+                assignation_db.to_be_deleted == [])
+
+    def test_opetrator_database14(self):
+        data = {
+            'assignation': {
+                'id': 1,
+                'starting_date': datetime(2019, 2, 1).date(),
+                'ending_date': datetime(2019, 2, 7).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign1 = create_an_assignation(data)
+
+        data = {
+            'assignation': {
+                'id': 2,
+                'starting_date': datetime(2019, 2, 11).date(),
+                'ending_date': datetime(2019, 2, 16).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 3
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign2 = create_an_assignation(data)
+
+        assignations = [assign1, assign2]
+        assignation_db = AssignationDB(assignations, None)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 5).date(),
+                'ending_date': datetime(2019, 2, 8).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 5
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        fake_assign = create_an_assignation(data)
+        assignation_db.unassign(fake_assign)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 7).date(),
+                'ending_date': datetime(2019, 2, 9).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 7
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign3 = create_an_assignation(data)
+        assignation_db.assignate(assign3)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 9).date(),
+                'ending_date': datetime(2019, 2, 13).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        fake_assign = create_an_assignation(data)
+        assignation_db.unassign(fake_assign)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 2).date(),
+                'ending_date': datetime(2019, 2, 4).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 2
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign4 = create_an_assignation(data)
+        assignation_db.assignate(assign4)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 12).date(),
+                'ending_date': datetime(2019, 2, 12).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 4
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign5 = create_an_assignation(data)
+        assignation_db.assignate(assign5)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 9).date(),
+                'ending_date': datetime(2019, 2, 10).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 2
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign6 = create_an_assignation(data)
+        assignation_db.assignate(assign6)
+
+        assert (len(assignation_db.db['6_1']) == 5 and
+                assignation_db.to_be_updated == [assign1, assign2] and
+                assignation_db.to_be_created == [assign3, assign5, assign6] and
+                assignation_db.to_be_deleted == [])
+
+    def test_opetrator_database15(self):
+
+        assignations = []
+        assignation_db = AssignationDB(assignations, None)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 16).date(),
+                'ending_date': datetime(2019, 2, 16).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign1 = create_an_assignation(data)
+        assignation_db.assignate(assign1)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 13).date(),
+                'ending_date': datetime(2019, 2, 16).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        fake_assign = create_an_assignation(data)
+        assignation_db.unassign(fake_assign)
+
+        assert (assignation_db.db['6_1'] == [assign1] and
+                assignation_db.to_be_updated == [] and
+                assignation_db.to_be_created == [assign1] and
+                assignation_db.to_be_deleted == [])
+
+                
 class TestAssignateDatabse(object):
 
     def build_db_1(self):

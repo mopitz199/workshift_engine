@@ -26,6 +26,7 @@ class AssignationMapper(Mapper, DBExtension):
         super(AssignationMapper, self).__init__(obj)
         self.range_mapper = RangeMapper(self.starting_date, self.ending_date)
         self.init_range = copy.copy(self.range_mapper)
+        self.init_start_day = getattr(self.obj, 'start_day', None)
 
     def __len__(self):
         return len(self.range_mapper)
@@ -60,3 +61,7 @@ class AssignationMapper(Mapper, DBExtension):
 
     def __sub__(self, other_assign):
         pass
+
+    def has_change(self):
+        return (self.init_range != self.range_mapper or
+                self.start_day != self.init_start_day)
