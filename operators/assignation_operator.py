@@ -3,7 +3,7 @@ import pdb
 
 from datetime import timedelta, datetime
 from operators.range_operator import RangeOperator
-from mappers.range_mapper import RangeMapper
+from mappers.range_mapper import Range
 
 
 class AssignationOperator(object):
@@ -290,7 +290,7 @@ class AssignationOperator(object):
 
         resp = {'delete': None, 'update': None, 'create': None}
         copy_range_mapper = copy.copy(assign.range_mapper)
-        other_range_mapper = RangeMapper(starting_date, ending_date)
+        other_range_mapper = Range(starting_date, ending_date)
         updated_range, new_range = copy_range_mapper - other_range_mapper
 
         if not updated_range:

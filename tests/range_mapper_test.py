@@ -1,17 +1,17 @@
 from datetime import datetime
 
-from mappers.range_mapper import RangeMapper
+from mappers.range_mapper import Range
 
 
-class TestRangeMapperSub(object):
+class TestRangeSub(object):
     """To test if the __sub__ function work properly"""
 
     def test_sub1(self):
-        r1 = RangeMapper(
+        r1 = Range(
             datetime(2019, 5, 5).date(),
             datetime(2019, 5, 10).date())
 
-        r2 = RangeMapper(
+        r2 = Range(
             datetime(2019, 5, 10).date(),
             datetime(2019, 5, 17).date())
 
@@ -21,11 +21,11 @@ class TestRangeMapperSub(object):
                 r2.ending_date == datetime(2019, 5, 17).date() and new is None)
 
     def test_sub2(self):
-        r1 = RangeMapper(
+        r1 = Range(
             datetime(2019, 5, 5).date(),
             datetime(2019, 5, 17).date())
 
-        r2 = RangeMapper(
+        r2 = Range(
             datetime(2019, 5, 10).date(),
             datetime(2019, 5, 13).date())
 
@@ -37,11 +37,11 @@ class TestRangeMapperSub(object):
                 new.ending_date == datetime(2019, 5, 17).date())
 
     def test_sub3(self):
-        r1 = RangeMapper(
+        r1 = Range(
             datetime(2019, 5, 5).date(),
             datetime(2019, 5, 17).date())
 
-        r2 = RangeMapper(
+        r2 = Range(
             datetime(2019, 5, 10).date(),
             datetime(2019, 5, 13).date())
 
@@ -50,11 +50,11 @@ class TestRangeMapperSub(object):
         assert r1 is None and new is None
 
     def test_sub4(self):
-        r1 = RangeMapper(
+        r1 = Range(
             datetime(2019, 5, 5).date(),
             datetime(2019, 5, 17).date())
 
-        r2 = RangeMapper(
+        r2 = Range(
             datetime(2019, 5, 6).date(),
             datetime(2019, 5, 8).date())
 
@@ -66,15 +66,15 @@ class TestRangeMapperSub(object):
                 new.ending_date == datetime(2019, 5, 5).date())
 
 
-class TestRangeMapperAdd(object):
+class TestRangeAdd(object):
     """To test if the __add__ function work properly"""
 
     def test_add1(self):
-        r1 = RangeMapper(
+        r1 = Range(
             datetime(2019, 5, 5).date(),
             datetime(2019, 5, 10).date())
 
-        r2 = RangeMapper(
+        r2 = Range(
             datetime(2019, 5, 10).date(),
             datetime(2019, 5, 17).date())
 
@@ -84,11 +84,11 @@ class TestRangeMapperAdd(object):
                 r2.ending_date == datetime(2019, 5, 17).date())
 
     def test_add2(self):
-        r1 = RangeMapper(
+        r1 = Range(
             datetime(2019, 5, 5).date(),
             datetime(2019, 5, 10).date())
 
-        r2 = RangeMapper(
+        r2 = Range(
             datetime(2019, 5, 11).date(),
             datetime(2019, 5, 17).date())
 
@@ -98,11 +98,11 @@ class TestRangeMapperAdd(object):
                 r2.ending_date == datetime(2019, 5, 17).date())
 
     def test_add3(self):
-        r1 = RangeMapper(
+        r1 = Range(
             datetime(2019, 5, 5).date(),
             datetime(2019, 5, 10).date())
 
-        r2 = RangeMapper(
+        r2 = Range(
             datetime(2019, 5, 12).date(),
             datetime(2019, 5, 17).date())
 
@@ -112,11 +112,11 @@ class TestRangeMapperAdd(object):
                 r1.ending_date == datetime(2019, 5, 10).date())
 
     def test_add4(self):
-        r1 = RangeMapper(
+        r1 = Range(
             datetime(2019, 5, 5).date(),
             datetime(2019, 5, 10).date())
 
-        r2 = RangeMapper(
+        r2 = Range(
             datetime(2019, 5, 5).date(),
             datetime(2019, 5, 10).date())
 

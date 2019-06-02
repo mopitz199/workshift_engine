@@ -10,9 +10,9 @@ class RangeOperator:
             Function to check of two ranges intersect or are next to the other
 
             :param r1: a range of dates
-            :type r1: RangeMapper
+            :type r1: Range
             :param r2: a range of dates
-            :type r2: RangeMapper
+            :type r2: Range
             :rtype: True or False
         """
 
@@ -25,9 +25,9 @@ class RangeOperator:
             Function to check of two ranges intersect
 
             :param r1: a range of dates
-            :type r1: RangeMapper
+            :type r1: Range
             :param r2: a range of dates
-            :type r2: RangeMapper
+            :type r2: Range
             :rtype: True or False
         """
 

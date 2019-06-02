@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from operators.range_operator import RangeOperator
 
 
-class RangeMapper(object):
+class Range(object):
     """Class that represent a range"""
 
     def __init__(self, *args):
