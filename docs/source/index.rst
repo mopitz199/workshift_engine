@@ -19,60 +19,57 @@ to getting started and use this package, we must have an *'Assignation model'* w
     * workshift_id
     * start_day
 
-Where *'person'* and *'workshift'* are relations. Also the you'll need a *'Workshift model'* with at least this attribute:
+Where *'person'* and *'workshift'* are relations. Also you'll need a *'Workshift model'* with at least this attribute:
 
     * total_workshift_days
 
 This attributes is the number of days that the workshift has.
 
-Joining assignations
+Use it
 ####################
 
-For join assignation we just need to do:
+First, we need to create a RAM database with all the assignation mappers. To do that we need to:
 
 .. code-block:: python
 
-    assignation1 += assignation2
+    from mappers.mapper_factory import FactoryMapper
+    from database.assignation_db import AssignationDB
 
-This code will try to join the assignation2 into the assignation1. You don't have to worry
-about check if there can be joined, if they can't, the assignation1 won't change.
+    assignations = MyAssignationModel.objects.all()
 
-Removing a range in an assignation
-##################################
+    assignation_mappers = FactoryMapper.create_multiple_assignation_mappers(assignation)
+    assignation_db = AssignationDB(assignation_mappers, None)
 
-For removing a range of dates we just need to do:
-
-.. code-block:: python
-
-    from operators.assignation_operator import AssignationOperator
-    from datetime import datetime
-
-    starting_date = datetime(2019, 5, 4).date()
-    ending_date = datetime(2019, 5, 6).date()
-
-    response = AssignationOperator.remove(
-        assignation1,
-        starting_date,
-        ending_date)
-
-These code will try to remove the range from 2019-5-1 to 2019-5-6 into the assignation1.
-The result of this method will be a *'dict'* with 3 keys:
-
-    * delete: The assignation that must be deleted in case that the range to remove covers all the assignation.
-    * update: The assignation that must be updated in case that the range to remove take a part of the assignation.
-    * create: The assignation tha must be created in case that the range to remove take a part from the middle of the assignation
-
-If in the last example our assignation is from 2019-5-1 to 2019-5-10, the response will be:
+This code wil create a databse with all the assignations. From here, we can use this class
+to assignate and unassign assignation like this. For assignate:
 
 .. code-block:: python
 
-    {
-        'delete': None,
-        'update': assignation1 # where the range will be from 2019-5-1 to 2019-5-3
-        'create': new_assignation # where the range will be from 2019-5-7 to 2019-5-10
-    }
+    data = {
+        'starting_date': datetime(2019, 1, 23).date(),
+        'ending_date': datetime(2019, 1, 28).date(),
+        'workshift_id': 4,
+        'person_id': 1,
+        'start_day': None}
 
-You can see the whole AssignationOperator class with the methods in the operator section
+    new_assignation = MyAssignationModel(**data)
+    new_assignation_mapper = FactoryMapper.create_assignation_mapper(new_assignation)
+    assignation_db.assignate(new_assignation_mapper)
+
+For unassign:
+
+.. code-block:: python
+
+    data = {
+        'starting_date': datetime(2019, 1, 23).date(),
+        'ending_date': datetime(2019, 1, 28).date(),
+        'workshift_id': 4,
+        'person_id': 1,
+        'start_day': None}
+
+    fake_assignation = MyAssignationModel(**data)
+    fake_assignation_mapper = FactoryMapper.create_assignation_mapper(fake_assignation)
+    assignation_db.unassign(fake_assignation_mapper)
 
 .. toctree::
    :maxdepth: 1
