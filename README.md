@@ -1,4 +1,4 @@
-# Hello everyonw
+# Hello everyone
 
 To generate the documentation, just go the *'docs'* folder and run:
 
