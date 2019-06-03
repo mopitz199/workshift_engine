@@ -68,7 +68,7 @@ class AssignationMapper(Mapper, DBExtension):
         return (self.init_range != self.range_mapper or
                 self.start_day != self.init_start_day)
 
-    def get_difference(self):
+    def get_differences(self):
         """
         This function return the difference of range
         between the init range and the current range
@@ -77,7 +77,10 @@ class AssignationMapper(Mapper, DBExtension):
         init_range = self.init_range
         range_mapper = self.range_mapper
 
-        left_range = None
+        resp = {
+            'was_deleted': [],
+            'was_created': []}
+
         if init_range.starting_date != range_mapper.starting_date:
 
             min_date = min(init_range.starting_date,
@@ -88,7 +91,11 @@ class AssignationMapper(Mapper, DBExtension):
 
             left_range = Range(min_date, max_date)
 
-        right_range = None
+            if init_range.starting_date > range_mapper.starting_date:
+                resp['was_deleted'].append(left_range)
+            else:
+                resp['was_created'].append(left_range)
+
         if init_range.ending_date != range_mapper.ending_date:
 
             min_date = min(init_range.ending_date,
@@ -99,4 +106,9 @@ class AssignationMapper(Mapper, DBExtension):
 
             right_range = Range(min_date, max_date)
 
-        return left_range, right_range
+            if init_range.ending_date > range_mapper.ending_date:
+                resp['was_created'].append(right_range)
+            else:
+                resp['was_deleted'].append(right_range)
+
+        return resp

@@ -1245,7 +1245,7 @@ class TestAssignationOperatorDatabase(object):
                 assignation_db.to_be_created == [assign1] and
                 assignation_db.to_be_deleted == [])
 
-                
+
 class TestAssignateDatabse(object):
 
     def build_db_1(self):

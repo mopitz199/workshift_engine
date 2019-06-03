@@ -200,15 +200,13 @@ class TestAssignationMapperAdd(object):
         assign = create_an_assignation(data)
         assign.starting_date = datetime(2019, 1, 13).date()
 
-        left, right = assign.get_difference()
+        resp = assign.get_differences()
 
         resp_left = Range(
             datetime(2019, 1, 10).date(),
             datetime(2019, 1, 12).date())
 
-        resp_right = None
-
-        return left == resp_left and right == resp_right
+        return [resp_left] == resp['was_deleted'] and resp['was_created'] == []
 
     def test_get_difference2(self):
         data = {
@@ -225,15 +223,13 @@ class TestAssignationMapperAdd(object):
         assign = create_an_assignation(data)
         assign.ending_date = datetime(2019, 1, 13).date()
 
-        left, right = assign.get_difference()
+        resp = assign.get_differences()
 
         resp_right = Range(
             datetime(2019, 1, 14).date(),
             datetime(2019, 1, 15).date())
 
-        resp_left = None
-
-        return left == resp_left and right == resp_right
+        return [resp_right] == resp['was_deleted'] and resp['was_created'] == []
 
     def test_get_difference3(self):
         data = {
@@ -251,12 +247,9 @@ class TestAssignationMapperAdd(object):
         assign.starting_date = datetime(2019, 1, 10).date()
         assign.ending_date = datetime(2019, 1, 15).date()
 
-        left, right = assign.get_difference()
+        resp = assign.get_differences()
 
-        resp_right = None
-        resp_left = None
-
-        return left == resp_left and right == resp_right
+        return [] == resp['was_deleted'] and resp['was_created'] == []
 
     def test_get_difference4(self):
         data = {
@@ -274,17 +267,18 @@ class TestAssignationMapperAdd(object):
         assign.starting_date = datetime(2019, 1, 13).date()
         assign.ending_date = datetime(2019, 1, 18).date()
 
-        left, right = assign.get_difference()
+        resp = assign.get_differences()
 
-        resp_right = Range(
+        resp_left = Range(
             datetime(2019, 1, 10).date(),
             datetime(2019, 1, 12).date())
 
-        resp_left = Range(
+        resp_right = Range(
             datetime(2019, 1, 19).date(),
             datetime(2019, 1, 20).date())
 
-        return left == resp_left and right == resp_right
+        return ([resp_left, resp_right] == resp['was_deleted'] and
+                resp['was_created'] == [])
 
     def test_get_difference5(self):
         data = {
@@ -302,17 +296,18 @@ class TestAssignationMapperAdd(object):
         assign.starting_date = datetime(2019, 1, 13).date()
         assign.ending_date = datetime(2019, 1, 18).date()
 
-        left, right = assign.get_difference()
+        resp = assign.get_differences()
 
-        resp_right = Range(
+        resp_left = Range(
             datetime(2019, 1, 10).date(),
             datetime(2019, 1, 12).date())
 
-        resp_left = Range(
+        resp_right = Range(
             datetime(2019, 1, 16).date(),
             datetime(2019, 1, 18).date())
 
-        return left == resp_left and right == resp_right
+        return ([resp_left, resp_right] == resp['was_created'] and
+                resp['was_deleted'] == [])
 
     def test_get_difference6(self):
         data = {
@@ -330,14 +325,15 @@ class TestAssignationMapperAdd(object):
         assign.starting_date = datetime(2019, 1, 7).date()
         assign.ending_date = datetime(2019, 1, 12).date()
 
-        left, right = assign.get_difference()
+        resp = assign.get_differences()
 
-        resp_right = Range(
+        resp_left = Range(
             datetime(2019, 1, 7).date(),
             datetime(2019, 1, 9).date())
 
-        resp_left = Range(
+        resp_right = Range(
             datetime(2019, 1, 13).date(),
             datetime(2019, 1, 15).date())
 
-        return left == resp_left and right == resp_right
+        return ([resp_left] == resp['was_created'] and
+                resp['was_deleted'] == [resp_right])
