@@ -1850,3 +1850,41 @@ class TestUnassignDatabse(object):
                 len(db_obj.to_be_deleted) == 0 and
                 len(db_obj.to_be_updated) == 1 and
                 len(db_obj.to_be_created) == 2)
+
+    def test_unassign10(self):
+        data = {
+            'assignation': {
+                'id': 1,
+                'starting_date': datetime(2019, 2, 16).date(),
+                'ending_date': datetime(2019, 2, 25).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign1 = create_an_assignation(data)
+
+        assignations = [assign1]
+        assignation_db = AssignationDB(assignations, None)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 20).date(),
+                'ending_date': datetime(2019, 2, 22).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 5
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        fake_assign = create_an_assignation(data)
+
+        assignation_db.unassign(fake_assign)
+
+        assert (len(assignation_db.db['6_1']) == 2 and
+                len(assignation_db.to_be_deleted) == 0 and
+                len(assignation_db.to_be_updated) == 1 and
+                len(assignation_db.to_be_created) == 1)

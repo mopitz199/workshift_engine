@@ -98,3 +98,28 @@ class AssignationDB(DB):
 
             if resp['delete']:
                 self.remove(resp['delete'])
+
+    def get_assign_list_by_hash(self, assign_list):
+        response = {}
+        for assign in assign_list:
+            hash_key = self.hash_function(assign)
+            if hash_key not in response:
+                response[hash_key] = []
+            response[hash_key].append(assign)
+        return response
+
+    def get_assigns_to_by_updated_by_hash(self):
+        return self.get_assign_list_by_hash(self.to_be_updated)
+
+    def get_assigns_to_by_deleted_by_hash(self):
+        return self.get_assign_list_by_hash(self.to_be_deleted)
+
+    def get_assigns_to_by_created_by_hash(self):
+        return self.get_assign_list_by_hash(self.to_be_created)
+
+    def get_changes_by_hash(self):
+        response = {}
+        response['updated'] = self.get_assigns_to_by_updated_by_hash()
+        response['created'] = self.get_assigns_to_by_created_by_hash()
+        response['deleted'] = self.get_assigns_to_by_deleted_by_hash()
+        return response

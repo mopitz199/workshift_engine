@@ -86,19 +86,19 @@ class AssignationMapper(Mapper, DBExtension):
             min_date = min(init_range.starting_date,
                            range_mapper.starting_date)
 
-            max_date = max(init_range.starting_date,
+            max_date = max(init_range.starting_date - timedelta(days=1),
                            range_mapper.starting_date - timedelta(days=1))
 
             left_range = Range(min_date, max_date)
 
             if init_range.starting_date > range_mapper.starting_date:
-                resp['was_deleted'].append(left_range)
-            else:
                 resp['was_created'].append(left_range)
+            else:
+                resp['was_deleted'].append(left_range)
 
         if init_range.ending_date != range_mapper.ending_date:
 
-            min_date = min(init_range.ending_date,
+            min_date = min(init_range.ending_date + timedelta(days=1),
                            range_mapper.ending_date + timedelta(days=1))
 
             max_date = max(init_range.ending_date,
@@ -107,8 +107,8 @@ class AssignationMapper(Mapper, DBExtension):
             right_range = Range(min_date, max_date)
 
             if init_range.ending_date > range_mapper.ending_date:
-                resp['was_created'].append(right_range)
-            else:
                 resp['was_deleted'].append(right_range)
+            else:
+                resp['was_created'].append(right_range)
 
         return resp
