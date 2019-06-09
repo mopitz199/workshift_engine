@@ -343,3 +343,10 @@ class AssignationOperator(object):
 
         assigns.sort(key=get_starting_date, reverse=True)
         return assigns
+
+    @staticmethod
+    def get_ranges_of_assigns(assigns):
+        response = []
+        for assign in assigns:
+            response.append(assign.range_mapper)
+        return response

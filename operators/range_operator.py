@@ -1,3 +1,4 @@
+import copy
 from datetime import datetime, timedelta
 
 
@@ -33,3 +34,13 @@ class RangeOperator:
 
         return (r1.starting_date <= r2.ending_date and
                 r1.ending_date >= r2.starting_date)
+
+    @staticmethod
+    def get_intersection(r1, r2):
+        if RangeOperator.are_intersection(r1, r1):
+            copy_range = copy.copy(r1)
+            copy_range.starting_date = max(r1.starting_date, r2.starting_date)
+            copy_range.ending_date = min(r1.ending_date, r2.ending_date)
+            return copy_range
+        else:
+            return r1

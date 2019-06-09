@@ -1,5 +1,6 @@
 import copy
 from operators.assignation_operator import AssignationOperator
+from operators.range_operator import RangeOperator
 
 
 class DifferencesOperator(object):
@@ -11,24 +12,66 @@ class DifferencesOperator(object):
     def __init__(self, db):
         self.db = db
 
-    def clean_updated_assign(self, assign, assigns):
+    def remove_range_on_created_range(self, remove_range, assign):
         response = []
-        differences = assign.get_differences()
+        if hasattr(assign, 'was_created'):
+            ranges = assign.was_created
+        else:
+            differences = assign.get_differences()
+            ranges = differences['was_created']
+
+        for was_created_range in ranges:
+            was_created_range, _ = was_created_range - remove_range
+            if _:
+                raise Exception
+            response.append(was_created_range)
+        return response
+
+    def remove_range_on_new_assign(self, remove_range, assign):
+        response = []
+        if hasattr(assign, 'was_created'):
+            ranges = assign.was_created
+        else:
+            ranges = assign.range_mapper
+
+        for aux_range in ranges:
+            aux_range, _ = aux_range - remove_range
+            if _:
+                raise Exception
+            response.append(aux_range)
+        return response
+
+    def clean_updated_assign(self, assign, assigns):
+        if hasattr(assign, 'was_deleted'):
+            was_deleted = assign.was_deleted
+        else:
+            differences = assign.get_differences()
+            was_deleted = differences['was_deleted']
         for aux_assign in assigns:
             are_compatible = AssignationOperator.are_compatible(
                 assign, aux_assign)
 
             if assign != aux_assign and are_compatible:
-                was_deleted = differences['was_deleted']
                 for del_range in was_deleted:
-                    del_range, new_range = del_range - aux_assign.range_mapper
-                    response.append(del_range)
+                    intersection = RangeOperator.get_intersection(
+                        del_range,
+                        aux_assign.range_mapper)
+                    del_range, new_range = del_range - intersection
                     if new_range:
-                        response.append(new_range)
-        if not response:
-            response = differences['was_deleted'] + differences['was_created']
+                        was_deleted.append(new_range)
 
-        return response
+                    if aux_assign.is_in_real_db:
+                        ranges = self.remove_range_on_created_range(
+                            intersection,
+                            aux_assign)
+                        aux_assign.was_created = ranges
+                    else:
+                        ranges = self.remove_range_on_new_assign(
+                            intersection,
+                            aux_assign)
+                        aux_assign.was_created = ranges
+
+        assign.was_deleted = was_deleted
 
     def process_differences(self):
         total = {}
@@ -40,22 +83,38 @@ class DifferencesOperator(object):
             to_be_created = assigns_created.get(hash_key, [])
             to_be_updated = assigns_updated.get(hash_key, [])
             assigns = to_be_created + to_be_updated
-            ranges = self.clean_updated_assign(updated_assign, assigns)
-            person_id = str(updated_assign.person_id)
-            if person_id not in total:
-                total[person_id] = []
-            total[person_id] += ranges
+            self.clean_updated_assign(updated_assign, assigns)
 
-        for deleted_assign in self.db.to_be_deleted:
-            person_id = str(deleted_assign.person_id)
+        for assign in self.db.to_be_updated:
+            person_id = str(assign.person_id)
             if person_id not in total:
                 total[person_id] = []
-            total[person_id].append(deleted_assign.range_mapper)
 
-        for created_assign in self.db.to_be_created:
-            person_id = str(created_assign.person_id)
+            differences = assign.get_differences()
+            if hasattr(assign, 'was_created'):
+                total[person_id] += assign.was_created
+            else:
+                total[person_id] += differences['was_created']
+
+            if hasattr(assign, 'was_deleted'):
+                total[person_id] += assign.was_deleted
+            else:
+                total[person_id] += differences['was_deleted']
+
+        for assign in self.db.to_be_created:
+            person_id = str(assign.person_id)
             if person_id not in total:
                 total[person_id] = []
-            total[person_id].append(created_assign.range_mapper)
+
+            if hasattr(assign, 'was_created'):
+                total[person_id] += assign.was_created
+            else:
+                total[person_id].append(assign.range_mapper)
+
+        for assign in self.db.to_be_deleted:
+            person_id = str(assign.person_id)
+            if person_id not in total:
+                total[person_id] = []
+            total[person_id].append(assign.range_mapper)
 
         return total
