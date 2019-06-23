@@ -250,3 +250,65 @@ class TestDifferencesOperator(object):
             datetime(2019, 2, 23).date())
 
         assert resp['1'] == [expected1, expected2, expected3]
+
+    def test_process_differences5(self):
+
+        data = {
+            'assignation': {
+                'id': 1,
+                'starting_date': datetime(2019, 2, 10).date(),
+                'ending_date': datetime(2019, 2, 15).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 1
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign1 = create_an_assignation(data)
+
+        assignations = [assign1]
+        assignation_db = AssignationDB(assignations, None)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 13).date(),
+                'ending_date': datetime(2019, 2, 15).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 4
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        fake_assign = create_an_assignation(data)
+
+        assignation_db.unassign(fake_assign)
+
+        data = {
+            'assignation': {
+                'starting_date': datetime(2019, 2, 16).date(),
+                'ending_date': datetime(2019, 2, 18).date(),
+                'workshift_id': 6,
+                'person_id': 1,
+                'start_day': 7
+            },
+            'workshift': {
+                'total_workshift_days': 8,
+            }}
+        assign2 = create_an_assignation(data)
+
+        assignation_db.assignate(assign2)
+
+        differences_operator = DifferencesOperator(assignation_db)
+        resp = differences_operator.process_differences()
+
+        expected1 = Range(
+            datetime(2019, 2, 13).date(),
+            datetime(2019, 2, 15).date())
+
+        expected2 = Range(
+            datetime(2019, 2, 16).date(),
+            datetime(2019, 2, 18).date())
+
+        assert resp['1'] == [expected1, expected2]

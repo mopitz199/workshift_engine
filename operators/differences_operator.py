@@ -24,7 +24,8 @@ class DifferencesOperator(object):
             was_created_range, _ = was_created_range - remove_range
             if _:
                 raise Exception
-            response.append(was_created_range)
+            if was_created_range is not None:
+                response.append(was_created_range)
         return response
 
     def remove_range_on_new_assign(self, remove_range, assign):
@@ -32,13 +33,14 @@ class DifferencesOperator(object):
         if hasattr(assign, 'was_created'):
             ranges = assign.was_created
         else:
-            ranges = assign.range_mapper
+            ranges = [assign.range_mapper]
 
         for aux_range in ranges:
             aux_range, _ = aux_range - remove_range
             if _:
                 raise Exception
-            response.append(aux_range)
+            if aux_range is not None:
+                response.append(aux_range)
         return response
 
     def clean_updated_assign(self, assign, assigns):
@@ -60,7 +62,7 @@ class DifferencesOperator(object):
                     if new_range:
                         was_deleted.append(new_range)
 
-                    if aux_assign.is_in_real_db:
+                    if aux_assign.is_in_real_db():
                         ranges = self.remove_range_on_created_range(
                             intersection,
                             aux_assign)

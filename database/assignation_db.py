@@ -1,5 +1,3 @@
-import pdb
-
 from database.generic_database import DB
 from operators.assignation_operator import AssignationOperator
 
