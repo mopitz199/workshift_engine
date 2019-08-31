@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from database.assignation_db import AssignationDB
-from mappers.range_mapper import Range
+from utils.range import Range
 from operators.differences_operator import DifferencesOperator
 from test_utils.utils import create_an_assignation
 

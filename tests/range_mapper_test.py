@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from mappers.range_mapper import Range
+from utils.range import Range
 
 
 class TestRangeSub(object):

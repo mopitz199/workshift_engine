@@ -1,6 +1,5 @@
-from mappers.assignation_mapper import AssignationMapper
-
-from mappers.mapper_factory import FactoryMapper
+from proxies.assignation_proxy import AssignationProxy
+from proxies.proxy_factory import ProxyFactory
 
 
 class DumbAssignation(object):
@@ -38,4 +37,4 @@ def create_an_assignation(data):
     person_data = data.get('person', {})
     assignation.person = DumbPerson(**person_data)
 
-    return FactoryMapper.create_assignation_mapper(assignation)
+    return ProxyFactory.create_assignation_mapper(assignation)

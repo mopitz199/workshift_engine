@@ -3,7 +3,7 @@ import pdb
 
 from datetime import timedelta, datetime
 from operators.range_operator import RangeOperator
-from mappers.range_mapper import Range
+from utils.range import Range
 
 
 class AssignationOperator(object):
@@ -15,9 +15,9 @@ class AssignationOperator(object):
         To check if two assignations intersect or are next to the other.
 
         :param assign1: an assignation mapper object
-        :type assign1: AssignationMapper
+        :type assign1: AssignationProxy
         :param assign2: an assignation mapper object
-        :type assign2: AssignationMapper
+        :type assign2: AssignationProxy
 
         :rtype: Boolean
         """
@@ -32,9 +32,9 @@ class AssignationOperator(object):
         To check if two assignations intersect.
 
         :param assign1: an assignation mapper object
-        :type assign1: AssignationMapper
+        :type assign1: AssignationProxy
         :param assign2: an assignation mapper object
-        :type assign2: AssignationMapper
+        :type assign2: AssignationProxy
 
         :rtype: Boolean
         """
@@ -49,11 +49,11 @@ class AssignationOperator(object):
         To check how many assigns are neighbor of the given assign
 
         :param assign: an assignation mapper object
-        :type assign: AssignationMapper
+        :type assign: AssignationProxy
         :param assigns: An iterator of assigns to check
         :type assigns: Iterator
 
-        :rtype: List<AssignationMapper>
+        :rtype: List<AssignationProxy>
         """
 
         resp = []
@@ -70,7 +70,7 @@ class AssignationOperator(object):
         :param assigns: An iterator with assigns
         :type assigns: Iterator
 
-        :rtype: AssignationMapper
+        :rtype: AssignationProxy
         """
 
         min_date = datetime(2090, 1, 1).date()
@@ -89,7 +89,7 @@ class AssignationOperator(object):
         :param assigns: An iterator with assigns
         :type assigns: Iterator
 
-        :rtype: AssignationMapper
+        :rtype: AssignationProxy
         """
 
         max_date = datetime(1900, 1, 1).date()
@@ -122,9 +122,9 @@ class AssignationOperator(object):
         To check if two assignments are compatible to be joined
 
         :param assign1: An assign mapper object
-        :type assign1: AssignationMapper
+        :type assign1: AssignationProxy
         :param assign2: An assign mapper object
-        :type assign2: AssignationMapper
+        :type assign2: AssignationProxy
 
         :rtype: Boolean
         """
@@ -160,9 +160,9 @@ class AssignationOperator(object):
         next to the other
 
         :param assign1: An assign mapper object
-        :type assign1: AssignationMapper
+        :type assign1: AssignationProxy
         :param assign2: An assign mapper object
-        :type assign2: AssignationMapper
+        :type assign2: AssignationProxy
 
         :rtype: Boolean
         """
@@ -176,11 +176,11 @@ class AssignationOperator(object):
         To check of how many assigns are compatable with the given assign
 
         :param assign: An assign mapper object
-        :type assign: AssignationMapper
+        :type assign: AssignationProxy
         :param assigns: A list of assigns
         :type assigns: Iterator
 
-        :rtype: List<AssignationMapper>
+        :rtype: List<AssignationProxy>
         """
 
         resp = []
@@ -197,7 +197,7 @@ class AssignationOperator(object):
         :param assigns: A list of assigns
         :type assigns: Iterator
 
-        :rtype: AssignationMapper
+        :rtype: AssignationProxy
         """
 
         biggest = None
@@ -215,11 +215,11 @@ class AssignationOperator(object):
         list of assignments
 
         :param assign: An assign mapper object
-        :type assign: AssignationMapper
+        :type assign: AssignationProxy
         :param assigns: A list of assigns
         :type assigns: Iterator
 
-        :rtype: (AssignationMapper, List<AssignationMapper>)
+        :rtype: (AssignationProxy, List<AssignationProxy>)
         """
 
         candidates = AssignationOperator.are_multiple_compatible(
@@ -237,7 +237,7 @@ class AssignationOperator(object):
         To simulate an start_day in an specific date
 
         :param assign: An assign mapper object
-        :type assign: AssignationMapper
+        :type assign: AssignationProxy
         :param date_obj: The date which want to simulate
         :type date_obj: date
 
@@ -262,9 +262,9 @@ class AssignationOperator(object):
         To create a deep copy of a given assign
 
         :param assign: An assign mapper object
-        :type assign: AssignationMapper
+        :type assign: AssignationProxy
 
-        :rtype: AssignationMapper
+        :rtype: AssignationProxy
         """
         copied = copy.copy(assign)
         copied.obj = copy.deepcopy(assign.obj)
@@ -280,10 +280,10 @@ class AssignationOperator(object):
         Function to remove a range from a given assignation
 
         :param assign: An assign mapper object
-        :type assign: AssignationMapper
+        :type assign: AssignationProxy
         :param starting_date: The starting date from
             where you want to start removing
-        :type starting_date: AssignationMapper
+        :type starting_date: AssignationProxy
 
         :rtype: Dict
         """

@@ -2,14 +2,14 @@ import copy
 
 from datetime import timedelta
 
-from mappers.mapper import Mapper
+from proxies.base_proxy import Proxy
 from operators.assignation_operator import AssignationOperator
-from mappers.range_mapper import Range
+from utils.range import Range
 
 from database.db_extension import DBExtension
 
 
-class AssignationMapper(Mapper, DBExtension):
+class AssignationProxy(Proxy, DBExtension):
     """This class is to map the attributes of an assignation and their relations.
     Some requirements from the assignation are:
 
@@ -25,7 +25,7 @@ class AssignationMapper(Mapper, DBExtension):
     """
 
     def __init__(self, obj, *args, **kwargs):
-        super(AssignationMapper, self).__init__(obj)
+        super(AssignationProxy, self).__init__(obj)
         self.range_mapper = Range(self.starting_date, self.ending_date)
         self.init_range = copy.copy(self.range_mapper)
         self.init_start_day = getattr(self.obj, 'start_day', None)
@@ -40,11 +40,11 @@ class AssignationMapper(Mapper, DBExtension):
         return "{}".format(self.range_mapper)
 
     def __setattr__(self, attr, val):
-        super(AssignationMapper, self).__setattr__(attr, val)
+        super(AssignationProxy, self).__setattr__(attr, val)
         if attr in ['starting_date', 'ending_date']:
             setattr(self.range_mapper, attr, val)
         if attr in ['range_mapper']:
-            super(AssignationMapper, self).__setattr__(attr, val)
+            super(AssignationProxy, self).__setattr__(attr, val)
             setattr(self, 'starting_date', self.range_mapper.starting_date)
             setattr(self, 'ending_date', self.range_mapper.ending_date)
 

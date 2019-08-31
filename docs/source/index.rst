@@ -32,12 +32,12 @@ First, we need to create a RAM database with all the assignation mappers. To do 
 
 .. code-block:: python
 
-    from mappers.mapper_factory import FactoryMapper
+    from proxies.mapper_factory import ProxyFactory
     from database.assignation_db import AssignationDB
 
     assignations = MyAssignationModel.objects.all()
 
-    assignation_mappers = FactoryMapper.create_multiple_assignation_mappers(assignation)
+    assignation_mappers = ProxyFactory.create_multiple_assignation_mappers(assignation)
     assignation_db = AssignationDB(assignation_mappers, None)
 
 This code wil create a databse with all the assignations. From here, we can use this class
@@ -53,7 +53,7 @@ to assignate and unassign assignation like this. For assignate:
         'start_day': None}
 
     new_assignation = MyAssignationModel(**data)
-    new_assignation_mapper = FactoryMapper.create_assignation_mapper(new_assignation)
+    new_assignation_mapper = ProxyFactory.create_assignation_mapper(new_assignation)
     assignation_db.assignate(new_assignation_mapper)
 
 For unassign:
@@ -68,7 +68,7 @@ For unassign:
         'start_day': None}
 
     fake_assignation = MyAssignationModel(**data)
-    fake_assignation_mapper = FactoryMapper.create_assignation_mapper(fake_assignation)
+    fake_assignation_mapper = ProxyFactory.create_assignation_mapper(fake_assignation)
     assignation_db.unassign(fake_assignation_mapper)
 
 .. toctree::

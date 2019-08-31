@@ -1,13 +1,13 @@
 import types
 from datetime import datetime
 
-from mappers.assignation_mapper import AssignationMapper
-from mappers.range_mapper import Range
+from proxies.assignation_proxy import AssignationProxy
+from utils.range import Range
 from operators.assignation_operator import AssignationOperator
 from test_utils.utils import create_an_assignation
 
 
-class TestAssignationMapperAdd(object):
+class TestAssignationProxyAdd(object):
     """Class to test if the assignation mapper add method works well"""
 
     def test_add1(self):

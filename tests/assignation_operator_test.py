@@ -2,7 +2,7 @@ import types
 from datetime import datetime
 
 from operators.assignation_operator import AssignationOperator
-from mappers.assignation_mapper import AssignationMapper
+from proxies.assignation_proxy import AssignationProxy
 
 from test_utils.utils import create_an_assignation
 

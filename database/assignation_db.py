@@ -4,7 +4,7 @@ from operators.assignation_operator import AssignationOperator
 
 class AssignationDB(DB):
     """
-    Class to operate instances of AssignationMapper class as a RAM database
+    Class to operate instances of AssignationProxy class as a RAM database
     """
 
     def add(self, element):
