@@ -24,7 +24,7 @@ class AssignationDB(DB):
 
         best = AssignationOperator.get_biggest_assign(compatible_list)
         if best:
-            best.range_mapper = element.range_mapper
+            best.range_obj = element.range_obj
             best.start_day = element.start_day
 
             self.to_be_deleted.remove(best)
@@ -85,8 +85,8 @@ class AssignationDB(DB):
         for compatibe_assign in compatibe_assigns:
             resp = AssignationOperator.remove(
                 compatibe_assign,
-                fake_assign.range_mapper.starting_date,
-                fake_assign.range_mapper.ending_date)
+                fake_assign.range_obj.starting_date,
+                fake_assign.range_obj.ending_date)
 
             if resp['update']:
                 self.update(resp['update'])

@@ -74,4 +74,4 @@ class TestSetAttr(object):
 
     def test_set_attr3(self, mapper):
         mapper.starting_date = datetime(2019, 4, 5).date()
-        assert mapper.starting_date == mapper.range_mapper.starting_date
+        assert mapper.starting_date == mapper.range_obj.starting_date

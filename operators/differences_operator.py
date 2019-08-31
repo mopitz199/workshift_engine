@@ -33,7 +33,7 @@ class DifferencesOperator(object):
         if hasattr(assign, 'was_created'):
             ranges = assign.was_created
         else:
-            ranges = [assign.range_mapper]
+            ranges = [assign.range_obj]
 
         for aux_range in ranges:
             aux_range, _ = aux_range - remove_range
@@ -57,7 +57,7 @@ class DifferencesOperator(object):
                 for del_range in was_deleted:
                     intersection = RangeOperator.get_intersection(
                         del_range,
-                        aux_assign.range_mapper)
+                        aux_assign.range_obj)
                     del_range, new_range = del_range - intersection
                     if new_range:
                         was_deleted.append(new_range)
@@ -111,12 +111,12 @@ class DifferencesOperator(object):
             if hasattr(assign, 'was_created'):
                 total[person_id] += assign.was_created
             else:
-                total[person_id].append(assign.range_mapper)
+                total[person_id].append(assign.range_obj)
 
         for assign in self.db.to_be_deleted:
             person_id = str(assign.person_id)
             if person_id not in total:
                 total[person_id] = []
-            total[person_id].append(assign.range_mapper)
+            total[person_id].append(assign.range_obj)
 
         return total

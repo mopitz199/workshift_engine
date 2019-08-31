@@ -23,8 +23,8 @@ class AssignationOperator(object):
         """
 
         return RangeOperator.are_neighbors(
-            assign1.range_mapper,
-            assign2.range_mapper)
+            assign1.range_obj,
+            assign2.range_obj)
 
     @staticmethod
     def are_intersection(assign1, assign2):
@@ -40,8 +40,8 @@ class AssignationOperator(object):
         """
 
         return RangeOperator.are_intersection(
-            assign1.range_mapper,
-            assign2.range_mapper)
+            assign1.range_obj,
+            assign2.range_obj)
 
     @staticmethod
     def are_multiple_neighbors(assign, assigns):
@@ -76,9 +76,9 @@ class AssignationOperator(object):
         min_date = datetime(2090, 1, 1).date()
         resp = None
         for assign in assigns:
-            if assign.range_mapper.starting_date < min_date:
+            if assign.range_obj.starting_date < min_date:
                 resp = assign
-                min_date = assign.range_mapper.starting_date
+                min_date = assign.range_obj.starting_date
         return resp
 
     @staticmethod
@@ -95,9 +95,9 @@ class AssignationOperator(object):
         max_date = datetime(1900, 1, 1).date()
         resp = None
         for assign in assigns:
-            if assign.range_mapper.ending_date > max_date:
+            if assign.range_obj.ending_date > max_date:
                 resp = assign
-                max_date = assign.range_mapper.ending_date
+                max_date = assign.range_obj.ending_date
         return resp
 
     @staticmethod
@@ -245,7 +245,7 @@ class AssignationOperator(object):
         """
 
         if assign.start_day:
-            starting_date = assign.range_mapper.starting_date
+            starting_date = assign.range_obj.starting_date
             delta = timedelta(days=assign.start_day - 1)
             aux_starting_date = starting_date - delta
 
@@ -268,7 +268,7 @@ class AssignationOperator(object):
         """
         copied = copy.copy(assign)
         copied.obj = copy.deepcopy(assign.obj)
-        copied.range_mapper = copy.deepcopy(assign.range_mapper)
+        copied.range_obj = copy.deepcopy(assign.range_obj)
         copied.workshift = assign.workshift
         copied.person = assign.person
         copied.obj.id = None
@@ -289,26 +289,26 @@ class AssignationOperator(object):
         """
 
         resp = {'delete': None, 'update': None, 'create': None}
-        copy_range_mapper = copy.copy(assign.range_mapper)
-        other_range_mapper = Range(starting_date, ending_date)
-        updated_range, new_range = copy_range_mapper - other_range_mapper
+        copy_range_obj = copy.copy(assign.range_obj)
+        other_range_obj = Range(starting_date, ending_date)
+        updated_range, new_range = copy_range_obj - other_range_obj
 
         if not updated_range:
             resp['delete'] = assign
         elif new_range:
             new_assign = AssignationOperator.copy(assign)
-            new_assign.range_mapper = new_range
-            assign.range_mapper = updated_range
+            new_assign.range_obj = new_range
+            assign.range_obj = updated_range
 
             if new_assign.starting_date > assign.starting_date:
                 new_assign.start_day = AssignationOperator.\
                     simulate_starting_day(
                         assign,
-                        new_assign.range_mapper.starting_date)
+                        new_assign.range_obj.starting_date)
             else:
                 assign.start_day = AssignationOperator.simulate_starting_day(
                     new_assign,
-                    assign.range_mapper.starting_date)
+                    assign.range_obj.starting_date)
 
             resp['update'] = assign
             resp['create'] = new_assign
@@ -316,11 +316,11 @@ class AssignationOperator(object):
             new_start_day = AssignationOperator.simulate_starting_day(
                 assign,
                 updated_range.starting_date)
-            assign.range_mapper = updated_range
+            assign.range_obj = updated_range
             assign.start_day = new_start_day
             resp['update'] = assign
         elif updated_range.ending_date < assign.ending_date:
-            assign.range_mapper = updated_range
+            assign.range_obj = updated_range
             resp['update'] = assign
         else:
             pass
@@ -348,5 +348,5 @@ class AssignationOperator(object):
     def get_ranges_of_assigns(assigns):
         response = []
         for assign in assigns:
-            response.append(assign.range_mapper)
+            response.append(assign.range_obj)
         return response

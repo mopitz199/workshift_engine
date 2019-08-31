@@ -26,38 +26,38 @@ class AssignationProxy(Proxy, DBExtension):
 
     def __init__(self, obj, *args, **kwargs):
         super(AssignationProxy, self).__init__(obj)
-        self.range_mapper = Range(self.starting_date, self.ending_date)
-        self.init_range = copy.copy(self.range_mapper)
+        self.range_obj = Range(self.starting_date, self.ending_date)
+        self.init_range = copy.copy(self.range_obj)
         self.init_start_day = getattr(self.obj, 'start_day', None)
 
     def __len__(self):
-        return len(self.range_mapper)
+        return len(self.range_obj)
 
     def __repr__(self):
-        return "{}".format(self.range_mapper)
+        return "{}".format(self.range_obj)
 
     def __str__(self):
-        return "{}".format(self.range_mapper)
+        return "{}".format(self.range_obj)
 
     def __setattr__(self, attr, val):
         super(AssignationProxy, self).__setattr__(attr, val)
         if attr in ['starting_date', 'ending_date']:
-            setattr(self.range_mapper, attr, val)
-        if attr in ['range_mapper']:
+            setattr(self.range_obj, attr, val)
+        if attr in ['range_obj']:
             super(AssignationProxy, self).__setattr__(attr, val)
-            setattr(self, 'starting_date', self.range_mapper.starting_date)
-            setattr(self, 'ending_date', self.range_mapper.ending_date)
+            setattr(self, 'starting_date', self.range_obj.starting_date)
+            setattr(self, 'ending_date', self.range_obj.ending_date)
 
     def __add__(self, other_assign):
         if AssignationOperator.can_be_joined(self, other_assign):
-            starting_date = self.range_mapper.starting_date
-            other_starting_date = other_assign.range_mapper.starting_date
+            starting_date = self.range_obj.starting_date
+            other_starting_date = other_assign.range_obj.starting_date
 
             if starting_date > other_starting_date:
                 start_day = other_assign.start_day
                 self.start_day = start_day
 
-            self.range_mapper += other_assign.range_mapper
+            self.range_obj += other_assign.range_obj
 
         return self
 
@@ -65,7 +65,7 @@ class AssignationProxy(Proxy, DBExtension):
         pass
 
     def has_change(self):
-        return (self.init_range != self.range_mapper or
+        return (self.init_range != self.range_obj or
                 self.start_day != self.init_start_day)
 
     def get_differences(self):
@@ -75,38 +75,38 @@ class AssignationProxy(Proxy, DBExtension):
         """
 
         init_range = self.init_range
-        range_mapper = self.range_mapper
+        range_obj = self.range_obj
 
         resp = {
             'was_deleted': [],
             'was_created': []}
 
-        if init_range.starting_date != range_mapper.starting_date:
+        if init_range.starting_date != range_obj.starting_date:
 
             min_date = min(init_range.starting_date,
-                           range_mapper.starting_date)
+                           range_obj.starting_date)
 
             max_date = max(init_range.starting_date - timedelta(days=1),
-                           range_mapper.starting_date - timedelta(days=1))
+                           range_obj.starting_date - timedelta(days=1))
 
             left_range = Range(min_date, max_date)
 
-            if init_range.starting_date > range_mapper.starting_date:
+            if init_range.starting_date > range_obj.starting_date:
                 resp['was_created'].append(left_range)
             else:
                 resp['was_deleted'].append(left_range)
 
-        if init_range.ending_date != range_mapper.ending_date:
+        if init_range.ending_date != range_obj.ending_date:
 
             min_date = min(init_range.ending_date + timedelta(days=1),
-                           range_mapper.ending_date + timedelta(days=1))
+                           range_obj.ending_date + timedelta(days=1))
 
             max_date = max(init_range.ending_date,
-                           range_mapper.ending_date)
+                           range_obj.ending_date)
 
             right_range = Range(min_date, max_date)
 
-            if init_range.ending_date > range_mapper.ending_date:
+            if init_range.ending_date > range_obj.ending_date:
                 resp['was_deleted'].append(right_range)
             else:
                 resp['was_created'].append(right_range)

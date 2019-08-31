@@ -506,8 +506,8 @@ class TestAssignationOperatorDatabase(object):
         assignation_db.assignate(assign3)
         assignation_db.assignate(assign4)
 
-        rm2 = assign2.range_mapper
-        rm1 = assign1.range_mapper
+        rm2 = assign2.range_obj
+        rm1 = assign1.range_obj
 
         assert (assignation_db.db == {'6_1': [assign2, assign1]} and
                 assignation_db.to_be_updated == [assign2, assign1] and
@@ -580,7 +580,7 @@ class TestAssignationOperatorDatabase(object):
         assignation_db.assignate(assign4)
         assignation_db.assignate(assign5)
 
-        rm2 = assign2.range_mapper
+        rm2 = assign2.range_obj
 
         assert (assignation_db.db == {'6_1': [assign2]} and
                 assignation_db.to_be_updated == [assign2] and
@@ -666,7 +666,7 @@ class TestAssignationOperatorDatabase(object):
         assignation_db.assignate(assign4)
         assignation_db.assignate(assign5)
 
-        rm2 = assign2.range_mapper
+        rm2 = assign2.range_obj
 
         assert (assignation_db.db == {'6_1': [assign2]} and
                 assignation_db.to_be_updated == [assign2] and
@@ -752,9 +752,9 @@ class TestAssignationOperatorDatabase(object):
         assignation_db.assignate(assign4)
         assignation_db.assignate(assign5)
 
-        rm2 = assign2.range_mapper
-        rm1 = assign1.range_mapper
-        rm5 = assign5.range_mapper
+        rm2 = assign2.range_obj
+        rm1 = assign1.range_obj
+        rm5 = assign5.range_obj
 
         assert (assignation_db.db == {'6_1': [assign2, assign1, assign5]} and
                 assignation_db.to_be_updated == [assign2, assign1] and
@@ -794,7 +794,7 @@ class TestAssignationOperatorDatabase(object):
         assignation_db.assignate(assign1)
         assignation_db.unassign(fake_assign)
 
-        rm1 = assign1.range_mapper
+        rm1 = assign1.range_obj
 
         assert (assignation_db.db == {'6_1': [assign1]} and
                 assignation_db.to_be_updated == [] and
@@ -836,7 +836,7 @@ class TestAssignationOperatorDatabase(object):
         assignation_db.assignate(assign1)
         assignation_db.unassign(fake_assign)
 
-        rm1 = assign1.range_mapper
+        rm1 = assign1.range_obj
 
         assert (assignation_db.db == {'6_1': [assign1]} and
                 assignation_db.to_be_updated == [] and
@@ -878,7 +878,7 @@ class TestAssignationOperatorDatabase(object):
         assignation_db.assignate(assign1)
         assignation_db.unassign(fake_assign)
 
-        rm1 = assign1.range_mapper
+        rm1 = assign1.range_obj
 
         assert (len(assignation_db.db['6_1']) == 2 and
                 assignation_db.to_be_updated == [] and
@@ -1336,7 +1336,7 @@ class TestAssignateDatabse(object):
         assign = create_an_assignation(data)
         db_obj.assignate(assign)
 
-        rm = db_obj.db['4_1'][0].range_mapper
+        rm = db_obj.db['4_1'][0].range_obj
         assert (len(db_obj.db['4_1']) == 1 and
                 rm.starting_date == datetime(2019, 1, 1).date() and
                 rm.ending_date == datetime(2019, 1, 30).date() and
@@ -1626,7 +1626,7 @@ class TestUnassignDatabse(object):
         assign = create_an_assignation(data)
         db_obj.unassign(assign)
 
-        rm = db_obj.to_be_updated[0].range_mapper
+        rm = db_obj.to_be_updated[0].range_obj
         assert (len(db_obj.db['4_1']) == 2 and
                 len(db_obj.to_be_deleted) == 0 and
                 len(db_obj.to_be_updated) == 1 and
@@ -1652,8 +1652,8 @@ class TestUnassignDatabse(object):
         assign = create_an_assignation(data)
         db_obj.unassign(assign)
 
-        rm1 = db_obj.to_be_updated[0].range_mapper
-        rm2 = db_obj.to_be_updated[1].range_mapper
+        rm1 = db_obj.to_be_updated[0].range_obj
+        rm2 = db_obj.to_be_updated[1].range_obj
         assert (len(db_obj.db['4_1']) == 2 and
                 len(db_obj.to_be_deleted) == 0 and
                 len(db_obj.to_be_updated) == 2 and
@@ -1681,7 +1681,7 @@ class TestUnassignDatabse(object):
         assign = create_an_assignation(data)
         db_obj.unassign(assign)
 
-        rm = db_obj.to_be_deleted[0].range_mapper
+        rm = db_obj.to_be_deleted[0].range_obj
 
         assert (len(db_obj.db['4_1']) == 1 and
                 len(db_obj.to_be_deleted) == 1 and
@@ -1754,7 +1754,7 @@ class TestUnassignDatabse(object):
         assign = create_an_assignation(data)
         db_obj.unassign(assign)
 
-        rm = db_obj.to_be_updated[0].range_mapper
+        rm = db_obj.to_be_updated[0].range_obj
 
         assert (len(db_obj.db['4_1']) == 2 and
                 len(db_obj.to_be_deleted) == 0 and
@@ -1781,7 +1781,7 @@ class TestUnassignDatabse(object):
         assign = create_an_assignation(data)
         db_obj.unassign(assign)
 
-        rm = db_obj.to_be_updated[0].range_mapper
+        rm = db_obj.to_be_updated[0].range_obj
 
         assert (len(db_obj.db['4_1']) == 2 and
                 len(db_obj.to_be_deleted) == 0 and
