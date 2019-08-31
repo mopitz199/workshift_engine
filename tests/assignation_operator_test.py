@@ -937,7 +937,7 @@ class TestGetBiggestAssign(object):
 
 class TestGetCandidates(object):
     """To test if the function can get the best and the other candidates from
-    a given list of assignments mappers."""
+    a given list of assignments proxies."""
 
     def test_get_candidates1(self):
         data = {

@@ -28,17 +28,17 @@ This attributes is the number of days that the workshift has.
 Use it
 ####################
 
-First, we need to create a RAM database with all the assignation mappers. To do that we need to:
+First, we need to create a RAM database with all the assignation proxies. To do that we need to:
 
 .. code-block:: python
 
-    from proxies.mapper_factory import ProxyFactory
+    from proxies.proxy_factory import ProxyFactory
     from database.assignation_db import AssignationDB
 
     assignations = MyAssignationModel.objects.all()
 
-    assignation_mappers = ProxyFactory.create_multiple_assignation_mappers(assignation)
-    assignation_db = AssignationDB(assignation_mappers, None)
+    assignation_proxies = ProxyFactory.create_multiple_assignation_proxies(assignation)
+    assignation_db = AssignationDB(assignation_proxies, None)
 
 This code wil create a databse with all the assignations. From here, we can use this class
 to assignate and unassign assignation like this. For assignate:
@@ -53,8 +53,8 @@ to assignate and unassign assignation like this. For assignate:
         'start_day': None}
 
     new_assignation = MyAssignationModel(**data)
-    new_assignation_mapper = ProxyFactory.create_assignation_mapper(new_assignation)
-    assignation_db.assignate(new_assignation_mapper)
+    new_assignation_proxy = ProxyFactory.create_assignation_proxy(new_assignation)
+    assignation_db.assignate(new_assignation_proxy)
 
 For unassign:
 
@@ -68,8 +68,8 @@ For unassign:
         'start_day': None}
 
     fake_assignation = MyAssignationModel(**data)
-    fake_assignation_mapper = ProxyFactory.create_assignation_mapper(fake_assignation)
-    assignation_db.unassign(fake_assignation_mapper)
+    fake_assignation_proxy = ProxyFactory.create_assignation_proxy(fake_assignation)
+    assignation_db.unassign(fake_assignation_proxy)
 
 .. toctree::
    :maxdepth: 1
@@ -77,7 +77,7 @@ For unassign:
 
    operators/index
    tests/index
-   mappers/index
+   proxies/index
 
 
 

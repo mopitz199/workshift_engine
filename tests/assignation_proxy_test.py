@@ -8,7 +8,7 @@ from test_utils.utils import create_an_assignation
 
 
 class TestAssignationProxyAdd(object):
-    """Class to test if the assignation mapper add method works well"""
+    """Class to test if the assignation proxy add method works well"""
 
     def test_add1(self):
         data = {

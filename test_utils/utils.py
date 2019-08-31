@@ -37,4 +37,4 @@ def create_an_assignation(data):
     person_data = data.get('person', {})
     assignation.person = DumbPerson(**person_data)
 
-    return ProxyFactory.create_assignation_mapper(assignation)
+    return ProxyFactory.create_assignation_proxy(assignation)

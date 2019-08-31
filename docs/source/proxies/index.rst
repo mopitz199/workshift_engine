@@ -1,9 +1,9 @@
-Mappers
+proxies
 ============================================
 
 .. toctree::
    :maxdepth: 1
-   :caption: Mappers:
+   :caption: proxies:
 
-   mapper
-   assignation_mapper
+   proxy
+   assignation_proxy

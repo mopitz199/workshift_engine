@@ -7,16 +7,16 @@ from utils.range import Range
 
 
 class AssignationOperator(object):
-    """A class with method to operate assignation mappers."""
+    """A class with method to operate assignation proxies."""
 
     @staticmethod
     def are_neighbors(assign1, assign2):
         """
         To check if two assignations intersect or are next to the other.
 
-        :param assign1: an assignation mapper object
+        :param assign1: an assignation proxy object
         :type assign1: AssignationProxy
-        :param assign2: an assignation mapper object
+        :param assign2: an assignation proxy object
         :type assign2: AssignationProxy
 
         :rtype: Boolean
@@ -31,9 +31,9 @@ class AssignationOperator(object):
         """
         To check if two assignations intersect.
 
-        :param assign1: an assignation mapper object
+        :param assign1: an assignation proxy object
         :type assign1: AssignationProxy
-        :param assign2: an assignation mapper object
+        :param assign2: an assignation proxy object
         :type assign2: AssignationProxy
 
         :rtype: Boolean
@@ -48,7 +48,7 @@ class AssignationOperator(object):
         """
         To check how many assigns are neighbor of the given assign
 
-        :param assign: an assignation mapper object
+        :param assign: an assignation proxy object
         :type assign: AssignationProxy
         :param assigns: An iterator of assigns to check
         :type assigns: Iterator
@@ -121,9 +121,9 @@ class AssignationOperator(object):
         """
         To check if two assignments are compatible to be joined
 
-        :param assign1: An assign mapper object
+        :param assign1: An assign proxy object
         :type assign1: AssignationProxy
-        :param assign2: An assign mapper object
+        :param assign2: An assign proxy object
         :type assign2: AssignationProxy
 
         :rtype: Boolean
@@ -159,9 +159,9 @@ class AssignationOperator(object):
         we considerer that are compatible and are intersection or
         next to the other
 
-        :param assign1: An assign mapper object
+        :param assign1: An assign proxy object
         :type assign1: AssignationProxy
-        :param assign2: An assign mapper object
+        :param assign2: An assign proxy object
         :type assign2: AssignationProxy
 
         :rtype: Boolean
@@ -175,7 +175,7 @@ class AssignationOperator(object):
         """
         To check of how many assigns are compatable with the given assign
 
-        :param assign: An assign mapper object
+        :param assign: An assign proxy object
         :type assign: AssignationProxy
         :param assigns: A list of assigns
         :type assigns: Iterator
@@ -214,7 +214,7 @@ class AssignationOperator(object):
         Get all the other canididates and the best canidate from a given
         list of assignments
 
-        :param assign: An assign mapper object
+        :param assign: An assign proxy object
         :type assign: AssignationProxy
         :param assigns: A list of assigns
         :type assigns: Iterator
@@ -236,7 +236,7 @@ class AssignationOperator(object):
         """
         To simulate an start_day in an specific date
 
-        :param assign: An assign mapper object
+        :param assign: An assign proxy object
         :type assign: AssignationProxy
         :param date_obj: The date which want to simulate
         :type date_obj: date
@@ -261,7 +261,7 @@ class AssignationOperator(object):
         """
         To create a deep copy of a given assign
 
-        :param assign: An assign mapper object
+        :param assign: An assign proxy object
         :type assign: AssignationProxy
 
         :rtype: AssignationProxy
@@ -279,7 +279,7 @@ class AssignationOperator(object):
         """
         Function to remove a range from a given assignation
 
-        :param assign: An assign mapper object
+        :param assign: An assign proxy object
         :type assign: AssignationProxy
         :param starting_date: The starting date from
             where you want to start removing
