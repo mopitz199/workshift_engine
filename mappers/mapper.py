@@ -7,7 +7,7 @@ class Mapper(object):
 
         * obj: Is the object that we want to map
         * attr_mapping: Is a dict that has the map to access
-        to an attr of the obj, from a different name
+          to an attr of the obj, from a different name
 
     For get an attr, it will try to get thet attr directly in
     the mapper and if it can't it will try to get it from the obj
