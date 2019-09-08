@@ -44,3 +44,36 @@ class RangeOperator:
             return copy_range
         else:
             return r1
+
+    @staticmethod
+    def eat_ranges(main_range, list_ranges):
+        list_main_range_before = list_ranges
+        list_main_range_after = None
+        while(list_main_range_before != list_main_range_after):
+            if list_main_range_after is not None:
+                list_main_range_before = copy.deepcopy(list_main_range_after)
+
+            list_main_range_after = []
+            for r in list_main_range_before:
+                if RangeOperator.are_neighbors(main_range, r):
+                    main_range += r
+                else:
+                    list_main_range_after.append(r)
+
+        return main_range, list_main_range_after
+
+    @staticmethod
+    def compress_range_list(range_list):
+        range_list = copy.deepcopy(range_list)
+        response = []
+        while range_list:
+            main_range = range_list[0]
+            range_list.remove(main_range)
+
+            main_range, range_list = RangeOperator.eat_ranges(
+                main_range,
+                range_list)
+
+            response.append(main_range)
+
+        return response

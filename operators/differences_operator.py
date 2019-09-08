@@ -119,4 +119,11 @@ class DifferencesOperator(object):
                 total[person_id] = []
             total[person_id].append(assign.range_obj)
 
-        return total
+        return self.compress_differences(total)
+
+    def compress_differences(self, differences):
+        response = {}
+        for key in differences:
+            range_list = differences[key]
+            response[key] = RangeOperator.compress_range_list(range_list)
+        return response

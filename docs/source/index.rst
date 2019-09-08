@@ -71,6 +71,20 @@ For unassign:
     fake_assignation_proxy = ProxyFactory.create_assignation_proxy(fake_assignation)
     assignation_db.unassign(fake_assignation_proxy)
 
+The *'start_day'* must be setted with the correct value according to the *'starting_date'*.
+
+Finally after all your assign and unassign, you can get the difference between the begining state
+of assignations and the current one. This is in order to check collisions. Something that
+will discuss later
+
+To do that, just do:
+
+.. code-block:: python
+
+    from operators.differences_operator import DifferencesOperator
+    differences_operator = DifferencesOperator(assignation_db)
+    resp = differences_operator.process_differences()
+
 .. toctree::
    :maxdepth: 1
    :caption: Contents:

@@ -66,7 +66,7 @@ class AssignationDB(DB):
             for other in others:
                 best += other
                 self.remove(other)
-            if best.has_change:
+            if best.has_change():
                 self.update(best)
         else:
             self.add(new_assign)

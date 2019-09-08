@@ -46,6 +46,12 @@ class Range(object):
         return (self.starting_date == other.starting_date and
                 self.ending_date == other.ending_date)
 
+    def __ne__(self, other):
+        if self == other:
+            return False
+        else:
+            return True
+
     def __add__(self, other_range):
         if RangeOperator.are_neighbors(self, other_range):
 
