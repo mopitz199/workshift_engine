@@ -71,7 +71,7 @@ class CycleToWeeklyColission(object):
     def check_current_colision(self, current_day_name, main_range):
         current_range = self.weekly_facade.range_obj_from_day_name(
                     current_day_name,
-                    self.base_prev_date)
+                    self.base_current_date)
 
         if not current_range:
             return False
@@ -82,7 +82,7 @@ class CycleToWeeklyColission(object):
         next_day_name = self.weekly_facade.get_next_day_name(current_day_name)
         next_range = self.weekly_facade.range_obj_from_day_name(
                     next_day_name,
-                    self.base_prev_date)
+                    self.base_next_date)
 
         if not next_range:
             return False
