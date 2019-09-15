@@ -57,6 +57,40 @@ class CycleToWeeklyColission(object):
 
         return week
 
+    def cycle_day_full_revision(self, begining_date):
+        ending_date = self.cycle_facade.get_ending_date()
+        total_days = self.cycle_facade.get_total_days()
+
+        week = {
+            'monday': [],
+            'tuesday': [],
+            'wednesday': [],
+            'thursday': [],
+            'friday': [],
+            'saturday': [],
+            'sunday': []
+        }
+
+        mapping = {
+            '0': 'monday',
+            '1': 'tuesday',
+            '2': 'wednesday',
+            '3': 'thursday',
+            '4': 'friday',
+            '5': 'saturday',
+            '6': 'sunday'
+        }
+
+        current_date = begining_date
+        while current_date <= ending_date:
+            weekday = current_date.weekday()
+            weekday_str = "{}".format(weekday)
+            weekday_name = mapping[weekday_str]
+            week[weekday_name].append(current_date)
+            current_date += timedelta(days=total_days)
+
+        return week
+
     def check_prev_colision(self, current_day_name, main_range):
         prev_day_name = self.weekly_facade.get_prev_day_name(current_day_name)
         prev_range = self.weekly_facade.range_obj_from_day_name(
@@ -117,7 +151,9 @@ class CycleToWeeklyColission(object):
                     day_number)
 
                 week_revision = self.cycle_day_revision(begining_date)
-
+                week_full_revision = self.cycle_day_full_revision(
+                    begining_date)
+                import pdb; pdb.set_trace()
                 has_collision = self.check_colisions(main_range, week_revision)
                 if has_collision:
                     return True

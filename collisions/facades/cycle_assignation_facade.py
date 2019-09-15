@@ -12,7 +12,7 @@ class CycleAssignationFacade(object):
         starting_date = self.assignation_data['starting_date']
 
         if starting_day > day_number:
-            day = total_days - starting_day + day_number + 1
+            day = total_days - starting_day + day_number
         else:
             day = day_number - starting_day
 
