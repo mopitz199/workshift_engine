@@ -100,7 +100,7 @@ class CycleToWeeklyColission(object):
                     return True
                 return False
 
-    def cycle_to_weekly_colision(self):
+    def resolve(self):
 
         for day_str in self.cycle_facade.get_days():
             day_number = int(day_str)
