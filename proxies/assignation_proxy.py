@@ -3,7 +3,7 @@ import copy
 from datetime import timedelta
 
 from proxies.base_proxy import Proxy
-from operators.assignation_operator import AssignationOperator
+from assignation.operators.assignation_operator import AssignationOperator
 from utils.range import Range
 
 from database.db_extension import DBExtension

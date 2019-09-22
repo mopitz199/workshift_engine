@@ -1,7 +1,7 @@
 from datetime import datetime
 
 from utils.range import Range
-from operators.range_operator import RangeOperator
+from assignation.operators.range_operator import RangeOperator
 
 
 class TestRangeEatRangeList(object):

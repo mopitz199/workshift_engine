@@ -1,4 +1,4 @@
-from operators.assignation_operator import AssignationOperator
+from assignation.operators.assignation_operator import AssignationOperator
 
 
 class DB(object):

@@ -1,5 +1,5 @@
 Range Operator
 ============================
 
-.. automodule:: operators.range_operator
+.. automodule:: assignation.operators.range_operator
     :members:

@@ -2,7 +2,7 @@ from datetime import datetime
 
 from database.assignation_db import AssignationDB
 from utils.range import Range
-from operators.differences_operator import DifferencesOperator
+from assignation.operators.differences_operator import DifferencesOperator
 from test_utils.utils import create_an_assignation
 
 
@@ -470,10 +470,4 @@ class TestDifferencesOperator(object):
 
         differences_operator = DifferencesOperator(assignation_db)
         resp = differences_operator.process_differences()
-
-        """
-        import pdb; pdb.set_trace()
-
-        assert resp['1'] == [expected1]
-        """
         assert True

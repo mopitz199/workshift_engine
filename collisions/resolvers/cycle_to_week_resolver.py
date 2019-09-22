@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from operators.range_operator import RangeOperator
+from assignation.operators.range_operator import RangeOperator
 from collisions.utils import Util
 
 
@@ -153,7 +153,6 @@ class CycleToWeeklyColission(object):
                 week_revision = self.cycle_day_revision(begining_date)
                 week_full_revision = self.cycle_day_full_revision(
                     begining_date)
-                import pdb; pdb.set_trace()
                 has_collision = self.check_colisions(main_range, week_revision)
                 if has_collision:
                     return True

@@ -2,7 +2,7 @@ import copy
 import pdb
 
 from datetime import timedelta, datetime
-from operators.range_operator import RangeOperator
+from assignation.operators.range_operator import RangeOperator
 from utils.range import Range
 
 

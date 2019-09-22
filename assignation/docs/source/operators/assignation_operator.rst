@@ -6,5 +6,5 @@ The most important methods are:
     * can_be_joined
     * get_candidates
 
-.. automodule:: operators.assignation_operator
+.. automodule:: assignation.operators.assignation_operator
     :members:

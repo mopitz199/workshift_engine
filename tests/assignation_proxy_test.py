@@ -3,7 +3,7 @@ from datetime import datetime
 
 from proxies.assignation_proxy import AssignationProxy
 from utils.range import Range
-from operators.assignation_operator import AssignationOperator
+from assignation.operators.assignation_operator import AssignationOperator
 from test_utils.utils import create_an_assignation
 
 

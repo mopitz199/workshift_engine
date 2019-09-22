@@ -1,6 +1,6 @@
 import copy
-from operators.assignation_operator import AssignationOperator
-from operators.range_operator import RangeOperator
+from assignation.operators.assignation_operator import AssignationOperator
+from assignation.operators.range_operator import RangeOperator
 
 
 class DifferencesOperator(object):
