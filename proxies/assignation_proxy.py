@@ -3,6 +3,7 @@ import copy
 from datetime import timedelta
 
 from proxies.base_proxy import Proxy
+from proxies.workshift_proxy import WorkShiftProxy
 from assignation.operators.assignation_operator import AssignationOperator
 from utils.range import Range
 
@@ -29,6 +30,7 @@ class AssignationProxy(Proxy, DBExtension):
         self.range_obj = Range(self.starting_date, self.ending_date)
         self.init_range = copy.copy(self.range_obj)
         self.init_start_day = getattr(self.obj, 'start_day', None)
+        self.workshift_proxy = WorkShiftProxy(self.workshift)
 
     def __len__(self):
         return len(self.range_obj)

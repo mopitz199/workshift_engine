@@ -23,32 +23,21 @@ class CycleToWeeklyColission(object):
         total_days = self.cycle_facade.get_total_days()
 
         week = {
-            'monday': False,
-            'tuesday': False,
-            'wednesday': False,
-            'thursday': False,
-            'friday': False,
-            'saturday': False,
-            'sunday': False
-        }
-
-        mapping = {
-            '0': 'monday',
-            '1': 'tuesday',
-            '2': 'wednesday',
-            '3': 'thursday',
-            '4': 'friday',
-            '5': 'saturday',
-            '6': 'sunday'
+            '0': False,
+            '1': False,
+            '2': False,
+            '3': False,
+            '4': False,
+            '5': False,
+            '6': False
         }
 
         current_date = begining_date
         while current_date <= ending_date:
             weekday = current_date.weekday()
             weekday_str = "{}".format(weekday)
-            weekday_name = mapping[weekday_str]
-            if not week[weekday_name]:
-                week[weekday_name] = True
+            if not week[weekday_str]:
+                week[weekday_str] = True
 
             if self.week_is_full(week):
                 return week
@@ -62,31 +51,20 @@ class CycleToWeeklyColission(object):
         total_days = self.cycle_facade.get_total_days()
 
         week = {
-            'monday': [],
-            'tuesday': [],
-            'wednesday': [],
-            'thursday': [],
-            'friday': [],
-            'saturday': [],
-            'sunday': []
-        }
-
-        mapping = {
-            '0': 'monday',
-            '1': 'tuesday',
-            '2': 'wednesday',
-            '3': 'thursday',
-            '4': 'friday',
-            '5': 'saturday',
-            '6': 'sunday'
+            '0': [],
+            '1': [],
+            '2': [],
+            '3': [],
+            '4': [],
+            '5': [],
+            '6': []
         }
 
         current_date = begining_date
         while current_date <= ending_date:
             weekday = current_date.weekday()
             weekday_str = "{}".format(weekday)
-            weekday_name = mapping[weekday_str]
-            week[weekday_name].append(current_date)
+            week[weekday_str].append(current_date)
             current_date += timedelta(days=total_days)
 
         return week
@@ -136,19 +114,17 @@ class CycleToWeeklyColission(object):
 
     def resolve(self):
 
-        for day_str in self.cycle_facade.get_days():
-            day_number = int(day_str)
-            main_day_data = self.cycle_facade.get_day_data(day_str)
+        for main_day in self.cycle_facade.get_days():
 
-            if main_day_data['starting_time'] is not None and main_day_data['ending_time'] is not None:
+            if main_day.starting_time is not None and main_day.ending_time is not None:
                 main_range = Util.create_range(
-                    main_day_data['starting_time'],
-                    main_day_data['ending_time'],
+                    main_day.starting_time,
+                    main_day.ending_time,
                     self.base_current_date
                 )
 
                 begining_date = self.cycle_facade.get_first_date_of_day_number(
-                    day_number)
+                    main_day.day_number)
 
                 week_revision = self.cycle_day_revision(begining_date)
                 week_full_revision = self.cycle_day_full_revision(

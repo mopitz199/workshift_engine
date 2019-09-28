@@ -13,17 +13,18 @@ class WorkShiftProxy(Proxy):
         super(WorkShiftProxy, self).__init__(obj)
 
     def get_dict_days(self):
-        days = self.days
+        days = self.get_days()
         response = {}
         for day in days:
             if self.workshift_type == 'weekly':
-                key = day.number_day
+                key = "{}".format(day.day_number)
             elif self.workshift_type == 'cyclic':
-                pass
+                key = "{}".format(day.day_number)
             elif self.workshift_type == 'manually':
-                pass
+                key = "{}".format(day.date)
             else:
                 raise Exception('Unknown workshift type')
-            
-            
-            response
+
+            response[key] = day
+
+        return response

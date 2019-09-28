@@ -1,4 +1,5 @@
 from proxies.assignation_proxy import AssignationProxy
+from proxies.workshift_proxy import WorkShiftProxy
 
 
 class ProxyFactory(object):
