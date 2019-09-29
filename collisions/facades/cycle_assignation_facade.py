@@ -25,8 +25,5 @@ class CycleAssignationFacade(object):
     def get_days(self):
         return self.assignation.workshift_proxy.get_days()
 
-    def get_ending_date(self):
-        return self.assignation.ending_date
-
     def get_total_days(self):
         return self.assignation.workshift_proxy.total_days
