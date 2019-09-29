@@ -470,4 +470,9 @@ class TestDifferencesOperator(object):
 
         differences_operator = DifferencesOperator(assignation_db)
         resp = differences_operator.process_differences()
-        assert True
+
+        expected = Range(
+            datetime(2019, 2, 13).date(),
+            datetime(2019, 2, 17).date())
+
+        assert resp['1'] == [expected]
