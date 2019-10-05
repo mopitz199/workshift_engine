@@ -42,13 +42,29 @@ This model should represent a day structure of an specific workshift. Their attr
 
     * **starting_time:** the time where the person should work that day
     * **ending_time:** the time whefre the person should leave the work that day
-    * **day_number:** a string number that represent
+    * **day_number:** a string number that represent the day order in the specific work shift
 
 So in summary these models must represent an ERM like this:
 
 .. image:: erm_workshift_engine.png
 
 
+So after you understand which objects and how their structure should be, we are ready to keep going with this tutorial.
+
+As you can see in the ERM, we can access to every model from the *Assignation* model. So from here we will use just the *Assignation* model.
+
+
+For this model we will use a Proxy, so if you want to make you *Assignation* model compatible with the work shift engine, you must create a Proxy.
+
+.. code-block:: python
+
+    from proxies.proxy_factory import ProxyFactory
+
+    assignations = MyAssignationModel.objects.all()
+
+    assignation_proxies = ProxyFactory.create_multiple_assignation_proxies(assignations)
+
+We're done with the first part, now that we have all our *Proxy Assignations* we are ready to use all the work shift engine services! :D
 
 .. toctree::
    :maxdepth: 1
