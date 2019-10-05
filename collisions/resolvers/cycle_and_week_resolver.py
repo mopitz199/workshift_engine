@@ -7,9 +7,9 @@ from collisions.utils import Util
 class CycleToWeeklyColission(object):
 
     def __init__(self, cycle_facade, weekly_facade):
-        self.base_prev_date = datetime(2000, 5, 5).date()
-        self.base_current_date = datetime(2000, 5, 6).date()
-        self.base_next_date = datetime(2000, 5, 7).date()
+        self.base_prev_date = datetime(2000, 5, 5)
+        self.base_current_date = datetime(2000, 5, 6)
+        self.base_next_date = datetime(2000, 5, 7)
         self.cycle_facade = cycle_facade
         self.weekly_facade = weekly_facade
 
@@ -122,6 +122,7 @@ class CycleToWeeklyColission(object):
                 week_revision = self.cycle_week_day_revision(begining_date)
                 week_full_revision = self.cycle_week_day_full_revision(
                     begining_date)
+
                 has_collision = self.check_colisions(main_range, week_revision)
                 if has_collision:
                     return True
