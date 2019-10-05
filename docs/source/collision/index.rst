@@ -14,7 +14,7 @@ to getting started and use this package, we must have an *'Assignation model'* w
     * **workshift_id:** the workshift_id related to this assignation
     * **start_day:** is an offset, is the number from where the assignation is valid
 
-Where *'person'* and *'workshift'* are relations. Also you'll need a *'Workshift model'* with at least this attribute:
+Where *'person'* and *'workshift'* are relations. Also you'll need a *'WorkShift model'* with at least this attribute:
 
     * **total_workshift_days:** the number of days that a workshift cycle lasts
 
@@ -25,7 +25,7 @@ An this methods:
     * **get_days():** Get a list of the days
 
 Services
-####################
+########
 
 .. toctree::
     :maxdepth: 1

@@ -12,6 +12,8 @@ def cycle_and_weekly_collision(assignation1, assignation2, detail=False):
     :type assignation1: AssignationProxy
     :param assignation2: A weekly assignation proxy
     :type assignation2: AssignationProxy
+    :param detail: If you can to calculate the specific dates of collisions
+    :type detail: bool
     :return: If has some collision or not and also the detail if the collision if it has
     :rtype: bool, dict
     """

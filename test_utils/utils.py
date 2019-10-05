@@ -10,7 +10,7 @@ class DumbAssignation(object):
             setattr(self, kwarg, val)
 
 
-class DumbWorkshift(object):
+class DumbWorkShift(object):
 
     def __init__(self, **kwargs):
         for kwarg in kwargs:
@@ -49,7 +49,7 @@ def create_an_assignation(data):
         day = DumbDay(**day_data)
         days.append(day)
 
-    workshift = DumbWorkshift(**workshift_data)
+    workshift = DumbWorkShift(**workshift_data)
     workshift.days = days
     assignation.workshift = workshift
 

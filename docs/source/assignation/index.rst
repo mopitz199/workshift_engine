@@ -1,8 +1,8 @@
 Assignations
-============================================
+====================
 
 Getting started
-###############
+#################
 
 to getting started and use this package, we must have an *'Assignation model'* with at least these attributes:
 
@@ -14,14 +14,14 @@ to getting started and use this package, we must have an *'Assignation model'* w
     * **workshift_id:** the workshift_id related to this assignation
     * **start_day:** is an offset, is the number from where the assignation is valid
 
-Where *'person'* and *'workshift'* are relations. Also you'll need a *'Workshift model'* with at least this attribute:
+Where *'person'* and *'workshift'* are relations. Also you'll need a *'WorkShift model'* with at least this attribute:
 
     * **total_workshift_days:** the number of days that a workshift cycle lasts
 
 This attribute only will be used when the *start_day* attribute has a value(*not None*). Otherwise is must be setted as *None*.
 
 Use it
-####################
+#################
 
 First, we need to create a RAM database with all the assignation proxies. To do that we need to:
 
@@ -80,9 +80,12 @@ To do that, just do:
     differences_operator = DifferencesOperator(assignation_db)
     resp = differences_operator.process_differences()
 
+
+Get deeper
+#################
+
 .. toctree::
    :maxdepth: 1
-   :caption: Contents:
 
    operators/index
    tests/index

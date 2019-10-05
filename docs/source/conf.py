@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath('../../'))
 
 # -- Project information -----------------------------------------------------
 
-project = u'Workshift Engine'
+project = u'WorkShift Engine'
 copyright = u'2019, Maximiliano Opitz Turra'
 author = u'Maximiliano Opitz Turra'
 
@@ -104,7 +104,7 @@ html_static_path = []
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'WorkshiftEnginedoc'
+htmlhelp_basename = 'WorkShiftEnginedoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -131,7 +131,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'WorkshiftEngine.tex', u'Workshift Engine Documentation',
+    (master_doc, 'WorkShiftEngine.tex', u'WorkShift Engine Documentation',
      u'Maximiliano Opitz Turra', 'manual'),
 ]
 
@@ -141,7 +141,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'workshiftengine', u'Workshift Engine Documentation',
+    (master_doc, 'workshiftengine', u'WorkShift Engine Documentation',
      [author], 1)
 ]
 
@@ -152,8 +152,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'WorkshiftEngine', u'Workshift Engine Documentation',
-     author, 'WorkshiftEngine', 'One line description of project.',
+    (master_doc, 'WorkShiftEngine', u'WorkShift Engine Documentation',
+     author, 'WorkShiftEngine', 'One line description of project.',
      'Miscellaneous'),
 ]
 
