@@ -116,7 +116,7 @@ class TestServices(object):
         }
         assignation2 = create_an_assignation(assignation2)
 
-        assert cycle_and_weekly_collision(assignation1, assignation2)
+        assert cycle_and_weekly_collision(assignation1, assignation2)[0]
 
     def test_cycle_and_weekly_collision2(self):
 
@@ -209,7 +209,7 @@ class TestServices(object):
         }
         assignation2 = create_an_assignation(assignation2)
 
-        assert not cycle_and_weekly_collision(assignation1, assignation2)
+        assert not cycle_and_weekly_collision(assignation1, assignation2)[0]
 
     def test_cycle_and_weekly_collision3(self):
 
@@ -302,7 +302,7 @@ class TestServices(object):
         }
         assignation2 = create_an_assignation(assignation2)
 
-        assert not cycle_and_weekly_collision(assignation1, assignation2)
+        assert not cycle_and_weekly_collision(assignation1, assignation2)[0]
 
     def test_cycle_and_weekly_collision4(self):
 
@@ -397,7 +397,7 @@ class TestServices(object):
         }
         assignation2 = create_an_assignation(assignation2)
 
-        assert cycle_and_weekly_collision(assignation1, assignation2)
+        assert cycle_and_weekly_collision(assignation1, assignation2)[0]
 
     def test_cycle_and_weekly_collision5(self):
 
@@ -492,7 +492,7 @@ class TestServices(object):
         }
         assignation2 = create_an_assignation(assignation2)
 
-        assert not cycle_and_weekly_collision(assignation1, assignation2)
+        assert not cycle_and_weekly_collision(assignation1, assignation2)[0]
 
     def test_cycle_and_weekly_collision6(self):
 
@@ -587,4 +587,4 @@ class TestServices(object):
         }
         assignation2 = create_an_assignation(assignation2)
 
-        assert cycle_and_weekly_collision(assignation1, assignation2)
+        assert cycle_and_weekly_collision(assignation1, assignation2)[0]

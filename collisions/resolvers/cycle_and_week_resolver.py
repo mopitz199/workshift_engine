@@ -106,7 +106,7 @@ class CycleToWeeklyColission(object):
                 return True
             return False
 
-    def resolve(self):
+    def resolve(self, detail=False):
         for day in self.cycle_facade.get_days():
             day_facade = DayFacade(day)
             if day_facade.is_working_day():
@@ -120,10 +120,13 @@ class CycleToWeeklyColission(object):
                     day.day_number)
 
                 week_revision = self.cycle_week_day_revision(begining_date)
-                week_full_revision = self.cycle_week_day_full_revision(
-                    begining_date)
+
+                week_full_revision = {}
+                if detail:
+                    week_full_revision = self.cycle_week_day_full_revision(
+                        begining_date)
 
                 has_collision = self.check_colisions(main_range, week_revision)
                 if has_collision:
-                    return True
-        return False
+                    return True, week_full_revision
+        return False, week_full_revision
