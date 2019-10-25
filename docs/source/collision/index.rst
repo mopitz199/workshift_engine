@@ -1,6 +1,9 @@
 Collisions
 ============================================
 
+Hello! This section is to check if two assignation has any collision between their
+schedule.
+
 Services
 --------
 
