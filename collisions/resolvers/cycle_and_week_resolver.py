@@ -35,7 +35,7 @@ class CycleToWeeklyColission(object):
             if self.week_is_full(week_days):
                 return week_days
 
-            current_date += timedelta(days=total_days+1)
+            current_date += timedelta(days=total_days)
 
         return week_days
 
@@ -96,15 +96,23 @@ class CycleToWeeklyColission(object):
 
         return RangeOperator.are_intersection(next_range, main_range)
 
-    def check_colisions(self, main_range, week_revision):
+    def get_colisions(self, main_range, week_revision):
+        day_names = []
         for day_name in week_revision:
             if self.check_prev_colision(day_name, main_range):
-                return True
-            if self.check_current_colision(day_name, main_range):
-                return True
-            if self.check_next_colision(day_name, main_range):
-                return True
-            return False
+                prev_day_name = self.weekly_facade.get_prev_day_number(
+                    day_name)
+                if prev_day_name not in day_names:
+                    day_names.append(prev_day_name)
+            elif self.check_current_colision(day_name, main_range):
+                if day_name not in day_names:
+                    day_names.append(day_name)
+            elif self.check_next_colision(day_name, main_range):
+                next_day_name = self.weekly_facade.get_next_day_number(
+                    day_name)
+                if next_day_name not in day_names:
+                    day_names.append(next_day_name)
+        return day_names
 
     def resolve(self, detail=False):
         for day in self.cycle_facade.get_days():
@@ -120,13 +128,13 @@ class CycleToWeeklyColission(object):
                     day.day_number)
 
                 week_revision = self.cycle_week_day_revision(begining_date)
-
                 week_full_revision = {}
                 if detail:
                     week_full_revision = self.cycle_week_day_full_revision(
                         begining_date)
 
-                has_collision = self.check_colisions(main_range, week_revision)
-                if has_collision:
+                collisions = self.get_colisions(main_range, week_revision)
+                import pdb; pdb.set_trace()
+                if collisions:
                     return True, week_full_revision
         return False, week_full_revision

@@ -1,6 +1,3 @@
-import pdb
-
-
 class Proxy(object):
     """
     This class allow us to proxy any object.

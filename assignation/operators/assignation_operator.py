@@ -1,5 +1,4 @@
 import copy
-import pdb
 
 from datetime import timedelta, datetime
 from assignation.operators.range_operator import RangeOperator
