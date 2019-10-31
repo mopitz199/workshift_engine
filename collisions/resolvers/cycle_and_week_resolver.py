@@ -114,6 +114,14 @@ class CycleToWeeklyColission(object):
                     day_names.append(next_day_name)
         return day_names
 
+    def process_collision_detail(self, collisions, week_full_revision):
+        detail = {}
+        for day_name in collisions:
+            dates = week_full_revision.get(day_name, [])
+            if dates:
+                detail[day_name] = dates
+        return detail
+
     def resolve(self, detail=False):
         for day in self.cycle_facade.get_days():
             day_facade = DayFacade(day)
@@ -134,7 +142,13 @@ class CycleToWeeklyColission(object):
                         begining_date)
 
                 collisions = self.get_colisions(main_range, week_revision)
-                import pdb; pdb.set_trace()
+
+                collisions_detail = {}
+                if detail:
+                    collisions_detail = self.process_collision_detail(
+                        collisions,
+                        week_full_revision)
+
                 if collisions:
-                    return True, week_full_revision
-        return False, week_full_revision
+                    return True, collisions_detail
+        return False, collisions_detail

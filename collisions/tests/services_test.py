@@ -595,7 +595,7 @@ class TestServices(object):
             'assignation': {
                 'starting_day': 0,
                 'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 28).date(),
+                'ending_date': datetime(2019, 9, 10).date(),
             },
             'workshift': {
                 'total_days': 2,
@@ -640,7 +640,7 @@ class TestServices(object):
                     {
                         'day_number': 1,
                         'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
+                            '18:00', '%H:%M').time(),
                         'ending_time': datetime.strptime(
                             '19:00', '%H:%M').time()
                     },
