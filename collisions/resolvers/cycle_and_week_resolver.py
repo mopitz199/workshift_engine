@@ -105,6 +105,18 @@ class CycleToWeeklyColission(object):
                 return True
         return False
 
+    def filter_dates(self, dates, collision_type):
+        ending_date = self.cycle_facade.assignation.ending_date
+        starting_date = self.cycle_facade.assignation.starting_date
+
+        if collision_type == 'previous':
+            return list(filter(lambda d: d > starting_date, dates))
+
+        if collision_type == 'next':
+            return list(filter(lambda d: d < ending_date, dates))
+
+        return dates
+
     def get_collision_detail(self, main_range, week_full_revision):
         day_names = {}
         for day_name in week_full_revision:
@@ -112,9 +124,13 @@ class CycleToWeeklyColission(object):
             if self.check_prev_colision(day_name, main_range):
                 prev_day_name = self.weekly_facade.get_prev_day_number(
                     day_name)
-                if prev_day_name not in day_names:
-                    day_names[prev_day_name] = []
-                day_names[prev_day_name] += dates
+
+                dates = self.filter_dates(dates, 'previous')
+                if dates:
+                    if prev_day_name not in day_names:
+                        day_names[prev_day_name] = []
+                    day_names[prev_day_name] += dates
+
             if self.check_current_colision(day_name, main_range):
                 if day_name not in day_names:
                     day_names[day_name] = []
@@ -122,12 +138,19 @@ class CycleToWeeklyColission(object):
             if self.check_next_colision(day_name, main_range):
                 next_day_name = self.weekly_facade.get_next_day_number(
                     day_name)
-                if next_day_name not in day_names:
-                    day_names[next_day_name] = []
-                day_names[next_day_name] += dates
+
+                dates = self.filter_dates(dates, 'next')
+                if dates:
+                    if next_day_name not in day_names:
+                        day_names[next_day_name] = []
+                    day_names[next_day_name] += dates
+
+            # import pdb; pdb.set_trace()
         return day_names
 
     def resolve(self, detail=False):
+        collision_detail = {}
+        has_collisions = False
         for day in self.cycle_facade.get_days():
             day_facade = DayFacade(day)
             if day_facade.is_working_day():
@@ -150,16 +173,20 @@ class CycleToWeeklyColission(object):
                     week_full_revision = self.cycle_week_day_full_revision(
                         begining_date)
 
-                collision_detail = None
                 if detail:
                     # Get the collsion detail of each cycle date
-                    collision_detail = self.get_collision_detail(
+                    collision_day_detail = self.get_collision_detail(
                         cycle_day_range,
                         week_full_revision)
+                    day_str_number = "{}".format(day.day_number)
+                    collision_detail[day_str_number] = collision_day_detail
 
                 # Get a ligher way to check if there's some collision
                 collisions = self.has_collision(cycle_day_range, week_revision)
 
-                if collisions:
+                if collisions and not has_collisions:
+                    has_collisions = True
+
+                if has_collisions and not detail:
                     return True, collision_detail
-        return False, collision_detail
+        return has_collisions, collision_detail
