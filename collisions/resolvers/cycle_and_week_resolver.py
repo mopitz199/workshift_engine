@@ -46,15 +46,14 @@ class CycleToWeeklyColission(object):
         ending_date = self.cycle_facade.assignation.ending_date
         total_days = self.cycle_facade.get_total_days()
 
-        week = {
-            '0': [], '1': [], '2': [],
-            '3': [], '4': [], '5': [],
-            '6': []}
-
+        week = {}
         current_date = begining_date
         while current_date <= ending_date:
             weekday = current_date.weekday()
             weekday_str = "{}".format(weekday)
+            if weekday_str not in week:
+                week[weekday_str] = []
+
             week[weekday_str].append(current_date)
             current_date += timedelta(days=total_days)
 
@@ -96,37 +95,44 @@ class CycleToWeeklyColission(object):
 
         return RangeOperator.are_intersection(next_range, main_range)
 
-    def get_colisions(self, main_range, week_revision):
-        day_names = []
+    def has_collision(self, main_range, week_revision):
         for day_name in week_revision:
+            if self.check_prev_colision(day_name, main_range):
+                return True
+            if self.check_current_colision(day_name, main_range):
+                return True
+            if self.check_next_colision(day_name, main_range):
+                return True
+        return False
+
+    def get_collision_detail(self, main_range, week_full_revision):
+        day_names = {}
+        for day_name in week_full_revision:
+            dates = week_full_revision[day_name]
             if self.check_prev_colision(day_name, main_range):
                 prev_day_name = self.weekly_facade.get_prev_day_number(
                     day_name)
                 if prev_day_name not in day_names:
-                    day_names.append(prev_day_name)
-            elif self.check_current_colision(day_name, main_range):
+                    day_names[prev_day_name] = []
+                day_names[prev_day_name] += dates
+            if self.check_current_colision(day_name, main_range):
                 if day_name not in day_names:
-                    day_names.append(day_name)
-            elif self.check_next_colision(day_name, main_range):
+                    day_names[day_name] = []
+                day_names[day_name] += dates
+            if self.check_next_colision(day_name, main_range):
                 next_day_name = self.weekly_facade.get_next_day_number(
                     day_name)
                 if next_day_name not in day_names:
-                    day_names.append(next_day_name)
+                    day_names[next_day_name] = []
+                day_names[next_day_name] += dates
         return day_names
-
-    def process_collision_detail(self, collisions, week_full_revision):
-        detail = {}
-        for day_name in collisions:
-            dates = week_full_revision.get(day_name, [])
-            if dates:
-                detail[day_name] = dates
-        return detail
 
     def resolve(self, detail=False):
         for day in self.cycle_facade.get_days():
             day_facade = DayFacade(day)
             if day_facade.is_working_day():
-                main_range = Util.create_range(
+
+                cycle_day_range = Util.create_range(
                     day.starting_time,
                     day.ending_time,
                     self.base_current_date
@@ -135,20 +141,25 @@ class CycleToWeeklyColission(object):
                 begining_date = self.cycle_facade.get_first_date_of_day_number(
                     day.day_number)
 
+                # Get which days of a week are use by the cycle assignation
                 week_revision = self.cycle_week_day_revision(begining_date)
+
+                # The same as week revision but with the detail of each cycle date
                 week_full_revision = {}
                 if detail:
                     week_full_revision = self.cycle_week_day_full_revision(
                         begining_date)
 
-                collisions = self.get_colisions(main_range, week_revision)
-
-                collisions_detail = {}
+                collision_detail = None
                 if detail:
-                    collisions_detail = self.process_collision_detail(
-                        collisions,
+                    # Get the collsion detail of each cycle date
+                    collision_detail = self.get_collision_detail(
+                        cycle_day_range,
                         week_full_revision)
 
+                # Get a ligher way to check if there's some collision
+                collisions = self.has_collision(cycle_day_range, week_revision)
+
                 if collisions:
-                    return True, collisions_detail
-        return False, collisions_detail
+                    return True, collision_detail
+        return False, collision_detail
