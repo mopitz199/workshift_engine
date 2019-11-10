@@ -106,8 +106,8 @@ class CycleToWeeklyColission(object):
         return False
 
     def filter_dates(self, dates, collision_type):
-        ending_date = self.cycle_facade.assignation.ending_date
-        starting_date = self.cycle_facade.assignation.starting_date
+        ending_date = self.weekly_facade.assignation.ending_date
+        starting_date = self.weekly_facade.assignation.starting_date
 
         if collision_type == 'previous':
             return list(filter(lambda d: d > starting_date, dates))

@@ -713,7 +713,6 @@ class TestServices(object):
 
         detail_expected = {
             '0': {
-                '5': [datetime(2019, 9, 1).date()],
                 '3': [datetime(2019, 9, 5).date()],
                 '0': [datetime(2019, 9, 9).date()]
             },
@@ -832,6 +831,119 @@ class TestServices(object):
                 '4': [datetime(2019, 9, 6).date()],
                 '5': [datetime(2019, 9, 6).date()],
                 '1': [datetime(2019, 9, 10).date()]
+            }
+        }
+
+        assert has_collision and detail == detail_expected
+
+    def test_cycle_and_weekly_collision9(self):
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 0,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 10).date(),
+            },
+            'workshift': {
+                'total_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '17:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': datetime.strptime(
+                            '06:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '14:00', '%H:%M').time()
+                    }
+                ]
+            }
+        }
+        assignation1 = create_an_assignation(assignation1)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 8, 31).date(),
+                'ending_date': datetime(2019, 9, 10).date(),
+            },
+            'workshift': {
+                'total_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '19:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': datetime.strptime(
+                            '18:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '19:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': datetime.strptime(
+                            '19:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '22:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '19:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': datetime.strptime(
+                            '08:30', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '19:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': datetime.strptime(
+                            '22:30', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '08:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': None,
+                        'ending_time': None
+                    }
+                ]
+            }
+        }
+        assignation2 = create_an_assignation(assignation2)
+
+        has_collision, detail = cycle_and_weekly_collision(
+            assignation1,
+            assignation2,
+            detail=True)
+
+        detail_expected = {
+            '0': {
+                '5': [datetime(2019, 9, 1).date()],
+                '3': [datetime(2019, 9, 5).date()],
+                '0': [datetime(2019, 9, 9).date()]
+            },
+            '1': {
+                '0': [datetime(2019, 9, 2).date()],
+                '4': [datetime(2019, 9, 6).date()],
+                '5': [datetime(2019, 9, 8).date()]
             }
         }
 
