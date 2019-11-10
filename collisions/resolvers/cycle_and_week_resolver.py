@@ -107,6 +107,7 @@ class CycleToWeeklyColission(object):
 
     def filter_dates(self, dates, collision_type):
         ending_date = self.weekly_facade.assignation.ending_date
+
         starting_date = self.weekly_facade.assignation.starting_date
 
         if collision_type == 'previous':
@@ -114,6 +115,9 @@ class CycleToWeeklyColission(object):
 
         if collision_type == 'next':
             return list(filter(lambda d: d < ending_date, dates))
+
+        if collision_type == 'current':
+            return list(filter(lambda d: d <= ending_date, dates))
 
         return dates
 
@@ -132,9 +136,12 @@ class CycleToWeeklyColission(object):
                     day_names[prev_day_name] += dates
 
             if self.check_current_colision(day_name, main_range):
-                if day_name not in day_names:
-                    day_names[day_name] = []
-                day_names[day_name] += dates
+                dates = self.filter_dates(dates, 'current')
+                if dates:
+                    if day_name not in day_names:
+                        day_names[day_name] = []
+                    day_names[day_name] += dates
+
             if self.check_next_colision(day_name, main_range):
                 next_day_name = self.weekly_facade.get_next_day_number(
                     day_name)
@@ -145,7 +152,6 @@ class CycleToWeeklyColission(object):
                         day_names[next_day_name] = []
                     day_names[next_day_name] += dates
 
-            # import pdb; pdb.set_trace()
         return day_names
 
     def resolve(self, detail=False):
