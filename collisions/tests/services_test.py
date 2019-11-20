@@ -1173,3 +1173,123 @@ class TestServices(object):
         }
 
         assert has_collision and detail == detail_expected
+
+    def test_cycle_and_weekly_collision12(self):
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 0,
+                'starting_date': datetime(2019, 9, 2).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+            },
+            'workshift': {
+                'total_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '17:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': datetime.strptime(
+                            '07:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '16:00', '%H:%M').time()
+                    }
+                ]
+            }
+        }
+        assignation1 = create_an_assignation(assignation1)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+            },
+            'workshift': {
+                'total_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '19:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': datetime.strptime(
+                            '22:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '10:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': datetime.strptime(
+                            '11:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '14:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '19:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': datetime.strptime(
+                            '08:30', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '19:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': datetime.strptime(
+                            '22:30', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '08:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': datetime.strptime(
+                            '22:30', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '08:00', '%H:%M').time()
+                    }
+                ]
+            }
+        }
+        assignation2 = create_an_assignation(assignation2)
+
+        has_collision, detail = cycle_and_weekly_collision(
+            assignation1,
+            assignation2,
+            detail=True)
+
+        detail_expected = {
+            '0': {
+                '6': [datetime(2019, 9, 2).date()],
+                '0': [datetime(2019, 9, 2).date()],
+                '1': [datetime(2019, 9, 4).date()],
+                '2': [datetime(2019, 9, 4).date()],
+                '4': [datetime(2019, 9, 6).date()],
+                '5': [datetime(2019, 9, 8).date()]
+            },
+            '1': {
+                '3': [datetime(2019, 9, 5).date()],
+                '6': [datetime(2019, 9, 9).date()],
+                '0': [datetime(2019, 9, 9).date()],
+                '1': [datetime(2019, 9, 11).date()],
+                '2': [datetime(2019, 9, 11).date()]
+            }
+        }
+
+        assert has_collision and detail == detail_expected
