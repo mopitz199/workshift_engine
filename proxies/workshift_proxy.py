@@ -13,6 +13,9 @@ class WorkShiftProxy(Proxy):
         super(WorkShiftProxy, self).__init__(obj)
 
     def get_dict_days(self):
+        """Get days in a dict where the keys are a
+        date or a number day identification"""
+
         days = self.get_days()
         response = {}
         for day in days:

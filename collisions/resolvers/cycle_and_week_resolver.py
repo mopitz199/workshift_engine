@@ -1,5 +1,12 @@
 from datetime import datetime, timedelta
+
+
 from assignation.operators.range_operator import RangeOperator
+from collisions.resolvers.constants import (
+    BASE_PREV_DATE,
+    BASE_CURRENT_DATE,
+    BASE_NEXT_DATE
+)
 from collisions.facades.day_facade import DayFacade
 from collisions.utils import Util
 
@@ -7,9 +14,9 @@ from collisions.utils import Util
 class CycleToWeeklyColission(object):
 
     def __init__(self, cycle_facade, weekly_facade):
-        self.base_prev_date = datetime(2000, 5, 5)
-        self.base_current_date = datetime(2000, 5, 6)
-        self.base_next_date = datetime(2000, 5, 7)
+        self.base_prev_date = BASE_PREV_DATE
+        self.base_current_date = BASE_CURRENT_DATE
+        self.base_next_date = BASE_NEXT_DATE
         self.cycle_facade = cycle_facade
         self.weekly_facade = weekly_facade
 
@@ -170,7 +177,7 @@ class CycleToWeeklyColission(object):
                 begining_date = self.cycle_facade.get_first_date_of_day_number(
                     day.day_number)
 
-                # Get which days of a week are use by the cycle assignation
+                # Get which days of a week are used by the cycle assignation
                 week_revision = self.cycle_week_day_revision(begining_date)
 
                 # The same as week revision but with the detail of each cycle date
