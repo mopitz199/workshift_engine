@@ -7,7 +7,7 @@ from collisions.resolvers.constants import (
     BASE_CURRENT_DATE,
     BASE_NEXT_DATE
 )
-from collisions.facades.day_facade import DayFacade
+from facades.day_facade import DayFacade
 from collisions.utils import Util
 
 

@@ -1,7 +1,8 @@
 from datetime import datetime
+
 from collisions.resolvers.cycle_and_week_resolver import CycleToWeeklyColission
-from collisions.facades.cycle_assignation_facade import CycleAssignationFacade
-from collisions.facades.weekly_assignation_facade import WeeklyAssignationFacade
+from facades.cycle_assignation_facade import CycleAssignationFacade
+from facades.weekly_assignation_facade import WeeklyAssignationFacade
 
 
 def cycle_and_weekly_collision(assignation1, assignation2, detail=False):

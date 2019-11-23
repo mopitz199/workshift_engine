@@ -6,8 +6,8 @@ from collisions.resolvers.constants import (
     BASE_CURRENT_DATE,
     BASE_NEXT_DATE
 )
-from collisions.facades.day_facade import DayFacade
 from collisions.utils import Util
+from facades.day_facade import DayFacade
 
 
 class CycleToManualCollision():
@@ -20,4 +20,7 @@ class CycleToManualCollision():
         self.manual_facade = manual_facade
 
     def resolver(self, detail=False):
-        pass
+
+        manual_days = self.manual_facade.get_days()
+        for manual_day in manual_days:
+            manual_day_facade = DayFacade(manual_day)
