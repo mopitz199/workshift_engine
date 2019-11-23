@@ -1,7 +1,9 @@
 from collisions.utils import Util
 
+from generic_facades.generic_assignation_facade import GenericAssignationFacade
 
-class WeeklyAssignationFacade(object):
+
+class WeeklyAssignationFacade(GenericAssignationFacade):
 
     def __init__(self, assignation):
         self.assignation = assignation
@@ -29,7 +31,6 @@ class WeeklyAssignationFacade(object):
         starting_time = day.starting_time
         ending_time = day.ending_time
         if starting_time is not None and ending_time is not None:
-
             return Util.create_range(starting_time, ending_time, base_date)
         else:
             return None

@@ -1,10 +1,9 @@
 from datetime import datetime, timedelta
+from generic_facades.generic_assignation_facade import GenericAssignationFacade
+from collisions.utils import Util
 
 
-class CycleAssignationFacade(object):
-
-    def __init__(self, assignation):
-        self.assignation = assignation
+class CycleAssignationFacade(GenericAssignationFacade):
 
     def get_first_date_of_day_number(self, day_number):
         """Get the first date that represent a day number"""
@@ -30,6 +29,24 @@ class CycleAssignationFacade(object):
     def get_total_days(self):
         return self.assignation.workshift_proxy.total_days
 
+    def get_prev_day_number(self, day_number):
+        total_workshift_days = self.assignation.total_workshift_days
+        if day_number >= total_workshift_days:
+            raise Exception('The day number exceeds the limit')
+
+        if day_number > 0:
+            return day_number - 1
+        return 0
+
+    def get_next_day_number(self, day_number):
+        total_workshift_days = self.assignation.total_workshift_days
+        if day_number >= total_workshift_days:
+            raise Exception('The day number exceeds the limit')
+
+        if day_number < total_workshift_days - 1:
+            return day_number + 1
+        return 0
+
     def simulate_starting_day(self, date_obj):
         """
         To simulate an starting_day in an specific date
@@ -52,5 +69,13 @@ class CycleAssignationFacade(object):
             total_days = assign.workshift.total_workshift_days
 
             return (range_days % total_days) or total_days
+        else:
+            return None
+
+    def range_obj_from_day_number(self, cycle_day, base_date):
+        starting_time = cycle_day.starting_time
+        ending_time = cycle_day.ending_time
+        if starting_time is not None and ending_time is not None:
+            return Util.create_range(starting_time, ending_time, base_date)
         else:
             return None

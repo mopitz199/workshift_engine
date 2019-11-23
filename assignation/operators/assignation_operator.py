@@ -2,6 +2,8 @@ import copy
 
 from datetime import timedelta, datetime
 from assignation.operators.range_operator import RangeOperator
+from generic_facades.cycle_assignation_facade import CycleAssignationFacade
+from generic_facades.generic_assignation_facade import GenericAssignationFacade
 from utils.range import Range
 
 
@@ -232,46 +234,13 @@ class AssignationOperator(object):
 
     @staticmethod
     def simulate_starting_day(assign, date_obj):
-        """
-        To simulate an starting_day in an specific date
-
-        :param assign: An assign proxy object
-        :type assign: AssignationProxy
-        :param date_obj: The date which want to simulate
-        :type date_obj: date
-
-        :rtype: Int
-        """
-
-        if assign.starting_day:
-            starting_date = assign.range_obj.starting_date
-            delta = timedelta(days=assign.starting_day - 1)
-            aux_starting_date = starting_date - delta
-
-            range_days = (date_obj - aux_starting_date).days + 1
-            total_days = assign.workshift.total_workshift_days
-
-            return (range_days % total_days) or total_days
-        else:
-            return None
+        facade = CycleAssignationFacade(assign)
+        return facade.simulate_starting_day(date_obj)
 
     @staticmethod
     def copy(assign):
-        """
-        To create a deep copy of a given assign
-
-        :param assign: An assign proxy object
-        :type assign: AssignationProxy
-
-        :rtype: AssignationProxy
-        """
-        copied = copy.copy(assign)
-        copied.obj = copy.deepcopy(assign.obj)
-        copied.range_obj = copy.deepcopy(assign.range_obj)
-        copied.workshift = assign.workshift
-        copied.person = assign.person
-        copied.obj.id = None
-        return copied
+        facade = GenericAssignationFacade(assign)
+        return facade.copy()
 
     @staticmethod
     def remove(assign, starting_date, ending_date):
