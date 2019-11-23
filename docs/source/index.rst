@@ -19,7 +19,7 @@ Assignation Model
     * **person_id:** the person_id related to this assignation
     * **workshift(FK):** the workshift related to this assignation
     * **workshift_id:** the workshift_id related to this assignation
-    * **start_day:** is an offset, is the number from where the assignation is valid
+    * **starting_day:** is an offset, is the number from where the assignation is valid
 
 WorkShift Model
 ----------------
@@ -29,7 +29,7 @@ Also you'll need a *"WorkShift model"* with at least these attributes:
     * **total_workshift_days:** the number of days that a workshift cycle lasts
     * **workshift_type:** the workshift type (weekly, cyclic or manually)
 
-This attribute only will be used when the *"start_day"* attribute has a value(*not None*). Otherwise it must be setted as *None*.
+This attribute only will be used when the *"starting_day"* attribute has a value(*not None*). Otherwise it must be setted as *None*.
 
 An these methods:
 

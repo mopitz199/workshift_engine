@@ -17,7 +17,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 22).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -30,7 +30,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 28).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -52,7 +52,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 22).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -65,7 +65,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 28).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -87,7 +87,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 22).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -100,7 +100,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 28).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 5
+                'starting_day': 5
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -122,7 +122,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 15).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -135,7 +135,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 28).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -157,7 +157,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 15).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 8
+                'starting_day': 8
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -170,7 +170,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 28).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 3
+                'starting_day': 3
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -192,7 +192,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 15).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 8
+                'starting_day': 8
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -215,7 +215,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 15).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 8
+                'starting_day': 8
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -238,7 +238,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 15).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 8
+                'starting_day': 8
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -258,7 +258,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 20).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 8
+                'starting_day': 8
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -287,7 +287,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 15).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 8
+                'starting_day': 8
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -316,7 +316,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 15).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 8
+                'starting_day': 8
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -345,7 +345,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 1, 15).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 8
+                'starting_day': 8
             },
             'workshift': {
                 'total_workshift_days': 8
@@ -374,7 +374,7 @@ class TestAssignationProxyAdd(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 8
+                'starting_day': 8
             },
             'workshift': {
                 'total_workshift_days': 8

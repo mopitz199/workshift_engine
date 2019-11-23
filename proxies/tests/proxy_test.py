@@ -9,7 +9,7 @@ def proxy():
         'assignation': {
             'person': 5,
             'starting_date': datetime(2019, 1, 1).date(),
-            'start_day': 1,
+            'starting_day': 1,
             'ending_date': datetime(2019, 1, 10).date(),
             'workshift_id': 10,
             'fake_attr': 'badAttr'
@@ -65,8 +65,8 @@ class TestSetAttr(object):
     """To test if the set feature works properly as a proxy"""
 
     def test_set_attr1(self, proxy):
-        proxy.start_day = 4
-        assert proxy.obj.start_day == 4
+        proxy.starting_day = 4
+        assert proxy.obj.starting_day == 4
 
     def test_set_attr2(self, proxy):
         proxy.hola = 4

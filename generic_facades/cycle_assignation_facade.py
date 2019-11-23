@@ -32,7 +32,7 @@ class CycleAssignationFacade(object):
 
     def simulate_starting_day(self, date_obj):
         """
-        To simulate an start_day in an specific date
+        To simulate an starting_day in an specific date
 
         :param assign: An assign proxy object
         :type assign: AssignationProxy
@@ -43,9 +43,9 @@ class CycleAssignationFacade(object):
         """
         assign = self.assignation
 
-        if assign.start_day:
+        if assign.starting_day:
             starting_date = assign.range_obj.starting_date
-            delta = timedelta(days=assign.start_day - 1)
+            delta = timedelta(days=assign.starting_day - 1)
             aux_starting_date = starting_date - delta
 
             range_days = (date_obj - aux_starting_date).days + 1

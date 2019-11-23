@@ -17,7 +17,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -33,7 +33,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 20).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 2
+                'starting_day': 2
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -60,7 +60,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 25).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -76,7 +76,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 22).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 5
+                'starting_day': 5
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -103,7 +103,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 25).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -119,7 +119,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 22).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 4
+                'starting_day': 4
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -134,7 +134,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 21).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 6
+                'starting_day': 6
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -165,7 +165,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 15).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -179,7 +179,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 23).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 8
+                'starting_day': 8
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -195,7 +195,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 15).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 4
+                'starting_day': 4
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -210,7 +210,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 23).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 3
+                'starting_day': 3
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -225,7 +225,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 5
+                'starting_day': 5
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -260,7 +260,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 15).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -276,7 +276,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 15).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 4
+                'starting_day': 4
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -291,7 +291,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 18).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 7
+                'starting_day': 7
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -318,7 +318,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 15).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -332,7 +332,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 20).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 2
+                'starting_day': 2
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -348,7 +348,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -362,7 +362,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 20).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 3
+                'starting_day': 3
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -388,7 +388,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 15).date(),
                 'workshift_id': 1,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -402,7 +402,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 20).date(),
                 'workshift_id': 2,
                 'person_id': 1,
-                'start_day': 4
+                'starting_day': 4
             },
             'workshift': {
                 'total_workshift_days': 4,
@@ -418,7 +418,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 14).date(),
                 'workshift_id': 1,
                 'person_id': 1,
-                'start_day': 3
+                'starting_day': 3
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -432,7 +432,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 17).date(),
                 'workshift_id': 2,
                 'person_id': 1,
-                'start_day': 3
+                'starting_day': 3
             },
             'workshift': {
                 'total_workshift_days': 4,
@@ -446,7 +446,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 1,
                 'person_id': 1,
-                'start_day': 5
+                'starting_day': 5
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -460,7 +460,7 @@ class TestDifferencesOperator(object):
                 'ending_date': datetime(2019, 2, 13).date(),
                 'workshift_id': 2,
                 'person_id': 1,
-                'start_day': 4
+                'starting_day': 4
             },
             'workshift': {
                 'total_workshift_days': 4,

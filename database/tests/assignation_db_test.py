@@ -16,7 +16,7 @@ class TestAssignationBuildDatabase(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'total_workshift_days': 8,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -30,7 +30,7 @@ class TestAssignationBuildDatabase(object):
                 'ending_date': datetime(2019, 1, 28).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -51,7 +51,7 @@ class TestAssignationBuildDatabase(object):
                 'ending_date': datetime(2019, 1, 22).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -66,7 +66,7 @@ class TestAssignationBuildDatabase(object):
                 'ending_date': datetime(2019, 1, 28).date(),
                 'workshift_id': 5,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -340,7 +340,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign1 = create_an_assignation(data)
 
@@ -350,7 +350,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign2 = create_an_assignation(data)
 
@@ -373,7 +373,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 20).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign1 = create_an_assignation(data)
 
@@ -384,7 +384,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign2 = create_an_assignation(data)
 
@@ -394,7 +394,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 25).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign3 = create_an_assignation(data)
 
@@ -418,7 +418,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 20).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign1 = create_an_assignation(data)
 
@@ -429,7 +429,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign2 = create_an_assignation(data)
 
@@ -439,7 +439,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 25).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign3 = create_an_assignation(data)
 
@@ -463,7 +463,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign1 = create_an_assignation(data)
 
@@ -474,7 +474,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign2 = create_an_assignation(data)
 
@@ -484,7 +484,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 25).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign3 = create_an_assignation(data)
 
@@ -494,7 +494,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 13).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign4 = create_an_assignation(data)
 
@@ -526,7 +526,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign1 = create_an_assignation(data)
 
@@ -537,7 +537,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign2 = create_an_assignation(data)
 
@@ -547,7 +547,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 25).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign3 = create_an_assignation(data)
 
@@ -557,7 +557,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 13).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign4 = create_an_assignation(data)
 
@@ -567,7 +567,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 14).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign5 = create_an_assignation(data)
 
@@ -597,7 +597,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -611,7 +611,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 3
+                'starting_day': 3
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -624,7 +624,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 25).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 6
+                'starting_day': 6
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -637,7 +637,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 13).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 4
+                'starting_day': 4
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -650,7 +650,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 14).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 5
+                'starting_day': 5
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -683,7 +683,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -697,7 +697,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 3
+                'starting_day': 3
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -710,7 +710,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 25).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 6
+                'starting_day': 6
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -723,7 +723,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 13).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 4
+                'starting_day': 4
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -736,7 +736,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 14).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 8
+                'starting_day': 8
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -774,7 +774,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         assign1 = create_an_assignation(data)
 
@@ -784,7 +784,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 13).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             }}
         fake_assign = create_an_assignation(data)
 
@@ -810,7 +810,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -823,7 +823,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 13).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -852,7 +852,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -865,7 +865,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 13).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 3
+                'starting_day': 3
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -895,7 +895,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -908,7 +908,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -934,7 +934,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -959,7 +959,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 7).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -973,7 +973,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 17).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 3
+                'starting_day': 3
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -989,7 +989,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 8).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 5
+                'starting_day': 5
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1003,7 +1003,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 9).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 7
+                'starting_day': 7
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1017,7 +1017,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 13).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1031,7 +1031,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 15).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 7
+                'starting_day': 7
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1045,7 +1045,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 4).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 2
+                'starting_day': 2
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1059,7 +1059,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 12).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 4
+                'starting_day': 4
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1073,7 +1073,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 10).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1094,7 +1094,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 7).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1108,7 +1108,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 3
+                'starting_day': 3
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1124,7 +1124,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 8).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 5
+                'starting_day': 5
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1138,7 +1138,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 9).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 7
+                'starting_day': 7
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1152,7 +1152,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 13).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1166,7 +1166,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 4).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 2
+                'starting_day': 2
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1180,7 +1180,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 12).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 4
+                'starting_day': 4
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1194,7 +1194,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 10).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 2
+                'starting_day': 2
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1218,7 +1218,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1232,7 +1232,7 @@ class TestAssignationOperatorDatabase(object):
                 'ending_date': datetime(2019, 2, 16).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1257,7 +1257,7 @@ class TestAssignateDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'total_workshift_days': 8,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1271,7 +1271,7 @@ class TestAssignateDatabse(object):
                 'ending_date': datetime(2019, 1, 30).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1292,7 +1292,7 @@ class TestAssignateDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'total_workshift_days': 8,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1306,7 +1306,7 @@ class TestAssignateDatabse(object):
                 'ending_date': datetime(2019, 1, 30).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 7
+                'starting_day': 7
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1328,7 +1328,7 @@ class TestAssignateDatabse(object):
                 'ending_date': datetime(2019, 1, 29).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1354,7 +1354,7 @@ class TestAssignateDatabse(object):
                 'ending_date': datetime(2019, 1, 24).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1377,7 +1377,7 @@ class TestAssignateDatabse(object):
                 'ending_date': datetime(2019, 1, 25).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1400,7 +1400,7 @@ class TestAssignateDatabse(object):
                 'ending_date': datetime(2019, 1, 30).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 7
+                'starting_day': 7
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1423,7 +1423,7 @@ class TestAssignateDatabse(object):
                 'ending_date': datetime(2019, 1, 30).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 6
+                'starting_day': 6
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1446,7 +1446,7 @@ class TestAssignateDatabse(object):
                 'ending_date': datetime(2019, 1, 25).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 6
+                'starting_day': 6
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1469,7 +1469,7 @@ class TestAssignateDatabse(object):
                 'ending_date': datetime(2019, 1, 23).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 3
+                'starting_day': 3
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1484,7 +1484,7 @@ class TestAssignateDatabse(object):
                 'ending_date': datetime(2019, 1, 24).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 4
+                'starting_day': 4
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1507,7 +1507,7 @@ class TestAssignateDatabse(object):
                 'ending_date': datetime(2019, 1, 23).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 4
+                'starting_day': 4
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1522,7 +1522,7 @@ class TestAssignateDatabse(object):
                 'ending_date': datetime(2019, 1, 25).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 5
+                'starting_day': 5
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1547,7 +1547,7 @@ class TestUnassignDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'total_workshift_days': 8,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1561,7 +1561,7 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 1, 30).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1582,7 +1582,7 @@ class TestUnassignDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'total_workshift_days': 8,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1596,7 +1596,7 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 1, 30).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 7
+                'starting_day': 7
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1618,7 +1618,7 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 1, 26).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1644,7 +1644,7 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 1, 28).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1673,7 +1673,7 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 1, 30).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1700,7 +1700,7 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 1, 24).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': None
+                'starting_day': None
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1723,7 +1723,7 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 1, 29).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1746,7 +1746,7 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 1, 29).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 4
+                'starting_day': 4
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1773,7 +1773,7 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 1, 29).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 2
+                'starting_day': 2
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1800,7 +1800,7 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 1, 29).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 5
+                'starting_day': 5
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1823,7 +1823,7 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 1, 27).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 8
+                'starting_day': 8
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1838,7 +1838,7 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 1, 29).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'start_day': 2
+                'starting_day': 2
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1859,7 +1859,7 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 2, 25).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 1
+                'starting_day': 1
             },
             'workshift': {
                 'total_workshift_days': 8,
@@ -1875,7 +1875,7 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 2, 22).date(),
                 'workshift_id': 6,
                 'person_id': 1,
-                'start_day': 5
+                'starting_day': 5
             },
             'workshift': {
                 'total_workshift_days': 8,

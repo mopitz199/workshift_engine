@@ -25,7 +25,7 @@ class AssignationDB(DB):
         best = AssignationOperator.get_biggest_assign(compatible_list)
         if best:
             best.range_obj = element.range_obj
-            best.start_day = element.start_day
+            best.starting_day = element.starting_day
 
             self.to_be_deleted.remove(best)
             if best.has_change():

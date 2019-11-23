@@ -21,7 +21,7 @@ class AssignationProxy(Proxy, DBExtension):
     * workshift: The workshift obj
     * person_id: The person if of the assignation
     * person: The person obj
-    * start_day: The starting day of the assignation
+    * starting_day: The starting day of the assignation
 
     """
 
@@ -29,7 +29,7 @@ class AssignationProxy(Proxy, DBExtension):
         super(AssignationProxy, self).__init__(obj)
         self.range_obj = Range(self.starting_date, self.ending_date)
         self.init_range = copy.copy(self.range_obj)
-        self.init_start_day = getattr(self.obj, 'start_day', None)
+        self.init_starting_day = getattr(self.obj, 'starting_day', None)
         self.workshift_proxy = WorkShiftProxy(self.workshift)
 
     def __len__(self):
@@ -56,8 +56,8 @@ class AssignationProxy(Proxy, DBExtension):
             other_starting_date = other_assign.range_obj.starting_date
 
             if starting_date > other_starting_date:
-                start_day = other_assign.start_day
-                self.start_day = start_day
+                starting_day = other_assign.starting_day
+                self.starting_day = starting_day
 
             self.range_obj += other_assign.range_obj
 
@@ -68,7 +68,7 @@ class AssignationProxy(Proxy, DBExtension):
 
     def has_change(self):
         return (self.init_range != self.range_obj or
-                self.start_day != self.init_start_day)
+                self.starting_day != self.init_starting_day)
 
     def get_differences(self):
         """

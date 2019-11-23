@@ -133,7 +133,7 @@ class AssignationOperator(object):
 
         if has_same_workshift and has_same_person:
 
-            if (assign1.start_day or assign2.start_day) is None:
+            if (assign1.starting_day or assign2.starting_day) is None:
                 return True
 
             assign_generator = AssignationOperator.get_assignation_generator(
@@ -144,10 +144,10 @@ class AssignationOperator(object):
 
             other_assign = assign2 if assign == assign1 else assign1
 
-            simulated_start_day = AssignationOperator.simulate_starting_day(
+            simulated_starting_day = AssignationOperator.simulate_starting_day(
                 assign, other_assign.starting_date)
 
-            return simulated_start_day == other_assign.start_day
+            return simulated_starting_day == other_assign.starting_day
         else:
             return False
 
@@ -233,7 +233,7 @@ class AssignationOperator(object):
     @staticmethod
     def simulate_starting_day(assign, date_obj):
         """
-        To simulate an start_day in an specific date
+        To simulate an starting_day in an specific date
 
         :param assign: An assign proxy object
         :type assign: AssignationProxy
@@ -243,9 +243,9 @@ class AssignationOperator(object):
         :rtype: Int
         """
 
-        if assign.start_day:
+        if assign.starting_day:
             starting_date = assign.range_obj.starting_date
-            delta = timedelta(days=assign.start_day - 1)
+            delta = timedelta(days=assign.starting_day - 1)
             aux_starting_date = starting_date - delta
 
             range_days = (date_obj - aux_starting_date).days + 1
@@ -300,23 +300,23 @@ class AssignationOperator(object):
             assign.range_obj = updated_range
 
             if new_assign.starting_date > assign.starting_date:
-                new_assign.start_day = AssignationOperator.\
+                new_assign.starting_day = AssignationOperator.\
                     simulate_starting_day(
                         assign,
                         new_assign.range_obj.starting_date)
             else:
-                assign.start_day = AssignationOperator.simulate_starting_day(
+                assign.starting_day = AssignationOperator.simulate_starting_day(
                     new_assign,
                     assign.range_obj.starting_date)
 
             resp['update'] = assign
             resp['create'] = new_assign
         elif updated_range.starting_date > assign.starting_date:
-            new_start_day = AssignationOperator.simulate_starting_day(
+            new_starting_day = AssignationOperator.simulate_starting_day(
                 assign,
                 updated_range.starting_date)
             assign.range_obj = updated_range
-            assign.start_day = new_start_day
+            assign.starting_day = new_starting_day
             resp['update'] = assign
         elif updated_range.ending_date < assign.ending_date:
             assign.range_obj = updated_range
