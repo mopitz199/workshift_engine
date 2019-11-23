@@ -7,7 +7,7 @@ from collisions.resolvers.constants import (
     BASE_NEXT_DATE
 )
 from collisions.utils import Util
-from facades.day_facade import DayFacade
+from generic_facades.day_facade import DayFacade
 
 
 class CycleToManualCollision():
