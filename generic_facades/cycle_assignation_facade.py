@@ -20,17 +20,19 @@ class CycleAssignationFacade(GenericAssignationFacade):
         return starting_date + timedelta(days=day)
 
     def get_day_data(self, day_number):
+        str_day_number = str(day_number)
         dict_days = self.assignation.workshift_proxy.get_dict_days()
-        return dict_days[day_number]
+        return dict_days[str_day_number]
 
     def get_days(self):
         return self.assignation.workshift_proxy.get_days()
 
     def get_total_days(self):
-        return self.assignation.workshift_proxy.total_days
+        return self.assignation.workshift_proxy.total_workshift_days
 
     def get_prev_day_number(self, day_number):
-        total_workshift_days = self.assignation.total_workshift_days
+        workshift_proxy = self.assignation.workshift_proxy
+        total_workshift_days = workshift_proxy.total_workshift_days
         if day_number >= total_workshift_days:
             raise Exception('The day number exceeds the limit')
 
@@ -39,7 +41,8 @@ class CycleAssignationFacade(GenericAssignationFacade):
         return 0
 
     def get_next_day_number(self, day_number):
-        total_workshift_days = self.assignation.total_workshift_days
+        workshift_proxy = self.assignation.workshift_proxy
+        total_workshift_days = workshift_proxy.total_workshift_days
         if day_number >= total_workshift_days:
             raise Exception('The day number exceeds the limit')
 

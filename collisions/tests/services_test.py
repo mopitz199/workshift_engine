@@ -1,9 +1,12 @@
 from datetime import datetime
-from collisions.services import cycle_and_weekly_collision
+from collisions.services import (
+    cycle_and_weekly_collision,
+    cycle_and_manually_collision
+)
 from test_utils.utils import create_an_assignation
 
 
-class TestServices(object):
+class TestCycleAndWeeklyCollision():
 
     def test_cycle_and_weekly_collision1(self):
 
@@ -14,7 +17,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 30).date(),
             },
             'workshift': {
-                'total_days': 5,
+                'total_workshift_days': 5,
                 'workshift_type': 'cyclic',
                 'days': [
                     {
@@ -63,7 +66,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 30).date(),
             },
             'workshift': {
-                'total_days': 7,
+                'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
                     {
@@ -131,7 +134,7 @@ class TestServices(object):
                 'ending_date': datetime(2039, 9, 30).date(),
             },
             'workshift': {
-                'total_days': 2,
+                'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
                     {
@@ -160,7 +163,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 30).date(),
             },
             'workshift': {
-                'total_days': 7,
+                'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
                     {
@@ -228,7 +231,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 1).date(),
             },
             'workshift': {
-                'total_days': 2,
+                'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
                     {
@@ -257,7 +260,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 1).date(),
             },
             'workshift': {
-                'total_days': 7,
+                'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
                     {
@@ -325,7 +328,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 1).date(),
             },
             'workshift': {
-                'total_days': 2,
+                'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
                     {
@@ -354,7 +357,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 1).date(),
             },
             'workshift': {
-                'total_days': 7,
+                'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
                     {
@@ -424,7 +427,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 1).date(),
             },
             'workshift': {
-                'total_days': 2,
+                'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
                     {
@@ -453,7 +456,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 1).date(),
             },
             'workshift': {
-                'total_days': 7,
+                'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
                     {
@@ -523,7 +526,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 1).date(),
             },
             'workshift': {
-                'total_days': 2,
+                'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
                     {
@@ -552,7 +555,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 1).date(),
             },
             'workshift': {
-                'total_days': 7,
+                'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
                     {
@@ -622,7 +625,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 10).date(),
             },
             'workshift': {
-                'total_days': 2,
+                'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
                     {
@@ -651,7 +654,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 10).date(),
             },
             'workshift': {
-                'total_days': 7,
+                'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
                     {
@@ -734,7 +737,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 10).date(),
             },
             'workshift': {
-                'total_days': 2,
+                'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
                     {
@@ -763,7 +766,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 10).date(),
             },
             'workshift': {
-                'total_days': 7,
+                'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
                     {
@@ -845,7 +848,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 10).date(),
             },
             'workshift': {
-                'total_days': 2,
+                'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
                     {
@@ -874,7 +877,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 10).date(),
             },
             'workshift': {
-                'total_days': 7,
+                'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
                     {
@@ -958,7 +961,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 10).date(),
             },
             'workshift': {
-                'total_days': 2,
+                'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
                     {
@@ -987,7 +990,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 11).date(),
             },
             'workshift': {
-                'total_days': 7,
+                'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
                     {
@@ -1070,7 +1073,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 11).date(),
             },
             'workshift': {
-                'total_days': 2,
+                'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
                     {
@@ -1099,7 +1102,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 10).date(),
             },
             'workshift': {
-                'total_days': 7,
+                'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
                     {
@@ -1183,7 +1186,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 11).date(),
             },
             'workshift': {
-                'total_days': 2,
+                'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
                     {
@@ -1212,7 +1215,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 11).date(),
             },
             'workshift': {
-                'total_days': 7,
+                'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
                     {
@@ -1303,7 +1306,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 15).date(),
             },
             'workshift': {
-                'total_days': 2,
+                'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
                     {
@@ -1332,7 +1335,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 15).date(),
             },
             'workshift': {
-                'total_days': 7,
+                'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
                     {
@@ -1407,7 +1410,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 11).date(),
             },
             'workshift': {
-                'total_days': 2,
+                'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
                     {
@@ -1436,7 +1439,7 @@ class TestServices(object):
                 'ending_date': datetime(2019, 9, 11).date(),
             },
             'workshift': {
-                'total_days': 7,
+                'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
                     {
@@ -1506,3 +1509,130 @@ class TestServices(object):
         }
 
         assert has_collision and detail == detail_expected
+
+
+class TestCycleAndManuallyCollision():
+
+    def test_cycle_and_manually_collision1(self):
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 2,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+            },
+            'workshift': {
+                'total_workshift_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': datetime.strptime(
+                            '07:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '18:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': datetime.strptime(
+                            '13:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '20:00', '%H:%M').time()
+                    },
+                ]
+            }
+        }
+        assignation1 = create_an_assignation(assignation1)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+            },
+            'workshift': {
+                'workshift_type': 'manually',
+                'days': [
+                    {
+                        'date': datetime(2019, 1, 1).date(),
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '19:00', '%H:%M').time()
+                    },
+                ]
+            }
+        }
+        assignation2 = create_an_assignation(assignation2)
+
+        has_collision, detail = cycle_and_manually_collision(
+            assignation1,
+            assignation2,
+            detail=True)
+
+        detail_expected = {
+            '2019-01-01': [0]
+        }
+
+        assert has_collision and detail == detail_expected
+
+    def test_cycle_and_manually_collision2(self):
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 2,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+            },
+            'workshift': {
+                'total_workshift_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': datetime.strptime(
+                            '07:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '18:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': datetime.strptime(
+                            '13:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '20:00', '%H:%M').time()
+                    },
+                ]
+            }
+        }
+        assignation1 = create_an_assignation(assignation1)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+            },
+            'workshift': {
+                'workshift_type': 'manually',
+                'days': [
+                    {
+                        'date': datetime(2019, 1, 1).date(),
+                        'starting_time': datetime.strptime(
+                            '19:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '20:00', '%H:%M').time()
+                    },
+                ]
+            }
+        }
+        assignation2 = create_an_assignation(assignation2)
+
+        has_collision, detail = cycle_and_manually_collision(
+            assignation1,
+            assignation2,
+            detail=True)
+
+        detail_expected = {}
+
+        assert not has_collision and detail == detail_expected
