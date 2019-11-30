@@ -38,7 +38,7 @@ class CycleAssignationFacade(GenericAssignationFacade):
 
         if day_number > 0:
             return day_number - 1
-        return 0
+        return total_workshift_days - 1
 
     def get_next_day_number(self, day_number):
         workshift_proxy = self.assignation.workshift_proxy
