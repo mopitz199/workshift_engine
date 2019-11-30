@@ -81,50 +81,133 @@ class CycleToManuallyCollision():
             collisions[key] = []
         return collisions
 
-    def resolve(self, detail=False):
-
-        manually_days = self.manually_facade.get_days()
+    def try_check_prev_collision(
+        self,
+        manually_day,
+        cycle_day,
+        detail=False
+    ):
         collisions = {}
-        for manually_day in manually_days:
+        if self.can_check_collision(manually_day, 'previous'):
             date = manually_day.date
             str_date = str(date)
 
-            day_number = self.cycle_facade.simulate_starting_day(
-                date) - 1
+            if self.check_prev_collision(manually_day, cycle_day):
+                if detail:
+                    collisions = self.ensure_empty_list(collisions, str_date)
+                    prev_day_number = self.cycle_facade.get_prev_day_number(
+                        cycle_day.day_number
+                    )
+                    collisions[str_date].append(prev_day_number)
 
-            cycle_day = self.cycle_facade.get_day_data(day_number)
+                return True, collisions
+        return False, collisions
 
-            if self.can_check_collision(manually_day, 'previous'):
-                if self.check_prev_collision(manually_day, cycle_day):
-                    if detail:
-                        collisions = self.ensure_empty_list(collisions, str_date)
-                        prev_day_number = self.cycle_facade.get_prev_day_number(
-                            day_number
-                        )
-                        collisions[str_date].append(prev_day_number)
-                    else:
-                        return True, collisions
+    def try_check_current_collision(
+        self,
+        manually_day,
+        cycle_day,
+        detail=False
+    ):
+        collisions = {}
+        if self.can_check_collision(manually_day, 'current'):
+            date = manually_day.date
+            str_date = str(date)
+            day_number = cycle_day.day_number
 
-            if self.can_check_collision(manually_day, 'current'):
-                if self.check_current_collision(manually_day, cycle_day):
-                    if detail:
-                        collisions = self.ensure_empty_list(collisions, str_date)
-                        collisions[str_date].append(day_number)
-                    else:
-                        return True, collisions
+            if self.check_current_collision(manually_day, cycle_day):
+                if detail:
+                    collisions = self.ensure_empty_list(collisions, str_date)
+                    collisions[str_date].append(day_number)
 
-            if self.can_check_collision(manually_day, 'next'):
-                if self.check_next_collision(manually_day, cycle_day):
-                    if detail:
-                        collisions = self.ensure_empty_list(collisions, str_date)
-                        next_day_number = self.cycle_facade.get_next_day_number(
-                            day_number
-                        )
-                        collisions[str_date].append(next_day_number)
-                    else:
-                        return True, collisions
+                return True, collisions
+        return False, collisions
 
+    def try_check_next_collision(
+        self,
+        manually_day,
+        cycle_day,
+        detail=False
+    ):
+        collisions = {}
+        if self.can_check_collision(manually_day, 'next'):
+            date = manually_day.date
+            str_date = str(date)
+            day_number = cycle_day.day_number
+
+            if self.check_next_collision(manually_day, cycle_day):
+                if detail:
+                    collisions = self.ensure_empty_list(collisions, str_date)
+                    next_day_number = self.cycle_facade.get_next_day_number(
+                        day_number
+                    )
+                    collisions[str_date].append(next_day_number)
+                else:
+                    return True, collisions
+        return False, collisions
+
+    def check_manually_day_collision(
+        self,
+        manually_day,
+        detail=False
+    ):
+        collisions = {}
+        date = manually_day.date
+        str_date = str(date)
+        day_number = self.cycle_facade.simulate_starting_day(
+            date) - 1
+
+        cycle_day = self.cycle_facade.get_day_data(day_number)
+
+        has_collision, prev_collisions = self.try_check_prev_collision(
+            manually_day,
+            cycle_day,
+            detail
+        )
+        if not detail and has_collision:
+            return has_collision, {}
+
+        has_collision, current_collisions = self.try_check_current_collision(
+            manually_day,
+            cycle_day,
+            detail
+        )
+        if not detail and has_collision:
+            return has_collision, {}
+
+        has_collision, next_collisions = self.try_check_next_collision(
+            manually_day,
+            cycle_day,
+            detail
+        )
+        if not detail and has_collision:
+            return has_collision, {}
+
+        if prev_collisions or current_collisions or next_collisions:
+            collisions[str_date] = []
+            collisions[str_date] += prev_collisions.get(str_date, [])
+            collisions[str_date] += current_collisions.get(str_date, [])
+            collisions[str_date] += next_collisions.get(str_date, [])
+
+        has_collision = False
         if collisions:
-            return True, collisions
-        else:
-            return False, collisions
+            has_collision = True
+        return has_collision, collisions
+
+    def resolve(self, detail=False):
+        manually_days = self.manually_facade.get_days()
+        collisions = {}
+        for manually_day in manually_days:
+            has_collision, aux_collisions = self.check_manually_day_collision(
+                manually_day,
+                detail
+            )
+            collisions.update(aux_collisions)
+
+            if not detail and has_collision:
+                return has_collision, collisions
+
+        has_collision = False
+        if collisions:
+            has_collision = True
+        return has_collision, collisions
