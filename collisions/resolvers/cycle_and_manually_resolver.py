@@ -1,6 +1,11 @@
 from datetime import datetime, timedelta
 
 from assignation.operators.range_operator import RangeOperator
+from collisions.constants import (
+    PREVIOUS,
+    CURRENT,
+    NEXT
+)
 from collisions.resolvers.constants import (
     BASE_PREV_DATE,
     BASE_CURRENT_DATE,
@@ -24,13 +29,13 @@ class CycleToManuallyCollision():
         aux_starting_date = self.cycle_facade.assignation.starting_date
         aux_ending_date = self.cycle_facade.assignation.ending_date
 
-        if check_type == 'previous':
+        if check_type == PREVIOUS:
             aux_starting_date = aux_starting_date + timedelta(days=1)
             aux_ending_date = aux_ending_date + timedelta(days=1)
-        elif check_type == 'next':
+        elif check_type == NEXT:
             aux_starting_date = aux_starting_date - timedelta(days=1)
             aux_ending_date = aux_ending_date - timedelta(days=1)
-        elif check_type == 'current':
+        elif check_type == CURRENT:
             pass
         else:
             raise Exception('Unknown check type')
@@ -88,7 +93,7 @@ class CycleToManuallyCollision():
         detail=False
     ):
         collisions = {}
-        if self.can_check_collision(manually_day, 'previous'):
+        if self.can_check_collision(manually_day, PREVIOUS):
             date = manually_day.date
             str_date = str(date)
 
@@ -110,7 +115,7 @@ class CycleToManuallyCollision():
         detail=False
     ):
         collisions = {}
-        if self.can_check_collision(manually_day, 'current'):
+        if self.can_check_collision(manually_day, CURRENT):
             date = manually_day.date
             str_date = str(date)
             day_number = cycle_day.day_number
@@ -130,7 +135,7 @@ class CycleToManuallyCollision():
         detail=False
     ):
         collisions = {}
-        if self.can_check_collision(manually_day, 'next'):
+        if self.can_check_collision(manually_day, NEXT):
             date = manually_day.date
             str_date = str(date)
             day_number = cycle_day.day_number
