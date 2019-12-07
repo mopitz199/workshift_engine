@@ -1,15 +1,18 @@
-from typing import List, Optional, Generator, Union, Tuple
+from __future__ import annotations
+from typing import TYPE_CHECKING, List, Optional, Generator, Union, Tuple
 import copy
 
 from datetime import timedelta, datetime, date as dateclass
 from assignation.operators.range_operator import RangeOperator
 from generic_facades.cycle_assignation_facade import CycleAssignationFacade
 from generic_facades.generic_assignation_facade import GenericAssignationFacade
-from proxies.assignation_proxy import AssignationProxy
 from utils.range import Range
 
+if TYPE_CHECKING:
+    from proxies.assignation_proxy import AssignationProxy
 
-class AssignationOperator(object):
+
+class AssignationOperator():
     """A class with method to operate assignation proxies."""
 
     @staticmethod
