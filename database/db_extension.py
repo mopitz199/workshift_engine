@@ -4,7 +4,9 @@ class DBExtension(object):
     to database
     """
 
-    def is_in_real_db(self):
+    def is_in_real_db(
+        self
+    ) -> bool:
         """
         To check if the element is saved in the real database
 

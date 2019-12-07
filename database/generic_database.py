@@ -1,3 +1,5 @@
+from typing import List, Any, Dict
+
 from assignation.operators.assignation_operator import AssignationOperator
 
 
@@ -7,18 +9,25 @@ class DB(object):
     as a random access memory database
     """
 
-    def __init__(self, elements, base_class):
+    def __init__(
+        self,
+        elements: List[Any],
+        base_class: Any
+    ) -> None:
         self.elements = elements
         self.base_class = base_class
-        self.db = {}
+        self.db = {}  # type: Dict
 
-        self.to_be_updated = []
-        self.to_be_created = []
-        self.to_be_deleted = []
+        self.to_be_updated = []  # type: List
+        self.to_be_created = []  # type: List
+        self.to_be_deleted = []  # type: List
 
         self.build_database()
 
-    def hash_function(self, element):
+    def hash_function(
+        self,
+        element: Any
+    ) -> str:
         return ""
 
     def build_database(self):
@@ -30,7 +39,10 @@ class DB(object):
         for element in self.elements:
             self.add(element)
 
-    def add(self, element):
+    def add(
+        self,
+        element: Any
+    ) -> None:
         """
         To add an element in the RAM database
 
@@ -45,7 +57,10 @@ class DB(object):
         if not element.is_in_real_db():
             self.to_be_created.append(element)
 
-    def remove(self, element):
+    def remove(
+        self,
+        element: Any
+    ) -> None:
         """
         To remove an element in the RAM database
 
@@ -66,7 +81,10 @@ class DB(object):
         else:
             self.to_be_created.remove(element)
 
-    def update(self, element):
+    def update(
+        self,
+        element: Any
+    ) -> None:
         """
         To update an element in the RAM database
 
