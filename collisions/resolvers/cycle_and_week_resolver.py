@@ -1,4 +1,7 @@
-from typing import List, Dict, Tuple
+# make all type hints be strings and skip evaluating them
+from __future__ import annotations
+
+from typing import List, Dict, Tuple, TYPE_CHECKING
 from datetime import datetime, timedelta, date as dateclass
 
 from assignation.operators.range_operator import RangeOperator
@@ -9,12 +12,14 @@ from collisions.resolvers.constants import (
 )
 from collisions.custom_typings import CToWResolverType, CToWCollisionType
 from collisions.utils import Util
-
-from generic_facades.cycle_assignation_facade import CycleAssignationFacade
 from generic_facades.day_facade import DayFacade
-from generic_facades.weekly_assignation_facade import WeeklyAssignationFacade
 
-from utils.range import Range
+if TYPE_CHECKING:
+    from generic_facades.cycle_assignation_facade import CycleAssignationFacade
+    from generic_facades.weekly_assignation_facade import (
+        WeeklyAssignationFacade
+    )
+    from utils.range import Range
 
 
 class CycleToWeeklyColission(object):

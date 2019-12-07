@@ -1,13 +1,26 @@
+# make all type hints be strings and skip evaluating them
+from __future__ import annotations
+
 import copy
+
 from datetime import datetime, timedelta
+from typing import Any, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from proxies.assignation_proxy import AssignationProxy
 
 
 class GenericAssignationFacade():
 
-    def __init__(self, assignation):
+    def __init__(
+        self,
+        assignation: AssignationProxy
+    ) -> None:
         self.assignation = assignation
 
-    def copy(self):
+    def copy(
+        self
+    ) -> AssignationProxy:
         """
         To create a deep copy of a given assign
 

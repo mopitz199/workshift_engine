@@ -3,7 +3,7 @@ from typing import List, Any, Dict
 from assignation.operators.assignation_operator import AssignationOperator
 
 
-class DB(object):
+class DB():
     """
     A base class to operate a class with a lot of instances
     as a random access memory database

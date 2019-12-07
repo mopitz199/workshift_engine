@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta, time, date
+from datetime import datetime, timedelta, time, date as dateclass
 from utils.range import Range
 
 
@@ -8,7 +8,7 @@ class Util(object):
     def create_range(
         starting_time: time,
         ending_time: time,
-        base_date: date
+        base_date: dateclass
     ) -> Range:
         starting_datetime = datetime.combine(base_date, starting_time)
         if starting_time > ending_time:

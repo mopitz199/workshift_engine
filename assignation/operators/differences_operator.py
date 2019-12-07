@@ -1,6 +1,20 @@
+# make all type hints be strings and skip evaluating them
+from __future__ import annotations
+
 import copy
+from typing import (
+    TYPE_CHECKING,
+    List,
+    Dict
+)
+
 from assignation.operators.assignation_operator import AssignationOperator
 from assignation.operators.range_operator import RangeOperator
+
+if TYPE_CHECKING:
+    from database.assignation_db import AssignationDB
+    from proxies.assignation_proxy import AssignationProxy
+    from utils.range import Range
 
 
 class DifferencesOperator(object):
@@ -9,10 +23,17 @@ class DifferencesOperator(object):
     after all the assigns and unasigns
     """
 
-    def __init__(self, db):
+    def __init__(
+        self,
+        db: AssignationDB
+    ) -> None:
         self.db = db
 
-    def remove_range_on_created_range(self, remove_range, assign):
+    def remove_range_on_created_range(
+        self,
+        remove_range: Range,
+        assign: AssignationProxy
+    ) -> List[Range]:
         response = []
         if hasattr(assign, 'was_created'):
             ranges = assign.was_created
@@ -28,7 +49,11 @@ class DifferencesOperator(object):
                 response.append(was_created_range)
         return response
 
-    def remove_range_on_new_assign(self, remove_range, assign):
+    def remove_range_on_new_assign(
+        self,
+        remove_range: Range,
+        assign: AssignationProxy
+    ) -> List[Range]:
         response = []
         if hasattr(assign, 'was_created'):
             ranges = assign.was_created
@@ -43,7 +68,11 @@ class DifferencesOperator(object):
                 response.append(aux_range)
         return response
 
-    def clean_updated_assign(self, assign, assigns):
+    def clean_updated_assign(
+        self,
+        assign: AssignationProxy,
+        assigns: List[AssignationProxy]
+    ) -> None:
         if hasattr(assign, 'was_deleted'):
             was_deleted = assign.was_deleted
         else:
@@ -75,8 +104,10 @@ class DifferencesOperator(object):
 
         assign.was_deleted = was_deleted
 
-    def process_differences(self):
-        total = {}
+    def process_differences(
+        self
+    ) -> Dict[str, List[Range]]:
+        total = {}  # type: Dict
         assigns_created = self.db.get_assigns_to_by_created_by_hash()
         assigns_updated = self.db.get_assigns_to_by_updated_by_hash()
 
@@ -121,7 +152,10 @@ class DifferencesOperator(object):
 
         return self.compress_differences(total)
 
-    def compress_differences(self, differences):
+    def compress_differences(
+        self,
+        differences: Dict[str, List[Range]]
+    ) -> Dict[str, List[Range]]:
         response = {}
         for key in differences:
             range_list = differences[key]

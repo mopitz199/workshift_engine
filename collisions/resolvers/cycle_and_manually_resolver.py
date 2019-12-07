@@ -1,4 +1,7 @@
-from typing import Any, Dict, List, Tuple
+# make all type hints be strings and skip evaluating them
+from __future__ import annotations
+
+from typing import Any, Dict, List, Tuple, TYPE_CHECKING
 
 from datetime import datetime, timedelta
 
@@ -16,9 +19,12 @@ from collisions.resolvers.constants import (
 )
 from collisions.utils import Util
 
-from generic_facades.cycle_assignation_facade import CycleAssignationFacade
-from generic_facades.day_facade import DayFacade
-from generic_facades.manually_assignation_facade import ManualAssignationFacade
+if TYPE_CHECKING:
+    from generic_facades.cycle_assignation_facade import CycleAssignationFacade
+    from generic_facades.day_facade import DayFacade
+    from generic_facades.manually_assignation_facade import (
+        ManualAssignationFacade
+    )
 
 
 class CycleToManuallyCollision():
@@ -72,7 +78,10 @@ class CycleToManuallyCollision():
             manually_day,
             self.base_current_date)
 
-        return RangeOperator.are_intersection(prev_range, manually_range)
+        if prev_range and manually_range:
+            return RangeOperator.are_intersection(prev_range, manually_range)
+        else:
+            return False
 
     def check_current_collision(
         self,
@@ -87,7 +96,13 @@ class CycleToManuallyCollision():
             manually_day,
             self.base_current_date)
 
-        return RangeOperator.are_intersection(current_range, manually_range)
+        if current_range and manually_range:
+            return RangeOperator.are_intersection(
+                current_range,
+                manually_range
+            )
+        else:
+            return False
 
     def check_next_collision(
         self,
@@ -105,7 +120,10 @@ class CycleToManuallyCollision():
             manually_day,
             self.base_current_date)
 
-        return RangeOperator.are_intersection(next_range, manually_range)
+        if next_range and manually_range:
+            return RangeOperator.are_intersection(next_range, manually_range)
+        else:
+            return False
 
     def ensure_empty_list(
         self,
@@ -187,45 +205,50 @@ class CycleToManuallyCollision():
         collisions = CToMCollisionType({})
         date = manually_day.date
         str_date = str(date)
-        day_number = self.cycle_facade.simulate_starting_day(
-            date) - 1
+        day_number = self.cycle_facade.simulate_starting_day(date)
 
-        cycle_day = self.cycle_facade.get_day_data(day_number)
+        if day_number is not None:
+            day_number -= 1
+            cycle_day = self.cycle_facade.get_day_data(day_number)
 
-        has_collision, prev_collisions = self.try_check_prev_collision(
-            manually_day,
-            cycle_day,
-            detail
-        )
-        if not detail and has_collision:
+            has_collision, prev_collisions = self.try_check_prev_collision(
+                manually_day,
+                cycle_day,
+                detail
+            )
+            if not detail and has_collision:
+                return CToMResolverType((has_collision, collisions))
+
+            has_collision, current_collisions = (
+                self.try_check_current_collision(
+                    manually_day,
+                    cycle_day,
+                    detail
+                )
+            )
+            if not detail and has_collision:
+                return CToMResolverType((has_collision, collisions))
+
+            has_collision, next_collisions = self.try_check_next_collision(
+                manually_day,
+                cycle_day,
+                detail
+            )
+            if not detail and has_collision:
+                return CToMResolverType((has_collision, collisions))
+
+            if prev_collisions or current_collisions or next_collisions:
+                collisions[str_date] = []
+                collisions[str_date] += prev_collisions.get(str_date, [])
+                collisions[str_date] += current_collisions.get(str_date, [])
+                collisions[str_date] += next_collisions.get(str_date, [])
+
+            has_collision = False
+            if collisions:
+                has_collision = True
             return CToMResolverType((has_collision, collisions))
-
-        has_collision, current_collisions = self.try_check_current_collision(
-            manually_day,
-            cycle_day,
-            detail
-        )
-        if not detail and has_collision:
-            return CToMResolverType((has_collision, collisions))
-
-        has_collision, next_collisions = self.try_check_next_collision(
-            manually_day,
-            cycle_day,
-            detail
-        )
-        if not detail and has_collision:
-            return CToMResolverType((has_collision, collisions))
-
-        if prev_collisions or current_collisions or next_collisions:
-            collisions[str_date] = []
-            collisions[str_date] += prev_collisions.get(str_date, [])
-            collisions[str_date] += current_collisions.get(str_date, [])
-            collisions[str_date] += next_collisions.get(str_date, [])
-
-        has_collision = False
-        if collisions:
-            has_collision = True
-        return CToMResolverType((has_collision, collisions))
+        else:
+            raise Exception('Simulation response None')
 
     def resolve(
         self,

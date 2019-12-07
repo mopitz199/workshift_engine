@@ -1,11 +1,22 @@
-from datetime import datetime, timedelta
+# make all type hints be strings and skip evaluating them
+from __future__ import annotations
+
+from typing import Any, List, Optional, TYPE_CHECKING
+
+from datetime import datetime, timedelta, date as dateclass
 from generic_facades.generic_assignation_facade import GenericAssignationFacade
 from collisions.utils import Util
+
+if TYPE_CHECKING:
+    from utils.range import Range
 
 
 class CycleAssignationFacade(GenericAssignationFacade):
 
-    def get_first_date_of_day_number(self, day_number):
+    def get_first_date_of_day_number(
+        self,
+        day_number: int
+    ) -> dateclass:
         """Get the first date that represent a day number"""
 
         starting_day = self.assignation.starting_day
@@ -19,18 +30,28 @@ class CycleAssignationFacade(GenericAssignationFacade):
 
         return starting_date + timedelta(days=day)
 
-    def get_day_data(self, day_number):
+    def get_day_data(
+        self,
+        day_number: int
+    ) -> Any:
         str_day_number = str(day_number)
         dict_days = self.assignation.workshift_proxy.get_dict_days()
         return dict_days[str_day_number]
 
-    def get_days(self):
+    def get_days(
+        self
+    ) -> List[Any]:
         return self.assignation.workshift_proxy.get_days()
 
-    def get_total_days(self):
+    def get_total_days(
+        self
+    ) -> int:
         return self.assignation.workshift_proxy.total_workshift_days
 
-    def get_prev_day_number(self, day_number):
+    def get_prev_day_number(
+        self,
+        day_number: int
+    ) -> int:
         workshift_proxy = self.assignation.workshift_proxy
         total_workshift_days = workshift_proxy.total_workshift_days
         if day_number >= total_workshift_days:
@@ -40,7 +61,10 @@ class CycleAssignationFacade(GenericAssignationFacade):
             return day_number - 1
         return total_workshift_days - 1
 
-    def get_next_day_number(self, day_number):
+    def get_next_day_number(
+        self,
+        day_number: int
+    ) -> int:
         workshift_proxy = self.assignation.workshift_proxy
         total_workshift_days = workshift_proxy.total_workshift_days
         if day_number >= total_workshift_days:
@@ -50,7 +74,10 @@ class CycleAssignationFacade(GenericAssignationFacade):
             return day_number + 1
         return 0
 
-    def simulate_starting_day(self, date_obj):
+    def simulate_starting_day(
+        self,
+        date_obj: dateclass
+    ) -> Optional[int]:
         """
         To simulate an starting_day in an specific date
 
@@ -75,7 +102,11 @@ class CycleAssignationFacade(GenericAssignationFacade):
         else:
             return None
 
-    def range_obj_from_day_number(self, cycle_day, base_date):
+    def range_obj_from_day_number(
+        self,
+        cycle_day: Any,
+        base_date: dateclass
+    ) -> Optional[Range]:
         starting_time = cycle_day.starting_time
         ending_time = cycle_day.ending_time
         if starting_time is not None and ending_time is not None:

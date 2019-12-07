@@ -1,32 +1,57 @@
-from collisions.utils import Util
+# make all type hints be strings and skip evaluating them
+from __future__ import annotations
 
+from datetime import date as dateclass
+from typing import Any, List, Union, Optional, TYPE_CHECKING
+
+from collisions.utils import Util
 from generic_facades.generic_assignation_facade import GenericAssignationFacade
+
+if TYPE_CHECKING:
+    from proxies.assignation_proxy import AssignationProxy
+    from utils.range import Range
 
 
 class WeeklyAssignationFacade(GenericAssignationFacade):
 
-    def __init__(self, assignation):
+    def __init__(
+        self,
+        assignation: AssignationProxy
+    ) -> None:
         self.assignation = assignation
 
-    def get_day(self, day_number):
+    def get_day(
+        self,
+        day_number: str
+    ) -> Any:
         dict_days = self.assignation.workshift_proxy.get_dict_days()
         return dict_days[day_number]
 
-    def get_next_day_number(self, day_number):
+    def get_next_day_number(
+        self,
+        day_number: Union[int, str]
+    ) -> str:
         day_number = int(day_number)
         if day_number == 6:
             return '0'
         else:
             return '{}'.format(day_number + 1)
 
-    def get_prev_day_number(self, day_number):
+    def get_prev_day_number(
+        self,
+        day_number: Union[str, int]
+    ) -> str:
         day_number = int(day_number)
         if day_number == 0:
             return '6'
         else:
             return '{}'.format(day_number - 1)
 
-    def range_obj_from_day_number(self, day_number, base_date):
+    def range_obj_from_day_number(
+        self,
+        day_number: str,
+        base_date: dateclass
+    ) -> Optional[Range]:
         day = self.get_day(day_number)
         starting_time = day.starting_time
         ending_time = day.ending_time
