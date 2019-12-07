@@ -1,4 +1,4 @@
-import pytest
+import pytest  # type: ignore
 from datetime import datetime
 from test_utils.utils import create_an_assignation
 
@@ -26,39 +26,39 @@ class TestGetAttr(object):
     """To test if the get feature works properly as a proxy"""
 
     def test_wrong_attr1(self, proxy):
-            try:
-                proxy.hola
-                assert False
-            except:
-                assert True
+        try:
+            proxy.hola
+            assert False
+        except Exception:
+            assert True
 
     def test_mapped_attr1(self, proxy):
-            try:
-                proxy.starting_date
-                assert True
-            except:
-                assert False
+        try:
+            proxy.starting_date
+            assert True
+        except Exception:
+            assert False
 
     def test_mapped_attr2(self, proxy):
-            try:
-                proxy.workshift.total_workshift_days
-                assert True
-            except:
-                assert False
+        try:
+            proxy.workshift.total_workshift_days
+            assert True
+        except Exception:
+            assert False
 
     def test_not_mapped_attr1(self, proxy):
-            try:
-                proxy.obj
-                assert True
-            except:
-                assert False
+        try:
+            proxy.obj
+            assert True
+        except Exception:
+            assert False
 
     def test_not_mapped_attr2(self, proxy):
-            try:
-                proxy.obj
-                assert True
-            except:
-                assert False
+        try:
+            proxy.obj
+            assert True
+        except Exception:
+            assert False
 
 
 class TestSetAttr(object):

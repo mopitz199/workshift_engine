@@ -1,3 +1,7 @@
-from typing import Dict, List, NewType
+from typing import Dict, List, NewType, Any, Tuple
 
-CollisionType = NewType('CollisionType', Dict[str, List])
+CToWCollisionType = NewType('CToWCollisionType', Dict[str, Dict])
+CToWResolverType = NewType('CToWResolverType', Tuple[bool, CToWCollisionType])
+
+CToMCollisionType = NewType('CToMCollisionType', Dict[str, List])
+CToMResolverType = NewType('CToMResolverType', Tuple[bool, CToMCollisionType])

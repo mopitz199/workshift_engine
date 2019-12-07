@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Tuple, NewType, Union
+from typing import Any, Dict, List, Tuple
 
 from datetime import datetime, timedelta
 
@@ -8,7 +8,7 @@ from collisions.constants import (
     CURRENT,
     NEXT
 )
-from collisions.custom_typings import CollisionType
+from collisions.custom_typings import CToMCollisionType, CToMResolverType
 from collisions.resolvers.constants import (
     BASE_PREV_DATE,
     BASE_CURRENT_DATE,
@@ -109,7 +109,7 @@ class CycleToManuallyCollision():
 
     def ensure_empty_list(
         self,
-        collisions: CollisionType,
+        collisions: CToMCollisionType,
         key: str
     ) -> None:
         if key not in collisions:
@@ -120,8 +120,8 @@ class CycleToManuallyCollision():
         manually_day: Any,
         cycle_day: Any,
         detail=False
-    ) -> Tuple[bool, CollisionType]:
-        collisions = CollisionType({})
+    ) -> CToMResolverType:
+        collisions = CToMCollisionType({})
         if self.can_check_collision(manually_day, PREVIOUS):
             date = manually_day.date
             str_date = str(date)
@@ -133,16 +133,16 @@ class CycleToManuallyCollision():
                         cycle_day.day_number
                     )
                     collisions[str_date].append(prev_day_number)
-                return (True, collisions)
-        return (False, collisions)
+                return CToMResolverType((True, collisions))
+        return CToMResolverType((False, collisions))
 
     def try_check_current_collision(
         self,
         manually_day: Any,
         cycle_day: Any,
         detail: bool = False
-    ) -> Tuple[bool, CollisionType]:
-        collisions = CollisionType({})
+    ) -> CToMResolverType:
+        collisions = CToMCollisionType({})
         if self.can_check_collision(manually_day, CURRENT):
             date = manually_day.date
             str_date = str(date)
@@ -153,16 +153,16 @@ class CycleToManuallyCollision():
                     self.ensure_empty_list(collisions, str_date)
                     collisions[str_date].append(day_number)
 
-                return (True, collisions)
-        return (False, collisions)
+                return CToMResolverType((True, collisions))
+        return CToMResolverType((False, collisions))
 
     def try_check_next_collision(
         self,
         manually_day: Any,
         cycle_day: Any,
         detail: bool = False
-    ) -> Tuple[bool, CollisionType]:
-        collisions = CollisionType({})
+    ) -> CToMResolverType:
+        collisions = CToMCollisionType({})
         if self.can_check_collision(manually_day, NEXT):
             date = manually_day.date
             str_date = str(date)
@@ -176,15 +176,15 @@ class CycleToManuallyCollision():
                     )
                     collisions[str_date].append(next_day_number)
                 else:
-                    return (True, collisions)
-        return (False, collisions)
+                    return CToMResolverType((True, collisions))
+        return CToMResolverType((False, collisions))
 
     def check_manually_day_collision(
         self,
         manually_day: Any,
         detail: bool = False
-    ) -> Tuple[bool, CollisionType]:
-        collisions = CollisionType({})
+    ) -> CToMResolverType:
+        collisions = CToMCollisionType({})
         date = manually_day.date
         str_date = str(date)
         day_number = self.cycle_facade.simulate_starting_day(
@@ -198,7 +198,7 @@ class CycleToManuallyCollision():
             detail
         )
         if not detail and has_collision:
-            return has_collision, collisions
+            return CToMResolverType((has_collision, collisions))
 
         has_collision, current_collisions = self.try_check_current_collision(
             manually_day,
@@ -206,7 +206,7 @@ class CycleToManuallyCollision():
             detail
         )
         if not detail and has_collision:
-            return has_collision, collisions
+            return CToMResolverType((has_collision, collisions))
 
         has_collision, next_collisions = self.try_check_next_collision(
             manually_day,
@@ -214,7 +214,7 @@ class CycleToManuallyCollision():
             detail
         )
         if not detail and has_collision:
-            return has_collision, collisions
+            return CToMResolverType((has_collision, collisions))
 
         if prev_collisions or current_collisions or next_collisions:
             collisions[str_date] = []
@@ -225,13 +225,13 @@ class CycleToManuallyCollision():
         has_collision = False
         if collisions:
             has_collision = True
-        return (has_collision, collisions)
+        return CToMResolverType((has_collision, collisions))
 
     def resolve(
         self,
         detail: bool = False
-    ) -> Tuple[bool, CollisionType]:
-        collisions = CollisionType({})
+    ) -> CToMResolverType:
+        collisions = CToMCollisionType({})
         manually_days = self.manually_facade.get_days()
         for manually_day in manually_days:
             has_collision, aux_collisions = self.check_manually_day_collision(
@@ -241,9 +241,9 @@ class CycleToManuallyCollision():
             collisions.update(aux_collisions)
 
             if not detail and has_collision:
-                return has_collision, collisions
+                return CToMResolverType((has_collision, collisions))
 
         has_collision = False
         if collisions:
             has_collision = True
-        return (has_collision, collisions)
+        return CToMResolverType((has_collision, collisions))

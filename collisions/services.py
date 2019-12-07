@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from collisions.custom_typings import CToWResolverType, CToMResolverType
 from collisions.resolvers.cycle_and_week_resolver import CycleToWeeklyColission
 from collisions.resolvers.cycle_and_manually_resolver import (
     CycleToManuallyCollision
@@ -8,8 +9,14 @@ from generic_facades.cycle_assignation_facade import CycleAssignationFacade
 from generic_facades.weekly_assignation_facade import WeeklyAssignationFacade
 from generic_facades.manually_assignation_facade import ManualAssignationFacade
 
+from proxies.assignation_proxy import AssignationProxy
 
-def cycle_and_weekly_collision(assignation1, assignation2, detail=False):
+
+def cycle_and_weekly_collision(
+    assignation1: AssignationProxy,
+    assignation2: AssignationProxy,
+    detail=False
+) -> CToWResolverType:
     """This service is to check if an cycle assignation and a weekly
     assignation has some collision.
 
@@ -29,7 +36,11 @@ def cycle_and_weekly_collision(assignation1, assignation2, detail=False):
     return resolver.resolve(detail)
 
 
-def cycle_and_manually_collision(assignation1, assignation2, detail=False):
+def cycle_and_manually_collision(
+    assignation1: AssignationProxy,
+    assignation2: AssignationProxy,
+    detail=False
+) -> CToMResolverType:
     """This service is to check if an cycle assignation and a manual
     assignation has some collision.
 
