@@ -1,9 +1,11 @@
+from typing import List, Optional, Generator, Union, Tuple
 import copy
 
-from datetime import timedelta, datetime
+from datetime import timedelta, datetime, date as dateclass
 from assignation.operators.range_operator import RangeOperator
 from generic_facades.cycle_assignation_facade import CycleAssignationFacade
 from generic_facades.generic_assignation_facade import GenericAssignationFacade
+from proxies.assignation_proxy import AssignationProxy
 from utils.range import Range
 
 
@@ -11,16 +13,12 @@ class AssignationOperator(object):
     """A class with method to operate assignation proxies."""
 
     @staticmethod
-    def are_neighbors(assign1, assign2):
+    def are_neighbors(
+        assign1: AssignationProxy,
+        assign2: AssignationProxy
+    ) -> bool:
         """
         To check if two assignations intersect or are next to the other.
-
-        :param assign1: an assignation proxy object
-        :type assign1: AssignationProxy
-        :param assign2: an assignation proxy object
-        :type assign2: AssignationProxy
-
-        :rtype: Boolean
         """
 
         return RangeOperator.are_neighbors(
@@ -28,16 +26,12 @@ class AssignationOperator(object):
             assign2.range_obj)
 
     @staticmethod
-    def are_intersection(assign1, assign2):
+    def are_intersection(
+        assign1: AssignationProxy,
+        assign2: AssignationProxy
+    ) -> bool:
         """
         To check if two assignations intersect.
-
-        :param assign1: an assignation proxy object
-        :type assign1: AssignationProxy
-        :param assign2: an assignation proxy object
-        :type assign2: AssignationProxy
-
-        :rtype: Boolean
         """
 
         return RangeOperator.are_intersection(
@@ -45,16 +39,12 @@ class AssignationOperator(object):
             assign2.range_obj)
 
     @staticmethod
-    def are_multiple_neighbors(assign, assigns):
+    def are_multiple_neighbors(
+        assign: AssignationProxy,
+        assigns: List[AssignationProxy]
+    ) -> List[AssignationProxy]:
         """
         To check how many assigns are neighbor of the given assign
-
-        :param assign: an assignation proxy object
-        :type assign: AssignationProxy
-        :param assigns: An iterator of assigns to check
-        :type assigns: Iterator
-
-        :rtype: List<AssignationProxy>
         """
 
         resp = []
@@ -64,14 +54,11 @@ class AssignationOperator(object):
         return resp
 
     @staticmethod
-    def get_min_starting_date(assigns):
+    def get_min_starting_date(
+        assigns: Union[List[AssignationProxy], Generator]
+    ) -> Optional[AssignationProxy]:
         """
         To get the minimun starting date from all the given assigns.
-
-        :param assigns: An iterator with assigns
-        :type assigns: Iterator
-
-        :rtype: AssignationProxy
         """
 
         min_date = datetime(2090, 1, 1).date()
@@ -83,14 +70,11 @@ class AssignationOperator(object):
         return resp
 
     @staticmethod
-    def get_max_ending_date(assigns):
+    def get_max_ending_date(
+        assigns: List[AssignationProxy]
+    ) -> Optional[AssignationProxy]:
         """
         To get the maximum ending date from all the given assigns.
-
-        :param assigns: An iterator with assigns
-        :type assigns: Iterator
-
-        :rtype: AssignationProxy
         """
 
         max_date = datetime(1900, 1, 1).date()
@@ -102,14 +86,11 @@ class AssignationOperator(object):
         return resp
 
     @staticmethod
-    def get_assignation_generator(assign_list):
+    def get_assignation_generator(
+        assign_list: List[AssignationProxy]
+    ) -> Generator:
         """
         To transform an assign list into an iterator
-
-        :param assign_list: A list of assigns
-        :type assigns: List
-
-        :rtype: Generator
         """
 
         def assignation_generator():
@@ -118,16 +99,12 @@ class AssignationOperator(object):
         return assignation_generator()
 
     @staticmethod
-    def are_compatible(assign1, assign2):
+    def are_compatible(
+        assign1: AssignationProxy,
+        assign2: AssignationProxy
+    ) -> bool:
         """
         To check if two assignments are compatible to be joined
-
-        :param assign1: An assign proxy object
-        :type assign1: AssignationProxy
-        :param assign2: An assign proxy object
-        :type assign2: AssignationProxy
-
-        :rtype: Boolean
         """
 
         has_same_workshift = assign1.workshift_id == assign2.workshift_id
@@ -154,34 +131,26 @@ class AssignationOperator(object):
             return False
 
     @staticmethod
-    def can_be_joined(assign1, assign2):
+    def can_be_joined(
+        assign1: AssignationProxy,
+        assign2: AssignationProxy
+    ) -> bool:
         """
         To check if two assignments can be joined. For that
         we considerer that are compatible and are intersection or
-        next to the other
-
-        :param assign1: An assign proxy object
-        :type assign1: AssignationProxy
-        :param assign2: An assign proxy object
-        :type assign2: AssignationProxy
-
-        :rtype: Boolean
+        next to the other.
         """
 
         return (AssignationOperator.are_neighbors(assign1, assign2) and
                 AssignationOperator.are_compatible(assign1, assign2))
 
     @staticmethod
-    def are_multiple_compatible(assign, assigns):
+    def are_multiple_compatible(
+        assign: AssignationProxy,
+        assigns: List[AssignationProxy]
+    ) -> List[AssignationProxy]:
         """
         To check of how many assigns are compatable with the given assign
-
-        :param assign: An assign proxy object
-        :type assign: AssignationProxy
-        :param assigns: A list of assigns
-        :type assigns: Iterator
-
-        :rtype: List<AssignationProxy>
         """
 
         resp = []
@@ -191,14 +160,11 @@ class AssignationOperator(object):
         return resp
 
     @staticmethod
-    def get_biggest_assign(assigns):
+    def get_biggest_assign(
+        assigns: List[AssignationProxy]
+    ) -> Optional[AssignationProxy]:
         """
         To get the assign with the more quantity of days
-
-        :param assigns: A list of assigns
-        :type assigns: Iterator
-
-        :rtype: AssignationProxy
         """
 
         biggest = None
@@ -210,17 +176,13 @@ class AssignationOperator(object):
         return biggest
 
     @staticmethod
-    def get_candidates(assign, assigns):
+    def get_candidates(
+        assign: AssignationProxy,
+        assigns: List[AssignationProxy]
+    ) -> Tuple[AssignationProxy, List[AssignationProxy]]:
         """
         Get all the other canididates and the best canidate from a given
-        list of assignments
-
-        :param assign: An assign proxy object
-        :type assign: AssignationProxy
-        :param assigns: A list of assigns
-        :type assigns: Iterator
-
-        :rtype: (AssignationProxy, List<AssignationProxy>)
+        list of assignments.
         """
 
         candidates = AssignationOperator.are_multiple_compatible(
@@ -233,7 +195,10 @@ class AssignationOperator(object):
         return best_candidate, candidates
 
     @staticmethod
-    def simulate_starting_day(assign, date_obj):
+    def simulate_starting_day(
+        assign: AssignationProxy,
+        date_obj: dateclass
+    ) -> Optional[int]:
         facade = CycleAssignationFacade(assign)
         return facade.simulate_starting_day(date_obj)
 
