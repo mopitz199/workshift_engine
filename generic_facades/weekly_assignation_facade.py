@@ -37,6 +37,11 @@ class WeeklyAssignationFacade(GenericAssignationFacade):
         else:
             return '{}'.format(day_number + 1)
 
+    def get_next_day(self, weekly_day):
+        day_number = weekly_day.day_number
+        next_day_number = self.get_next_day_number(day_number)
+        return self.get_day(next_day_number)
+
     def get_prev_day_number(
         self,
         day_number: Union[str, int]
@@ -46,6 +51,11 @@ class WeeklyAssignationFacade(GenericAssignationFacade):
             return '6'
         else:
             return '{}'.format(day_number - 1)
+
+    def get_prev_day(self, weekly_day):
+        day_number = weekly_day.day_number
+        prev_day_number = self.get_prev_day_number(day_number)
+        return self.get_day(prev_day_number)
 
     def range_obj_from_day_number(
         self,
@@ -59,3 +69,12 @@ class WeeklyAssignationFacade(GenericAssignationFacade):
             return Util.create_range(starting_time, ending_time, base_date)
         else:
             return None
+
+    def range_obj_from_weekly_day(
+        self,
+        weekly_day: Any,
+        base_date: dateclass
+    ) -> Optional[Range]:
+        day_number = weekly_day.day_number
+        str_day_number = str(day_number)
+        return self.range_obj_from_day_number(str_day_number, base_date)
