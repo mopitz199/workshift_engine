@@ -28,8 +28,8 @@ class WeeklyAndManuallyCollision():
 
     def __init__(
         self,
-        manually_facade: ManualAssignationFacade,
         weekly_facade: WeeklyAssignationFacade,
+        manually_facade: ManualAssignationFacade,
     ) -> None:
         self.base_prev_date = BASE_PREV_DATE
         self.base_current_date = BASE_CURRENT_DATE
@@ -108,9 +108,9 @@ class WeeklyAndManuallyCollision():
         weekly_day: Any
     ) -> Dict[str, List]:
 
-        str_starting_date = "{}".format(manually_day.starting_date)
-        collisions = {}
-        collisions[str_starting_date] = []
+        str_date = "{}".format(manually_day.date)
+        collisions = {}  # type: Dict[str, List]
+        collisions[str_date] = []
 
         manually_range = self.manually_facade.range_obj_from_day(
             manually_day,
@@ -124,14 +124,14 @@ class WeeklyAndManuallyCollision():
                     weekly_day
                 )
                 if day_number:
-                    collisions[str_starting_date].append(day_number)
+                    collisions[str_date].append(day_number)
 
             day_number = self.check_current_collision(
                 manually_range,
                 weekly_day
             )
             if day_number:
-                collisions[str_starting_date].append(day_number)
+                collisions[str_date].append(day_number)
 
             if True:
                 day_number = self.check_next_collision(
@@ -139,7 +139,7 @@ class WeeklyAndManuallyCollision():
                     weekly_day
                 )
                 if day_number:
-                    collisions[str_starting_date].append(day_number)
+                    collisions[str_date].append(day_number)
 
         return collisions
 
@@ -150,7 +150,7 @@ class WeeklyAndManuallyCollision():
         collisions = {}
         manually_days = self.manually_facade.get_days()
         for manually_day in manually_days:
-            week_day = manually_day.starting_date.weekday()
+            week_day = manually_day.date.weekday()
             str_week_day = str(week_day)
             weekly_day = self.weekly_facade.get_day(str_week_day)
 
