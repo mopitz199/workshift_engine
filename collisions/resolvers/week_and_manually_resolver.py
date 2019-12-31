@@ -119,6 +119,8 @@ class WeeklyAndManuallyCollision():
 
         if manually_range:
             weekly_starting_date = self.weekly_facade.assignation.starting_date
+            weekly_ending_date = self.weekly_facade.assignation.ending_date
+
             if manually_day.date > weekly_starting_date:
                 day_number = self.check_prev_collision(
                     manually_range,
@@ -127,14 +129,14 @@ class WeeklyAndManuallyCollision():
                 if day_number:
                     collisions[str_date].append(day_number)
 
-            day_number = self.check_current_collision(
-                manually_range,
-                weekly_day
-            )
-            if day_number is not None:
-                collisions[str_date].append(day_number)
+            if weekly_ending_date >= manually_day.date >= weekly_starting_date:
+                day_number = self.check_current_collision(
+                    manually_range,
+                    weekly_day
+                )
+                if day_number is not None:
+                    collisions[str_date].append(day_number)
 
-            weekly_ending_date = self.weekly_facade.assignation.ending_date
             if manually_day.date < weekly_ending_date:
                 day_number = self.check_next_collision(
                     manually_range,
@@ -143,7 +145,10 @@ class WeeklyAndManuallyCollision():
                 if day_number:
                     collisions[str_date].append(day_number)
 
-        return collisions
+        if collisions[str_date]:
+            return collisions
+        else:
+            return {}
 
     def resolve(
         self,
