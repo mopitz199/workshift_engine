@@ -1,10 +1,26 @@
 import pytest  # type: ignore
 from datetime import datetime
-from test_utils.utils import create_an_assignation
+
+from database.workshift_db import WorkShiftDB
+from proxies.workshift_proxy import WorkShiftProxy
+from test_utils.utils import (
+    create_an_assignation,
+    create_proxy_workshifts,
+)
 
 
 @pytest.fixture
 def proxy():
+
+    workshifts_data = [
+        {
+            'id': 10,
+            'total_workshift_days': 7
+        }
+    ]
+    workshifts = create_proxy_workshifts(workshifts_data)
+    workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
     data = {
         'assignation': {
             'person': 5,
@@ -13,13 +29,10 @@ def proxy():
             'ending_date': datetime(2019, 1, 10).date(),
             'workshift_id': 10,
             'fake_attr': 'badAttr'
-        },
-        'workshift': {
-            'total_workshift_days': 7
         }
     }
 
-    return create_an_assignation(data)
+    return create_an_assignation(data, workshift_db)
 
 
 class TestGetAttr(object):
@@ -41,7 +54,7 @@ class TestGetAttr(object):
 
     def test_mapped_attr2(self, proxy):
         try:
-            proxy.workshift.total_workshift_days
+            proxy.workshift_proxy.total_workshift_days
             assert True
         except Exception:
             assert False
