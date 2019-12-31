@@ -30,7 +30,6 @@ class AssignationProxy(Proxy, DBExtension):
         self.range_obj = Range(self.starting_date, self.ending_date)
         self.init_range = copy.copy(self.range_obj)
         self.init_starting_day = getattr(self.obj, 'starting_day', None)
-        self.workshift_proxy = WorkShiftProxy(self.workshift)
 
     def __len__(self):
         return len(self.range_obj)

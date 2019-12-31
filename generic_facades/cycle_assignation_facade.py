@@ -78,16 +78,7 @@ class CycleAssignationFacade(GenericAssignationFacade):
         self,
         date_obj: dateclass
     ) -> Optional[int]:
-        """
-        To simulate an starting_day in an specific date
-
-        :param assign: An assign proxy object
-        :type assign: AssignationProxy
-        :param date_obj: The date which want to simulate
-        :type date_obj: date
-
-        :rtype: Int
-        """
+        """To simulate an starting_day in an specific date"""
         assign = self.assignation
 
         if assign.starting_day:
@@ -96,7 +87,7 @@ class CycleAssignationFacade(GenericAssignationFacade):
             aux_starting_date = starting_date - delta
 
             range_days = (date_obj - aux_starting_date).days + 1
-            total_days = assign.workshift.total_workshift_days
+            total_days = assign.workshift_proxy.total_workshift_days
 
             return (range_days % total_days) or total_days
         else:

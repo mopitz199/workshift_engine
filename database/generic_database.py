@@ -28,13 +28,11 @@ class DB():
         self,
         element: Any
     ) -> str:
-        return ""
+        raise Exception('This function must be overwritted')
 
     def build_database(self):
-        """
-        Function to build the database of all given elements
-        according to the hash_function
-        """
+        """Function to build the database of all given elements
+        according to the hash_function"""
 
         for element in self.elements:
             self.add(element)
@@ -43,12 +41,7 @@ class DB():
         self,
         element: Any
     ) -> None:
-        """
-        To add an element in the RAM database
-
-        :param element: The element to add
-        :type element: Class
-        """
+        """To add an element in the RAM database"""
 
         hash_str = self.hash_function(element)
         if hash_str not in self.db:
@@ -61,12 +54,7 @@ class DB():
         self,
         element: Any
     ) -> None:
-        """
-        To remove an element in the RAM database
-
-        :param element: The element to remove
-        :type element: Class
-        """
+        """To remove an element in the RAM database"""
 
         hash_str = self.hash_function(element)
         hash_elements = self.db.get(hash_str, [])
@@ -85,11 +73,6 @@ class DB():
         self,
         element: Any
     ) -> None:
-        """
-        To update an element in the RAM database
-
-        :param element: The element to update
-        :type element: Class
-        """
+        """To update an element in the RAM database"""
         if element.is_in_real_db() and element not in self.to_be_updated:
             self.to_be_updated.append(element)

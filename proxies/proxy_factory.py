@@ -16,3 +16,16 @@ class ProxyFactory(object):
             proxy = ProxyFactory.create_assignation_proxy(obj)
             resp.append(proxy)
         return resp
+
+    @staticmethod
+    def create_workshift_proxy(obj):
+        workshift_proxy = WorkShiftProxy(obj)
+        return workshift_proxy
+
+    @staticmethod
+    def create_multiple_workshift_proxies(obj_list):
+        resp = []
+        for obj in obj_list:
+            proxy = ProxyFactory.create_workshift_proxy(obj)
+            resp.append(proxy)
+        return resp

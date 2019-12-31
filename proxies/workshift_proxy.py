@@ -2,12 +2,13 @@ import copy
 
 from datetime import timedelta
 
+from database.db_extension import DBExtension
 from proxies.base_proxy import Proxy
 from assignation.operators.assignation_operator import AssignationOperator
 from utils.range import Range
 
 
-class WorkShiftProxy(Proxy):
+class WorkShiftProxy(Proxy, DBExtension):
 
     def __init__(self, obj, *args, **kwargs):
         super(WorkShiftProxy, self).__init__(obj)

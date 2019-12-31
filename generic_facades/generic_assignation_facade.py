@@ -33,7 +33,7 @@ class GenericAssignationFacade():
         copied = copy.copy(assign)
         copied.obj = copy.deepcopy(assign.obj)
         copied.range_obj = copy.deepcopy(assign.range_obj)
-        copied.workshift = assign.workshift
+        copied.workshift_proxy = assign.workshift_proxy
         copied.person = assign.person
         copied.obj.id = None
         return copied

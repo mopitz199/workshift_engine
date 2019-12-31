@@ -37,23 +37,32 @@ class DumbDay(object):
             setattr(self, kwarg, val)
 
 
-def create_an_assignation(data):
+def create_an_assignation(data, workshift_db=None):
 
     assignation_data = data.get('assignation')
     assignation = DumbAssignation(**assignation_data)
 
-    workshift_data = data.get('workshift', {})
-    days_data = workshift_data.pop('days', [])
-    days = []
-    for day_data in days_data:
-        day = DumbDay(**day_data)
-        days.append(day)
-
-    workshift = DumbWorkShift(**workshift_data)
-    workshift.days = days
-    assignation.workshift = workshift
+    if workshift_db:
+        workshift_proxy = workshift_db.get_by_id(assignation.workshift_id)
+        assignation.workshift_proxy = workshift_proxy
 
     person_data = data.get('person', {})
     assignation.person = DumbPerson(**person_data)
 
     return ProxyFactory.create_assignation_proxy(assignation)
+
+
+def create_proxy_workshifts(workshifts_data):
+    dumb_workshifts = []
+    for workshift_data in workshifts_data:
+        days_data = workshift_data.pop('days', [])
+        days = []
+        for day_data in days_data:
+            day = DumbDay(**day_data)
+            days.append(day)
+
+        dumb_workshift = DumbWorkShift(**workshift_data)
+        dumb_workshift.days = days
+        dumb_workshifts.append(dumb_workshift)
+
+    return ProxyFactory.create_multiple_workshift_proxies(dumb_workshifts)
