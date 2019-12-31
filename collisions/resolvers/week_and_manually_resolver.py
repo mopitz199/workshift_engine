@@ -10,7 +10,7 @@ from collisions.resolvers.constants import (
     BASE_CURRENT_DATE,
     BASE_NEXT_DATE
 )
-from collisions.custom_typings import CToWResolverType, CToWCollisionType
+from collisions.custom_typings import WToMCollisionType, WToMResolverType
 from collisions.utils import Util
 from generic_facades.day_facade import DayFacade
 
@@ -118,7 +118,7 @@ class WeeklyAndManuallyCollision():
         )
 
         if manually_range:
-            if True:
+            if manually_day.date > self.weekly_facade.assignation.starting_date:
                 day_number = self.check_prev_collision(
                     manually_range,
                     weekly_day
@@ -130,10 +130,10 @@ class WeeklyAndManuallyCollision():
                 manually_range,
                 weekly_day
             )
-            if day_number:
+            if day_number is not None:
                 collisions[str_date].append(day_number)
 
-            if True:
+            if manually_day.date < self.weekly_facade.assignation.ending_date:
                 day_number = self.check_next_collision(
                     manually_range,
                     weekly_day
@@ -146,8 +146,8 @@ class WeeklyAndManuallyCollision():
     def resolve(
         self,
         detail=False
-    ) -> Tuple[bool, Dict]:
-        collisions = {}
+    ) -> WToMResolverType:
+        collisions = WToMCollisionType({})
         manually_days = self.manually_facade.get_days()
         for manually_day in manually_days:
             week_day = manually_day.date.weekday()
@@ -161,12 +161,16 @@ class WeeklyAndManuallyCollision():
 
             if manually_day_collisions:
                 if detail:
-                    collisions.update(manually_day_collisions)
+                    collisions.update(
+                        WToMCollisionType(manually_day_collisions)
+                    )
                 else:
-                    return True, collisions
+                    return WToMResolverType(
+                        (True, collisions)
+                    )
 
         has_collisions = False
         if collisions:
             has_collisions = True
 
-        return has_collisions, collisions
+        return WToMResolverType((has_collisions, collisions))

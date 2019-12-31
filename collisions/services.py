@@ -16,7 +16,11 @@ from generic_facades.weekly_assignation_facade import WeeklyAssignationFacade
 from generic_facades.manually_assignation_facade import ManualAssignationFacade
 
 if TYPE_CHECKING:
-    from collisions.custom_typings import CToWResolverType, CToMResolverType
+    from collisions.custom_typings import (
+        CToWResolverType,
+        CToMResolverType,
+        WToMResolverType,
+    )
     from proxies.assignation_proxy import AssignationProxy
 
 
@@ -52,7 +56,7 @@ def weekly_and_manually_collision(
     assignation1: AssignationProxy,
     assignation2: AssignationProxy,
     detail=False
-) -> CToMResolverType:
+) -> WToMResolverType:
     """ This service is to check if an cycle assignation and a manual
     assignation has some collision. """
 

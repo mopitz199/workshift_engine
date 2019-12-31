@@ -2523,8 +2523,8 @@ class TestWeeklyAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 30).date(),
+                'starting_date': datetime(2019, 12, 2).date(),
+                'ending_date': datetime(2019, 12, 8).date(),
             },
             'workshift': {
                 'total_workshift_days': 7,
@@ -2535,19 +2535,19 @@ class TestWeeklyAndManuallyCollision():
                         'starting_time': datetime.strptime(
                             '08:00', '%H:%M').time(),
                         'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                            '18:00', '%H:%M').time()
                     },
                     {
                         'day_number': 1,
                         'starting_time': datetime.strptime(
                             '08:00', '%H:%M').time(),
                         'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                            '18:00', '%H:%M').time()
                     },
                     {
                         'day_number': 2,
                         'starting_time': datetime.strptime(
-                            '19:00', '%H:%M').time(),
+                            '18:00', '%H:%M').time(),
                         'ending_time': datetime.strptime(
                             '22:00', '%H:%M').time()
                     },
@@ -2556,24 +2556,28 @@ class TestWeeklyAndManuallyCollision():
                         'starting_time': datetime.strptime(
                             '08:00', '%H:%M').time(),
                         'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                            '18:00', '%H:%M').time()
                     },
                     {
                         'day_number': 4,
                         'starting_time': datetime.strptime(
-                            '08:30', '%H:%M').time(),
+                            '08:00', '%H:%M').time(),
                         'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                            '18:00', '%H:%M').time()
                     },
                     {
                         'day_number': 5,
-                        'starting_time': None,
-                        'ending_time': None
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '18:00', '%H:%M').time()
                     },
                     {
                         'day_number': 6,
-                        'starting_time': None,
-                        'ending_time': None
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '18:00', '%H:%M').time()
                     }
                 ]
             }
@@ -2583,14 +2587,35 @@ class TestWeeklyAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': datetime(2019, 12, 2).date(),
+                'ending_date': datetime(2019, 12, 8).date(),
             },
             'workshift': {
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 9, 1).date(),
+                        'date': datetime(2019, 12, 2).date(),
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '19:00', '%H:%M').time()
+                    },
+                    {
+                        'date': datetime(2019, 12, 4).date(),
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '19:00', '%H:%M').time()
+                    },
+                    {
+                        'date': datetime(2019, 12, 6).date(),
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '19:00', '%H:%M').time()
+                    },
+                    {
+                        'date': datetime(2019, 12, 8).date(),
                         'starting_time': datetime.strptime(
                             '08:00', '%H:%M').time(),
                         'ending_time': datetime.strptime(
@@ -2603,6 +2628,13 @@ class TestWeeklyAndManuallyCollision():
 
         has_collision, detail = weekly_and_manually_collision(
             assignation1,
-            assignation2)
+            assignation2,
+            detail=True)
 
-        assert has_collision and not detail
+        expected_detail = {
+            '2019-12-02': [0],
+            '2019-12-04': [2],
+            '2019-12-06': [4],
+            '2019-12-08': [6]
+        }
+        assert has_collision and detail == expected_detail
