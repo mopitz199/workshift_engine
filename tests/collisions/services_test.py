@@ -3117,3 +3117,116 @@ class TestWeeklyAndManuallyCollision():
         }
 
         assert has_collision and detail == expected_detail
+
+    def test_weekly_and_manually_collision6(self):
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 12, 2).date(),
+                'ending_date': datetime(2019, 12, 8).date(),
+            },
+            'workshift': {
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '18:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': None,
+                        'ending_time': None
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '18:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '18:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': None,
+                        'ending_time': None
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '18:00', '%H:%M').time()
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': datetime.strptime(
+                            '08:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '17:59', '%H:%M').time()
+                    }
+                ]
+            }
+        }
+        assignation1 = create_an_assignation(assignation1)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 12, 1).date(),
+                'ending_date': datetime(2019, 12, 9).date(),
+            },
+            'workshift': {
+                'workshift_type': 'manually',
+                'days': [
+                    {
+                        'date': datetime(2019, 12, 2).date(),
+                        'starting_time': datetime.strptime(
+                            '18:01', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '22:00', '%H:%M').time()
+                    },
+                    {
+                        'date': datetime(2019, 12, 3).date(),
+                        'starting_time': datetime.strptime(
+                            '22:00', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '07:59', '%H:%M').time()
+                    },
+                    {
+                        'date': datetime(2019, 12, 5).date(),
+                        'starting_time': datetime.strptime(
+                            '18:01', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '07:00', '%H:%M').time()
+                    },
+                    {
+                        'date': datetime(2019, 12, 7).date(),
+                        'starting_time': datetime.strptime(
+                            '18:01', '%H:%M').time(),
+                        'ending_time': datetime.strptime(
+                            '07:59', '%H:%M').time()
+                    },
+                ]
+            }
+        }
+        assignation2 = create_an_assignation(assignation2)
+
+        has_collision, detail = weekly_and_manually_collision(
+            assignation1,
+            assignation2,
+            detail=True)
+
+        expected_detail = {}
+
+        assert not has_collision and detail == expected_detail
