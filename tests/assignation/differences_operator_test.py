@@ -1,14 +1,28 @@
 from datetime import datetime
 
-from database.assignation_db import AssignationDB
-from utils.range import Range
 from assignation.operators.differences_operator import DifferencesOperator
-from test_utils.utils import create_an_assignation
+from database.assignation_db import AssignationDB
+from database.workshift_db import WorkShiftDB
+from proxies.workshift_proxy import WorkShiftProxy
+from test_utils.utils import (
+    create_an_assignation,
+    create_proxy_workshifts,
+)
+from utils.range import Range
 
 
 class TestDifferencesOperator(object):
 
     def test_process_differences1(self):
+
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -18,11 +32,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1]
         assignation_db = AssignationDB(assignations, None)
@@ -34,11 +46,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 2
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignation_db.assignate(assign2)
 
@@ -53,6 +63,15 @@ class TestDifferencesOperator(object):
 
     def test_process_differences2(self):
 
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -61,11 +80,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1]
         assignation_db = AssignationDB(assignations, None)
@@ -77,11 +94,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 5
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
 
         assignation_db.unassign(fake_assign)
 
@@ -96,6 +111,15 @@ class TestDifferencesOperator(object):
 
     def test_process_differences3(self):
 
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -104,11 +128,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1]
         assignation_db = AssignationDB(assignations, None)
@@ -120,11 +142,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 4
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
 
         assignation_db.unassign(fake_assign)
 
@@ -135,11 +155,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 6
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignation_db.assignate(assign2)
 
@@ -158,6 +176,15 @@ class TestDifferencesOperator(object):
 
     def test_process_differences4(self):
 
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -166,11 +193,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -180,11 +205,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 8
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
         assignation_db = AssignationDB(assignations, None)
@@ -196,11 +219,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 4
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
 
         assignation_db.unassign(fake_assign)
 
@@ -211,11 +232,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 3
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
 
         assignation_db.unassign(fake_assign)
 
@@ -226,11 +245,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 5
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign3 = create_an_assignation(data)
+            }
+        }
+        assign3 = create_an_assignation(data, workshift_db)
 
         assignation_db.assignate(assign3)
 
@@ -253,6 +270,15 @@ class TestDifferencesOperator(object):
 
     def test_process_differences5(self):
 
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -261,11 +287,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1]
         assignation_db = AssignationDB(assignations, None)
@@ -277,11 +301,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 4
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
 
         assignation_db.unassign(fake_assign)
 
@@ -292,11 +314,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 7
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignation_db.assignate(assign2)
 
@@ -310,6 +330,15 @@ class TestDifferencesOperator(object):
         assert resp['1'] == [expected]
 
     def test_process_differences6(self):
+        
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -319,11 +348,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -333,11 +360,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 2
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
         assignation_db = AssignationDB(assignations, None)
@@ -349,11 +374,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign3 = create_an_assignation(data)
+            }
+        }
+        assign3 = create_an_assignation(data, workshift_db)
         assignation_db.assignate(assign3)
 
         data = {
@@ -363,11 +386,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 3
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign4 = create_an_assignation(data)
+            }
+        }
+        assign4 = create_an_assignation(data, workshift_db)
         assignation_db.assignate(assign4)
 
         differences_operator = DifferencesOperator(assignation_db)
@@ -381,6 +402,19 @@ class TestDifferencesOperator(object):
 
     def test_process_differences7(self):
 
+        workshifts_data = [
+            {
+                'id': 1,
+                'total_workshift_days': 8
+            },
+            {
+                'id': 2,
+                'total_workshift_days': 4
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -389,11 +423,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 1,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -403,11 +435,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 2,
                 'person_id': 1,
                 'starting_day': 4
-            },
-            'workshift': {
-                'total_workshift_days': 4,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
         assignation_db = AssignationDB(assignations, None)
@@ -419,11 +449,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 1,
                 'person_id': 1,
                 'starting_day': 3
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign3 = create_an_assignation(data)
+            }
+        }
+        assign3 = create_an_assignation(data, workshift_db)
         assignation_db.assignate(assign3)
 
         data = {
@@ -433,11 +461,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 2,
                 'person_id': 1,
                 'starting_day': 3
-            },
-            'workshift': {
-                'total_workshift_days': 4,
-            }}
-        assign4 = create_an_assignation(data)
+            }
+        }
+        assign4 = create_an_assignation(data, workshift_db)
         assignation_db.assignate(assign4)
 
         data = {
@@ -447,11 +473,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 1,
                 'person_id': 1,
                 'starting_day': 5
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
         assignation_db.unassign(fake_assign)
 
         data = {
@@ -461,11 +485,9 @@ class TestDifferencesOperator(object):
                 'workshift_id': 2,
                 'person_id': 1,
                 'starting_day': 4
-            },
-            'workshift': {
-                'total_workshift_days': 4,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
         assignation_db.unassign(fake_assign)
 
         differences_operator = DifferencesOperator(assignation_db)

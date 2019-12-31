@@ -1,13 +1,28 @@
 from datetime import datetime
 
 from database.assignation_db import AssignationDB
-from test_utils.utils import create_an_assignation
+from database.workshift_db import WorkShiftDB
+from proxies.workshift_proxy import WorkShiftProxy
+from test_utils.utils import (
+    create_an_assignation,
+    create_proxy_workshifts,
+)
 
 
 class TestAssignationBuildDatabase(object):
     """Class to test if the init function works well"""
 
     def test_init1(self):
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -17,11 +32,9 @@ class TestAssignationBuildDatabase(object):
                 'person_id': 1,
                 'total_workshift_days': 8,
                 'starting_day': None
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -31,11 +44,9 @@ class TestAssignationBuildDatabase(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -44,6 +55,20 @@ class TestAssignationBuildDatabase(object):
         assert assignation_db.db == {'4_1': assignations}
 
     def test_init2(self):
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8
+            },
+            {
+                'id': 5,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -52,12 +77,9 @@ class TestAssignationBuildDatabase(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -67,12 +89,9 @@ class TestAssignationBuildDatabase(object):
                 'workshift_id': 5,
                 'person_id': 1,
                 'starting_day': None
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -88,6 +107,15 @@ class TestAssignationAddDatabase(object):
     """
 
     def test_add1(self):
+
+        workshifts_data = [
+            {
+                'id': 4
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -95,7 +123,7 @@ class TestAssignationAddDatabase(object):
                 'ending_date': datetime(2019, 1, 22).date(),
                 'workshift_id': 4,
                 'person_id': 1}}
-        assign1 = create_an_assignation(data)
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -104,7 +132,7 @@ class TestAssignationAddDatabase(object):
                 'ending_date': datetime(2019, 1, 28).date(),
                 'workshift_id': 4,
                 'person_id': 1}}
-        assign2 = create_an_assignation(data)
+        assign2 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -112,7 +140,7 @@ class TestAssignationAddDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 4,
                 'person_id': 1}}
-        assign3 = create_an_assignation(data)
+        assign3 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -125,6 +153,15 @@ class TestAssignationAddDatabase(object):
                 assignation_db.to_be_created == [assign3])
 
     def test_add2(self):
+
+        workshifts_data = [
+            {
+                'id': 4
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -132,7 +169,7 @@ class TestAssignationAddDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 4,
                 'person_id': 1}}
-        assign = create_an_assignation(data)
+        assign = create_an_assignation(data, workshift_db)
 
         assignations = []
 
@@ -145,6 +182,21 @@ class TestAssignationAddDatabase(object):
                 assignation_db.to_be_created == [])
 
     def test_add3(self):
+
+        workshifts_data = [
+            {
+                'id': 6
+            },
+            {
+                'id': 7
+            },
+            {
+                'id': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -152,7 +204,7 @@ class TestAssignationAddDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
                 'person_id': 1}}
-        assign1 = create_an_assignation(data)
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -162,7 +214,7 @@ class TestAssignationAddDatabase(object):
                 'workshift_id': 7,
                 'person_id': 1}}
 
-        assign2 = create_an_assignation(data)
+        assign2 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -170,7 +222,7 @@ class TestAssignationAddDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 8,
                 'person_id': 1}}
-        assign3 = create_an_assignation(data)
+        assign3 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -191,6 +243,18 @@ class TestAssignationRemoveDatabase(object):
     """
 
     def test_remove1(self):
+
+        workshifts_data = [
+            {
+                'id': 6
+            },
+            {
+                'id': 7
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -198,7 +262,7 @@ class TestAssignationRemoveDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
                 'person_id': 1}}
-        assign1 = create_an_assignation(data)
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -207,7 +271,7 @@ class TestAssignationRemoveDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 7,
                 'person_id': 1}}
-        assign2 = create_an_assignation(data)
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -218,6 +282,15 @@ class TestAssignationRemoveDatabase(object):
                 assignation_db.to_be_deleted == [assign1])
 
     def test_remove2(self):
+
+        workshifts_data = [
+            {
+                'id': 6
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -225,7 +298,7 @@ class TestAssignationRemoveDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
                 'person_id': 1}}
-        assign1 = create_an_assignation(data)
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -234,7 +307,7 @@ class TestAssignationRemoveDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
                 'person_id': 1}}
-        assign2 = create_an_assignation(data)
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -245,6 +318,15 @@ class TestAssignationRemoveDatabase(object):
                 assignation_db.to_be_deleted == [assign1])
 
     def test_remove3(self):
+
+        workshifts_data = [
+            {
+                'id': 6
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -252,7 +334,7 @@ class TestAssignationRemoveDatabase(object):
                 'ending_date': datetime(2019, 2, 28).date(),
                 'workshift_id': 6,
                 'person_id': 1}}
-        assign1 = create_an_assignation(data)
+        assign1 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1]
 
@@ -263,6 +345,15 @@ class TestAssignationRemoveDatabase(object):
                 assignation_db.to_be_deleted == [assign1])
 
     def test_remove4(self):
+
+        workshifts_data = [
+            {
+                'id': 6
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'starting_date': datetime(2019, 2, 24).date(),
@@ -270,7 +361,7 @@ class TestAssignationRemoveDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1
             }}
-        assign1 = create_an_assignation(data)
+        assign1 = create_an_assignation(data, workshift_db)
 
         assignations = []
 
@@ -309,6 +400,15 @@ class TestAssignationUpdateDatabase(object):
                 assignation_db.to_be_updated == [assign1])
 
     def test_update2(self):
+
+        workshifts_data = [
+            {
+                'id': 6
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'starting_date': datetime(2019, 2, 24).date(),
@@ -316,7 +416,7 @@ class TestAssignationUpdateDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1
             }}
-        assign1 = create_an_assignation(data)
+        assign1 = create_an_assignation(data, workshift_db)
 
         assignations = []
 
@@ -333,6 +433,15 @@ class TestAssignationOperatorDatabase(object):
     in special circunstances with assignate and unassign methods"""
 
     def test_opetrator_database1(self):
+
+        workshifts_data = [
+            {
+                'id': 6
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 3,
@@ -342,7 +451,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign1 = create_an_assignation(data)
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -352,7 +461,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign2 = create_an_assignation(data)
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1]
 
@@ -366,6 +475,15 @@ class TestAssignationOperatorDatabase(object):
                 assignation_db.to_be_deleted == [])
 
     def test_opetrator_database2(self):
+
+        workshifts_data = [
+            {
+                'id': 6
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 3,
@@ -375,7 +493,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign1 = create_an_assignation(data)
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -386,7 +504,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign2 = create_an_assignation(data)
+        assign2 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -396,7 +514,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign3 = create_an_assignation(data)
+        assign3 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -411,6 +529,15 @@ class TestAssignationOperatorDatabase(object):
                 assignation_db.to_be_deleted == [assign1])
 
     def test_opetrator_database3(self):
+
+        workshifts_data = [
+            {
+                'id': 6
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 3,
@@ -420,7 +547,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign1 = create_an_assignation(data)
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -431,7 +558,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign2 = create_an_assignation(data)
+        assign2 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -441,7 +568,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign3 = create_an_assignation(data)
+        assign3 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -456,6 +583,15 @@ class TestAssignationOperatorDatabase(object):
                 assignation_db.to_be_deleted == [assign1])
 
     def test_opetrator_database4(self):
+
+        workshifts_data = [
+            {
+                'id': 6
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 3,
@@ -465,7 +601,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign1 = create_an_assignation(data)
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -476,7 +612,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign2 = create_an_assignation(data)
+        assign2 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -486,7 +622,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign3 = create_an_assignation(data)
+        assign3 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -496,7 +632,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign4 = create_an_assignation(data)
+        assign4 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -519,6 +655,15 @@ class TestAssignationOperatorDatabase(object):
                 rm1.ending_date == datetime(2019, 2, 13).date())
 
     def test_opetrator_database5(self):
+
+        workshifts_data = [
+            {
+                'id': 6
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 3,
@@ -528,7 +673,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign1 = create_an_assignation(data)
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -539,7 +684,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign2 = create_an_assignation(data)
+        assign2 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -549,7 +694,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign3 = create_an_assignation(data)
+        assign3 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -559,7 +704,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign4 = create_an_assignation(data)
+        assign4 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -569,7 +714,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign5 = create_an_assignation(data)
+        assign5 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -590,6 +735,16 @@ class TestAssignationOperatorDatabase(object):
                 rm2.ending_date == datetime(2019, 2, 25).date())
 
     def test_opetrator_database6(self):
+
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 3,
@@ -598,11 +753,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -612,11 +765,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 3
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -625,11 +776,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 6
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign3 = create_an_assignation(data)
+            }
+        }
+        assign3 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -638,11 +787,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 4
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign4 = create_an_assignation(data)
+            }
+        }
+        assign4 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -651,11 +798,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 5
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign5 = create_an_assignation(data)
+            }
+        }
+        assign5 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -676,6 +821,16 @@ class TestAssignationOperatorDatabase(object):
                 rm2.ending_date == datetime(2019, 2, 25).date())
 
     def test_opetrator_database7(self):
+
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 3,
@@ -684,11 +839,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -698,11 +851,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 3
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -711,11 +862,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 6
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign3 = create_an_assignation(data)
+            }
+        }
+        assign3 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -724,11 +873,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 4
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign4 = create_an_assignation(data)
+            }
+        }
+        assign4 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -737,11 +884,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 8
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign5 = create_an_assignation(data)
+            }
+        }
+        assign5 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -768,6 +913,15 @@ class TestAssignationOperatorDatabase(object):
                 rm5.ending_date == datetime(2019, 2, 14).date())
 
     def test_opetrator_database8(self):
+
+        workshifts_data = [
+            {
+                'id': 6,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'starting_date': datetime(2019, 2, 10).date(),
@@ -776,7 +930,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        assign1 = create_an_assignation(data)
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -786,7 +940,7 @@ class TestAssignationOperatorDatabase(object):
                 'person_id': 1,
                 'starting_day': None
             }}
-        fake_assign = create_an_assignation(data)
+        fake_assign = create_an_assignation(data, workshift_db)
 
         assignations = []
 
@@ -804,6 +958,16 @@ class TestAssignationOperatorDatabase(object):
                 rm1.ending_date == datetime(2019, 2, 16).date())
 
     def test_opetrator_database9(self):
+
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'starting_date': datetime(2019, 2, 10).date(),
@@ -811,11 +975,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -824,11 +986,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
 
         assignations = []
 
@@ -846,6 +1006,16 @@ class TestAssignationOperatorDatabase(object):
                 rm1.ending_date == datetime(2019, 2, 16).date())
 
     def test_opetrator_database10(self):
+
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'starting_date': datetime(2019, 2, 10).date(),
@@ -853,11 +1023,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -866,11 +1034,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 3
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
 
         assignations = []
 
@@ -888,6 +1054,16 @@ class TestAssignationOperatorDatabase(object):
                 rm1.ending_date == datetime(2019, 2, 16).date())
 
     def test_opetrator_database11(self):
+
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -896,11 +1072,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -909,11 +1083,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
 
         assignations = [assign1]
         assignation_db = AssignationDB(assignations, None)
@@ -928,6 +1100,15 @@ class TestAssignationOperatorDatabase(object):
 
     def test_opetrator_database12(self):
 
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'starting_date': datetime(2019, 2, 16).date(),
@@ -935,11 +1116,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignations = []
         assignation_db = AssignationDB(assignations, None)
@@ -952,6 +1131,16 @@ class TestAssignationOperatorDatabase(object):
                 assignation_db.to_be_deleted == [])
 
     def test_opetrator_database13(self):
+
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -960,11 +1149,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -974,11 +1161,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 3
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
         assignation_db = AssignationDB(assignations, None)
@@ -990,11 +1175,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 5
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
         assignation_db.unassign(fake_assign)
 
         data = {
@@ -1004,11 +1187,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 7
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign3 = create_an_assignation(data)
+            }
+        }
+        assign3 = create_an_assignation(data, workshift_db)
         assignation_db.assignate(assign3)
 
         data = {
@@ -1018,11 +1199,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
         assignation_db.unassign(fake_assign)
 
         data = {
@@ -1032,11 +1211,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 7
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
         assignation_db.unassign(fake_assign)
 
         data = {
@@ -1046,11 +1223,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 2
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign4 = create_an_assignation(data)
+            }
+        }
+        assign4 = create_an_assignation(data, workshift_db)
         assignation_db.assignate(assign4)
 
         data = {
@@ -1060,11 +1235,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 4
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign5 = create_an_assignation(data)
+            }
+        }
+        assign5 = create_an_assignation(data, workshift_db)
         assignation_db.assignate(assign5)
 
         data = {
@@ -1074,11 +1247,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign6 = create_an_assignation(data)
+            }
+        }
+        assign6 = create_an_assignation(data, workshift_db)
         assignation_db.assignate(assign6)
 
         assert (len(assignation_db.db['6_1']) == 5 and
@@ -1087,6 +1258,16 @@ class TestAssignationOperatorDatabase(object):
                 assignation_db.to_be_deleted == [])
 
     def test_opetrator_database14(self):
+
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -1095,11 +1276,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -1109,11 +1288,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 3
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
         assignation_db = AssignationDB(assignations, None)
@@ -1125,11 +1302,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 5
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
         assignation_db.unassign(fake_assign)
 
         data = {
@@ -1139,11 +1314,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 7
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign3 = create_an_assignation(data)
+            }
+        }
+        assign3 = create_an_assignation(data, workshift_db)
         assignation_db.assignate(assign3)
 
         data = {
@@ -1153,11 +1326,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
         assignation_db.unassign(fake_assign)
 
         data = {
@@ -1167,11 +1338,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 2
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign4 = create_an_assignation(data)
+            }
+        }
+        assign4 = create_an_assignation(data, workshift_db)
         assignation_db.assignate(assign4)
 
         data = {
@@ -1181,11 +1350,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 4
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign5 = create_an_assignation(data)
+            }
+        }
+        assign5 = create_an_assignation(data, workshift_db)
         assignation_db.assignate(assign5)
 
         data = {
@@ -1195,11 +1362,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 2
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign6 = create_an_assignation(data)
+            }
+        }
+        assign6 = create_an_assignation(data, workshift_db)
         assignation_db.assignate(assign6)
 
         assert (len(assignation_db.db['6_1']) == 5 and
@@ -1212,6 +1377,15 @@ class TestAssignationOperatorDatabase(object):
         assignations = []
         assignation_db = AssignationDB(assignations, None)
 
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'starting_date': datetime(2019, 2, 16).date(),
@@ -1219,11 +1393,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
         assignation_db.assignate(assign1)
 
         data = {
@@ -1233,11 +1405,9 @@ class TestAssignationOperatorDatabase(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
         assignation_db.unassign(fake_assign)
 
         assert (assignation_db.db['6_1'] == [assign1] and
@@ -1249,6 +1419,16 @@ class TestAssignationOperatorDatabase(object):
 class TestAssignateDatabse(object):
 
     def build_db_1(self):
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -1258,11 +1438,9 @@ class TestAssignateDatabse(object):
                 'person_id': 1,
                 'total_workshift_days': 8,
                 'starting_day': None
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -1272,11 +1450,9 @@ class TestAssignateDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -1284,6 +1460,16 @@ class TestAssignateDatabse(object):
         return assignation_db
 
     def build_db_2(self):
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -1293,11 +1479,9 @@ class TestAssignateDatabse(object):
                 'person_id': 1,
                 'total_workshift_days': 8,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -1307,11 +1491,9 @@ class TestAssignateDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 7
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -1319,7 +1501,17 @@ class TestAssignateDatabse(object):
         return assignation_db
 
     def test_assignate1(self):
+
         db_obj = self.build_db_1()
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -1329,11 +1521,9 @@ class TestAssignateDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.assignate(assign)
 
         rm = db_obj.db['4_1'][0].range_obj
@@ -1345,7 +1535,17 @@ class TestAssignateDatabse(object):
                 len(db_obj.to_be_created) == 0)
 
     def test_assignate2(self):
+
         db_obj = self.build_db_1()
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -1355,11 +1555,9 @@ class TestAssignateDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.assignate(assign)
 
         assert (len(db_obj.db['4_1']) == 3 and
@@ -1368,7 +1566,17 @@ class TestAssignateDatabse(object):
                 len(db_obj.to_be_created) == 1)
 
     def test_assignate3(self):
+
         db_obj = self.build_db_1()
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -1378,11 +1586,9 @@ class TestAssignateDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.assignate(assign)
 
         assert (len(db_obj.db['4_1']) == 2 and
@@ -1391,7 +1597,17 @@ class TestAssignateDatabse(object):
                 len(db_obj.to_be_created) == 0)
 
     def test_assignate4(self):
+
         db_obj = self.build_db_2()
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -1401,11 +1617,9 @@ class TestAssignateDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 7
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.assignate(assign)
 
         assert (len(db_obj.db['4_1']) == 2 and
@@ -1414,7 +1628,17 @@ class TestAssignateDatabse(object):
                 len(db_obj.to_be_created) == 0)
 
     def test_assignate5(self):
+
         db_obj = self.build_db_2()
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -1424,11 +1648,9 @@ class TestAssignateDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 6
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.assignate(assign)
 
         assert (len(db_obj.db['4_1']) == 3 and
@@ -1437,7 +1659,17 @@ class TestAssignateDatabse(object):
                 len(db_obj.to_be_created) == 1)
 
     def test_assignate6(self):
+
         db_obj = self.build_db_2()
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -1447,11 +1679,9 @@ class TestAssignateDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 6
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.assignate(assign)
 
         assert (len(db_obj.db['4_1']) == 2 and
@@ -1460,7 +1690,17 @@ class TestAssignateDatabse(object):
                 len(db_obj.to_be_created) == 0)
 
     def test_assignate7(self):
+
         db_obj = self.build_db_2()
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -1470,11 +1710,9 @@ class TestAssignateDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 3
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.assignate(assign)
 
         data = {
@@ -1485,11 +1723,9 @@ class TestAssignateDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 4
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.assignate(assign)
 
         assert (len(db_obj.db['4_1']) == 3 and
@@ -1498,7 +1734,17 @@ class TestAssignateDatabse(object):
                 len(db_obj.to_be_created) == 1)
 
     def test_assignate8(self):
+
         db_obj = self.build_db_2()
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -1508,11 +1754,9 @@ class TestAssignateDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 4
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.assignate(assign)
 
         data = {
@@ -1523,11 +1767,9 @@ class TestAssignateDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 5
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.assignate(assign)
 
         assert (len(db_obj.db['4_1']) == 2 and
@@ -1539,6 +1781,16 @@ class TestAssignateDatabse(object):
 class TestUnassignDatabse(object):
 
     def build_db_1(self):
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -1546,13 +1798,10 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 1, 22).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'total_workshift_days': 8,
                 'starting_day': None
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -1562,11 +1811,9 @@ class TestUnassignDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -1574,6 +1821,16 @@ class TestUnassignDatabse(object):
         return assignation_db
 
     def build_db_2(self):
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8,
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -1581,13 +1838,10 @@ class TestUnassignDatabse(object):
                 'ending_date': datetime(2019, 1, 22).date(),
                 'workshift_id': 4,
                 'person_id': 1,
-                'total_workshift_days': 8,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         data = {
             'assignation': {
@@ -1597,11 +1851,9 @@ class TestUnassignDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 7
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign2 = create_an_assignation(data)
+            }
+        }
+        assign2 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1, assign2]
 
@@ -1611,6 +1863,15 @@ class TestUnassignDatabse(object):
     def test_unassign1(self):
         db_obj = self.build_db_1()
 
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': None,
@@ -1619,11 +1880,9 @@ class TestUnassignDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.unassign(assign)
 
         rm = db_obj.to_be_updated[0].range_obj
@@ -1637,6 +1896,15 @@ class TestUnassignDatabse(object):
     def test_unassign2(self):
         db_obj = self.build_db_1()
 
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': None,
@@ -1645,11 +1913,9 @@ class TestUnassignDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.unassign(assign)
 
         rm1 = db_obj.to_be_updated[0].range_obj
@@ -1664,7 +1930,17 @@ class TestUnassignDatabse(object):
                 rm2.ending_date == datetime(2019, 1, 30).date())
 
     def test_unassign3(self):
+
         db_obj = self.build_db_1()
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -1674,11 +1950,9 @@ class TestUnassignDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.unassign(assign)
 
         rm = db_obj.to_be_deleted[0].range_obj
@@ -1714,7 +1988,17 @@ class TestUnassignDatabse(object):
                 len(db_obj.to_be_created) == 0)
 
     def test_unassign5(self):
+
         db_obj = self.build_db_2()
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -1724,11 +2008,9 @@ class TestUnassignDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.unassign(assign)
 
         assert (len(db_obj.db['4_1']) == 2 and
@@ -1737,7 +2019,17 @@ class TestUnassignDatabse(object):
                 len(db_obj.to_be_created) == 0)
 
     def test_unassign6(self):
+
         db_obj = self.build_db_2()
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -1747,11 +2039,9 @@ class TestUnassignDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 4
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.unassign(assign)
 
         rm = db_obj.to_be_updated[0].range_obj
@@ -1764,7 +2054,17 @@ class TestUnassignDatabse(object):
                 rm.ending_date == datetime(2019, 1, 30).date())
 
     def test_unassign7(self):
+
         db_obj = self.build_db_2()
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -1774,11 +2074,9 @@ class TestUnassignDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 2
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.unassign(assign)
 
         rm = db_obj.to_be_updated[0].range_obj
@@ -1791,7 +2089,17 @@ class TestUnassignDatabse(object):
                 rm.ending_date == datetime(2019, 1, 9).date())
 
     def test_unassign8(self):
+
         db_obj = self.build_db_2()
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -1801,11 +2109,9 @@ class TestUnassignDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 5
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.unassign(assign)
 
         assert (len(db_obj.db['4_1']) == 2 and
@@ -1814,7 +2120,17 @@ class TestUnassignDatabse(object):
                 len(db_obj.to_be_created) == 0)
 
     def test_unassign9(self):
+
         db_obj = self.build_db_2()
+
+        workshifts_data = [
+            {
+                'id': 4,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
 
         data = {
             'assignation': {
@@ -1824,11 +2140,9 @@ class TestUnassignDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 8
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.unassign(assign)
 
         data = {
@@ -1839,11 +2153,9 @@ class TestUnassignDatabse(object):
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 2
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign = create_an_assignation(data)
+            }
+        }
+        assign = create_an_assignation(data, workshift_db)
         db_obj.unassign(assign)
 
         assert (len(db_obj.db['4_1']) == 4 and
@@ -1852,6 +2164,16 @@ class TestUnassignDatabse(object):
                 len(db_obj.to_be_created) == 2)
 
     def test_unassign10(self):
+
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 8
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
         data = {
             'assignation': {
                 'id': 1,
@@ -1860,11 +2182,9 @@ class TestUnassignDatabse(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        assign1 = create_an_assignation(data)
+            }
+        }
+        assign1 = create_an_assignation(data, workshift_db)
 
         assignations = [assign1]
         assignation_db = AssignationDB(assignations, None)
@@ -1876,11 +2196,9 @@ class TestUnassignDatabse(object):
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 5
-            },
-            'workshift': {
-                'total_workshift_days': 8,
-            }}
-        fake_assign = create_an_assignation(data)
+            }
+        }
+        fake_assign = create_an_assignation(data, workshift_db)
 
         assignation_db.unassign(fake_assign)
 

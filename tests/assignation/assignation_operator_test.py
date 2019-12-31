@@ -921,7 +921,7 @@ class TestGetCandidates(object):
         }
         assign = create_an_assignation(data, workshift_db)
 
-        assign_list = [assign1, assign2, assign3] 
+        assign_list = [assign1, assign2, assign3]
 
         best, others = AssignationOperator.get_candidates(assign, assign_list)
 
