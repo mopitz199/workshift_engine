@@ -32,3 +32,6 @@ class WorkShiftProxy(Proxy, DBExtension):
             response[key] = day
 
         return response
+
+    def get_days(self):
+        return self.days
