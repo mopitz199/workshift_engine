@@ -1863,23 +1863,6 @@ class TestCycleAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
@@ -1898,18 +1881,9 @@ class TestCycleAndManuallyCollision():
                             '20:00', '%H:%M').time()
                     },
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -1920,6 +1894,27 @@ class TestCycleAndManuallyCollision():
                             '13:00', '%H:%M').time()
                     },
                 ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+                'workshift_id': 7,
             }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
@@ -1938,23 +1933,6 @@ class TestCycleAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
@@ -1973,18 +1951,9 @@ class TestCycleAndManuallyCollision():
                             '20:00', '%H:%M').time()
                     },
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -1995,6 +1964,27 @@ class TestCycleAndManuallyCollision():
                             '12:59', '%H:%M').time()
                     },
                 ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+                'workshift_id': 7,
             }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
@@ -2013,23 +2003,6 @@ class TestCycleAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
@@ -2048,18 +2021,9 @@ class TestCycleAndManuallyCollision():
                             '20:00', '%H:%M').time()
                     },
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -2119,6 +2083,27 @@ class TestCycleAndManuallyCollision():
                             '06:59', '%H:%M').time()
                     },
                 ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+                'workshift_id': 7,
             }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
@@ -2137,23 +2122,6 @@ class TestCycleAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
@@ -2172,18 +2140,9 @@ class TestCycleAndManuallyCollision():
                             '20:00', '%H:%M').time()
                     },
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -2243,6 +2202,27 @@ class TestCycleAndManuallyCollision():
                             '06:59', '%H:%M').time()
                     },
                 ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+                'workshift_id': 7,
             }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
@@ -2270,23 +2250,6 @@ class TestCycleAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
@@ -2305,18 +2268,9 @@ class TestCycleAndManuallyCollision():
                             '20:00', '%H:%M').time()
                     },
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -2377,6 +2331,27 @@ class TestCycleAndManuallyCollision():
                     },
                 ]
             }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 11).date(),
+                'workshift_id': 7,
+            }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
@@ -2403,23 +2378,6 @@ class TestCycleAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 8).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
@@ -2438,18 +2396,9 @@ class TestCycleAndManuallyCollision():
                             '06:00', '%H:%M').time()
                     },
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 9, 9).date(),
-                'ending_date': datetime(2019, 9, 9).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -2460,6 +2409,27 @@ class TestCycleAndManuallyCollision():
                             '07:00', '%H:%M').time()
                     },
                 ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 8).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 9, 9).date(),
+                'ending_date': datetime(2019, 9, 9).date(),
+                'workshift_id': 7,
             }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
@@ -2477,23 +2447,6 @@ class TestCycleAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 8).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
@@ -2512,18 +2465,9 @@ class TestCycleAndManuallyCollision():
                             '06:00', '%H:%M').time()
                     },
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 9, 10).date(),
-                'ending_date': datetime(2019, 9, 10).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -2534,6 +2478,27 @@ class TestCycleAndManuallyCollision():
                             '07:00', '%H:%M').time()
                     },
                 ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 8).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 9, 10).date(),
+                'ending_date': datetime(2019, 9, 10).date(),
+                'workshift_id': 7,
             }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
@@ -2551,23 +2516,6 @@ class TestCycleAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 8).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
@@ -2586,18 +2534,9 @@ class TestCycleAndManuallyCollision():
                             '06:00', '%H:%M').time()
                     },
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 8, 31).date(),
-                'ending_date': datetime(2019, 8, 31).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -2608,6 +2547,27 @@ class TestCycleAndManuallyCollision():
                             '07:00', '%H:%M').time()
                     },
                 ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 8).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 8, 31).date(),
+                'ending_date': datetime(2019, 8, 31).date(),
+                'workshift_id': 7,
             }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
@@ -2625,23 +2585,6 @@ class TestCycleAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 8).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
@@ -2660,18 +2603,9 @@ class TestCycleAndManuallyCollision():
                             '06:00', '%H:%M').time()
                     },
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 8, 30).date(),
-                'ending_date': datetime(2019, 8, 30).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -2682,6 +2616,27 @@ class TestCycleAndManuallyCollision():
                             '07:00', '%H:%M').time()
                     },
                 ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 8).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 8, 30).date(),
+                'ending_date': datetime(2019, 8, 30).date(),
+                'workshift_id': 7,
             }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
@@ -2699,23 +2654,6 @@ class TestCycleAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 8).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 2,
                 'workshift_type': 'cyclic',
                 'days': [
@@ -2734,18 +2672,9 @@ class TestCycleAndManuallyCollision():
                             '06:00', '%H:%M').time()
                     },
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 8, 30).date(),
-                'ending_date': datetime(2019, 9, 10).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -2799,6 +2728,27 @@ class TestCycleAndManuallyCollision():
                     },
                 ]
             }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': datetime(2019, 9, 1).date(),
+                'ending_date': datetime(2019, 9, 8).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 8, 30).date(),
+                'ending_date': datetime(2019, 9, 10).date(),
+                'workshift_id': 7,
+            }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
@@ -2823,23 +2773,6 @@ class TestWeeklyAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
@@ -2893,18 +2826,9 @@ class TestWeeklyAndManuallyCollision():
                             '18:00', '%H:%M').time()
                     }
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -2936,6 +2860,27 @@ class TestWeeklyAndManuallyCollision():
                             '19:00', '%H:%M').time()
                     },
                 ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 12, 2).date(),
+                'ending_date': datetime(2019, 12, 8).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 12, 2).date(),
+                'ending_date': datetime(2019, 12, 8).date(),
+                'workshift_id': 7,
             }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
@@ -2958,23 +2903,6 @@ class TestWeeklyAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
@@ -3028,18 +2956,9 @@ class TestWeeklyAndManuallyCollision():
                             '18:00', '%H:%M').time()
                     }
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -3071,6 +2990,27 @@ class TestWeeklyAndManuallyCollision():
                             '19:00', '%H:%M').time()
                     },
                 ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 12, 2).date(),
+                'ending_date': datetime(2019, 12, 8).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 12, 2).date(),
+                'ending_date': datetime(2019, 12, 8).date(),
+                'workshift_id': 7,
             }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
@@ -3094,23 +3034,6 @@ class TestWeeklyAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
@@ -3164,18 +3087,9 @@ class TestWeeklyAndManuallyCollision():
                             '08:00', '%H:%M').time()
                     }
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 12, 1).date(),
-                'ending_date': datetime(2019, 12, 9).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -3208,6 +3122,27 @@ class TestWeeklyAndManuallyCollision():
                     },
                 ]
             }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 12, 2).date(),
+                'ending_date': datetime(2019, 12, 8).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 12, 1).date(),
+                'ending_date': datetime(2019, 12, 9).date(),
+                'workshift_id': 7,
+            }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
@@ -3229,23 +3164,6 @@ class TestWeeklyAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
@@ -3299,18 +3217,9 @@ class TestWeeklyAndManuallyCollision():
                             '07:59', '%H:%M').time()
                     }
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 12, 1).date(),
-                'ending_date': datetime(2019, 12, 9).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -3343,6 +3252,27 @@ class TestWeeklyAndManuallyCollision():
                     },
                 ]
             }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 12, 2).date(),
+                'ending_date': datetime(2019, 12, 8).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 12, 1).date(),
+                'ending_date': datetime(2019, 12, 9).date(),
+                'workshift_id': 7,
+            }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
@@ -3363,23 +3293,6 @@ class TestWeeklyAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
@@ -3429,18 +3342,9 @@ class TestWeeklyAndManuallyCollision():
                             '17:59', '%H:%M').time()
                     }
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 12, 1).date(),
-                'ending_date': datetime(2019, 12, 9).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -3473,6 +3377,27 @@ class TestWeeklyAndManuallyCollision():
                     },
                 ]
             }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 12, 2).date(),
+                'ending_date': datetime(2019, 12, 8).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 12, 1).date(),
+                'ending_date': datetime(2019, 12, 9).date(),
+                'workshift_id': 7,
+            }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
@@ -3493,23 +3418,6 @@ class TestWeeklyAndManuallyCollision():
         workshifts_data = [
             {
                 'id': 6,
-                'total_workshift_days': 8
-            },
-            {
-                'id': 7,
-            }
-        ]
-        workshifts = create_proxy_workshifts(workshifts_data)
-        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
-
-        assignation1 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
-                'workshift_id': 6,
-            },
-            'workshift': {
                 'total_workshift_days': 7,
                 'workshift_type': 'weekly',
                 'days': [
@@ -3559,18 +3467,9 @@ class TestWeeklyAndManuallyCollision():
                             '17:59', '%H:%M').time()
                     }
                 ]
-            }
-        }
-        assignation1 = create_an_assignation(assignation1, workshift_db)
-
-        assignation2 = {
-            'assignation': {
-                'starting_day': None,
-                'starting_date': datetime(2019, 12, 1).date(),
-                'ending_date': datetime(2019, 12, 9).date(),
-                'workshift_id': 7,
             },
-            'workshift': {
+            {
+                'id': 7,
                 'workshift_type': 'manually',
                 'days': [
                     {
@@ -3602,6 +3501,27 @@ class TestWeeklyAndManuallyCollision():
                             '07:59', '%H:%M').time()
                     },
                 ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 12, 2).date(),
+                'ending_date': datetime(2019, 12, 8).date(),
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': datetime(2019, 12, 1).date(),
+                'ending_date': datetime(2019, 12, 9).date(),
+                'workshift_id': 7,
             }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
