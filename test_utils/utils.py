@@ -37,7 +37,19 @@ class DumbDay(object):
             setattr(self, kwarg, val)
 
 
-def create_an_assignation(data, workshift_db=None):
+class DumbDayOffAssignation(object):
+
+    def __init__(self, **kwargs):
+        for kwarg in kwargs:
+            val = kwargs.get(kwarg, None)
+            setattr(self, kwarg, val)
+
+
+def create_an_assignation(
+    data,
+    workshift_db=None,
+    day_off_assignation_db=None
+):
 
     assignation_data = data.get('assignation')
     assignation = DumbAssignation(**assignation_data)
@@ -45,6 +57,12 @@ def create_an_assignation(data, workshift_db=None):
     if workshift_db:
         workshift_proxy = workshift_db.get_by_id(assignation.workshift_id)
         assignation.workshift_proxy = workshift_proxy
+
+    if day_off_assignation_db:
+        day_off_assignations = day_off_assignation_db.get_by_person_id(
+            assignation.person_id
+        )
+        assignation.day_off_assignations = day_off_assignations
 
     person_data = data.get('person', {})
     assignation.person = DumbPerson(**person_data)
@@ -66,3 +84,16 @@ def create_proxy_workshifts(workshifts_data):
         dumb_workshifts.append(dumb_workshift)
 
     return ProxyFactory.create_multiple_workshift_proxies(dumb_workshifts)
+
+
+def create_proxy_day_off_assignation(day_off_assignations_data):
+    dumb_day_off_assignations = []
+    for day_off_assignation_data in day_off_assignations_data:
+        dumb_day_off_assignation = DumbDayOffAssignation(
+            **day_off_assignation_data
+        )
+        dumb_day_off_assignations.append(dumb_day_off_assignation)
+
+    return ProxyFactory.create_multiple_day_off_assignation_proxies(
+        dumb_day_off_assignations
+    )

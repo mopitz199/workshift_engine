@@ -7,10 +7,13 @@ from collisions.services import (
     weekly_and_manually_collision
 )
 from database.workshift_db import WorkShiftDB
+from database.day_off_assignation_db import DayOffAssignationDB
 from proxies.workshift_proxy import WorkShiftProxy
+from proxies.day_off_assignation_proxy import DayOffAssignationProxy
 from test_utils.utils import (
     create_an_assignation,
     create_proxy_workshifts,
+    create_proxy_day_off_assignation,
 )
 
 
@@ -3534,3 +3537,22 @@ class TestWeeklyAndManuallyCollision():
         expected_detail = {}
 
         assert not has_collision and detail == expected_detail
+
+
+day_off_assignations_data = [
+    {
+        'person_id': 1,
+        'starting_date': '2019-1-1',
+        'ending_date': '2019-1-1',
+        'starting_time': '08:00',
+        'ending_time': '10:00'
+    }
+]
+
+day_off_assignations = create_proxy_day_off_assignation(
+    day_off_assignations_data
+)
+day_off_assignations_db = DayOffAssignationDB(
+    day_off_assignations,
+    DayOffAssignationProxy
+)
