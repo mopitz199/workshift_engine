@@ -17,14 +17,14 @@ class TestAreNeighbors(object):
     def test_are_neighbors1(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date()}}
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5'}}
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 5).date(),
-                'ending_date': datetime(2019, 1, 10).date()}}
+                'starting_date': '2019-1-5',
+                'ending_date': '2019-1-10'}}
 
         assign2 = create_an_assignation(data)
 
@@ -33,15 +33,15 @@ class TestAreNeighbors(object):
     def test_are_neighbors2(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date()}}
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5'}}
 
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 6).date(),
-                'ending_date': datetime(2019, 1, 10).date()}}
+                'starting_date': '2019-1-6',
+                'ending_date': '2019-1-10'}}
 
         assign2 = create_an_assignation(data)
 
@@ -50,15 +50,15 @@ class TestAreNeighbors(object):
     def test_arent_neighbors1(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 4).date()}}
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-4'}}
 
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 6).date(),
-                'ending_date': datetime(2019, 1, 10).date()}}
+                'starting_date': '2019-1-6',
+                'ending_date': '2019-1-10'}}
 
         assign2 = create_an_assignation(data)
 
@@ -72,22 +72,22 @@ class TestAreMultipleNeighbors(object):
     def test_are_multiple_neighbors1(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date()}}
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5'}}
 
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 8).date(),
-                'ending_date': datetime(2019, 1, 10).date()}}
+                'starting_date': '2019-1-8',
+                'ending_date': '2019-1-10'}}
 
         assign2 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 4).date(),
-                'ending_date': datetime(2019, 1, 7).date()}}
+                'starting_date': '2019-1-4',
+                'ending_date': '2019-1-7'}}
 
         assign = create_an_assignation(data)
 
@@ -99,22 +99,22 @@ class TestAreMultipleNeighbors(object):
     def test_are_multiple_neighbors2(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date()}}
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5'}}
 
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 8).date(),
-                'ending_date': datetime(2019, 1, 10).date()}}
+                'starting_date': '2019-1-8',
+                'ending_date': '2019-1-10'}}
 
         assign2 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 4).date(),
-                'ending_date': datetime(2019, 1, 6).date()}}
+                'starting_date': '2019-1-4',
+                'ending_date': '2019-1-6'}}
 
         assign = create_an_assignation(data)
 
@@ -126,22 +126,22 @@ class TestAreMultipleNeighbors(object):
     def test_are_multiple_neighbors3(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date()}}
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5'}}
 
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 9).date(),
-                'ending_date': datetime(2019, 1, 10).date()}}
+                'starting_date': '2019-1-9',
+                'ending_date': '2019-1-10'}}
 
         assign2 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 7).date(),
-                'ending_date': datetime(2019, 1, 7).date()}}
+                'starting_date': '2019-1-7',
+                'ending_date': '2019-1-7'}}
 
         assign = create_an_assignation(data)
 
@@ -158,15 +158,15 @@ class TestGetAssignationGenerator(object):
     def test_get_assignation_generator1(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date()}}
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5'}}
 
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 5).date(),
-                'ending_date': datetime(2019, 1, 10).date()}}
+                'starting_date': '2019-1-5',
+                'ending_date': '2019-1-10'}}
 
         assign2 = create_an_assignation(data)
 
@@ -191,15 +191,15 @@ class TestGetMaxEndingDate(object):
     def test_get_max_ending_date1(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date()}}
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5'}}
 
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 5).date(),
-                'ending_date': datetime(2019, 1, 10).date()}}
+                'starting_date': '2019-1-5',
+                'ending_date': '2019-1-10'}}
 
         assign2 = create_an_assignation(data)
 
@@ -213,15 +213,15 @@ class TestGetMaxEndingDate(object):
     def test_get_max_ending_date2(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 10).date()}}
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-10'}}
 
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 5).date(),
-                'ending_date': datetime(2019, 1, 6).date()}}
+                'starting_date': '2019-1-5',
+                'ending_date': '2019-1-6'}}
 
         assign2 = create_an_assignation(data)
 
@@ -240,15 +240,15 @@ class TestGetMinStartingDate(object):
     def test_get_min_starting_date1(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date()}}
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5'}}
 
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 5).date(),
-                'ending_date': datetime(2019, 1, 10).date()}}
+                'starting_date': '2019-1-5',
+                'ending_date': '2019-1-10'}}
 
         assign2 = create_an_assignation(data)
 
@@ -262,15 +262,15 @@ class TestGetMinStartingDate(object):
     def test_get_min_starting_date2(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 7).date(),
-                'ending_date': datetime(2019, 1, 8).date()}}
+                'starting_date': '2019-1-7',
+                'ending_date': '2019-1-8'}}
 
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 3).date(),
-                'ending_date': datetime(2019, 1, 10).date()}}
+                'starting_date': '2019-1-3',
+                'ending_date': '2019-1-10'}}
 
         assign2 = create_an_assignation(data)
 
@@ -299,8 +299,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 3).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-3',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 1
@@ -311,8 +311,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 4).date(),
-                'ending_date': datetime(2019, 1, 6).date(),
+                'starting_date': '2019-1-4',
+                'ending_date': '2019-1-6',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 4
@@ -336,8 +336,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 6).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-6',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 1
@@ -347,8 +347,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 3).date(),
-                'ending_date': datetime(2019, 1, 6).date(),
+                'starting_date': '2019-1-3',
+                'ending_date': '2019-1-6',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 3
@@ -371,8 +371,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 3).date(),
-                'ending_date': datetime(2019, 1, 6).date(),
+                'starting_date': '2019-1-3',
+                'ending_date': '2019-1-6',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 3
@@ -383,8 +383,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 6).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-6',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 1
@@ -408,8 +408,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2018, 12, 28).date(),
-                'ending_date': datetime(2019, 1, 10).date(),
+                'starting_date': '2018-12-28',
+                'ending_date': '2019-1-10',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 3
@@ -419,8 +419,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 6).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-6',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 1
@@ -443,8 +443,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2018, 12, 28).date(),
-                'ending_date': datetime(2019, 1, 10).date(),
+                'starting_date': '2018-12-28',
+                'ending_date': '2019-1-10',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
@@ -454,8 +454,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 6).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-6',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
@@ -478,8 +478,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2018, 12, 28).date(),
-                'ending_date': datetime(2019, 1, 10).date(),
+                'starting_date': '2018-12-28',
+                'ending_date': '2019-1-10',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
@@ -489,8 +489,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 6).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-6',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 1
@@ -513,8 +513,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 3).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-3',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 1
@@ -525,8 +525,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 4).date(),
-                'ending_date': datetime(2019, 1, 6).date(),
+                'starting_date': '2019-1-4',
+                'ending_date': '2019-1-6',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 3
@@ -549,8 +549,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 3).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-3',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 1
@@ -560,8 +560,8 @@ class TestAreCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 4).date(),
-                'ending_date': datetime(2019, 1, 6).date(),
+                'starting_date': '2019-1-4',
+                'ending_date': '2019-1-6',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 2
@@ -589,8 +589,8 @@ class TestAreMultipleCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 6
@@ -600,8 +600,8 @@ class TestAreMultipleCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 7).date(),
-                'ending_date': datetime(2019, 1, 11).date(),
+                'starting_date': '2019-1-7',
+                'ending_date': '2019-1-11',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 4
@@ -611,8 +611,8 @@ class TestAreMultipleCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 6).date(),
-                'ending_date': datetime(2019, 1, 6).date(),
+                'starting_date': '2019-1-6',
+                'ending_date': '2019-1-6',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 3
@@ -641,8 +641,8 @@ class TestAreMultipleCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 6
@@ -652,8 +652,8 @@ class TestAreMultipleCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 7).date(),
-                'ending_date': datetime(2019, 1, 11).date(),
+                'starting_date': '2019-1-7',
+                'ending_date': '2019-1-11',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 4
@@ -663,8 +663,8 @@ class TestAreMultipleCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 4).date(),
-                'ending_date': datetime(2019, 1, 6).date(),
+                'starting_date': '2019-1-4',
+                'ending_date': '2019-1-6',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 1
@@ -693,8 +693,8 @@ class TestAreMultipleCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 6
@@ -704,8 +704,8 @@ class TestAreMultipleCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 7).date(),
-                'ending_date': datetime(2019, 1, 11).date(),
+                'starting_date': '2019-1-7',
+                'ending_date': '2019-1-11',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 5
@@ -715,8 +715,8 @@ class TestAreMultipleCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 4).date(),
-                'ending_date': datetime(2019, 1, 6).date(),
+                'starting_date': '2019-1-4',
+                'ending_date': '2019-1-6',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 1
@@ -745,8 +745,8 @@ class TestAreMultipleCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 6
@@ -756,8 +756,8 @@ class TestAreMultipleCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 7).date(),
-                'ending_date': datetime(2019, 1, 11).date(),
+                'starting_date': '2019-1-7',
+                'ending_date': '2019-1-11',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 4
@@ -767,8 +767,8 @@ class TestAreMultipleCompatible(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2018, 12, 31).date(),
-                'ending_date': datetime(2019, 1, 8).date(),
+                'starting_date': '2018-12-31',
+                'ending_date': '2019-1-8',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 5
@@ -793,24 +793,24 @@ class TestGetBiggestAssign(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2018, 12, 31).date(),
-                'ending_date': datetime(2019, 1, 8).date()
+                'starting_date': '2018-12-31',
+                'ending_date': '2019-1-8'
             }}
 
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 1).date(),
-                'ending_date': datetime(2019, 3, 8).date()
+                'starting_date': '2019-2-1',
+                'ending_date': '2019-3-8'
             }}
 
         assign2 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2018, 12, 31).date(),
-                'ending_date': datetime(2019, 1, 7).date()
+                'starting_date': '2018-12-31',
+                'ending_date': '2019-1-7'
             }}
 
         assign3 = create_an_assignation(data)
@@ -822,16 +822,16 @@ class TestGetBiggestAssign(object):
     def test_get_biggest_assign2(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2018, 12, 31).date(),
-                'ending_date': datetime(2019, 1, 8).date()
+                'starting_date': '2018-12-31',
+                'ending_date': '2019-1-8'
             }}
 
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 3, 1).date(),
-                'ending_date': datetime(2019, 3, 20).date()
+                'starting_date': '2019-3-1',
+                'ending_date': '2019-3-20'
             }}
 
         assign2 = create_an_assignation(data)
@@ -843,16 +843,16 @@ class TestGetBiggestAssign(object):
     def test_get_biggest_assign3(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2018, 12, 31).date(),
-                'ending_date': datetime(2019, 1, 8).date()
+                'starting_date': '2018-12-31',
+                'ending_date': '2019-1-8'
             }}
 
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2018, 12, 31).date(),
-                'ending_date': datetime(2019, 1, 8).date()
+                'starting_date': '2018-12-31',
+                'ending_date': '2019-1-8'
             }}
 
         assign2 = create_an_assignation(data)
@@ -879,8 +879,8 @@ class TestGetCandidates(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 6
@@ -890,8 +890,8 @@ class TestGetCandidates(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 7).date(),
-                'ending_date': datetime(2019, 1, 11).date(),
+                'starting_date': '2019-1-7',
+                'ending_date': '2019-1-11',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 2
@@ -901,8 +901,8 @@ class TestGetCandidates(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 13).date(),
-                'ending_date': datetime(2019, 1, 16).date(),
+                'starting_date': '2019-1-13',
+                'ending_date': '2019-1-16',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 2
@@ -912,8 +912,8 @@ class TestGetCandidates(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 4).date(),
-                'ending_date': datetime(2019, 1, 14).date(),
+                'starting_date': '2019-1-4',
+                'ending_date': '2019-1-14',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 1
@@ -940,8 +940,8 @@ class TestGetCandidates(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 6
@@ -951,8 +951,8 @@ class TestGetCandidates(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 7).date(),
-                'ending_date': datetime(2019, 1, 11).date(),
+                'starting_date': '2019-1-7',
+                'ending_date': '2019-1-11',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 2
@@ -962,8 +962,8 @@ class TestGetCandidates(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 13).date(),
-                'ending_date': datetime(2019, 1, 16).date(),
+                'starting_date': '2019-1-13',
+                'ending_date': '2019-1-16',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 2
@@ -973,8 +973,8 @@ class TestGetCandidates(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 7).date(),
-                'ending_date': datetime(2019, 1, 14).date(),
+                'starting_date': '2019-1-7',
+                'ending_date': '2019-1-14',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 4
@@ -1001,8 +1001,8 @@ class TestGetCandidates(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 6
@@ -1012,8 +1012,8 @@ class TestGetCandidates(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 7).date(),
-                'ending_date': datetime(2019, 1, 11).date(),
+                'starting_date': '2019-1-7',
+                'ending_date': '2019-1-11',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 4
@@ -1023,8 +1023,8 @@ class TestGetCandidates(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 13).date(),
-                'ending_date': datetime(2019, 1, 16).date(),
+                'starting_date': '2019-1-13',
+                'ending_date': '2019-1-16',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 2
@@ -1034,8 +1034,8 @@ class TestGetCandidates(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 12).date(),
-                'ending_date': datetime(2019, 1, 12).date(),
+                'starting_date': '2019-1-12',
+                'ending_date': '2019-1-12',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 1
@@ -1067,8 +1067,8 @@ class TestRemove(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 5).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-5',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 6
@@ -1088,7 +1088,7 @@ class TestRemove(object):
                 resp['update'] == assign and
                 resp_assign.starting_day == 7 and
                 resp_assign.starting_date == datetime(2019, 1, 2).date() and
-                resp_assign.ending_date == datetime(2019, 1, 5).date())
+                resp_assign.ending_date == datetime(2019-1-5).date())
 
     def test_remove2(self):
 
@@ -1103,8 +1103,8 @@ class TestRemove(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 10).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-10',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 6
@@ -1121,7 +1121,7 @@ class TestRemove(object):
         new_assign = resp['create']
 
         assert (resp_assign.starting_date == datetime(2019, 1, 7).date() and
-                resp_assign.ending_date == datetime(2019, 1, 10).date() and
+                resp_assign.ending_date == datetime(2019, 1, 1).date() and
                 resp_assign.starting_day == 4 and
                 new_assign.starting_date == datetime(2019, 1, 1).date() and
                 new_assign.ending_date == datetime(2019, 1, 3).date() and
@@ -1142,8 +1142,8 @@ class TestRemove(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 10).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-10',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 6
@@ -1178,8 +1178,8 @@ class TestRemove(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 10).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-10',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 6
@@ -1209,8 +1209,8 @@ class TestRemove(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 10).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-10',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 6
@@ -1233,15 +1233,15 @@ class TestSortAscStartingDate(object):
     def test_sort_asc_starting_date1(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 10).date()
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-10'
             }}
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 13).date(),
-                'ending_date': datetime(2019, 1, 18).date()
+                'starting_date': '2019-1-13',
+                'ending_date': '2019-1-18'
             }}
         assign2 = create_an_assignation(data)
 
@@ -1254,15 +1254,15 @@ class TestSortAscStartingDate(object):
     def test_sort_asc_starting_date2(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 10).date()
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-10'
             }}
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 4).date(),
-                'ending_date': datetime(2019, 1, 18).date()
+                'starting_date': '2019-1-4',
+                'ending_date': '2019-1-18'
             }}
         assign2 = create_an_assignation(data)
 
@@ -1275,15 +1275,15 @@ class TestSortAscStartingDate(object):
     def test_sort_asc_starting_date3(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 10).date()
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-10'
             }}
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 4).date(),
-                'ending_date': datetime(2019, 1, 18).date()
+                'starting_date': '2019-1-4',
+                'ending_date': '2019-1-18'
             }}
         assign2 = create_an_assignation(data)
 
@@ -1299,15 +1299,15 @@ class TestSortDescStartingDate(object):
     def test_sort_desc_starting_date1(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 10).date()
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-10'
             }}
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 13).date(),
-                'ending_date': datetime(2019, 1, 18).date()
+                'starting_date': '2019-1-13',
+                'ending_date': '2019-1-18'
             }}
         assign2 = create_an_assignation(data)
 
@@ -1320,15 +1320,15 @@ class TestSortDescStartingDate(object):
     def test_sort_desc_starting_date2(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 10).date()
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-10'
             }}
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 4).date(),
-                'ending_date': datetime(2019, 1, 18).date()
+                'starting_date': '2019-1-4',
+                'ending_date': '2019-1-18'
             }}
         assign2 = create_an_assignation(data)
 
@@ -1341,15 +1341,15 @@ class TestSortDescStartingDate(object):
     def test_sort_desc_starting_date3(self):
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 10).date()
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-10'
             }}
         assign1 = create_an_assignation(data)
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 4).date(),
-                'ending_date': datetime(2019, 1, 18).date()
+                'starting_date': '2019-1-4',
+                'ending_date': '2019-1-18'
             }}
         assign2 = create_an_assignation(data)
 
