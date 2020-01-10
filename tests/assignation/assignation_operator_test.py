@@ -1088,7 +1088,7 @@ class TestRemove(object):
                 resp['update'] == assign and
                 resp_assign.starting_day == 7 and
                 resp_assign.starting_date == datetime(2019, 1, 2).date() and
-                resp_assign.ending_date == datetime(2019-1-5).date())
+                resp_assign.ending_date == datetime(2019, 1, 5).date())
 
     def test_remove2(self):
 
@@ -1121,7 +1121,7 @@ class TestRemove(object):
         new_assign = resp['create']
 
         assert (resp_assign.starting_date == datetime(2019, 1, 7).date() and
-                resp_assign.ending_date == datetime(2019, 1, 1).date() and
+                resp_assign.ending_date == datetime(2019, 1, 10).date() and
                 resp_assign.starting_day == 4 and
                 new_assign.starting_date == datetime(2019, 1, 1).date() and
                 new_assign.ending_date == datetime(2019, 1, 3).date() and
