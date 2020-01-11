@@ -29,17 +29,13 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 2,
@@ -48,17 +44,13 @@ class TestCycleAndWeeklyCollision():
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     }
 
                 ]
@@ -70,38 +62,28 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '19:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '22:00', '%H:%M').time()
+                        'starting_time': '19:00',
+                        'ending_time': '22:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:30',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 5,
@@ -155,17 +137,13 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '03:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '04:00', '%H:%M').time()
+                        'starting_time': '03:00',
+                        'ending_time': '04:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '03:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '04:00', '%H:%M').time()
+                        'starting_time': '03:00',
+                        'ending_time': '04:00'
                     }
                 ]
             },
@@ -176,38 +154,28 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '19:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '22:00', '%H:%M').time()
+                        'starting_time': '19:00',
+                        'ending_time': '22:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:30',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 5,
@@ -261,17 +229,13 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '17:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '06:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '14:00', '%H:%M').time()
+                        'starting_time': '06:00',
+                        'ending_time': '14:00'
                     }
                 ]
             },
@@ -282,38 +246,28 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '19:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '22:00', '%H:%M').time()
+                        'starting_time': '19:00',
+                        'ending_time': '22:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:30',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 5,
@@ -367,17 +321,13 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '17:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '06:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '14:00', '%H:%M').time()
+                        'starting_time': '06:00',
+                        'ending_time': '14:00'
                     }
                 ]
             },
@@ -388,38 +338,28 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '19:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '22:00', '%H:%M').time()
+                        'starting_time': '19:00',
+                        'ending_time': '22:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:30',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 5,
@@ -428,10 +368,8 @@ class TestCycleAndWeeklyCollision():
                     },
                     {
                         'day_number': 6,
-                        'starting_time': datetime.strptime(
-                            '03:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'starting_time': '03:00',
+                        'ending_time': '08:00'
                     }
                 ]
             }
@@ -475,17 +413,13 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '17:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '06:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '14:00', '%H:%M').time()
+                        'starting_time': '06:00',
+                        'ending_time': '14:00'
                     }
                 ]
             },
@@ -496,38 +430,28 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '19:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '22:00', '%H:%M').time()
+                        'starting_time': '19:00',
+                        'ending_time': '22:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:30',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 5,
@@ -536,10 +460,8 @@ class TestCycleAndWeeklyCollision():
                     },
                     {
                         'day_number': 6,
-                        'starting_time': datetime.strptime(
-                            '03:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:59', '%H:%M').time()
+                        'starting_time': '03:00',
+                        'ending_time': '07:59'
                     }
                 ]
             }
@@ -583,17 +505,13 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '17:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '06:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '14:00', '%H:%M').time()
+                        'starting_time': '06:00',
+                        'ending_time': '14:00'
                     }
                 ]
             },
@@ -604,45 +522,33 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '19:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '22:00', '%H:%M').time()
+                        'starting_time': '19:00',
+                        'ending_time': '22:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:30',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '22:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'starting_time': '22:30',
+                        'ending_time': '08:00'
                     },
                     {
                         'day_number': 6,
@@ -691,17 +597,13 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '17:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '06:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '14:00', '%H:%M').time()
+                        'starting_time': '06:00',
+                        'ending_time': '14:00'
                     }
                 ]
             },
@@ -712,45 +614,33 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '18:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '18:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '19:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '22:00', '%H:%M').time()
+                        'starting_time': '19:00',
+                        'ending_time': '22:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:30',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '22:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'starting_time': '22:30',
+                        'ending_time': '08:00'
                     },
                     {
                         'day_number': 6,
@@ -812,17 +702,13 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '17:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '22:00', '%H:%M').time()
+                        'starting_time': '17:00',
+                        'ending_time': '22:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '04:00', '%H:%M').time()
+                        'starting_time': '20:00',
+                        'ending_time': '04:00'
                     }
                 ]
             },
@@ -833,45 +719,33 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '15:59', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '15:59'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '16:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '23:59', '%H:%M').time()
+                        'starting_time': '16:00',
+                        'ending_time': '23:59'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '00:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:59', '%H:%M').time()
+                        'starting_time': '00:00',
+                        'ending_time': '07:59'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '15:59', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '15:59'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '16:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '23:59', '%H:%M').time()
+                        'starting_time': '16:00',
+                        'ending_time': '23:59'
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '00:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:59', '%H:%M').time()
+                        'starting_time': '00:00',
+                        'ending_time': '07:59'
                     },
                     {
                         'day_number': 6,
@@ -932,17 +806,13 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '17:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '06:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '14:00', '%H:%M').time()
+                        'starting_time': '06:00',
+                        'ending_time': '14:00'
                     }
                 ]
             },
@@ -953,45 +823,33 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '18:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '18:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '19:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '22:00', '%H:%M').time()
+                        'starting_time': '19:00',
+                        'ending_time': '22:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:30',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '22:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'starting_time': '22:30',
+                        'ending_time': '08:00'
                     },
                     {
                         'day_number': 6,
@@ -1054,17 +912,13 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '17:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '22:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'starting_time': '22:00',
+                        'ending_time': '08:00'
                     }
                 ]
             },
@@ -1075,45 +929,33 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '18:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '18:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '04:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '10:00', '%H:%M').time()
+                        'starting_time': '04:00',
+                        'ending_time': '10:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:30',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '22:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'starting_time': '22:30',
+                        'ending_time': '08:00'
                     },
                     {
                         'day_number': 6,
@@ -1175,17 +1017,13 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '17:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '22:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'starting_time': '22:00',
+                        'ending_time': '08:00'
                     }
                 ]
             },
@@ -1196,45 +1034,33 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '22:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '10:00', '%H:%M').time()
+                        'starting_time': '22:00',
+                        'ending_time': '10:00'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '11:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '14:00', '%H:%M').time()
+                        'starting_time': '11:00',
+                        'ending_time': '14:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:30',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '22:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'starting_time': '22:30',
+                        'ending_time': '08:00'
                     },
                     {
                         'day_number': 6,
@@ -1297,17 +1123,13 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '17:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '16:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '16:00'
                     }
                 ]
             },
@@ -1318,52 +1140,38 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '22:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '10:00', '%H:%M').time()
+                        'starting_time': '22:00',
+                        'ending_time': '10:00'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '11:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '14:00', '%H:%M').time()
+                        'starting_time': '11:00',
+                        'ending_time': '14:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'starting_time': '08:30',
+                        'ending_time': '19:00'
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '22:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'starting_time': '22:30',
+                        'ending_time': '08:00'
                     },
                     {
                         'day_number': 6,
-                        'starting_time': datetime.strptime(
-                            '22:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'starting_time': '22:30',
+                        'ending_time': '08:00'
                     }
                 ]
             }
@@ -1426,17 +1234,13 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '17:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '16:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '16:00'
                     }
                 ]
             },
@@ -1447,52 +1251,38 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '17:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'starting_time': '17:01',
+                        'ending_time': '06:59'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '17:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'starting_time': '17:01',
+                        'ending_time': '06:59'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '17:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'starting_time': '17:01',
+                        'ending_time': '06:59'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '17:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'starting_time': '17:01',
+                        'ending_time': '06:59'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '17:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'starting_time': '17:01',
+                        'ending_time': '06:59'
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '17:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'starting_time': '17:01',
+                        'ending_time': '06:59'
                     },
                     {
                         'day_number': 6,
-                        'starting_time': datetime.strptime(
-                            '17:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'starting_time': '17:01',
+                        'ending_time': '06:59'
                     }
                 ]
             }
@@ -1539,17 +1329,13 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '17:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '16:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '16:00'
                     }
                 ]
             },
@@ -1560,52 +1346,38 @@ class TestCycleAndWeeklyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '17:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'starting_time': '17:01',
+                        'ending_time': '06:59'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '17:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'starting_time': '17:01',
+                        'ending_time': '06:59'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '17:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:01', '%H:%M').time()
+                        'starting_time': '17:00',
+                        'ending_time': '17:01'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '17:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'starting_time': '17:01',
+                        'ending_time': '06:59'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '17:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'starting_time': '17:01',
+                        'ending_time': '06:59'
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '17:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'starting_time': '17:01',
+                        'ending_time': '06:59'
                     },
                     {
                         'day_number': 6,
-                        'starting_time': datetime.strptime(
-                            '17:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'starting_time': '17:01',
+                        'ending_time': '06:59'
                     },
                 ]
             }
@@ -1660,17 +1432,13 @@ class TestCycleAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '13:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '20:00', '%H:%M').time()
+                        'starting_time': '13:00',
+                        'ending_time': '20:00'
                     },
                 ]
             },
@@ -1679,11 +1447,9 @@ class TestCycleAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 9, 1).date(),
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'date': '2019-9-1',
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                 ]
             }
@@ -1731,17 +1497,13 @@ class TestCycleAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '13:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '20:00', '%H:%M').time()
+                        'starting_time': '13:00',
+                        'ending_time': '20:00'
                     },
                 ]
             },
@@ -1750,11 +1512,9 @@ class TestCycleAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 9, 1).date(),
-                        'starting_time': datetime.strptime(
-                            '19:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '20:00', '%H:%M').time()
+                        'date': '2019-9-1',
+                        'starting_time': '19:00',
+                        'ending_time': '20:00'
                     },
                 ]
             }
@@ -1801,17 +1561,13 @@ class TestCycleAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '13:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '20:00', '%H:%M').time()
+                        'starting_time': '13:00',
+                        'ending_time': '20:00'
                     },
                 ]
             },
@@ -1820,11 +1576,9 @@ class TestCycleAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 9, 1).date(),
-                        'starting_time': datetime.strptime(
-                            '19:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '13:00', '%H:%M').time()
+                        'date': '2019-9-1',
+                        'starting_time': '19:00',
+                        'ending_time': '13:00'
                     },
                 ]
             }
@@ -1871,17 +1625,13 @@ class TestCycleAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '13:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '20:00', '%H:%M').time()
+                        'starting_time': '13:00',
+                        'ending_time': '20:00'
                     },
                 ]
             },
@@ -1890,11 +1640,9 @@ class TestCycleAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 9, 1).date(),
-                        'starting_time': datetime.strptime(
-                            '18:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '13:00', '%H:%M').time()
+                        'date': '2019-9-1',
+                        'starting_time': '18:00',
+                        'ending_time': '13:00'
                     },
                 ]
             }
@@ -1941,17 +1689,13 @@ class TestCycleAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '13:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '20:00', '%H:%M').time()
+                        'starting_time': '13:00',
+                        'ending_time': '20:00'
                     },
                 ]
             },
@@ -1960,11 +1704,9 @@ class TestCycleAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 1, 1).date(),
-                        'starting_time': datetime.strptime(
-                            '18:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '12:59', '%H:%M').time()
+                        'date': '2019-1-1',
+                        'starting_time': '18:01',
+                        'ending_time': '12:59'
                     },
                 ]
             }
@@ -2011,17 +1753,13 @@ class TestCycleAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '13:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '20:00', '%H:%M').time()
+                        'starting_time': '13:00',
+                        'ending_time': '20:00'
                     },
                 ]
             },
@@ -2030,60 +1768,44 @@ class TestCycleAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 9, 1).date(),
-                        'starting_time': datetime.strptime(
-                            '18:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '12:59', '%H:%M').time()
+                        'date': '2019-9-1',
+                        'starting_time': '18:01',
+                        'ending_time': '12:59'
                     },
                     {
-                        'date': datetime(2019, 9, 2).date(),
-                        'starting_time': datetime.strptime(
-                            '20:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'date': '2019-9-2',
+                        'starting_time': '20:01',
+                        'ending_time': '06:59'
                     },
                     {
-                        'date': datetime(2019, 9, 3).date(),
-                        'starting_time': datetime.strptime(
-                            '18:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '12:59', '%H:%M').time()
+                        'date': '2019-9-3',
+                        'starting_time': '18:01',
+                        'ending_time': '12:59'
                     },
                     {
-                        'date': datetime(2019, 9, 4).date(),
-                        'starting_time': datetime.strptime(
-                            '20:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'date': '2019-9-4',
+                        'starting_time': '20:01',
+                        'ending_time': '06:59'
                     },
                     {
-                        'date': datetime(2019, 9, 5).date(),
-                        'starting_time': datetime.strptime(
-                            '18:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '12:59', '%H:%M').time()
+                        'date': '2019-9-5',
+                        'starting_time': '18:01',
+                        'ending_time': '12:59'
                     },
                     {
-                        'date': datetime(2019, 9, 6).date(),
-                        'starting_time': datetime.strptime(
-                            '20:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'date': '2019-9-6',
+                        'starting_time': '20:01',
+                        'ending_time': '06:59'
                     },
                     {
-                        'date': datetime(2019, 9, 7).date(),
-                        'starting_time': datetime.strptime(
-                            '18:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '12:59', '%H:%M').time()
+                        'date': '2019-9-7',
+                        'starting_time': '18:01',
+                        'ending_time': '12:59'
                     },
                     {
-                        'date': datetime(2019, 9, 8).date(),
-                        'starting_time': datetime.strptime(
-                            '20:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'date': '2019-9-8',
+                        'starting_time': '20:01',
+                        'ending_time': '06:59'
                     },
                 ]
             }
@@ -2130,17 +1852,13 @@ class TestCycleAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '13:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '20:00', '%H:%M').time()
+                        'starting_time': '13:00',
+                        'ending_time': '20:00'
                     },
                 ]
             },
@@ -2149,60 +1867,44 @@ class TestCycleAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 9, 1).date(),
-                        'starting_time': datetime.strptime(
-                            '18:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '12:59', '%H:%M').time()
+                        'date': '2019-9-1',
+                        'starting_time': '18:00',
+                        'ending_time': '12:59'
                     },
                     {
-                        'date': datetime(2019, 9, 2).date(),
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'date': '2019-9-2',
+                        'starting_time': '20:00',
+                        'ending_time': '06:59'
                     },
                     {
-                        'date': datetime(2019, 9, 3).date(),
-                        'starting_time': datetime.strptime(
-                            '18:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '12:59', '%H:%M').time()
+                        'date': '2019-9-3',
+                        'starting_time': '18:00',
+                        'ending_time': '12:59'
                     },
                     {
-                        'date': datetime(2019, 9, 4).date(),
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'date': '2019-9-4',
+                        'starting_time': '20:00',
+                        'ending_time': '06:59'
                     },
                     {
-                        'date': datetime(2019, 9, 5).date(),
-                        'starting_time': datetime.strptime(
-                            '18:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '12:59', '%H:%M').time()
+                        'date': '2019-9-5',
+                        'starting_time': '18:00',
+                        'ending_time': '12:59'
                     },
                     {
-                        'date': datetime(2019, 9, 6).date(),
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'date': '2019-9-6',
+                        'starting_time': '20:00',
+                        'ending_time': '06:59'
                     },
                     {
-                        'date': datetime(2019, 9, 7).date(),
-                        'starting_time': datetime.strptime(
-                            '18:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '12:59', '%H:%M').time()
+                        'date': '2019-9-7',
+                        'starting_time': '18:00',
+                        'ending_time': '12:59'
                     },
                     {
-                        'date': datetime(2019, 9, 8).date(),
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:59', '%H:%M').time()
+                        'date': '2019-9-8',
+                        'starting_time': '20:00',
+                        'ending_time': '06:59'
                     },
                 ]
             }
@@ -2258,17 +1960,13 @@ class TestCycleAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '13:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '20:00', '%H:%M').time()
+                        'starting_time': '13:00',
+                        'ending_time': '20:00'
                     },
                 ]
             },
@@ -2277,60 +1975,44 @@ class TestCycleAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 9, 1).date(),
-                        'starting_time': datetime.strptime(
-                            '18:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '13:00', '%H:%M').time()
+                        'date': '2019-9-1',
+                        'starting_time': '18:00',
+                        'ending_time': '13:00'
                     },
                     {
-                        'date': datetime(2019, 9, 2).date(),
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:00', '%H:%M').time()
+                        'date': '2019-9-2',
+                        'starting_time': '20:00',
+                        'ending_time': '07:00'
                     },
                     {
-                        'date': datetime(2019, 9, 3).date(),
-                        'starting_time': datetime.strptime(
-                            '18:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '13:00', '%H:%M').time()
+                        'date': '2019-9-3',
+                        'starting_time': '18:00',
+                        'ending_time': '13:00'
                     },
                     {
-                        'date': datetime(2019, 9, 4).date(),
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:00', '%H:%M').time()
+                        'date': '2019-9-4',
+                        'starting_time': '20:00',
+                        'ending_time': '07:00'
                     },
                     {
-                        'date': datetime(2019, 9, 5).date(),
-                        'starting_time': datetime.strptime(
-                            '18:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '13:00', '%H:%M').time()
+                        'date': '2019-9-5',
+                        'starting_time': '18:00',
+                        'ending_time': '13:00'
                     },
                     {
-                        'date': datetime(2019, 9, 6).date(),
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:00', '%H:%M').time()
+                        'date': '2019-9-6',
+                        'starting_time': '20:00',
+                        'ending_time': '07:00'
                     },
                     {
-                        'date': datetime(2019, 9, 7).date(),
-                        'starting_time': datetime.strptime(
-                            '18:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '13:00', '%H:%M').time()
+                        'date': '2019-9-7',
+                        'starting_time': '18:00',
+                        'ending_time': '13:00'
                     },
                     {
-                        'date': datetime(2019, 9, 8).date(),
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:00', '%H:%M').time()
+                        'date': '2019-9-8',
+                        'starting_time': '20:00',
+                        'ending_time': '07:00'
                     },
                 ]
             }
@@ -2386,17 +2068,13 @@ class TestCycleAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '13:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:00', '%H:%M').time()
+                        'starting_time': '13:00',
+                        'ending_time': '06:00'
                     },
                 ]
             },
@@ -2405,11 +2083,9 @@ class TestCycleAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 9, 9).date(),
-                        'starting_time': datetime.strptime(
-                            '06:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:00', '%H:%M').time()
+                        'date': '2019-9-9',
+                        'starting_time': '06:00',
+                        'ending_time': '07:00'
                     },
                 ]
             }
@@ -2455,17 +2131,13 @@ class TestCycleAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '13:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:00', '%H:%M').time()
+                        'starting_time': '13:00',
+                        'ending_time': '06:00'
                     },
                 ]
             },
@@ -2474,11 +2146,9 @@ class TestCycleAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 9, 10).date(),
-                        'starting_time': datetime.strptime(
-                            '06:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:00', '%H:%M').time()
+                        'date': '2019-9-10',
+                        'starting_time': '06:00',
+                        'ending_time': '07:00'
                     },
                 ]
             }
@@ -2524,17 +2194,13 @@ class TestCycleAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '13:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:00', '%H:%M').time()
+                        'starting_time': '13:00',
+                        'ending_time': '06:00'
                     },
                 ]
             },
@@ -2543,11 +2209,9 @@ class TestCycleAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 8, 31).date(),
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:00', '%H:%M').time()
+                        'date': '2019-8-31',
+                        'starting_time': '20:00',
+                        'ending_time': '07:00'
                     },
                 ]
             }
@@ -2593,17 +2257,13 @@ class TestCycleAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '13:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:00', '%H:%M').time()
+                        'starting_time': '13:00',
+                        'ending_time': '06:00'
                     },
                 ]
             },
@@ -2612,11 +2272,9 @@ class TestCycleAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 8, 30).date(),
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:00', '%H:%M').time()
+                        'date': '2019-8-30',
+                        'starting_time': '20:00',
+                        'ending_time': '07:00'
                     },
                 ]
             }
@@ -2662,17 +2320,13 @@ class TestCycleAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '07:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '07:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '13:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '06:00', '%H:%M').time()
+                        'starting_time': '13:00',
+                        'ending_time': '06:00'
                     },
                 ]
             },
@@ -2681,53 +2335,39 @@ class TestCycleAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 8, 30).date(),
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:00', '%H:%M').time()
+                        'date': '2019-8-30',
+                        'starting_time': '20:00',
+                        'ending_time': '07:00'
                     },
                     {
-                        'date': datetime(2019, 8, 31).date(),
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:00', '%H:%M').time()
+                        'date': '2019-8-31',
+                        'starting_time': '20:00',
+                        'ending_time': '07:00'
                     },
                     {
-                        'date': datetime(2019, 9, 2).date(),
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'date': '2019-9-2',
+                        'starting_time': '20:00',
+                        'ending_time': '08:00'
                     },
                     {
-                        'date': datetime(2019, 9, 5).date(),
-                        'starting_time': datetime.strptime(
-                            '11:30', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:00', '%H:%M').time()
+                        'date': '2019-9-5',
+                        'starting_time': '11:30',
+                        'ending_time': '17:00'
                     },
                     {
-                        'date': datetime(2019, 9, 6).date(),
-                        'starting_time': datetime.strptime(
-                            '05:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '12:00', '%H:%M').time()
+                        'date': '2019-9-6',
+                        'starting_time': '05:00',
+                        'ending_time': '12:00'
                     },
                     {
-                        'date': datetime(2019, 9, 8).date(),
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:00', '%H:%M').time()
+                        'date': '2019-9-8',
+                        'starting_time': '20:00',
+                        'ending_time': '07:00'
                     },
                     {
-                        'date': datetime(2019, 9, 10).date(),
-                        'starting_time': datetime.strptime(
-                            '20:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:00', '%H:%M').time()
+                        'date': '2019-9-10',
+                        'starting_time': '20:00',
+                        'ending_time': '07:00'
                     },
                 ]
             }
@@ -2781,52 +2421,38 @@ class TestWeeklyAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 6,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     }
                 ]
             },
@@ -2835,32 +2461,24 @@ class TestWeeklyAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 12, 2).date(),
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'date': '2019-12-2',
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
-                        'date': datetime(2019, 12, 4).date(),
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'date': '2019-12-4',
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
-                        'date': datetime(2019, 12, 6).date(),
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'date': '2019-12-6',
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
-                        'date': datetime(2019, 12, 8).date(),
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'date': '2019-12-8',
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                 ]
             }
@@ -2911,52 +2529,38 @@ class TestWeeklyAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 6,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     }
                 ]
             },
@@ -2965,32 +2569,24 @@ class TestWeeklyAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 12, 2).date(),
-                        'starting_time': datetime.strptime(
-                            '22:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'date': '2019-12-2',
+                        'starting_time': '22:00',
+                        'ending_time': '08:00'
                     },
                     {
-                        'date': datetime(2019, 12, 4).date(),
-                        'starting_time': datetime.strptime(
-                            '22:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'date': '2019-12-4',
+                        'starting_time': '22:00',
+                        'ending_time': '08:00'
                     },
                     {
-                        'date': datetime(2019, 12, 6).date(),
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'date': '2019-12-6',
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
-                        'date': datetime(2019, 12, 8).date(),
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'date': '2019-12-8',
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                 ]
             }
@@ -3042,52 +2638,38 @@ class TestWeeklyAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 6,
-                        'starting_time': datetime.strptime(
-                            '22:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'starting_time': '22:00',
+                        'ending_time': '08:00'
                     }
                 ]
             },
@@ -3096,32 +2678,24 @@ class TestWeeklyAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 12, 1).date(),
-                        'starting_time': datetime.strptime(
-                            '22:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'date': '2019-12-1',
+                        'starting_time': '22:00',
+                        'ending_time': '08:00'
                     },
                     {
-                        'date': datetime(2019, 12, 4).date(),
-                        'starting_time': datetime.strptime(
-                            '22:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'date': '2019-12-4',
+                        'starting_time': '22:00',
+                        'ending_time': '08:00'
                     },
                     {
-                        'date': datetime(2019, 12, 6).date(),
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'date': '2019-12-6',
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
-                        'date': datetime(2019, 12, 9).date(),
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'date': '2019-12-9',
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                 ]
             }
@@ -3172,52 +2746,38 @@ class TestWeeklyAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 4,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 6,
-                        'starting_time': datetime.strptime(
-                            '22:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:59', '%H:%M').time()
+                        'starting_time': '22:00',
+                        'ending_time': '07:59'
                     }
                 ]
             },
@@ -3226,32 +2786,24 @@ class TestWeeklyAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 12, 1).date(),
-                        'starting_time': datetime.strptime(
-                            '22:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'date': '2019-12-1',
+                        'starting_time': '22:00',
+                        'ending_time': '08:00'
                     },
                     {
-                        'date': datetime(2019, 12, 4).date(),
-                        'starting_time': datetime.strptime(
-                            '22:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'date': '2019-12-4',
+                        'starting_time': '22:00',
+                        'ending_time': '08:00'
                     },
                     {
-                        'date': datetime(2019, 12, 6).date(),
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'date': '2019-12-6',
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                     {
-                        'date': datetime(2019, 12, 9).date(),
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '19:00', '%H:%M').time()
+                        'date': '2019-12-9',
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
                     },
                 ]
             }
@@ -3301,10 +2853,8 @@ class TestWeeklyAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
@@ -3313,17 +2863,13 @@ class TestWeeklyAndManuallyCollision():
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 4,
@@ -3332,17 +2878,13 @@ class TestWeeklyAndManuallyCollision():
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 6,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:59', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '17:59'
                     }
                 ]
             },
@@ -3351,32 +2893,24 @@ class TestWeeklyAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 12, 2).date(),
-                        'starting_time': datetime.strptime(
-                            '18:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '22:00', '%H:%M').time()
+                        'date': '2019-12-2',
+                        'starting_time': '18:01',
+                        'ending_time': '22:00'
                     },
                     {
-                        'date': datetime(2019, 12, 3).date(),
-                        'starting_time': datetime.strptime(
-                            '22:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'date': '2019-12-3',
+                        'starting_time': '22:00',
+                        'ending_time': '08:00'
                     },
                     {
-                        'date': datetime(2019, 12, 5).date(),
-                        'starting_time': datetime.strptime(
-                            '18:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:00', '%H:%M').time()
+                        'date': '2019-12-5',
+                        'starting_time': '18:01',
+                        'ending_time': '07:00'
                     },
                     {
-                        'date': datetime(2019, 12, 7).date(),
-                        'starting_time': datetime.strptime(
-                            '17:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '08:00', '%H:%M').time()
+                        'date': '2019-12-7',
+                        'starting_time': '17:00',
+                        'ending_time': '08:00'
                     },
                 ]
             }
@@ -3426,10 +2960,8 @@ class TestWeeklyAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
@@ -3438,17 +2970,13 @@ class TestWeeklyAndManuallyCollision():
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 4,
@@ -3457,17 +2985,13 @@ class TestWeeklyAndManuallyCollision():
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 6,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:59', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '17:59'
                     }
                 ]
             },
@@ -3476,32 +3000,24 @@ class TestWeeklyAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 12, 2).date(),
-                        'starting_time': datetime.strptime(
-                            '18:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '22:00', '%H:%M').time()
+                        'date': '2019-12-2',
+                        'starting_time': '18:01',
+                        'ending_time': '22:00'
                     },
                     {
-                        'date': datetime(2019, 12, 3).date(),
-                        'starting_time': datetime.strptime(
-                            '22:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:59', '%H:%M').time()
+                        'date': '2019-12-3',
+                        'starting_time': '22:00',
+                        'ending_time': '07:59'
                     },
                     {
-                        'date': datetime(2019, 12, 5).date(),
-                        'starting_time': datetime.strptime(
-                            '18:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:00', '%H:%M').time()
+                        'date': '2019-12-5',
+                        'starting_time': '18:01',
+                        'ending_time': '07:00'
                     },
                     {
-                        'date': datetime(2019, 12, 7).date(),
-                        'starting_time': datetime.strptime(
-                            '18:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:59', '%H:%M').time()
+                        'date': '2019-12-7',
+                        'starting_time': '18:01',
+                        'ending_time': '07:59'
                     },
                 ]
             }
@@ -3565,10 +3081,8 @@ class TestWeeklyAndManuallyCollision():
                 'days': [
                     {
                         'day_number': 0,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 1,
@@ -3577,17 +3091,13 @@ class TestWeeklyAndManuallyCollision():
                     },
                     {
                         'day_number': 2,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 3,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 4,
@@ -3596,17 +3106,13 @@ class TestWeeklyAndManuallyCollision():
                     },
                     {
                         'day_number': 5,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '18:00', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
                     },
                     {
                         'day_number': 6,
-                        'starting_time': datetime.strptime(
-                            '08:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '17:59', '%H:%M').time()
+                        'starting_time': '08:00',
+                        'ending_time': '17:59'
                     }
                 ]
             },
@@ -3615,32 +3121,24 @@ class TestWeeklyAndManuallyCollision():
                 'workshift_type': 'manually',
                 'days': [
                     {
-                        'date': datetime(2019, 12, 2).date(),
-                        'starting_time': datetime.strptime(
-                            '18:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '22:00', '%H:%M').time()
+                        'date': '2019-12-2',
+                        'starting_time': '18:01',
+                        'ending_time': '22:00'
                     },
                     {
-                        'date': datetime(2019, 12, 3).date(),
-                        'starting_time': datetime.strptime(
-                            '22:00', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:59', '%H:%M').time()
+                        'date': '2019-12-3',
+                        'starting_time': '22:00',
+                        'ending_time': '07:59'
                     },
                     {
-                        'date': datetime(2019, 12, 5).date(),
-                        'starting_time': datetime.strptime(
-                            '18:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:00', '%H:%M').time()
+                        'date': '2019-12-5',
+                        'starting_time': '18:01',
+                        'ending_time': '07:00'
                     },
                     {
-                        'date': datetime(2019, 12, 7).date(),
-                        'starting_time': datetime.strptime(
-                            '18:01', '%H:%M').time(),
-                        'ending_time': datetime.strptime(
-                            '07:59', '%H:%M').time()
+                        'date': '2019-12-7',
+                        'starting_time': '18:01',
+                        'ending_time': '07:59'
                     },
                 ]
             }

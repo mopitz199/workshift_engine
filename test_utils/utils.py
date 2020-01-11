@@ -86,6 +86,21 @@ def create_proxy_workshifts(workshifts_data):
         days_data = workshift_data.pop('days', [])
         days = []
         for day_data in days_data:
+            
+            starting_time_str = day_data.get('starting_time')
+            if starting_time_str:
+                starting_time = datetime.strptime(starting_time_str, '%H:%M').time()
+                day_data['starting_time'] = starting_time
+
+            ending_time_str = day_data.get('ending_time')
+            if ending_time_str:
+                ending_time = datetime.strptime(ending_time_str, '%H:%M').time()
+                day_data['ending_time'] = ending_time
+
+            date_str = day_data.get('date', None)
+            if date_str:
+                date = datetime.strptime(date_str, '%Y-%m-%d').date()
+                day_data['date'] = date
             day = DumbDay(**day_data)
             days.append(day)
 
