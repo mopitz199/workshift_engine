@@ -27,8 +27,8 @@ class TestDifferencesOperator(object):
         data = {
             'assignation': {
                 'id': 1,
-                'starting_date': datetime(2019, 2, 16).date(),
-                'ending_date': datetime(2019, 2, 16).date(),
+                'starting_date': '2019-2-16',
+                'ending_date': '2019-2-16',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
@@ -41,8 +41,8 @@ class TestDifferencesOperator(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 17).date(),
-                'ending_date': datetime(2019, 2, 20).date(),
+                'starting_date': '2019-2-17',
+                'ending_date': '2019-2-20',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 2
@@ -75,8 +75,8 @@ class TestDifferencesOperator(object):
         data = {
             'assignation': {
                 'id': 1,
-                'starting_date': datetime(2019, 2, 16).date(),
-                'ending_date': datetime(2019, 2, 25).date(),
+                'starting_date': '2019-2-16',
+                'ending_date': '2019-2-25',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
@@ -89,8 +89,8 @@ class TestDifferencesOperator(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 20).date(),
-                'ending_date': datetime(2019, 2, 22).date(),
+                'starting_date': '2019-2-20',
+                'ending_date': '2019-2-22',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 5
@@ -123,8 +123,8 @@ class TestDifferencesOperator(object):
         data = {
             'assignation': {
                 'id': 1,
-                'starting_date': datetime(2019, 2, 16).date(),
-                'ending_date': datetime(2019, 2, 25).date(),
+                'starting_date': '2019-2-16',
+                'ending_date': '2019-2-25',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
@@ -137,8 +137,8 @@ class TestDifferencesOperator(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 19).date(),
-                'ending_date': datetime(2019, 2, 22).date(),
+                'starting_date': '2019-2-19',
+                'ending_date': '2019-2-22',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 4
@@ -150,8 +150,8 @@ class TestDifferencesOperator(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 21).date(),
-                'ending_date': datetime(2019, 2, 21).date(),
+                'starting_date': '2019-2-21',
+                'ending_date': '2019-2-21',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 6
@@ -188,8 +188,8 @@ class TestDifferencesOperator(object):
         data = {
             'assignation': {
                 'id': 1,
-                'starting_date': datetime(2019, 2, 10).date(),
-                'ending_date': datetime(2019, 2, 15).date(),
+                'starting_date': '2019-2-10',
+                'ending_date': '2019-2-15',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
@@ -200,8 +200,8 @@ class TestDifferencesOperator(object):
         data = {
             'assignation': {
                 'id': 2,
-                'starting_date': datetime(2019, 2, 17).date(),
-                'ending_date': datetime(2019, 2, 23).date(),
+                'starting_date': '2019-2-17',
+                'ending_date': '2019-2-23',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 8
@@ -214,8 +214,8 @@ class TestDifferencesOperator(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 13).date(),
-                'ending_date': datetime(2019, 2, 15).date(),
+                'starting_date': '2019-2-13',
+                'ending_date': '2019-2-15',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 4
@@ -227,8 +227,8 @@ class TestDifferencesOperator(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 20).date(),
-                'ending_date': datetime(2019, 2, 23).date(),
+                'starting_date': '2019-2-20',
+                'ending_date': '2019-2-23',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 3
@@ -240,8 +240,8 @@ class TestDifferencesOperator(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 14).date(),
-                'ending_date': datetime(2019, 2, 16).date(),
+                'starting_date': '2019-2-14',
+                'ending_date': '2019-2-16',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 5
@@ -282,8 +282,8 @@ class TestDifferencesOperator(object):
         data = {
             'assignation': {
                 'id': 1,
-                'starting_date': datetime(2019, 2, 10).date(),
-                'ending_date': datetime(2019, 2, 15).date(),
+                'starting_date': '2019-2-10',
+                'ending_date': '2019-2-15',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
@@ -296,8 +296,8 @@ class TestDifferencesOperator(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 13).date(),
-                'ending_date': datetime(2019, 2, 15).date(),
+                'starting_date': '2019-2-13',
+                'ending_date': '2019-2-15',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 4
@@ -309,8 +309,8 @@ class TestDifferencesOperator(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 16).date(),
-                'ending_date': datetime(2019, 2, 18).date(),
+                'starting_date': '2019-2-16',
+                'ending_date': '2019-2-18',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 7
@@ -343,8 +343,8 @@ class TestDifferencesOperator(object):
         data = {
             'assignation': {
                 'id': 1,
-                'starting_date': datetime(2019, 2, 10).date(),
-                'ending_date': datetime(2019, 2, 15).date(),
+                'starting_date': '2019-2-10',
+                'ending_date': '2019-2-15',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
@@ -355,8 +355,8 @@ class TestDifferencesOperator(object):
         data = {
             'assignation': {
                 'id': 2,
-                'starting_date': datetime(2019, 2, 17).date(),
-                'ending_date': datetime(2019, 2, 20).date(),
+                'starting_date': '2019-2-17',
+                'ending_date': '2019-2-20',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 2
@@ -369,8 +369,8 @@ class TestDifferencesOperator(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 13).date(),
-                'ending_date': datetime(2019, 2, 16).date(),
+                'starting_date': '2019-2-13',
+                'ending_date': '2019-2-16',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 1
@@ -381,8 +381,8 @@ class TestDifferencesOperator(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 18).date(),
-                'ending_date': datetime(2019, 2, 20).date(),
+                'starting_date': '2019-2-18',
+                'ending_date': '2019-2-20',
                 'workshift_id': 6,
                 'person_id': 1,
                 'starting_day': 3
@@ -418,8 +418,8 @@ class TestDifferencesOperator(object):
         data = {
             'assignation': {
                 'id': 1,
-                'starting_date': datetime(2019, 2, 10).date(),
-                'ending_date': datetime(2019, 2, 15).date(),
+                'starting_date': '2019-2-10',
+                'ending_date': '2019-2-15',
                 'workshift_id': 1,
                 'person_id': 1,
                 'starting_day': 1
@@ -430,8 +430,8 @@ class TestDifferencesOperator(object):
         data = {
             'assignation': {
                 'id': 2,
-                'starting_date': datetime(2019, 2, 13).date(),
-                'ending_date': datetime(2019, 2, 20).date(),
+                'starting_date': '2019-2-13',
+                'ending_date': '2019-2-20',
                 'workshift_id': 2,
                 'person_id': 1,
                 'starting_day': 4
@@ -444,8 +444,8 @@ class TestDifferencesOperator(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 14).date(),
-                'ending_date': datetime(2019, 2, 14).date(),
+                'starting_date': '2019-2-14',
+                'ending_date': '2019-2-14',
                 'workshift_id': 1,
                 'person_id': 1,
                 'starting_day': 3
@@ -456,8 +456,8 @@ class TestDifferencesOperator(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 13).date(),
-                'ending_date': datetime(2019, 2, 17).date(),
+                'starting_date': '2019-2-13',
+                'ending_date': '2019-2-17',
                 'workshift_id': 2,
                 'person_id': 1,
                 'starting_day': 3
@@ -468,8 +468,8 @@ class TestDifferencesOperator(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 14).date(),
-                'ending_date': datetime(2019, 2, 16).date(),
+                'starting_date': '2019-2-14',
+                'ending_date': '2019-2-16',
                 'workshift_id': 1,
                 'person_id': 1,
                 'starting_day': 5
@@ -480,8 +480,8 @@ class TestDifferencesOperator(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 13).date(),
-                'ending_date': datetime(2019, 2, 13).date(),
+                'starting_date': '2019-2-13',
+                'ending_date': '2019-2-13',
                 'workshift_id': 2,
                 'person_id': 1,
                 'starting_day': 4

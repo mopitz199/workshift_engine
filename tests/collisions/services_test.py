@@ -122,8 +122,8 @@ class TestCycleAndWeeklyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 2,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 30).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-30',
                 'workshift_id': 6,
             }
         }
@@ -132,8 +132,8 @@ class TestCycleAndWeeklyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 30).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-30',
                 'workshift_id': 7
             }
         }
@@ -228,8 +228,8 @@ class TestCycleAndWeeklyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 0,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2039, 9, 30).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2039-9-30',
                 'workshift_id': 6,
             }
         }
@@ -238,8 +238,8 @@ class TestCycleAndWeeklyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 30).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-30',
                 'workshift_id': 7,
             }
         }
@@ -334,8 +334,8 @@ class TestCycleAndWeeklyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 0,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 1).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-1',
                 'workshift_id': 6,
             }
         }
@@ -344,8 +344,8 @@ class TestCycleAndWeeklyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 1).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-1',
                 'workshift_id': 7,
             },
         }
@@ -442,8 +442,8 @@ class TestCycleAndWeeklyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 0,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 1).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-1',
                 'workshift_id': 6,
             }
         }
@@ -452,8 +452,8 @@ class TestCycleAndWeeklyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 1).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-1',
                 'workshift_id': 7,
             }
         }
@@ -550,8 +550,8 @@ class TestCycleAndWeeklyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 0,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 1).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-1',
                 'workshift_id': 6,
             }
         }
@@ -560,8 +560,8 @@ class TestCycleAndWeeklyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 1).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-1',
                 'workshift_id': 7,
             }
         }
@@ -658,8 +658,8 @@ class TestCycleAndWeeklyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 0,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 1).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-1',
                 'workshift_id': 6
             }
         }
@@ -668,8 +668,8 @@ class TestCycleAndWeeklyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 1).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-1',
                 'workshift_id': 7
             }
         }
@@ -766,8 +766,8 @@ class TestCycleAndWeeklyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 0,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 10).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-10',
                 'workshift_id': 6,
             }
         }
@@ -776,8 +776,8 @@ class TestCycleAndWeeklyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 10).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-10',
                 'workshift_id': 7,
             }
         }
@@ -887,8 +887,8 @@ class TestCycleAndWeeklyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 0,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 10).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-10',
                 'workshift_id': 6,
             }
         }
@@ -897,8 +897,8 @@ class TestCycleAndWeeklyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 10).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-10',
                 'workshift_id': 7,
             }
         }
@@ -1007,8 +1007,8 @@ class TestCycleAndWeeklyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 0,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 10).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-10',
                 'workshift_id': 6,
             }
         }
@@ -1017,8 +1017,8 @@ class TestCycleAndWeeklyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 8, 31).date(),
-                'ending_date': datetime(2019, 9, 10).date(),
+                'starting_date': '2019-8-31',
+                'ending_date': '2019-9-10',
                 'workshift_id': 7,
             }
         }
@@ -1129,8 +1129,8 @@ class TestCycleAndWeeklyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 0,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 10).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-10',
                 'workshift_id': 6,
             }
         }
@@ -1139,8 +1139,8 @@ class TestCycleAndWeeklyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 7,
             }
         }
@@ -1250,8 +1250,8 @@ class TestCycleAndWeeklyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 0,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 6,
             }
         }
@@ -1260,8 +1260,8 @@ class TestCycleAndWeeklyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 10).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-10',
                 'workshift_id': 7,
             }
         }
@@ -1374,8 +1374,8 @@ class TestCycleAndWeeklyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 0,
-                'starting_date': datetime(2019, 9, 2).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-2',
+                'ending_date': '2019-9-11',
                 'workshift_id': 6,
             }
         }
@@ -1384,8 +1384,8 @@ class TestCycleAndWeeklyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 7,
             }
         }
@@ -1503,8 +1503,8 @@ class TestCycleAndWeeklyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 0,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 15).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-15',
                 'workshift_id': 6,
             }
         }
@@ -1513,8 +1513,8 @@ class TestCycleAndWeeklyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 15).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-15',
                 'workshift_id': 7,
             }
         }
@@ -1616,8 +1616,8 @@ class TestCycleAndWeeklyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 0,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 6,
             }
         }
@@ -1626,8 +1626,8 @@ class TestCycleAndWeeklyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 7,
             }
         }
@@ -1694,8 +1694,8 @@ class TestCycleAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 6,
             }
         }
@@ -1704,8 +1704,8 @@ class TestCycleAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 7,
             }
         }
@@ -1765,8 +1765,8 @@ class TestCycleAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 6,
             }
         }
@@ -1775,8 +1775,8 @@ class TestCycleAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 7,
             }
         }
@@ -1835,8 +1835,8 @@ class TestCycleAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 6,
             }
         }
@@ -1845,8 +1845,8 @@ class TestCycleAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 7,
             }
         }
@@ -1905,8 +1905,8 @@ class TestCycleAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 6,
             }
         }
@@ -1915,8 +1915,8 @@ class TestCycleAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 7,
             }
         }
@@ -1975,8 +1975,8 @@ class TestCycleAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 6,
             }
         }
@@ -1985,8 +1985,8 @@ class TestCycleAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 7,
             }
         }
@@ -2094,8 +2094,8 @@ class TestCycleAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 6,
             }
         }
@@ -2104,8 +2104,8 @@ class TestCycleAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 7,
             }
         }
@@ -2213,8 +2213,8 @@ class TestCycleAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 6,
             }
         }
@@ -2223,8 +2223,8 @@ class TestCycleAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 7,
             }
         }
@@ -2341,8 +2341,8 @@ class TestCycleAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 6,
             }
         }
@@ -2351,8 +2351,8 @@ class TestCycleAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 11).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-11',
                 'workshift_id': 7,
             }
         }
@@ -2420,8 +2420,8 @@ class TestCycleAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 8).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-8',
                 'workshift_id': 6,
             }
         }
@@ -2430,8 +2430,8 @@ class TestCycleAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 9).date(),
-                'ending_date': datetime(2019, 9, 9).date(),
+                'starting_date': '2019-9-9',
+                'ending_date': '2019-9-9',
                 'workshift_id': 7,
             }
         }
@@ -2489,8 +2489,8 @@ class TestCycleAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 8).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-8',
                 'workshift_id': 6,
             }
         }
@@ -2499,8 +2499,8 @@ class TestCycleAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 9, 10).date(),
-                'ending_date': datetime(2019, 9, 10).date(),
+                'starting_date': '2019-9-10',
+                'ending_date': '2019-9-10',
                 'workshift_id': 7,
             }
         }
@@ -2558,8 +2558,8 @@ class TestCycleAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 8).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-8',
                 'workshift_id': 6,
             }
         }
@@ -2568,8 +2568,8 @@ class TestCycleAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 8, 31).date(),
-                'ending_date': datetime(2019, 8, 31).date(),
+                'starting_date': '2019-8-31',
+                'ending_date': '2019-8-31',
                 'workshift_id': 7,
             }
         }
@@ -2627,8 +2627,8 @@ class TestCycleAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 8).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-8',
                 'workshift_id': 6,
             }
         }
@@ -2637,8 +2637,8 @@ class TestCycleAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 8, 30).date(),
-                'ending_date': datetime(2019, 8, 30).date(),
+                'starting_date': '2019-8-30',
+                'ending_date': '2019-8-30',
                 'workshift_id': 7,
             }
         }
@@ -2738,8 +2738,8 @@ class TestCycleAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': 1,
-                'starting_date': datetime(2019, 9, 1).date(),
-                'ending_date': datetime(2019, 9, 8).date(),
+                'starting_date': '2019-9-1',
+                'ending_date': '2019-9-8',
                 'workshift_id': 6,
             }
         }
@@ -2748,13 +2748,13 @@ class TestCycleAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 8, 30).date(),
-                'ending_date': datetime(2019, 9, 10).date(),
+                'starting_date': '2019-8-30',
+                'ending_date': '2019-9-10',
                 'workshift_id': 7,
             }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
-
+        # import pdb; pdb.set_trace()
         has_collision, detail = cycle_and_manually_collision(
             assignation1,
             assignation2,
@@ -2871,8 +2871,8 @@ class TestWeeklyAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
+                'starting_date': '2019-12-2',
+                'ending_date': '2019-12-8',
                 'workshift_id': 6,
             }
         }
@@ -2881,8 +2881,8 @@ class TestWeeklyAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
+                'starting_date': '2019-12-2',
+                'ending_date': '2019-12-8',
                 'workshift_id': 7,
             }
         }
@@ -3001,8 +3001,8 @@ class TestWeeklyAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
+                'starting_date': '2019-12-2',
+                'ending_date': '2019-12-8',
                 'workshift_id': 6,
             }
         }
@@ -3011,8 +3011,8 @@ class TestWeeklyAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
+                'starting_date': '2019-12-2',
+                'ending_date': '2019-12-8',
                 'workshift_id': 7,
             }
         }
@@ -3132,8 +3132,8 @@ class TestWeeklyAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
+                'starting_date': '2019-12-2',
+                'ending_date': '2019-12-8',
                 'workshift_id': 6,
             }
         }
@@ -3142,8 +3142,8 @@ class TestWeeklyAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 12, 1).date(),
-                'ending_date': datetime(2019, 12, 9).date(),
+                'starting_date': '2019-12-1',
+                'ending_date': '2019-12-9',
                 'workshift_id': 7,
             }
         }
@@ -3262,8 +3262,8 @@ class TestWeeklyAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
+                'starting_date': '2019-12-2',
+                'ending_date': '2019-12-8',
                 'workshift_id': 6,
             }
         }
@@ -3272,8 +3272,8 @@ class TestWeeklyAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 12, 1).date(),
-                'ending_date': datetime(2019, 12, 9).date(),
+                'starting_date': '2019-12-1',
+                'ending_date': '2019-12-9',
                 'workshift_id': 7,
             }
         }
@@ -3387,8 +3387,8 @@ class TestWeeklyAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
+                'starting_date': '2019-12-2',
+                'ending_date': '2019-12-8',
                 'workshift_id': 6,
             }
         }
@@ -3397,8 +3397,8 @@ class TestWeeklyAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 12, 1).date(),
-                'ending_date': datetime(2019, 12, 9).date(),
+                'starting_date': '2019-12-1',
+                'ending_date': '2019-12-9',
                 'workshift_id': 7,
             }
         }
@@ -3512,8 +3512,8 @@ class TestWeeklyAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
+                'starting_date': '2019-12-2',
+                'ending_date': '2019-12-8',
                 'workshift_id': 6,
             }
         }
@@ -3522,8 +3522,8 @@ class TestWeeklyAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 12, 1).date(),
-                'ending_date': datetime(2019, 12, 9).date(),
+                'starting_date': '2019-12-1',
+                'ending_date': '2019-12-9',
                 'workshift_id': 7,
             }
         }
@@ -3651,8 +3651,8 @@ class TestWeeklyAndManuallyCollision():
         assignation1 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 12, 2).date(),
-                'ending_date': datetime(2019, 12, 8).date(),
+                'starting_date': '2019-12-2',
+                'ending_date': '2019-12-8',
                 'workshift_id': 6,
             }
         }
@@ -3661,8 +3661,8 @@ class TestWeeklyAndManuallyCollision():
         assignation2 = {
             'assignation': {
                 'starting_day': None,
-                'starting_date': datetime(2019, 12, 1).date(),
-                'ending_date': datetime(2019, 12, 9).date(),
+                'starting_date': '2019-12-1',
+                'ending_date': '2019-12-9',
                 'workshift_id': 7,
             }
         }

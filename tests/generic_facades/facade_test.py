@@ -29,8 +29,8 @@ class TestSimulateStartingDay(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 31).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-31',
                 'starting_day': 1,
                 'workshift_id': 6
             }
@@ -57,8 +57,8 @@ class TestSimulateStartingDay(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 31).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-31',
                 'starting_day': 3,
                 'workshift_id': 6
             }
@@ -86,8 +86,8 @@ class TestSimulateStartingDay(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 31).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-31',
                 'starting_day': 2,
                 'workshift_id': 6,
             }
@@ -115,8 +115,8 @@ class TestSimulateStartingDay(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 31).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-31',
                 'starting_day': 2,
                 'workshift_id': 6,
             }
@@ -144,8 +144,8 @@ class TestSimulateStartingDay(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 1).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-1',
                 'starting_day': 4,
                 'workshift_id': 6,
             }
@@ -173,8 +173,8 @@ class TestSimulateStartingDay(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 1).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-1',
                 'starting_day': None,
                 'workshift_id': 6,
             }

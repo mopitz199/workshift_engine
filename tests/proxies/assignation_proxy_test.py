@@ -28,8 +28,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 22).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-22',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
@@ -39,8 +39,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 23).date(),
-                'ending_date': datetime(2019, 1, 28).date(),
+                'starting_date': '2019-1-23',
+                'ending_date': '2019-1-28',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
@@ -69,8 +69,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 22).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-22',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
@@ -80,8 +80,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 24).date(),
-                'ending_date': datetime(2019, 1, 28).date(),
+                'starting_date': '2019-1-24',
+                'ending_date': '2019-1-28',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
@@ -110,8 +110,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 1).date(),
-                'ending_date': datetime(2019, 1, 22).date(),
+                'starting_date': '2019-1-1',
+                'ending_date': '2019-1-22',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 1
@@ -121,8 +121,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 22).date(),
-                'ending_date': datetime(2019, 1, 28).date(),
+                'starting_date': '2019-1-22',
+                'ending_date': '2019-1-28',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 5
@@ -151,8 +151,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 10).date(),
-                'ending_date': datetime(2019, 1, 15).date(),
+                'starting_date': '2019-1-10',
+                'ending_date': '2019-1-15',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
@@ -162,8 +162,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 5).date(),
-                'ending_date': datetime(2019, 1, 28).date(),
+                'starting_date': '2019-1-5',
+                'ending_date': '2019-1-28',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': None
@@ -192,8 +192,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 10).date(),
-                'ending_date': datetime(2019, 1, 15).date(),
+                'starting_date': '2019-1-10',
+                'ending_date': '2019-1-15',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 8
@@ -203,8 +203,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 5).date(),
-                'ending_date': datetime(2019, 1, 28).date(),
+                'starting_date': '2019-1-5',
+                'ending_date': '2019-1-28',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 3
@@ -233,8 +233,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 10).date(),
-                'ending_date': datetime(2019, 1, 15).date(),
+                'starting_date': '2019-1-10',
+                'ending_date': '2019-1-15',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 8
@@ -264,8 +264,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 10).date(),
-                'ending_date': datetime(2019, 1, 15).date(),
+                'starting_date': '2019-1-10',
+                'ending_date': '2019-1-15',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 8
@@ -295,8 +295,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 10).date(),
-                'ending_date': datetime(2019, 1, 15).date(),
+                'starting_date': '2019-1-10',
+                'ending_date': '2019-1-15',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 8
@@ -323,8 +323,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 10).date(),
-                'ending_date': datetime(2019, 1, 20).date(),
+                'starting_date': '2019-1-10',
+                'ending_date': '2019-1-20',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 8
@@ -360,8 +360,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 10).date(),
-                'ending_date': datetime(2019, 1, 15).date(),
+                'starting_date': '2019-1-10',
+                'ending_date': '2019-1-15',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 8
@@ -397,8 +397,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 10).date(),
-                'ending_date': datetime(2019, 1, 15).date(),
+                'starting_date': '2019-1-10',
+                'ending_date': '2019-1-15',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 8
@@ -434,8 +434,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 1, 10).date(),
-                'ending_date': datetime(2019, 1, 15).date(),
+                'starting_date': '2019-1-10',
+                'ending_date': '2019-1-15',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 8
@@ -471,8 +471,8 @@ class TestAssignationProxyAdd(object):
 
         data = {
             'assignation': {
-                'starting_date': datetime(2019, 2, 16).date(),
-                'ending_date': datetime(2019, 2, 16).date(),
+                'starting_date': '2019-2-16',
+                'ending_date': '2019-2-16',
                 'workshift_id': 4,
                 'person_id': 1,
                 'starting_day': 8

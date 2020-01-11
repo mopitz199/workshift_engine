@@ -24,9 +24,9 @@ def proxy():
     data = {
         'assignation': {
             'person': 5,
-            'starting_date': datetime(2019, 1, 1).date(),
+            'starting_date': '2019-1-1',
             'starting_day': 1,
-            'ending_date': datetime(2019, 1, 10).date(),
+            'ending_date': '2019-1-10',
             'workshift_id': 10,
             'fake_attr': 'badAttr'
         }
