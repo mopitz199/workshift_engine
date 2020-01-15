@@ -3,6 +3,8 @@ from datetime import datetime
 from proxies.assignation_proxy import AssignationProxy
 from proxies.proxy_factory import ProxyFactory
 
+from utils.date_util import DateUtil
+
 
 class DumbAssignation(object):
 
@@ -55,12 +57,10 @@ def create_an_assignation(
     assignation_data = data.get('assignation')
 
     starting_date_str = assignation_data.get('starting_date')
-    starting_date = datetime.strptime(starting_date_str, '%Y-%m-%d').date()
-    assignation_data['starting_date'] = starting_date
+    assignation_data['starting_date'] = DateUtil.str_to_date(starting_date_str)
 
     ending_date_str = assignation_data.get('ending_date')
-    ending_date = datetime.strptime(ending_date_str, '%Y-%m-%d').date()
-    assignation_data['ending_date'] = ending_date
+    assignation_data['ending_date'] = DateUtil.str_to_date(ending_date_str)
 
     assignation = DumbAssignation(**assignation_data)
 
@@ -86,21 +86,18 @@ def create_proxy_workshifts(workshifts_data):
         days_data = workshift_data.pop('days', [])
         days = []
         for day_data in days_data:
-            
+
             starting_time_str = day_data.get('starting_time')
             if starting_time_str:
-                starting_time = datetime.strptime(starting_time_str, '%H:%M').time()
-                day_data['starting_time'] = starting_time
+                day_data['starting_time'] = DateUtil.str_to_time(starting_time_str)
 
             ending_time_str = day_data.get('ending_time')
             if ending_time_str:
-                ending_time = datetime.strptime(ending_time_str, '%H:%M').time()
-                day_data['ending_time'] = ending_time
+                day_data['ending_time'] = DateUtil.str_to_time(ending_time_str)
 
             date_str = day_data.get('date', None)
             if date_str:
-                date = datetime.strptime(date_str, '%Y-%m-%d').date()
-                day_data['date'] = date
+                day_data['date'] = DateUtil.str_to_date(date_str)
             day = DumbDay(**day_data)
             days.append(day)
 
@@ -114,6 +111,23 @@ def create_proxy_workshifts(workshifts_data):
 def create_proxy_day_off_assignation(day_off_assignations_data):
     dumb_day_off_assignations = []
     for day_off_assignation_data in day_off_assignations_data:
+
+        starting_date_str = day_off_assignation_data['starting_date']
+        day_off_assignation_data['starting_date'] = DateUtil.str_to_date(
+            starting_date_str
+        )
+
+        ending_date_str = day_off_assignation_data['ending_date']
+        day_off_assignation_data['ending_date'] = DateUtil.str_to_date(ending_date_str)
+
+        starting_time_str = day_off_assignation_data['starting_time']
+        day_off_assignation_data['starting_time'] = DateUtil.str_to_time(
+            starting_time_str
+        )
+
+        ending_time_str = day_off_assignation_data['ending_time']
+        day_off_assignation_data['ending_time'] = DateUtil.str_to_time(ending_time_str)
+
         dumb_day_off_assignation = DumbDayOffAssignation(
             **day_off_assignation_data
         )

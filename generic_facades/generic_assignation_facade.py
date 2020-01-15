@@ -4,7 +4,7 @@ from __future__ import annotations
 import copy
 
 from datetime import datetime, timedelta
-from typing import Any, TYPE_CHECKING
+from typing import Any, TYPE_CHECKING, List
 
 if TYPE_CHECKING:
     from proxies.assignation_proxy import AssignationProxy
@@ -37,3 +37,18 @@ class GenericAssignationFacade():
         copied.person = assign.person
         copied.obj.id = None
         return copied
+
+    def get_day_off_assignations(self) -> List:
+        assignation = self.assignation
+        if hasattr(assignation, 'day_off_assignations'):
+            return assignation.day_off_assignations
+        else:
+            return []
+
+    def has_day_off_assignation_intersection(
+        self,
+        range_obj
+    ):
+        day_off_assignations = self.get_day_off_assignations()
+        for day_off_assignation in day_off_assignations:
+            pass
