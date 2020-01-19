@@ -20,15 +20,18 @@ class DateUtil:
         return datetime.strptime(str_datetime, '%Y-%m-%d %H:%M')
 
     @staticmethod
-    def time_to_str(time_obj) -> str:
+    def time_to_str(time_obj: timeclass) -> str:
         return time_obj.strftime('%H:%M')
 
     @staticmethod
-    def date_to_str(date_obj) -> str:
+    def date_to_str(date_obj: dateclass) -> str:
         return date_obj.strftime('%Y-%m-%d')
 
     @staticmethod
-    def join_date_and_time(date_obj, time_obj):
+    def join_date_and_time(
+        date_obj: dateclass,
+        time_obj: timeclass
+    ) -> datetime:
         str_date = DateUtil.date_to_str(date_obj)
         str_time = DateUtil.time_to_str(time_obj)
         str_datetime = "{} {}".format(str_date, str_time)
