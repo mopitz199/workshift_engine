@@ -86,10 +86,11 @@ class WeeklyAndManuallyCollision():
         weekly_day: Any
     ) -> Optional[int]:
 
-        weekly_current_range = self.weekly_facade.range_datetime_from_weekly_day(
-            weekly_day,
-            self.base_current_date
-        )
+        weekly_current_range = self.weekly_facade\
+            .range_datetime_from_weekly_day(
+                weekly_day,
+                self.base_current_date
+            )
 
         if weekly_current_range:
             if RangeDateTimeOperator.are_intersection(
