@@ -9,7 +9,7 @@ from typing import (
 )
 
 from assignation.operators.assignation_operator import AssignationOperator
-from assignation.operators.range_operator import RangeOperator
+from utils.range_operator import RangeOperator
 
 if TYPE_CHECKING:
     from database.assignation_db import AssignationDB

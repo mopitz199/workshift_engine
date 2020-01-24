@@ -14,7 +14,7 @@ from typing import (
 )
 
 from datetime import timedelta, datetime, date as dateclass
-from assignation.operators.range_operator import RangeOperator
+from utils.range_operator import RangeOperator
 from generic_facades.cycle_assignation_facade import CycleAssignationFacade
 from generic_facades.generic_assignation_facade import GenericAssignationFacade
 from utils.range import Range

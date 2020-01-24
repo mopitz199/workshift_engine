@@ -1,6 +1,6 @@
 import copy
 from datetime import datetime, timedelta
-from assignation.operators.range_operator import RangeOperator
+from utils.range_operator import RangeOperator
 
 
 class Range(object):
