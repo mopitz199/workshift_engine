@@ -1,7 +1,7 @@
 # make all type hints be strings and skip evaluating them
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
     from utils.range_datetime import RangeDateTime
@@ -19,3 +19,7 @@ class RangeDateTimeOperator:
 
         return (r1.starting_datetime <= r2.ending_datetime and
                 r1.ending_datetime >= r2.starting_datetime)
+
+    @staticmethod
+    def split_borders(range_obj: RangeDateTime) -> List[RangeDateTime]:
+        pass
