@@ -9,7 +9,7 @@ from generic_facades.generic_assignation_facade import GenericAssignationFacade
 
 if TYPE_CHECKING:
     from proxies.assignation_proxy import AssignationProxy
-    from utils.range import Range
+    from utils.range_datetime import RangeDateTime
 
 
 class WeeklyAssignationFacade(GenericAssignationFacade):
@@ -57,24 +57,33 @@ class WeeklyAssignationFacade(GenericAssignationFacade):
         prev_day_number = self.get_prev_day_number(day_number)
         return self.get_day(prev_day_number)
 
-    def range_obj_from_day_number(
+    def range_datetime_obj_from_day_number(
         self,
         day_number: str,
         base_date: dateclass
-    ) -> Optional[Range]:
+    ) -> Optional[RangeDateTime]:
         day = self.get_day(day_number)
         starting_time = day.starting_time
         ending_time = day.ending_time
         if starting_time is not None and ending_time is not None:
-            return Util.create_range(starting_time, ending_time, base_date)
+            range_datetime = Util.create_range_datetime(
+                starting_time,
+                ending_time,
+                base_date
+            )
+            return range_datetime
         else:
             return None
 
-    def range_obj_from_weekly_day(
+    def range_datetime_from_weekly_day(
         self,
         weekly_day: Any,
         base_date: dateclass
-    ) -> Optional[Range]:
+    ) -> Optional[RangeDateTime]:
         day_number = weekly_day.day_number
         str_day_number = str(day_number)
-        return self.range_obj_from_day_number(str_day_number, base_date)
+        range_datetime = self.range_datetime_obj_from_day_number(
+            str_day_number,
+            base_date
+        )
+        return range_datetime

@@ -9,7 +9,7 @@ from collisions.utils import Util
 
 if TYPE_CHECKING:
     from proxies.assignation_proxy import AssignationProxy
-    from utils.range import Range
+    from utils.range_datetime import RangeDateTime
 
 
 class ManualAssignationFacade(GenericAssignationFacade):
@@ -25,14 +25,19 @@ class ManualAssignationFacade(GenericAssignationFacade):
     ) -> List[Any]:
         return self.assignation.workshift_proxy.get_days()
 
-    def range_obj_from_day(
+    def range_datetime_obj_from_day(
         self,
         manually_day: Any,
         base_date: dateclass
-    ) -> Optional[Range]:
+    ) -> Optional[RangeDateTime]:
         starting_time = manually_day.starting_time
         ending_time = manually_day.ending_time
         if starting_time is not None and ending_time is not None:
-            return Util.create_range(starting_time, ending_time, base_date)
+            range_datetime = Util.create_range_datetime(
+                starting_time,
+                ending_time,
+                base_date
+            )
+            return range_datetime
         else:
             return None

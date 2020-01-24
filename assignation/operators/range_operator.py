@@ -87,3 +87,7 @@ class RangeOperator:
             response.append(main_range)
 
         return response
+
+    @staticmethod
+    def split_borders(range_obj: Range) -> List[Range]:
+        pass

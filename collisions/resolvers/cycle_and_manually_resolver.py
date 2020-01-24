@@ -5,7 +5,7 @@ from typing import Any, Dict, List, Tuple, TYPE_CHECKING
 
 from datetime import datetime, timedelta
 
-from assignation.operators.range_operator import RangeOperator
+from utils.range_datetime_operator import RangeDateTimeOperator
 from collisions.constants import (
     PREVIOUS,
     CURRENT,
@@ -70,16 +70,19 @@ class CycleToManuallyCollision():
         day_number = cycle_day.day_number
         prev_day_number = self.cycle_facade.get_prev_day_number(day_number)
         prev_cycle_day = self.cycle_facade.get_day_data(prev_day_number)
-        prev_range = self.cycle_facade.range_obj_from_day_number(
+        prev_range = self.cycle_facade.range_datetime_obj_from_day_number(
             prev_cycle_day,
             self.base_prev_date)
 
-        manually_range = self.manually_facade.range_obj_from_day(
+        manually_range = self.manually_facade.range_datetime_obj_from_day(
             manually_day,
             self.base_current_date)
 
         if prev_range and manually_range:
-            return RangeOperator.are_intersection(prev_range, manually_range)
+            return RangeDateTimeOperator.are_intersection(
+                prev_range,
+                manually_range
+            )
         else:
             return False
 
@@ -88,16 +91,16 @@ class CycleToManuallyCollision():
         manually_day: Any,
         cycle_day: Any
     ) -> bool:
-        current_range = self.cycle_facade.range_obj_from_day_number(
+        current_range = self.cycle_facade.range_datetime_obj_from_day_number(
             cycle_day,
             self.base_current_date)
 
-        manually_range = self.manually_facade.range_obj_from_day(
+        manually_range = self.manually_facade.range_datetime_obj_from_day(
             manually_day,
             self.base_current_date)
 
         if current_range and manually_range:
-            return RangeOperator.are_intersection(
+            return RangeDateTimeOperator.are_intersection(
                 current_range,
                 manually_range
             )
@@ -112,16 +115,19 @@ class CycleToManuallyCollision():
         day_number = cycle_day.day_number
         next_day_number = self.cycle_facade.get_next_day_number(day_number)
         next_cycle_day = self.cycle_facade.get_day_data(next_day_number)
-        next_range = self.cycle_facade.range_obj_from_day_number(
+        next_range = self.cycle_facade.range_datetime_obj_from_day_number(
             next_cycle_day,
             self.base_next_date)
 
-        manually_range = self.manually_facade.range_obj_from_day(
+        manually_range = self.manually_facade.range_datetime_obj_from_day(
             manually_day,
             self.base_current_date)
 
         if next_range and manually_range:
-            return RangeOperator.are_intersection(next_range, manually_range)
+            return RangeDateTimeOperator.are_intersection(
+                next_range,
+                manually_range
+            )
         else:
             return False
 

@@ -4,7 +4,7 @@ from __future__ import annotations
 from typing import List, Dict, Tuple, TYPE_CHECKING
 from datetime import datetime, timedelta, date as dateclass
 
-from assignation.operators.range_operator import RangeOperator
+from utils.range_datetime_operator import RangeDateTimeOperator
 from collisions.resolvers.constants import (
     BASE_PREV_DATE,
     BASE_CURRENT_DATE,
@@ -20,6 +20,7 @@ if TYPE_CHECKING:
         WeeklyAssignationFacade
     )
     from utils.range import Range
+    from utils.range_datetime import RangeDateTime
 
 
 class CycleToWeeklyColission(object):
@@ -93,54 +94,57 @@ class CycleToWeeklyColission(object):
     def check_prev_colision(
         self,
         current_day_name: str,
-        main_range: Range
+        main_range: RangeDateTime
     ) -> bool:
         prev_day_name = self.weekly_facade.get_prev_day_number(
             current_day_name)
 
-        prev_range = self.weekly_facade.range_obj_from_day_number(
+        prev_range = self.weekly_facade.range_datetime_obj_from_day_number(
                     prev_day_name,
                     self.base_prev_date)
 
         if not prev_range:
             return False
 
-        return RangeOperator.are_intersection(prev_range, main_range)
+        return RangeDateTimeOperator.are_intersection(prev_range, main_range)
 
     def check_current_colision(
         self,
         current_day_name: str,
-        main_range: Range
+        main_range: RangeDateTime
     ) -> bool:
-        current_range = self.weekly_facade.range_obj_from_day_number(
+        current_range = self.weekly_facade.range_datetime_obj_from_day_number(
                     current_day_name,
                     self.base_current_date)
 
         if not current_range:
             return False
 
-        return RangeOperator.are_intersection(current_range, main_range)
+        return RangeDateTimeOperator.are_intersection(
+            current_range,
+            main_range
+        )
 
     def check_next_colision(
         self,
         current_day_name: str,
-        main_range: Range
+        main_range: RangeDateTime
     ) -> bool:
         next_day_name = self.weekly_facade.get_next_day_number(
             current_day_name)
 
-        next_range = self.weekly_facade.range_obj_from_day_number(
+        next_range = self.weekly_facade.range_datetime_obj_from_day_number(
                     next_day_name,
                     self.base_next_date)
 
         if not next_range:
             return False
 
-        return RangeOperator.are_intersection(next_range, main_range)
+        return RangeDateTimeOperator.are_intersection(next_range, main_range)
 
     def has_collision(
         self,
-        main_range: Range,
+        main_range: RangeDateTime,
         week_revision: List
     ) -> bool:
         for day_name in week_revision:
@@ -174,7 +178,7 @@ class CycleToWeeklyColission(object):
 
     def get_collision_detail(
         self,
-        main_range: Range,
+        main_range: RangeDateTime,
         week_full_revision: Dict
     ) -> Dict:
         day_names = {}  # type: Dict
@@ -219,7 +223,7 @@ class CycleToWeeklyColission(object):
             day_facade = DayFacade(day)
             if day_facade.is_working_day():
 
-                cycle_day_range = Util.create_range(
+                cycle_day_range = Util.create_range_datetime(
                     day.starting_time,
                     day.ending_time,
                     self.base_current_date

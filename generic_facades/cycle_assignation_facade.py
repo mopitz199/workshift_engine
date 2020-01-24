@@ -8,7 +8,7 @@ from generic_facades.generic_assignation_facade import GenericAssignationFacade
 from collisions.utils import Util
 
 if TYPE_CHECKING:
-    from utils.range import Range
+    from utils.range_datetime import RangeDateTime
 
 
 class CycleAssignationFacade(GenericAssignationFacade):
@@ -93,14 +93,19 @@ class CycleAssignationFacade(GenericAssignationFacade):
         else:
             return None
 
-    def range_obj_from_day_number(
+    def range_datetime_obj_from_day_number(
         self,
         cycle_day: Any,
         base_date: dateclass
-    ) -> Optional[Range]:
+    ) -> Optional[RangeDateTime]:
         starting_time = cycle_day.starting_time
         ending_time = cycle_day.ending_time
         if starting_time is not None and ending_time is not None:
-            return Util.create_range(starting_time, ending_time, base_date)
+            range_datetime = Util.create_range_datetime(
+                starting_time,
+                ending_time,
+                base_date
+            )
+            return range_datetime
         else:
             return None
