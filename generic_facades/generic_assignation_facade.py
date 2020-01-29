@@ -6,8 +6,12 @@ import copy
 from datetime import datetime, timedelta
 from typing import Any, TYPE_CHECKING, List
 
+from utils.range_datetime_operator import RangeDateTimeOperator
+
 if TYPE_CHECKING:
     from proxies.assignation_proxy import AssignationProxy
+    from utils.range_datetime import RangeDateTime
+    from utils.range import Range
 
 
 class GenericAssignationFacade():
@@ -47,7 +51,7 @@ class GenericAssignationFacade():
 
     def has_day_off_assignation_intersection(
         self,
-        range_obj
+        range_obj: RangeDateTime
     ):
         day_off_assignations = self.get_day_off_assignations()
         for day_off_assignation in day_off_assignations:
