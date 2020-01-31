@@ -37,17 +37,39 @@ class DayOffAssignationFacade(object):
                 return True
 
         if joined_range_datetime:
-            aux_date = joined_range_datetime.starting_datetime.date()
-            if self.date_is_in(aux_date):
-
+            aux_starting_date = joined_range_datetime.starting_datetime.date()
+            if self.date_is_in(aux_starting_date):
                 if self.one_day_to_another():
-                    ending_date = aux_date + timedelta(days=1)
+                    ending_date = aux_starting_date + timedelta(days=1)
                 else:
-                    ending_date = aux_date
+                    ending_date = aux_starting_date
 
                 day_off_range = RangeDateTime(
                     datetime.combine(
-                        aux_date,
+                        aux_starting_date,
+                        self.day_off_assignation.starting_time
+                    ),
+                    datetime.combine(
+                        ending_date,
+                        self.day_off_assignation.ending_time
+                    )
+                )
+
+                return RangeDateTimeOperator.are_intersection(
+                    joined_range_datetime,
+                    day_off_range
+                )
+
+            aux_ending_date = joined_range_datetime.ending_datetime.date()
+            if self.date_is_in(aux_ending_date):
+                if self.one_day_to_another():
+                    ending_date = aux_ending_date + timedelta(days=1)
+                else:
+                    ending_date = aux_ending_date
+
+                day_off_range = RangeDateTime(
+                    datetime.combine(
+                        aux_ending_date,
                         self.day_off_assignation.starting_time
                     ),
                     datetime.combine(
