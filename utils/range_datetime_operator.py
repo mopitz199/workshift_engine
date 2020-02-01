@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timedelta
-from typing import TYPE_CHECKING, List, Union
+from typing import TYPE_CHECKING, List, Union, Optional
 
 from utils.date_util import DateUtil
 from utils.range import Range
@@ -21,6 +21,18 @@ class RangeDateTimeOperator:
 
         return (r1.starting_datetime <= r2.ending_datetime and
                 r1.ending_datetime >= r2.starting_datetime)
+
+    @staticmethod
+    def get_intersection(
+        r1: RangeDateTime,
+        r2: RangeDateTime
+    ) -> Optional[RangeDateTime]:
+        if RangeDateTimeOperator.are_intersection(r1, r2):
+            return RangeDateTime(
+                max(r1.starting_datetime, r2.starting_datetime),
+                min(r1.ending_datetime, r2.ending_datetime)
+            )
+        return None
 
     @staticmethod
     def is_in(

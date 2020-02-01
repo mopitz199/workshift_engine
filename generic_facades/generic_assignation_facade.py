@@ -6,6 +6,7 @@ import copy
 from datetime import datetime, timedelta
 from typing import Any, TYPE_CHECKING, List
 
+from generic_facades.day_off_assignation_facade import DayOffAssignationFacade
 from utils.range_datetime_operator import RangeDateTimeOperator
 
 if TYPE_CHECKING:
@@ -49,10 +50,15 @@ class GenericAssignationFacade():
         else:
             return []
 
-    def has_day_off_assignation_intersection(
+    def is_cover_by_a_day_off_assignation(
         self,
         range_obj: RangeDateTime
-    ):
+    ) -> bool:
         day_off_assignations = self.get_day_off_assignations()
         for day_off_assignation in day_off_assignations:
-            pass
+            day_off_assignation_facade = DayOffAssignationFacade(
+                day_off_assignation
+            )
+            if day_off_assignation_facade.is_in(range_obj):
+                return True
+        return False

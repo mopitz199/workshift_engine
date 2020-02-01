@@ -48,11 +48,18 @@ class WeeklyAndManuallyCollision():
             self.base_prev_date
         )
         if weekly_prev_range:
-            if RangeDateTimeOperator.are_intersection(
+            intersection = RangeDateTimeOperator.get_intersection(
                 weekly_prev_range,
                 manually_range
-            ):
-                return prev_weekly_day.day_number
+            )
+            if intersection:
+                covered = self.weekly_facade.is_cover_by_a_day_off_assignation(
+                    intersection
+                )
+                if not covered:
+                    return prev_weekly_day.day_number
+                else:
+                    return None
             else:
                 return None
         else:
@@ -70,11 +77,18 @@ class WeeklyAndManuallyCollision():
         )
 
         if weekly_next_range:
-            if RangeDateTimeOperator.are_intersection(
+            intersection = RangeDateTimeOperator.get_intersection(
                 weekly_next_range,
                 manually_range
-            ):
-                return next_weekly_day.day_number
+            )
+            if intersection:
+                covered = self.weekly_facade.is_cover_by_a_day_off_assignation(
+                    intersection
+                )
+                if not covered:
+                    return next_weekly_day.day_number
+                else:
+                    return None
             else:
                 return None
         else:
@@ -93,11 +107,18 @@ class WeeklyAndManuallyCollision():
             )
 
         if weekly_current_range:
-            if RangeDateTimeOperator.are_intersection(
+            intersection = RangeDateTimeOperator.get_intersection(
                 weekly_current_range,
                 manually_range
-            ):
-                return weekly_day.day_number
+            )
+            if intersection:
+                covered = self.weekly_facade.is_cover_by_a_day_off_assignation(
+                    intersection
+                )
+                if not covered:
+                    return weekly_day.day_number
+                else:
+                    return None
             else:
                 return None
         else:

@@ -79,10 +79,17 @@ class CycleToManuallyCollision():
             self.base_current_date)
 
         if prev_range and manually_range:
-            return RangeDateTimeOperator.are_intersection(
+            intersection = RangeDateTimeOperator.get_intersection(
                 prev_range,
                 manually_range
             )
+            if intersection:
+                covered = self.cycle_facade.is_cover_by_a_day_off_assignation(
+                    intersection
+                )
+                return not covered
+            else:
+                return False
         else:
             return False
 
@@ -100,10 +107,17 @@ class CycleToManuallyCollision():
             self.base_current_date)
 
         if current_range and manually_range:
-            return RangeDateTimeOperator.are_intersection(
+            intersection = RangeDateTimeOperator.get_intersection(
                 current_range,
                 manually_range
             )
+            if intersection:
+                covered = self.cycle_facade.is_cover_by_a_day_off_assignation(
+                    intersection
+                )
+                return not covered
+            else:
+                return False
         else:
             return False
 
@@ -124,10 +138,17 @@ class CycleToManuallyCollision():
             self.base_current_date)
 
         if next_range and manually_range:
-            return RangeDateTimeOperator.are_intersection(
+            intersection = RangeDateTimeOperator.get_intersection(
                 next_range,
                 manually_range
             )
+            if intersection:
+                covered = self.cycle_facade.is_cover_by_a_day_off_assignation(
+                    intersection
+                )
+                return not covered
+            else:
+                return False
         else:
             return False
 

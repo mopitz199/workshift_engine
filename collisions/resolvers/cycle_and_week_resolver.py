@@ -106,7 +106,17 @@ class CycleToWeeklyColission(object):
         if not prev_range:
             return False
 
-        return RangeDateTimeOperator.are_intersection(prev_range, main_range)
+        intersection = RangeDateTimeOperator.get_intersection(
+            prev_range,
+            main_range
+        )
+        if intersection:
+            covered = self.cycle_facade.is_cover_by_a_day_off_assignation(
+                intersection
+            )
+            return not covered
+        else:
+            return False
 
     def check_current_colision(
         self,
@@ -120,10 +130,17 @@ class CycleToWeeklyColission(object):
         if not current_range:
             return False
 
-        return RangeDateTimeOperator.are_intersection(
+        intersection = RangeDateTimeOperator.get_intersection(
             current_range,
             main_range
         )
+        if intersection:
+            covered = self.cycle_facade.is_cover_by_a_day_off_assignation(
+                intersection
+            )
+            return not covered
+        else:
+            return False
 
     def check_next_colision(
         self,
@@ -140,7 +157,17 @@ class CycleToWeeklyColission(object):
         if not next_range:
             return False
 
-        return RangeDateTimeOperator.are_intersection(next_range, main_range)
+        intersection = RangeDateTimeOperator.get_intersection(
+            next_range,
+            main_range
+        )
+        if intersection:
+            covered = self.cycle_facade.is_cover_by_a_day_off_assignation(
+                intersection
+            )
+            return not covered
+        else:
+            return False
 
     def has_collision(
         self,
