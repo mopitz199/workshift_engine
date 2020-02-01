@@ -87,3 +87,13 @@ class RangeOperator:
             response.append(main_range)
 
         return response
+
+    @staticmethod
+    def is_in(
+        r1: Range,
+        r2: Range
+    ) -> bool:
+        return (
+            r1.starting_date >= r2.starting_date and
+            r2.ending_date >= r1.ending_date
+        )

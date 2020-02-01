@@ -23,6 +23,16 @@ class RangeDateTimeOperator:
                 r1.ending_datetime >= r2.starting_datetime)
 
     @staticmethod
+    def is_in(
+        r1: RangeDateTime,
+        r2: RangeDateTime
+    ) -> bool:
+        return (
+            r1.starting_datetime >= r2.starting_datetime and
+            r1.ending_datetime <= r2.ending_datetime
+        )
+
+    @staticmethod
     def split_borders(
         range_obj: RangeDateTime
     ) -> List[Union[RangeDateTime, Range, None]]:
