@@ -50,7 +50,7 @@ class GenericAssignationFacade():
         else:
             return []
 
-    def is_cover_by_a_day_off_assignation(
+    def covered(
         self,
         range_obj: RangeDateTime
     ) -> bool:

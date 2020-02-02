@@ -111,7 +111,7 @@ class CycleToWeeklyColission(object):
             main_range
         )
         if intersection:
-            covered = self.cycle_facade.is_cover_by_a_day_off_assignation(
+            covered = self.cycle_facade.covered(
                 intersection
             )
             return not covered
@@ -135,7 +135,7 @@ class CycleToWeeklyColission(object):
             main_range
         )
         if intersection:
-            covered = self.cycle_facade.is_cover_by_a_day_off_assignation(
+            covered = self.cycle_facade.covered(
                 intersection
             )
             return not covered
@@ -162,7 +162,7 @@ class CycleToWeeklyColission(object):
             main_range
         )
         if intersection:
-            covered = self.cycle_facade.is_cover_by_a_day_off_assignation(
+            covered = self.cycle_facade.covered(
                 intersection
             )
             return not covered
@@ -217,6 +217,7 @@ class CycleToWeeklyColission(object):
 
                 dates = self.filter_dates(dates, 'previous')
                 if dates:
+                    # Aca determina si el dia esta contenido en un day off
                     if prev_day_name not in day_names:
                         day_names[prev_day_name] = []
                     day_names[prev_day_name] += dates
@@ -224,6 +225,7 @@ class CycleToWeeklyColission(object):
             if self.check_current_colision(day_name, main_range):
                 dates = self.filter_dates(dates, 'current')
                 if dates:
+                    # Aca determina si el dia esta contenido en un day off
                     if day_name not in day_names:
                         day_names[day_name] = []
                     day_names[day_name] += dates
@@ -234,6 +236,7 @@ class CycleToWeeklyColission(object):
 
                 dates = self.filter_dates(dates, 'next')
                 if dates:
+                    # Aca determina si el dia esta contenido en un day off
                     if next_day_name not in day_names:
                         day_names[next_day_name] = []
                     day_names[next_day_name] += dates

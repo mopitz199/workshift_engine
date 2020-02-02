@@ -84,7 +84,7 @@ class CycleToManuallyCollision():
                 manually_range
             )
             if intersection:
-                covered = self.cycle_facade.is_cover_by_a_day_off_assignation(
+                covered = self.cycle_facade.covered(
                     intersection
                 )
                 return not covered
@@ -112,7 +112,7 @@ class CycleToManuallyCollision():
                 manually_range
             )
             if intersection:
-                covered = self.cycle_facade.is_cover_by_a_day_off_assignation(
+                covered = self.cycle_facade.covered(
                     intersection
                 )
                 return not covered
@@ -143,7 +143,7 @@ class CycleToManuallyCollision():
                 manually_range
             )
             if intersection:
-                covered = self.cycle_facade.is_cover_by_a_day_off_assignation(
+                covered = self.cycle_facade.covered(
                     intersection
                 )
                 return not covered

@@ -13,6 +13,7 @@ from collisions.resolvers.constants import (
 from collisions.custom_typings import WToMCollisionType, WToMResolverType
 from collisions.utils import Util
 from generic_facades.day_facade import DayFacade
+from utils.range_datetime import RangeDateTime
 
 if TYPE_CHECKING:
     from generic_facades.manually_assignation_facade import (
@@ -21,7 +22,6 @@ if TYPE_CHECKING:
     from generic_facades.weekly_assignation_facade import (
         WeeklyAssignationFacade
     )
-    from utils.range_datetime import RangeDateTime
 
 
 class WeeklyAndManuallyCollision():
@@ -41,7 +41,7 @@ class WeeklyAndManuallyCollision():
         self,
         manually_range: RangeDateTime,
         weekly_day: Any
-    ) -> Optional[int]:
+    ) -> Tuple[Optional[int], Optional[RangeDateTime]]:
         prev_weekly_day = self.weekly_facade.get_prev_day(weekly_day)
         weekly_prev_range = self.weekly_facade.range_datetime_from_weekly_day(
             prev_weekly_day,
@@ -53,23 +53,17 @@ class WeeklyAndManuallyCollision():
                 manually_range
             )
             if intersection:
-                covered = self.weekly_facade.is_cover_by_a_day_off_assignation(
-                    intersection
-                )
-                if not covered:
-                    return prev_weekly_day.day_number
-                else:
-                    return None
+                return (prev_weekly_day.day_number, intersection)
             else:
-                return None
+                return (None, None)
         else:
-            return None
+            return (None, None)
 
     def check_next_collision(
         self,
         manually_range: RangeDateTime,
         weekly_day: Any
-    ) -> Optional[int]:
+    ) -> Tuple[Optional[int], Optional[RangeDateTime]]:
         next_weekly_day = self.weekly_facade.get_next_day(weekly_day)
         weekly_next_range = self.weekly_facade.range_datetime_from_weekly_day(
             next_weekly_day,
@@ -82,24 +76,17 @@ class WeeklyAndManuallyCollision():
                 manually_range
             )
             if intersection:
-                covered = self.weekly_facade.is_cover_by_a_day_off_assignation(
-                    intersection
-                )
-                if not covered:
-                    return next_weekly_day.day_number
-                else:
-                    return None
+                return (next_weekly_day.day_number, intersection)
             else:
-                return None
+                return (None, None)
         else:
-            return None
+            return (None, None)
 
     def check_current_collision(
         self,
         manually_range: RangeDateTime,
         weekly_day: Any
-    ) -> Optional[int]:
-
+    ) -> Tuple[Optional[int], Optional[RangeDateTime]]:
         weekly_current_range = self.weekly_facade\
             .range_datetime_from_weekly_day(
                 weekly_day,
@@ -112,17 +99,28 @@ class WeeklyAndManuallyCollision():
                 manually_range
             )
             if intersection:
-                covered = self.weekly_facade.is_cover_by_a_day_off_assignation(
-                    intersection
-                )
-                if not covered:
-                    return weekly_day.day_number
-                else:
-                    return None
+                return weekly_day.day_number, intersection
             else:
-                return None
+                return None, None
         else:
-            return None
+            return None, None
+
+    def get_real_intersection(
+        self,
+        date_obj: dateclass,
+        aux_intersection: RangeDateTime
+    ):
+        starting_datetime = datetime.combine(
+            date_obj,
+            aux_intersection.starting_datetime.time()
+        )
+
+        ending_datetime = datetime.combine(
+            date_obj,
+            aux_intersection.ending_datetime.time()
+        )
+
+        return RangeDateTime(starting_datetime, ending_datetime)
 
     def check_manually_day(
         self,
@@ -144,28 +142,46 @@ class WeeklyAndManuallyCollision():
             weekly_ending_date = self.weekly_facade.assignation.ending_date
 
             if manually_day.date > weekly_starting_date:
-                day_number = self.check_prev_collision(
+                day_number, intersection = self.check_prev_collision(
                     manually_range,
                     weekly_day
                 )
-                if day_number:
-                    collisions[str_date].append(day_number)
+                if day_number is not None and intersection:
+                    real_intersection = self.get_real_intersection(
+                        manually_day.date,
+                        intersection
+                    )
+                    covered = self.weekly_facade.covered(real_intersection)
+                    if not covered:
+                        collisions[str_date].append(day_number)
 
             if weekly_ending_date >= manually_day.date >= weekly_starting_date:
-                day_number = self.check_current_collision(
+                day_number, intersection = self.check_current_collision(
                     manually_range,
                     weekly_day
                 )
-                if day_number is not None:
-                    collisions[str_date].append(day_number)
+                if day_number is not None and intersection:
+                    real_intersection = self.get_real_intersection(
+                        manually_day.date,
+                        intersection
+                    )
+                    covered = self.weekly_facade.covered(real_intersection)
+                    if not covered:
+                        collisions[str_date].append(day_number)
 
             if manually_day.date < weekly_ending_date:
-                day_number = self.check_next_collision(
+                day_number, intersection = self.check_next_collision(
                     manually_range,
                     weekly_day
                 )
-                if day_number:
-                    collisions[str_date].append(day_number)
+                if day_number is not None and intersection:
+                    real_intersection = self.get_real_intersection(
+                        manually_day.date,
+                        intersection
+                    )
+                    covered = self.weekly_facade.covered(real_intersection)
+                    if not covered:
+                        collisions[str_date].append(day_number)
 
         if collisions[str_date]:
             return collisions

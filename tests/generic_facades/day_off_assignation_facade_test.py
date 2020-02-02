@@ -322,3 +322,29 @@ class TestDayOffAssignationFacade(object):
         )
 
         assert not facade.is_in(range_datetime)
+
+    """
+    def test_is_not_in_8(self):
+
+        day_off_assignations_data = [
+            {
+                'person_id': 1,
+                'starting_date': '2019-1-4',
+                'ending_date': '2019-1-4',
+                'starting_time': '9:00',
+                'ending_time': '11:00'
+            }
+        ]
+        day_off_assignations = create_proxy_day_off_assignation(
+            day_off_assignations_data
+        )
+
+        facade = DayOffAssignationFacade(day_off_assignations[0])
+
+        range_datetime = RangeDateTime(
+            datetime(2019, 1, 4, 10, 0),
+            datetime(2019, 1, 4, 10, 0),
+        )
+
+        assert facade.is_in(range_datetime)
+    """
