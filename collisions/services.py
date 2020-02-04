@@ -35,7 +35,7 @@ def cycle_and_weekly_collision(
     cycle_facade = CycleAssignationFacade(assignation1)
     weekly_facade = WeeklyAssignationFacade(assignation2)
     resolver = CycleToWeeklyColission(cycle_facade, weekly_facade)
-    return resolver.resolve(detail)
+    return resolver.resolve()
 
 
 def cycle_and_manually_collision(

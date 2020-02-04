@@ -706,8 +706,8 @@ class TestCycleAndWeeklyCollision():
 
         has_collision, detail = cycle_and_weekly_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {
             '0': {
@@ -811,8 +811,8 @@ class TestCycleAndWeeklyCollision():
 
         has_collision, detail = cycle_and_weekly_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {
             '0': {
@@ -915,8 +915,8 @@ class TestCycleAndWeeklyCollision():
 
         has_collision, detail = cycle_and_weekly_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {
             '0': {
@@ -1021,8 +1021,8 @@ class TestCycleAndWeeklyCollision():
 
         has_collision, detail = cycle_and_weekly_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {
             '0': {
@@ -1126,8 +1126,8 @@ class TestCycleAndWeeklyCollision():
 
         has_collision, detail = cycle_and_weekly_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {
             '0': {
@@ -1232,8 +1232,8 @@ class TestCycleAndWeeklyCollision():
 
         has_collision, detail = cycle_and_weekly_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {
             '0': {
@@ -1343,8 +1343,8 @@ class TestCycleAndWeeklyCollision():
 
         has_collision, detail = cycle_and_weekly_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {}
         assert not has_collision and detail == detail_expected
@@ -1437,8 +1437,8 @@ class TestCycleAndWeeklyCollision():
 
         has_collision, detail = cycle_and_weekly_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {
             '0': {
@@ -3195,8 +3195,8 @@ class TestWeeklyAndManuallyCollisionDayOffs():
         day_off_assignations_data = [
             {
                 'person_id': 1,
-                'starting_date': '2019-12-3',
-                'ending_date': '2019-12-3',
+                'starting_date': '2019-12-4',
+                'ending_date': '2019-12-4',
                 'starting_time': '07:00',
                 'ending_time': '09:00'
             }

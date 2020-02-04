@@ -176,7 +176,7 @@ class WeeklyAndManuallyCollision():
                 )
                 if day_number is not None and intersection:
                     real_intersection = self.get_real_intersection(
-                        manually_day.date,
+                        manually_day.date + timedelta(days=1),
                         intersection
                     )
                     covered = self.weekly_facade.covered(real_intersection)

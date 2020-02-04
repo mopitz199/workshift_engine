@@ -161,35 +161,6 @@ class CycleToWeeklyColission(object):
         else:
             return None
 
-    def has_collision(
-        self,
-        main_range: RangeDateTime,
-        week_revision: List
-    ) -> bool:
-        for day_name in week_revision:
-            intersection = self.check_prev_colision(
-                day_name,
-                main_range
-            )
-            if intersection:
-                return True
-
-            intersection = self.check_current_colision(
-                day_name,
-                main_range
-            )
-            if intersection:
-                return True
-
-            intersection = self.check_next_colision(
-                day_name,
-                main_range
-            )
-            if intersection:
-                return True
-
-        return False
-
     def filter_dates(
         self,
         dates: List,
@@ -311,10 +282,7 @@ class CycleToWeeklyColission(object):
 
         return day_names
 
-    def resolve(
-        self,
-        detail=False
-    ) -> CToWResolverType:
+    def resolve(self) -> CToWResolverType:
         collision_detail = {}  # Type: CToWCollisionType
         has_collisions = False
         for day in self.cycle_facade.get_days():
@@ -330,8 +298,6 @@ class CycleToWeeklyColission(object):
                 begining_date = self.cycle_facade.get_first_date_of_day_number(
                     day.day_number)
 
-                week_revision = self.cycle_week_day_revision(begining_date)
-
                 week_full_revision = {}  # type: Dict
 
                 detail = True
@@ -346,8 +312,6 @@ class CycleToWeeklyColission(object):
                     day_str_number = "{}".format(day.day_number)
                     if collision_day_detail:
                         collision_detail[day_str_number] = collision_day_detail
-
-                # collisions = self.has_collision(cycle_day_range, week_revision)
 
                 if collision_detail and not has_collisions:
                     has_collisions = True
