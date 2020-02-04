@@ -188,11 +188,8 @@ class WeeklyAndManuallyCollision():
         else:
             return {}
 
-    def resolve(
-        self,
-        detail=False
-    ) -> WToMResolverType:
-        collisions = WToMCollisionType({})
+    def resolve(self) -> Optional[Dict]:
+        collisions: Dict = {}
         manually_days = self.manually_facade.get_days()
         for manually_day in manually_days:
             week_day = manually_day.date.weekday()
@@ -205,17 +202,9 @@ class WeeklyAndManuallyCollision():
             )
 
             if manually_day_collisions:
-                if detail:
-                    collisions.update(
-                        WToMCollisionType(manually_day_collisions)
-                    )
-                else:
-                    return WToMResolverType(
-                        (True, collisions)
-                    )
+                collisions.update(manually_day_collisions)
 
-        has_collisions = False
         if collisions:
-            has_collisions = True
-
-        return WToMResolverType((has_collisions, collisions))
+            return collisions
+        else:
+            return None

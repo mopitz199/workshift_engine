@@ -1,7 +1,7 @@
 # make all type hints be strings and skip evaluating them
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Dict, Optional
 from datetime import datetime
 
 from collisions.resolvers.cycle_and_week_resolver import CycleToWeeklyColission
@@ -26,9 +26,8 @@ if TYPE_CHECKING:
 
 def cycle_and_weekly_collision(
     assignation1: AssignationProxy,
-    assignation2: AssignationProxy,
-    detail=False
-) -> CToWResolverType:
+    assignation2: AssignationProxy
+) -> Optional[Dict]:
     """This service is to check if an cycle assignation and a weekly
     assignation has some collision. """
 
@@ -40,27 +39,25 @@ def cycle_and_weekly_collision(
 
 def cycle_and_manually_collision(
     assignation1: AssignationProxy,
-    assignation2: AssignationProxy,
-    detail=False
-) -> CToMResolverType:
+    assignation2: AssignationProxy
+) -> Optional[Dict]:
     """ This service is to check if an cycle assignation and a manual
     assignation has some collision. """
 
     cycle_facade = CycleAssignationFacade(assignation1)
     manually_facade = ManualAssignationFacade(assignation2)
     resolver = CycleToManuallyCollision(cycle_facade, manually_facade)
-    return resolver.resolve(detail)
+    return resolver.resolve()
 
 
 def weekly_and_manually_collision(
     assignation1: AssignationProxy,
-    assignation2: AssignationProxy,
-    detail=False
-) -> WToMResolverType:
+    assignation2: AssignationProxy
+) -> Optional[Dict]:
     """ This service is to check if an cycle assignation and a manual
     assignation has some collision. """
 
     weekly_facade = WeeklyAssignationFacade(assignation1)
     manually_facade = ManualAssignationFacade(assignation2)
     resolver = WeeklyAndManuallyCollision(weekly_facade, manually_facade)
-    return resolver.resolve(detail)
+    return resolver.resolve()

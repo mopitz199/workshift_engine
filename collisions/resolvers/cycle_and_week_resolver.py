@@ -282,9 +282,8 @@ class CycleToWeeklyColission(object):
 
         return day_names
 
-    def resolve(self) -> CToWResolverType:
-        collision_detail = {}  # Type: CToWCollisionType
-        has_collisions = False
+    def resolve(self) -> Optional[Dict]:
+        collision_detail = {}
         for day in self.cycle_facade.get_days():
             day_facade = DayFacade(day)
             if day_facade.is_working_day():
@@ -299,27 +298,17 @@ class CycleToWeeklyColission(object):
                     day.day_number)
 
                 week_full_revision = {}  # type: Dict
+                week_full_revision = self.cycle_week_day_full_revision(
+                    begining_date)
 
-                detail = True
-                if detail:
-                    week_full_revision = self.cycle_week_day_full_revision(
-                        begining_date)
+                collision_day_detail = self.get_collision_detail(
+                    cycle_day_range,
+                    week_full_revision)
+                day_str_number = "{}".format(day.day_number)
+                if collision_day_detail:
+                    collision_detail[day_str_number] = collision_day_detail
 
-                if detail:
-                    collision_day_detail = self.get_collision_detail(
-                        cycle_day_range,
-                        week_full_revision)
-                    day_str_number = "{}".format(day.day_number)
-                    if collision_day_detail:
-                        collision_detail[day_str_number] = collision_day_detail
-
-                if collision_detail and not has_collisions:
-                    has_collisions = True
-
-                if has_collisions and not detail:
-                    return CToWResolverType(
-                        (True, CToWCollisionType(collision_detail))
-                    )
-        return CToWResolverType(
-            (has_collisions, CToWCollisionType(collision_detail))
-        )
+        if collision_detail:
+            return collision_detail
+        else:
+            return None

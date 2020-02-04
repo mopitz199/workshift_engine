@@ -121,7 +121,7 @@ class TestCycleAndWeeklyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_weekly_collision(
+        detail = cycle_and_weekly_collision(
             assignation1,
             assignation2)
 
@@ -153,7 +153,7 @@ class TestCycleAndWeeklyCollision():
             }
         }
 
-        assert has_collision and detail == expected
+        assert detail == expected
 
     def test_cycle_and_weekly_collision2(self):
 
@@ -241,11 +241,11 @@ class TestCycleAndWeeklyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_weekly_collision(
+        detail = cycle_and_weekly_collision(
             assignation1,
             assignation2)
 
-        assert not has_collision and not detail
+        assert detail is None
 
     def test_cycle_and_weekly_collision3(self):
 
@@ -333,11 +333,11 @@ class TestCycleAndWeeklyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_weekly_collision(
+        detail = cycle_and_weekly_collision(
             assignation1,
             assignation2)
 
-        assert not has_collision and not detail
+        assert detail is None
 
     def test_cycle_and_weekly_collision4(self):
 
@@ -424,7 +424,7 @@ class TestCycleAndWeeklyCollision():
             }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
-        has_collision, detail = cycle_and_weekly_collision(
+        detail = cycle_and_weekly_collision(
             assignation1,
             assignation2)
 
@@ -433,7 +433,7 @@ class TestCycleAndWeeklyCollision():
                     '6': [datetime(2019, 9, 1).date()]
                 }
             }
-        assert has_collision and expected == detail
+        assert expected == detail
 
     def test_cycle_and_weekly_collision5(self):
 
@@ -521,11 +521,11 @@ class TestCycleAndWeeklyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_weekly_collision(
+        detail = cycle_and_weekly_collision(
             assignation1,
             assignation2)
 
-        assert not has_collision and not detail
+        assert detail is None
 
     def test_cycle_and_weekly_collision6(self):
 
@@ -613,10 +613,10 @@ class TestCycleAndWeeklyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_weekly_collision(
+        detail = cycle_and_weekly_collision(
             assignation1,
             assignation2)
-        assert not has_collision and not detail
+        assert detail is None
 
     def test_cycle_and_weekly_collision7(self):
 
@@ -638,7 +638,7 @@ class TestCycleAndWeeklyCollision():
                     }
                 ]
             },
-            {  
+            {
                 'id': 7,
                 'total_workshift_days': 7,
                 'workshift_type': 'weekly',
@@ -704,7 +704,7 @@ class TestCycleAndWeeklyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_weekly_collision(
+        detail = cycle_and_weekly_collision(
             assignation1,
             assignation2
         )
@@ -721,7 +721,7 @@ class TestCycleAndWeeklyCollision():
             }
         }
 
-        assert has_collision and detail == detail_expected
+        assert detail == detail_expected
 
     def test_cycle_and_weekly_collision8(self):
 
@@ -809,7 +809,7 @@ class TestCycleAndWeeklyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_weekly_collision(
+        detail = cycle_and_weekly_collision(
             assignation1,
             assignation2
         )
@@ -825,7 +825,7 @@ class TestCycleAndWeeklyCollision():
             }
         }
 
-        assert has_collision and detail == detail_expected
+        assert detail == detail_expected
 
     def test_cycle_and_weekly_collision9(self):
 
@@ -913,7 +913,7 @@ class TestCycleAndWeeklyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_weekly_collision(
+        detail = cycle_and_weekly_collision(
             assignation1,
             assignation2
         )
@@ -931,7 +931,7 @@ class TestCycleAndWeeklyCollision():
             }
         }
 
-        assert has_collision and detail == detail_expected
+        assert detail == detail_expected
 
     def test_cycle_and_weekly_collision10(self):
 
@@ -1019,7 +1019,7 @@ class TestCycleAndWeeklyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_weekly_collision(
+        detail = cycle_and_weekly_collision(
             assignation1,
             assignation2
         )
@@ -1036,7 +1036,7 @@ class TestCycleAndWeeklyCollision():
             }
         }
 
-        assert has_collision and detail == detail_expected
+        assert detail == detail_expected
 
     def test_cycle_and_weekly_collision11(self):
 
@@ -1124,7 +1124,7 @@ class TestCycleAndWeeklyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_weekly_collision(
+        detail = cycle_and_weekly_collision(
             assignation1,
             assignation2
         )
@@ -1142,7 +1142,7 @@ class TestCycleAndWeeklyCollision():
             }
         }
 
-        assert has_collision and detail == detail_expected
+        assert detail == detail_expected
 
     def test_cycle_and_weekly_collision12(self):
 
@@ -1230,7 +1230,7 @@ class TestCycleAndWeeklyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_weekly_collision(
+        detail = cycle_and_weekly_collision(
             assignation1,
             assignation2
         )
@@ -1253,7 +1253,7 @@ class TestCycleAndWeeklyCollision():
             }
         }
 
-        assert has_collision and detail == detail_expected
+        assert detail == detail_expected
 
     def test_cycle_and_weekly_collision13(self):
 
@@ -1341,13 +1341,12 @@ class TestCycleAndWeeklyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_weekly_collision(
+        detail = cycle_and_weekly_collision(
             assignation1,
             assignation2
         )
 
-        detail_expected = {}
-        assert not has_collision and detail == detail_expected
+        assert detail is None
 
     def test_cycle_and_weekly_collision14(self):
 
@@ -1435,7 +1434,7 @@ class TestCycleAndWeeklyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_weekly_collision(
+        detail = cycle_and_weekly_collision(
             assignation1,
             assignation2
         )
@@ -1446,7 +1445,7 @@ class TestCycleAndWeeklyCollision():
             }
         }
 
-        assert has_collision and detail == detail_expected
+        assert detail == detail_expected
 
 
 class TestCycleAndManuallyCollision():
@@ -1506,15 +1505,15 @@ class TestCycleAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_manually_collision(
+        detail = cycle_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {
             '2019-09-01': [0]
         }
-        assert has_collision and detail == detail_expected
+        assert detail == detail_expected
 
     def test_cycle_and_manually_collision2(self):
 
@@ -1571,14 +1570,12 @@ class TestCycleAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_manually_collision(
+        detail = cycle_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
-        detail_expected = {}
-
-        assert not has_collision and detail == detail_expected
+        assert detail is None
 
     def test_cycle_and_manually_collision3(self):
 
@@ -1635,14 +1632,14 @@ class TestCycleAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_manually_collision(
+        detail = cycle_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {'2019-09-01': [1]}
 
-        assert has_collision and detail == detail_expected
+        assert detail == detail_expected
 
     def test_cycle_and_manually_collision4(self):
 
@@ -1699,14 +1696,14 @@ class TestCycleAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_manually_collision(
+        detail = cycle_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {'2019-09-01': [0, 1]}
 
-        assert has_collision and detail == detail_expected
+        assert detail == detail_expected
 
     def test_cycle_and_manually_collision5(self):
 
@@ -1763,14 +1760,12 @@ class TestCycleAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_manually_collision(
+        detail = cycle_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
-        detail_expected = {}
-
-        assert not has_collision and detail == detail_expected
+        assert detail is None
 
     def test_cycle_and_manually_collision6(self):
 
@@ -1862,14 +1857,11 @@ class TestCycleAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_manually_collision(
+        detail = cycle_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
-
-        detail_expected = {}
-
-        assert not has_collision and detail == detail_expected
+            assignation2
+        )
+        assert detail is None
 
     def test_cycle_and_manually_collision7(self):
 
@@ -1961,10 +1953,10 @@ class TestCycleAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_manually_collision(
+        detail = cycle_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {
             '2019-09-01': [0],
@@ -1977,7 +1969,7 @@ class TestCycleAndManuallyCollision():
             '2019-09-08': [1]
         }
 
-        assert has_collision and detail == detail_expected
+        assert detail == detail_expected
 
     def test_cycle_and_manually_collision8(self):
 
@@ -2069,10 +2061,10 @@ class TestCycleAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_manually_collision(
+        detail = cycle_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {
             '2019-09-01': [0, 1],
@@ -2085,7 +2077,7 @@ class TestCycleAndManuallyCollision():
             '2019-09-08': [1, 0]
         }
 
-        assert has_collision and detail == detail_expected
+        assert detail == detail_expected
 
     def test_cycle_and_manually_collision9(self):
 
@@ -2142,13 +2134,13 @@ class TestCycleAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_manually_collision(
+        detail = cycle_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {'2019-09-09': [1]}
-        assert has_collision and detail == detail_expected
+        assert detail == detail_expected
 
     def test_cycle_and_manually_collision10(self):
 
@@ -2205,13 +2197,12 @@ class TestCycleAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_manually_collision(
+        detail = cycle_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
-        detail_expected = {}
-        assert not has_collision and detail == detail_expected
+        assert detail is None
 
     def test_cycle_and_manually_collision11(self):
 
@@ -2268,13 +2259,13 @@ class TestCycleAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_manually_collision(
+        detail = cycle_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {'2019-08-31': [0]}
-        assert has_collision and detail == detail_expected
+        assert detail == detail_expected
 
     def test_cycle_and_manually_collision12(self):
 
@@ -2331,13 +2322,12 @@ class TestCycleAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = cycle_and_manually_collision(
+        detail = cycle_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
-        detail_expected = {}
-        assert not has_collision and detail == detail_expected
+        assert detail is None
 
     def test_cycle_and_manually_collision13(self):
 
@@ -2423,10 +2413,10 @@ class TestCycleAndManuallyCollision():
             }
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
-        has_collision, detail = cycle_and_manually_collision(
+        detail = cycle_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         detail_expected = {
             '2019-08-31': [0],
@@ -2434,7 +2424,7 @@ class TestCycleAndManuallyCollision():
             '2019-09-05': [0],
             '2019-09-08': [1]
         }
-        assert has_collision and detail == detail_expected
+        assert detail == detail_expected
 
 
 class TestWeeklyAndManuallyCollision():
@@ -2534,10 +2524,10 @@ class TestWeeklyAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = weekly_and_manually_collision(
+        detail = weekly_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         expected_detail = {
             '2019-12-02': [0],
@@ -2545,7 +2535,7 @@ class TestWeeklyAndManuallyCollision():
             '2019-12-06': [4],
             '2019-12-08': [6]
         }
-        assert has_collision and detail == expected_detail
+        assert detail == expected_detail
 
     def test_weekly_and_manually_collision2(self):
 
@@ -2642,10 +2632,10 @@ class TestWeeklyAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = weekly_and_manually_collision(
+        detail = weekly_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         expected_detail = {
             '2019-12-02': [1],
@@ -2654,7 +2644,7 @@ class TestWeeklyAndManuallyCollision():
             '2019-12-08': [6]
         }
 
-        assert has_collision and detail == expected_detail
+        assert detail == expected_detail
 
     def test_weekly_and_manually_collision3(self):
 
@@ -2751,10 +2741,10 @@ class TestWeeklyAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = weekly_and_manually_collision(
+        detail = weekly_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         expected_detail = {
             '2019-12-01': [0],
@@ -2762,7 +2752,7 @@ class TestWeeklyAndManuallyCollision():
             '2019-12-06': [4],
             '2019-12-09': [6],
         }
-        assert has_collision and detail == expected_detail
+        assert detail == expected_detail
 
     def test_weekly_and_manually_collision4(self):
 
@@ -2859,10 +2849,10 @@ class TestWeeklyAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = weekly_and_manually_collision(
+        detail = weekly_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         expected_detail = {
             '2019-12-01': [0],
@@ -2870,7 +2860,7 @@ class TestWeeklyAndManuallyCollision():
             '2019-12-06': [4],
         }
 
-        assert has_collision and detail == expected_detail
+        assert detail == expected_detail
 
     def test_weekly_and_manually_collision5(self):
 
@@ -2967,17 +2957,17 @@ class TestWeeklyAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = weekly_and_manually_collision(
+        detail = weekly_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         expected_detail = {
             '2019-12-03': [2],
             '2019-12-07': [5, 6],
         }
 
-        assert has_collision and detail == expected_detail
+        assert detail == expected_detail
 
     def test_weekly_and_manually_collision6(self):
 
@@ -3074,14 +3064,12 @@ class TestWeeklyAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = weekly_and_manually_collision(
+        detail = weekly_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
-        expected_detail = {}
-
-        assert not has_collision and detail == expected_detail
+        assert detail is None
 
     def test_weekly_and_manually_collision7(self):
 
@@ -3178,14 +3166,12 @@ class TestWeeklyAndManuallyCollision():
         }
         assignation2 = create_an_assignation(assignation2, workshift_db)
 
-        has_collision, detail = weekly_and_manually_collision(
+        detail = weekly_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
-        expected_detail = {}
-
-        assert not has_collision and detail == expected_detail
+        assert detail is None
 
 
 class TestWeeklyAndManuallyCollisionDayOffs():
@@ -3312,13 +3298,13 @@ class TestWeeklyAndManuallyCollisionDayOffs():
             day_off_assignations_db
         )
 
-        has_collision, detail = weekly_and_manually_collision(
+        detail = weekly_and_manually_collision(
             assignation1,
-            assignation2,
-            detail=True)
+            assignation2
+        )
 
         expected_detail = {
             '2019-12-07': [5, 6],
         }
 
-        assert has_collision and detail == expected_detail
+        assert detail == expected_detail
