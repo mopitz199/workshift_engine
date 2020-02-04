@@ -162,8 +162,7 @@ class CycleToManuallyCollision():
     def try_check_prev_collision(
         self,
         manually_day: Any,
-        cycle_day: Any,
-        detail=False
+        cycle_day: Any
     ) -> Optional[Dict]:
         collisions: Dict = {}
         if self.can_check_collision(manually_day, PREVIOUS):
@@ -192,8 +191,7 @@ class CycleToManuallyCollision():
     def try_check_current_collision(
         self,
         manually_day: Any,
-        cycle_day: Any,
-        detail: bool = False
+        cycle_day: Any
     ) -> Optional[Dict]:
         collisions: Dict = {}
         if self.can_check_collision(manually_day, CURRENT):
@@ -221,8 +219,7 @@ class CycleToManuallyCollision():
     def try_check_next_collision(
         self,
         manually_day: Any,
-        cycle_day: Any,
-        detail: bool = False
+        cycle_day: Any
     ) -> Optional[Dict]:
         collisions: Dict = {}
         if self.can_check_collision(manually_day, NEXT):
@@ -270,8 +267,7 @@ class CycleToManuallyCollision():
 
     def check_manually_day_collision(
         self,
-        manually_day: Any,
-        detail: bool = False
+        manually_day: Any
     ) -> Optional[Dict]:
         collisions: Dict = {}
         date = manually_day.date
@@ -284,22 +280,19 @@ class CycleToManuallyCollision():
 
             prev_collisions = self.try_check_prev_collision(
                 manually_day,
-                cycle_day,
-                detail
+                cycle_day
             )
 
             current_collisions = (
                 self.try_check_current_collision(
                     manually_day,
-                    cycle_day,
-                    detail
+                    cycle_day
                 )
             )
 
             next_collisions = self.try_check_next_collision(
                 manually_day,
-                cycle_day,
-                detail
+                cycle_day
             )
 
             has_collision = (
@@ -324,16 +317,12 @@ class CycleToManuallyCollision():
         else:
             raise Exception('Simulation response None')
 
-    def resolve(
-        self,
-        detail: bool = False
-    ) -> Optional[Dict]:
+    def resolve(self) -> Optional[Dict]:
         collisions: Dict = {}
         manually_days = self.manually_facade.get_days()
         for manually_day in manually_days:
             aux_collisions = self.check_manually_day_collision(
-                manually_day,
-                detail
+                manually_day
             )
             if aux_collisions:
                 collisions.update(aux_collisions)
