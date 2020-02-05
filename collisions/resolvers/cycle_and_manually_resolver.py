@@ -70,87 +70,6 @@ class CycleToManuallyCollision():
 
         return aux_starting_date <= manually_date <= aux_ending_date
 
-    def check_prev_collision(
-        self,
-        manually_day: Any,
-        cycle_day: Any
-    ) -> Optional[RangeDateTime]:
-        day_number = cycle_day.day_number
-        prev_day_number = self.cycle_facade.get_prev_day_number(day_number)
-        prev_cycle_day = self.cycle_facade.get_day_data(prev_day_number)
-        prev_range = self.cycle_facade.range_datetime_obj_from_day_number(
-            prev_cycle_day,
-            self.base_prev_date)
-
-        manually_range = self.manually_facade.range_datetime_obj_from_day(
-            manually_day,
-            self.base_current_date)
-
-        if prev_range and manually_range:
-            intersection = RangeDateTimeOperator.get_intersection(
-                prev_range,
-                manually_range
-            )
-            if intersection:
-                return intersection
-            else:
-                return None
-        else:
-            return None
-
-    def check_current_collision(
-        self,
-        manually_day: Any,
-        cycle_day: Any
-    ) -> Optional[RangeDateTime]:
-        current_range = self.cycle_facade.range_datetime_obj_from_day_number(
-            cycle_day,
-            self.base_current_date)
-
-        manually_range = self.manually_facade.range_datetime_obj_from_day(
-            manually_day,
-            self.base_current_date)
-
-        if current_range and manually_range:
-            intersection = RangeDateTimeOperator.get_intersection(
-                current_range,
-                manually_range
-            )
-            if intersection:
-                return intersection
-            else:
-                return None
-        else:
-            return None
-
-    def check_next_collision(
-        self,
-        manually_day: Any,
-        cycle_day: Any
-    ) -> Optional[RangeDateTime]:
-        day_number = cycle_day.day_number
-        next_day_number = self.cycle_facade.get_next_day_number(day_number)
-        next_cycle_day = self.cycle_facade.get_day_data(next_day_number)
-        next_range = self.cycle_facade.range_datetime_obj_from_day_number(
-            next_cycle_day,
-            self.base_next_date)
-
-        manually_range = self.manually_facade.range_datetime_obj_from_day(
-            manually_day,
-            self.base_current_date)
-
-        if next_range and manually_range:
-            intersection = RangeDateTimeOperator.get_intersection(
-                next_range,
-                manually_range
-            )
-            if intersection:
-                return intersection
-            else:
-                return None
-        else:
-            return None
-
     def ensure_empty_list(
         self,
         collisions: Dict,
@@ -248,6 +167,87 @@ class CycleToManuallyCollision():
 
         return None
 
+    def check_prev_collision(
+        self,
+        manually_day: Any,
+        cycle_day: Any
+    ) -> Optional[RangeDateTime]:
+        day_number = cycle_day.day_number
+        prev_day_number = self.cycle_facade.get_prev_day_number(day_number)
+        prev_cycle_day = self.cycle_facade.get_day_data(prev_day_number)
+        prev_range = self.cycle_facade.range_datetime_obj_from_day_number(
+            prev_cycle_day,
+            self.base_prev_date)
+
+        manually_range = self.manually_facade.range_datetime_obj_from_day(
+            manually_day,
+            self.base_current_date)
+
+        if prev_range and manually_range:
+            intersection = RangeDateTimeOperator.get_intersection(
+                prev_range,
+                manually_range
+            )
+            if intersection:
+                return intersection
+            else:
+                return None
+        else:
+            return None
+
+    def check_current_collision(
+        self,
+        manually_day: Any,
+        cycle_day: Any
+    ) -> Optional[RangeDateTime]:
+        current_range = self.cycle_facade.range_datetime_obj_from_day_number(
+            cycle_day,
+            self.base_current_date)
+
+        manually_range = self.manually_facade.range_datetime_obj_from_day(
+            manually_day,
+            self.base_current_date)
+
+        if current_range and manually_range:
+            intersection = RangeDateTimeOperator.get_intersection(
+                current_range,
+                manually_range
+            )
+            if intersection:
+                return intersection
+            else:
+                return None
+        else:
+            return None
+
+    def check_next_collision(
+        self,
+        manually_day: Any,
+        cycle_day: Any
+    ) -> Optional[RangeDateTime]:
+        day_number = cycle_day.day_number
+        next_day_number = self.cycle_facade.get_next_day_number(day_number)
+        next_cycle_day = self.cycle_facade.get_day_data(next_day_number)
+        next_range = self.cycle_facade.range_datetime_obj_from_day_number(
+            next_cycle_day,
+            self.base_next_date)
+
+        manually_range = self.manually_facade.range_datetime_obj_from_day(
+            manually_day,
+            self.base_current_date)
+
+        if next_range and manually_range:
+            intersection = RangeDateTimeOperator.get_intersection(
+                next_range,
+                manually_range
+            )
+            if intersection:
+                return intersection
+            else:
+                return None
+        else:
+            return None
+
     def get_real_intersection(
         self,
         date_obj: dateclass,
@@ -265,7 +265,7 @@ class CycleToManuallyCollision():
 
         return RangeDateTime(starting_datetime, ending_datetime)
 
-    def check_manually_day_collision(
+    def get_collision_detail(
         self,
         manually_day: Any
     ) -> Optional[Dict]:
@@ -321,7 +321,7 @@ class CycleToManuallyCollision():
         collisions: Dict = {}
         manually_days = self.manually_facade.get_days()
         for manually_day in manually_days:
-            aux_collisions = self.check_manually_day_collision(
+            aux_collisions = self.get_collision_detail(
                 manually_day
             )
             if aux_collisions:

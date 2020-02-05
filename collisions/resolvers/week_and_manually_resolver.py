@@ -122,7 +122,7 @@ class WeeklyAndManuallyCollision():
 
         return RangeDateTime(starting_datetime, ending_datetime)
 
-    def check_manually_day(
+    def get_collision_detail(
         self,
         manually_day: Any,
         weekly_day: Any
@@ -196,7 +196,7 @@ class WeeklyAndManuallyCollision():
             str_week_day = str(week_day)
             weekly_day = self.weekly_facade.get_day(str_week_day)
 
-            manually_day_collisions = self.check_manually_day(
+            manually_day_collisions = self.get_collision_detail(
                 manually_day,
                 weekly_day
             )

@@ -4,6 +4,11 @@ from __future__ import annotations
 from typing import List, Dict, Tuple, Optional, TYPE_CHECKING
 from datetime import datetime, timedelta, date as dateclass
 
+from collisions.constants import (
+    PREVIOUS,
+    CURRENT,
+    NEXT
+)
 from collisions.resolvers.constants import (
     BASE_PREV_DATE,
     BASE_CURRENT_DATE,
@@ -92,6 +97,49 @@ class CycleToWeeklyColission(object):
 
         return week
 
+    def filter_dates(
+        self,
+        dates: List,
+        collision_type: str
+    ) -> List:
+        ending_date = self.weekly_facade.assignation.ending_date
+
+        starting_date = self.weekly_facade.assignation.starting_date
+
+        if collision_type == PREVIOUS:
+            return list(filter(lambda d: d > starting_date, dates))
+
+        if collision_type == NEXT:
+            return list(filter(lambda d: d < ending_date, dates))
+
+        if collision_type == CURRENT:
+            return list(filter(lambda d: d <= ending_date, dates))
+
+        return dates
+
+    def not_covered_dates(
+        self,
+        dates: List[dateclass],
+        intersection: RangeDateTime,
+        check_type: str = None,
+    ):
+        filtered_dates = []
+        for date_obj in dates:
+            if check_type == NEXT:
+                aux_date_obj = date_obj + timedelta(days=1)
+            else:
+                aux_date_obj = date_obj
+
+            real_intersection = self.get_real_intersection(
+                aux_date_obj,
+                intersection
+            )
+
+            covered = self.weekly_facade.covered(real_intersection)
+            if not covered:
+                filtered_dates.append(date_obj)
+        return filtered_dates
+
     def check_prev_colision(
         self,
         current_day_name: str,
@@ -161,26 +209,6 @@ class CycleToWeeklyColission(object):
         else:
             return None
 
-    def filter_dates(
-        self,
-        dates: List,
-        collision_type: str
-    ) -> List:
-        ending_date = self.weekly_facade.assignation.ending_date
-
-        starting_date = self.weekly_facade.assignation.starting_date
-
-        if collision_type == 'previous':
-            return list(filter(lambda d: d > starting_date, dates))
-
-        if collision_type == 'next':
-            return list(filter(lambda d: d < ending_date, dates))
-
-        if collision_type == 'current':
-            return list(filter(lambda d: d <= ending_date, dates))
-
-        return dates
-
     def get_real_intersection(
         self,
         date_obj: dateclass,
@@ -198,35 +226,12 @@ class CycleToWeeklyColission(object):
 
         return RangeDateTime(starting_datetime, ending_datetime)
 
-    def not_covered_dates(
-        self,
-        dates: List[dateclass],
-        intersection: RangeDateTime,
-        check_type: str = None,
-    ):
-        filtered_dates = []
-        for date_obj in dates:
-            if check_type == 'next':
-                aux_date_obj = date_obj + timedelta(days=1)
-            else:
-                aux_date_obj = date_obj
-
-            real_intersection = self.get_real_intersection(
-                aux_date_obj,
-                intersection
-            )
-
-            covered = self.weekly_facade.covered(real_intersection)
-            if not covered:
-                filtered_dates.append(date_obj)
-        return filtered_dates
-
     def get_collision_detail(
         self,
         main_range: RangeDateTime,
         week_full_revision: Dict
     ) -> Dict:
-        day_names = {}  # type: Dict
+        collisions: Dict = {}
         for day_name in week_full_revision:
             dates = week_full_revision[day_name]
             intersection = self.check_prev_colision(
@@ -237,30 +242,30 @@ class CycleToWeeklyColission(object):
                 prev_day_name = self.weekly_facade.get_prev_day_number(
                     day_name)
 
-                dates = self.filter_dates(dates, 'previous')
+                dates = self.filter_dates(dates, PREVIOUS)
                 dates = self.not_covered_dates(
                     dates,
                     intersection
                 )
                 if dates:
-                    if prev_day_name not in day_names:
-                        day_names[prev_day_name] = []
-                    day_names[prev_day_name] += dates
+                    if prev_day_name not in collisions:
+                        collisions[prev_day_name] = []
+                    collisions[prev_day_name] += dates
 
             intersection = self.check_current_colision(
                 day_name,
                 main_range
             )
             if intersection:
-                dates = self.filter_dates(dates, 'current')
+                dates = self.filter_dates(dates, CURRENT)
                 dates = self.not_covered_dates(
                     dates,
                     intersection
                 )
                 if dates:
-                    if day_name not in day_names:
-                        day_names[day_name] = []
-                    day_names[day_name] += dates
+                    if day_name not in collisions:
+                        collisions[day_name] = []
+                    collisions[day_name] += dates
 
             intersection = self.check_next_colision(
                 day_name,
@@ -270,17 +275,17 @@ class CycleToWeeklyColission(object):
                 next_day_name = self.weekly_facade.get_next_day_number(
                     day_name)
 
-                dates = self.filter_dates(dates, 'next')
+                dates = self.filter_dates(dates, NEXT)
                 dates = self.not_covered_dates(
                     dates,
                     intersection
                 )
                 if dates:
-                    if next_day_name not in day_names:
-                        day_names[next_day_name] = []
-                    day_names[next_day_name] += dates
+                    if next_day_name not in collisions:
+                        collisions[next_day_name] = []
+                    collisions[next_day_name] += dates
 
-        return day_names
+        return collisions
 
     def resolve(self) -> Optional[Dict]:
         collision_detail = {}
