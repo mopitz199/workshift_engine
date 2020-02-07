@@ -93,7 +93,6 @@ class CycleToManuallyCollision():
                 cycle_day
             )
             if intersection:
-                self.ensure_empty_list(collisions, str_date)
                 prev_day_number = self.cycle_facade.get_prev_day_number(
                     cycle_day.day_number
                 )
@@ -103,6 +102,7 @@ class CycleToManuallyCollision():
                 )
                 covered = self.cycle_facade.covered(real_intersection)
                 if not covered:
+                    self.ensure_empty_list(collisions, str_date)
                     collisions[str_date].append(prev_day_number)
                 return collisions
         return None
@@ -123,15 +123,14 @@ class CycleToManuallyCollision():
                 cycle_day
             )
             if intersection:
-                self.ensure_empty_list(collisions, str_date)
                 real_intersection = self.get_real_intersection(
                     date,
                     intersection
                 )
                 covered = self.cycle_facade.covered(real_intersection)
                 if not covered:
+                    self.ensure_empty_list(collisions, str_date)
                     collisions[str_date].append(day_number)
-
                 return collisions
         return None
 
@@ -152,7 +151,6 @@ class CycleToManuallyCollision():
             )
 
             if intersection:
-                self.ensure_empty_list(collisions, str_date)
                 next_day_number = self.cycle_facade.get_next_day_number(
                     day_number
                 )
@@ -162,6 +160,7 @@ class CycleToManuallyCollision():
                 )
                 covered = self.cycle_facade.covered(real_intersection)
                 if not covered:
+                    self.ensure_empty_list(collisions, str_date)
                     collisions[str_date].append(next_day_number)
                     return collisions
 
