@@ -18,11 +18,10 @@ class CycleAssignationFacade(GenericAssignationFacade):
         day_number: int
     ) -> dateclass:
         """Get the first date that represent a day number"""
-
+        day_number += 1
         starting_day = self.assignation.starting_day
         total_days = self.get_total_days()
         starting_date = self.assignation.starting_date
-
         if starting_day > day_number:
             day = total_days - starting_day + day_number
         else:
@@ -88,10 +87,18 @@ class CycleAssignationFacade(GenericAssignationFacade):
 
             range_days = (date_obj - aux_starting_date).days + 1
             total_days = assign.workshift_proxy.total_workshift_days
-
             return (range_days % total_days) or total_days
         else:
             return None
+
+    def get_day_obj_from_day_number(
+        self,
+        day_number: int
+    ) -> Optional[Any]:
+        for day in self.assignation.workshift_proxy.get_days():
+            if day.day_number == day_number:
+                return day
+        return None
 
     def range_datetime_obj_from_day_number(
         self,

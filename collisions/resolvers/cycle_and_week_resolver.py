@@ -50,7 +50,7 @@ class CycleToWeeklyColission(object):
 
     def cycle_week_day_revision(
         self,
-        begining_date: dateclass
+        beginning_date: dateclass
     ) -> List:
         """To check which days of the week this
         cycle day of the assignation pass through"""
@@ -60,7 +60,7 @@ class CycleToWeeklyColission(object):
 
         week_days = []  # type: List
 
-        current_date = begining_date
+        current_date = beginning_date
         while current_date <= ending_date:
             weekday = current_date.weekday()
             weekday_str = "{}".format(weekday)
@@ -76,7 +76,7 @@ class CycleToWeeklyColission(object):
 
     def cycle_week_day_full_revision(
         self,
-        begining_date: dateclass
+        beginning_date: dateclass
     ) -> Dict[str, List]:
         """To classify which dates this
         cycle day of the assignation pass through"""
@@ -85,7 +85,7 @@ class CycleToWeeklyColission(object):
         total_days = self.cycle_facade.get_total_days()
 
         week = {}  # type: Dict[str, List]
-        current_date = begining_date
+        current_date = beginning_date
         while current_date <= ending_date:
             weekday = current_date.weekday()
             weekday_str = "{}".format(weekday)
@@ -299,12 +299,14 @@ class CycleToWeeklyColission(object):
                     self.base_current_date
                 )
 
-                begining_date = self.cycle_facade.get_first_date_of_day_number(
-                    day.day_number)
+                beginning_date = self.cycle_facade\
+                    .get_first_date_of_day_number(
+                        day.day_number
+                    )
 
                 week_full_revision = {}  # type: Dict
                 week_full_revision = self.cycle_week_day_full_revision(
-                    begining_date)
+                    beginning_date)
 
                 collision_day_detail = self.get_collision_detail(
                     cycle_day_range,

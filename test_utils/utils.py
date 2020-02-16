@@ -1,3 +1,9 @@
+from typing import (
+    TYPE_CHECKING,
+    List,
+    Dict
+)
+
 from datetime import datetime
 
 from proxies.assignation_proxy import AssignationProxy
@@ -47,6 +53,23 @@ class DumbDayOffAssignation(object):
         for kwarg in kwargs:
             val = kwargs.get(kwarg, None)
             setattr(self, kwarg, val)
+
+
+def create_assignations(
+    data: List[Dict],
+    workshift_db=None,
+    day_off_assignation_db=None
+) -> List:
+    assignations = []
+    for assignation_data in data:
+        aux_data = {'assignation': assignation_data}
+        assignation = create_an_assignation(
+            aux_data,
+            workshift_db,
+            day_off_assignation_db
+        )
+        assignations.append(assignation)
+    return assignations
 
 
 def create_an_assignation(
