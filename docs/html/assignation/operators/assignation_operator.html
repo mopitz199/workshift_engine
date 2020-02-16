@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Assignation Operator &mdash; WorkShift Engine  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Range Operator" href="range_operator.html" />
+    <link rel="prev" title="Operators" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> WorkShift Engine
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Assignations</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Operators</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Assignation Operator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="range_operator.html">Range Operator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../tests/index.html">Tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tests/assignation_operator.html">Assignation Operator Test</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../proxies/index.html">Proxies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../proxies/proxy.html">Generic Proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../proxies/assignation_proxy.html">Assignation Proxy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../collision/index.html">Collisions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../collision/index.html#services">Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../collision/services/index.html">Service Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../collision/services/cycle_and_week.html">Cycle and Weekly</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../collision/services/cycle_and_week.html#how-to-use-it">How to use it</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">WorkShift Engine</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Assignations</a> &raquo;</li>
+        
+          <li><a href="index.html">Operators</a> &raquo;</li>
+        
+      <li>Assignation Operator</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/assignation/operators/assignation_operator.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="assignation-operator">
+<h1>Assignation Operator<a class="headerlink" href="#assignation-operator" title="Permalink to this headline">¶</a></h1>
+<p>The most important methods are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>can_be_joined</p></li>
+<li><p>get_candidates</p></li>
+</ul>
+</div></blockquote>
+<span class="target" id="module-assignation.operators.assignation_operator"></span><dl class="class">
+<dt id="assignation.operators.assignation_operator.AssignationOperator">
+<em class="property">class </em><code class="sig-prename descclassname">assignation.operators.assignation_operator.</code><code class="sig-name descname">AssignationOperator</code><a class="headerlink" href="#assignation.operators.assignation_operator.AssignationOperator" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class with method to operate assignation proxies.</p>
+<dl class="method">
+<dt id="assignation.operators.assignation_operator.AssignationOperator.are_compatible">
+<em class="property">static </em><code class="sig-name descname">are_compatible</code><span class="sig-paren">(</span><em class="sig-param">assign1: AssignationProxy</em>, <em class="sig-param">assign2: AssignationProxy</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#assignation.operators.assignation_operator.AssignationOperator.are_compatible" title="Permalink to this definition">¶</a></dt>
+<dd><p>To check if two assignments are compatible to be joined</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="assignation.operators.assignation_operator.AssignationOperator.are_intersection">
+<em class="property">static </em><code class="sig-name descname">are_intersection</code><span class="sig-paren">(</span><em class="sig-param">assign1: AssignationProxy</em>, <em class="sig-param">assign2: AssignationProxy</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#assignation.operators.assignation_operator.AssignationOperator.are_intersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>To check if two assignations intersect.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="assignation.operators.assignation_operator.AssignationOperator.are_multiple_compatible">
+<em class="property">static </em><code class="sig-name descname">are_multiple_compatible</code><span class="sig-paren">(</span><em class="sig-param">assign: AssignationProxy, assigns: List[AssignationProxy]</em><span class="sig-paren">)</span> &#x2192; List[AssignationProxy]<a class="headerlink" href="#assignation.operators.assignation_operator.AssignationOperator.are_multiple_compatible" title="Permalink to this definition">¶</a></dt>
+<dd><p>To check of how many assigns are compatable
+with the given assign</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="assignation.operators.assignation_operator.AssignationOperator.are_multiple_neighbors">
+<em class="property">static </em><code class="sig-name descname">are_multiple_neighbors</code><span class="sig-paren">(</span><em class="sig-param">assign: AssignationProxy, assigns: List[AssignationProxy]</em><span class="sig-paren">)</span> &#x2192; List[AssignationProxy]<a class="headerlink" href="#assignation.operators.assignation_operator.AssignationOperator.are_multiple_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>To check how many assigns are neighbor of the given assign</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="assignation.operators.assignation_operator.AssignationOperator.are_neighbors">
+<em class="property">static </em><code class="sig-name descname">are_neighbors</code><span class="sig-paren">(</span><em class="sig-param">assign1: AssignationProxy</em>, <em class="sig-param">assign2: AssignationProxy</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#assignation.operators.assignation_operator.AssignationOperator.are_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>To check if two assignations intersect or are
+next to the other.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="assignation.operators.assignation_operator.AssignationOperator.can_be_joined">
+<em class="property">static </em><code class="sig-name descname">can_be_joined</code><span class="sig-paren">(</span><em class="sig-param">assign1: AssignationProxy</em>, <em class="sig-param">assign2: AssignationProxy</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#assignation.operators.assignation_operator.AssignationOperator.can_be_joined" title="Permalink to this definition">¶</a></dt>
+<dd><p>To check if two assignments can be joined. For that
+we considerer that are compatible and are intersection or
+next to the other.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="assignation.operators.assignation_operator.AssignationOperator.get_assignation_generator">
+<em class="property">static </em><code class="sig-name descname">get_assignation_generator</code><span class="sig-paren">(</span><em class="sig-param">assign_list: List[AssignationProxy]</em><span class="sig-paren">)</span> &#x2192; Generator<a class="headerlink" href="#assignation.operators.assignation_operator.AssignationOperator.get_assignation_generator" title="Permalink to this definition">¶</a></dt>
+<dd><p>To transform an assign list into an iterator</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="assignation.operators.assignation_operator.AssignationOperator.get_biggest_assign">
+<em class="property">static </em><code class="sig-name descname">get_biggest_assign</code><span class="sig-paren">(</span><em class="sig-param">assigns: List[AssignationProxy]</em><span class="sig-paren">)</span> &#x2192; Optional[AssignationProxy]<a class="headerlink" href="#assignation.operators.assignation_operator.AssignationOperator.get_biggest_assign" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get the assign with the more quantity of days</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="assignation.operators.assignation_operator.AssignationOperator.get_candidates">
+<em class="property">static </em><code class="sig-name descname">get_candidates</code><span class="sig-paren">(</span><em class="sig-param">assign: AssignationProxy, assigns: List[AssignationProxy]</em><span class="sig-paren">)</span> &#x2192; Tuple[Any, List[AssignationProxy]]<a class="headerlink" href="#assignation.operators.assignation_operator.AssignationOperator.get_candidates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all the other canididates and the best canidate from a given
+list of assignments.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="assignation.operators.assignation_operator.AssignationOperator.get_max_ending_date">
+<em class="property">static </em><code class="sig-name descname">get_max_ending_date</code><span class="sig-paren">(</span><em class="sig-param">assigns: List[AssignationProxy]</em><span class="sig-paren">)</span> &#x2192; Optional[AssignationProxy]<a class="headerlink" href="#assignation.operators.assignation_operator.AssignationOperator.get_max_ending_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get the maximum ending date from all the given assigns.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="assignation.operators.assignation_operator.AssignationOperator.get_min_starting_date">
+<em class="property">static </em><code class="sig-name descname">get_min_starting_date</code><span class="sig-paren">(</span><em class="sig-param">assigns: Union[List[AssignationProxy], Generator]</em><span class="sig-paren">)</span> &#x2192; Optional[AssignationProxy]<a class="headerlink" href="#assignation.operators.assignation_operator.AssignationOperator.get_min_starting_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get the minimun starting date from all the given assigns.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="assignation.operators.assignation_operator.AssignationOperator.remove">
+<em class="property">static </em><code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param">assign: AssignationProxy</em>, <em class="sig-param">starting_date: dateclass</em>, <em class="sig-param">ending_date: dateclass</em><span class="sig-paren">)</span> &#x2192; Dict<a class="headerlink" href="#assignation.operators.assignation_operator.AssignationOperator.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a range from a given assignation</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="range_operator.html" class="btn btn-neutral float-right" title="Range Operator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Operators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Maximiliano Opitz Turra
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
