@@ -278,6 +278,30 @@ class CycleToCycleColission(object):
         else:
             return None
 
+    def transform_collisions(self, date_obj, collisions):
+        if not collisions:
+            return None
+
+        prev_collisions = collisions.get('prev', None)
+        if prev_collisions:
+            new_key = date_obj - timedelta(days=1)
+            collisions[f"{new_key}"] = prev_collisions['day_number']
+            del collisions['prev']
+
+        current_collisions = collisions.get('current', None)
+        if current_collisions:
+            new_key = date_obj
+            collisions[f"{new_key}"] = current_collisions['day_number']
+            del collisions['current']
+
+        next_collisions = collisions.get('next', None)
+        if next_collisions:
+            new_key = date_obj + timedelta(days=1)
+            collisions[f"{new_key}"] = next_collisions['day_number']
+            del collisions['next']
+
+        return collisions
+
     def resolve(self) -> Optional[Dict]:
         all_collisions: Dict = {}
         for day in self.cycle_facade_1.get_days():
@@ -302,6 +326,10 @@ class CycleToCycleColission(object):
                             date_obj,
                             collisions
                         )
+                        collisions = self.transform_collisions(
+                            date_obj,
+                            collisions
+                        )
 
                         if collisions:
                             key = f"{day.day_number}"
@@ -310,4 +338,7 @@ class CycleToCycleColission(object):
 
                             date_str = f"{date_obj}"
                             all_collisions[key][date_str] = collisions
-        return all_collisions
+        if all_collisions:
+            return all_collisions
+        else:
+            return None

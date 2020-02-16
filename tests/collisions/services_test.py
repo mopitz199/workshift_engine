@@ -1438,7 +1438,6 @@ class TestCycleAndWeeklyCollision():
             assignation1,
             assignation2
         )
-        import pdb; pdb.set_trace()
         detail_expected = {
             '0': {
                 '2': [datetime(2019, 9, 11).date()]
@@ -5333,10 +5332,10 @@ class TestCycleAndWeeklyCollisionDayOffs():
         }
         assert detail == expected
 
-"""
+
 class TestCycleAndCycleCollision():
 
-    def test_cycle_and_cycle_collision1(self):
+    def test_cycle_and_cycle_collision_1(self):
         workshifts_data = [
             {
                 'id': 6,
@@ -5402,30 +5401,556 @@ class TestCycleAndCycleCollision():
 
         expected = {
             '0': {
-                '2': [datetime(2019, 9, 4).date()],
-                '0': [datetime(2019, 9, 9).date()],
-                '3': [datetime(2019, 9, 19).date()],
-                '1': [datetime(2019, 9, 24).date()]
+                '2020-02-01': {
+                    '2020-02-01': 0
+                },
+                '2020-02-03': {
+                    '2020-02-03': 0
+                },
+                '2020-02-05': {
+                    '2020-02-05': 0
+                },
+                '2020-02-07': {
+                    '2020-02-07': 0
+                },
+                '2020-02-09': {
+                    '2020-02-09': 0
+                }
             },
             '1': {
-                '3': [datetime(2019, 9, 5).date()],
-                '1': [datetime(2019, 9, 10).date()],
-                '4': [datetime(2019, 9, 20).date()],
-                '2': [datetime(2019, 9, 25).date()],
-                '0': [datetime(2019, 9, 30).date()]
-            },
-            '3': {
-                '0': [datetime(2019, 9, 2).date()],
-                '3': [datetime(2019, 9, 12).date()],
-                '1': [datetime(2019, 9, 17).date()],
-                '4': [datetime(2019, 9, 27).date()]
-            },
-            '4': {
-                '1': [datetime(2019, 9, 3).date()],
-                '4': [datetime(2019, 9, 13).date()],
-                '2': [datetime(2019, 9, 18).date()],
-                '0': [datetime(2019, 9, 23).date()]
+                '2020-02-02': {
+                    '2020-02-02': 1
+                },
+                '2020-02-04': {
+                    '2020-02-04': 1
+                },
+                '2020-02-06': {
+                    '2020-02-06': 1
+                },
+                '2020-02-08': {
+                    '2020-02-08': 1
+                },
+                '2020-02-10': {
+                    '2020-02-10': 1
+                }
             }
         }
-        assert detail == expected        
-"""
+        assert detail == expected
+
+    def test_cycle_and_cycle_collision_2(self):
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
+                    }
+                ]
+            },
+            {
+                'id': 7,
+                'total_workshift_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '20:00',
+                        'ending_time': '23:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '20:00',
+                        'ending_time': '23:00'
+                    }
+                ]
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 7
+            }
+        }
+        assignation2 = create_an_assignation(assignation2, workshift_db)
+
+        detail = cycle_and_cycle_collision(
+            assignation1,
+            assignation2)
+
+        assert detail is None
+
+    def test_cycle_and_cycle_collision_3(self):
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
+                    }
+                ]
+            },
+            {
+                'id': 7,
+                'total_workshift_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '23:00',
+                        'ending_time': '09:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '23:00',
+                        'ending_time': '09:00'
+                    }
+                ]
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 7
+            }
+        }
+        assignation2 = create_an_assignation(assignation2, workshift_db)
+
+        detail = cycle_and_cycle_collision(
+            assignation1,
+            assignation2)
+
+        expected = {
+            '0': {
+                '2020-02-03': {
+                    '2020-02-02': 1
+                },
+                '2020-02-05': {
+                    '2020-02-04': 1
+                },
+                '2020-02-07': {
+                    '2020-02-06': 1
+                },
+                '2020-02-09': {
+                    '2020-02-08': 1
+                }
+            },
+            '1': {
+                '2020-02-02': {
+                    '2020-02-01': 0
+                },
+                '2020-02-04': {
+                    '2020-02-03': 0
+                },
+                '2020-02-06': {
+                    '2020-02-05': 0
+                },
+                '2020-02-08': {
+                    '2020-02-07': 0
+                },
+                '2020-02-10': {
+                    '2020-02-09': 0
+                }
+            }
+        }
+        assert detail == expected
+
+    def test_cycle_and_cycle_collision_4(self):
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
+                    }
+                ]
+            },
+            {
+                'id': 7,
+                'total_workshift_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '23:00',
+                        'ending_time': '09:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '10:00',
+                        'ending_time': '13:00'
+                    }
+                ]
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 7
+            }
+        }
+        assignation2 = create_an_assignation(assignation2, workshift_db)
+
+        detail = cycle_and_cycle_collision(
+            assignation1,
+            assignation2)
+
+        expected = {
+            '1': {
+                '2020-02-02': {
+                    '2020-02-01': 0,
+                    '2020-02-02': 1
+                },
+                '2020-02-04': {
+                    '2020-02-03': 0,
+                    '2020-02-04': 1
+                },
+                '2020-02-06': {
+                    '2020-02-05': 0,
+                    '2020-02-06': 1
+                },
+                '2020-02-08': {
+                    '2020-02-07': 0,
+                    '2020-02-08': 1
+                },
+                '2020-02-10': {
+                    '2020-02-09': 0,
+                    '2020-02-10': 1
+                }
+            }
+        }
+        assert detail == expected
+
+    def test_cycle_and_cycle_collision_5(self):
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
+                    }
+                ]
+            },
+            {
+                'id': 7,
+                'total_workshift_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '23:00',
+                        'ending_time': '09:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '10:00',
+                        'ending_time': '13:00'
+                    }
+                ]
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-9',
+                'workshift_id': 7
+            }
+        }
+        assignation2 = create_an_assignation(assignation2, workshift_db)
+
+        detail = cycle_and_cycle_collision(
+            assignation1,
+            assignation2)
+
+        expected = {
+            '1': {
+                '2020-02-02': {
+                    '2020-02-01': 0,
+                    '2020-02-02': 1
+                },
+                '2020-02-04': {
+                    '2020-02-03': 0,
+                    '2020-02-04': 1
+                },
+                '2020-02-06': {
+                    '2020-02-05': 0,
+                    '2020-02-06': 1
+                },
+                '2020-02-08': {
+                    '2020-02-07': 0,
+                    '2020-02-08': 1
+                },
+                '2020-02-10': {
+                    '2020-02-09': 0
+                }
+            }
+        }
+        assert detail == expected
+
+    def test_cycle_and_cycle_collision_6(self):
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
+                    }
+                ]
+            },
+            {
+                'id': 7,
+                'total_workshift_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '23:00',
+                        'ending_time': '09:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '10:00',
+                        'ending_time': '13:00'
+                    }
+                ]
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': '2020-2-2',
+                'ending_date': '2020-2-9',
+                'workshift_id': 7
+            }
+        }
+        assignation2 = create_an_assignation(assignation2, workshift_db)
+
+        detail = cycle_and_cycle_collision(
+            assignation1,
+            assignation2)
+
+        expected = {
+            '0': {
+                '2020-02-03': {
+                    '2020-02-02': 0,
+                    '2020-02-03': 1
+                },
+                '2020-02-05': {
+                    '2020-02-04': 0,
+                    '2020-02-05': 1
+                },
+                '2020-02-07': {
+                    '2020-02-06': 0,
+                    '2020-02-07': 1
+                },
+                '2020-02-09': {
+                    '2020-02-08': 0,
+                    '2020-02-09': 1
+                }
+            }
+        }
+        assert detail == expected
+
+    def test_cycle_and_cycle_collision_7(self):
+        workshifts_data = [
+            {
+                'id': 6,
+                'total_workshift_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '19:00'
+                    }
+                ]
+            },
+            {
+                'id': 7,
+                'total_workshift_days': 2,
+                'workshift_type': 'cyclic',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '23:00',
+                        'ending_time': '09:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '10:00',
+                        'ending_time': '13:00'
+                    }
+                ]
+            },
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': 1,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 6,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': 2,
+                'starting_date': '2020-2-2',
+                'ending_date': '2020-2-9',
+                'workshift_id': 7
+            }
+        }
+        assignation2 = create_an_assignation(assignation2, workshift_db)
+
+        detail = cycle_and_cycle_collision(
+            assignation1,
+            assignation2)
+
+        expected = {
+            '1': {
+                '2020-02-02': {
+                    '2020-02-02': 1
+                },
+                '2020-02-04': {
+                    '2020-02-03': 0,
+                    '2020-02-04': 1
+                },
+                '2020-02-06': {
+                    '2020-02-05': 0,
+                    '2020-02-06': 1
+                },
+                '2020-02-08': {
+                    '2020-02-07': 0,
+                    '2020-02-08': 1
+                },
+                '2020-02-10': {
+                    '2020-02-09': 0
+                }
+            }
+        }
+        assert detail == expected
