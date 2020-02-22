@@ -5,7 +5,8 @@ from collisions.services import (
     cycle_and_weekly_collision,
     cycle_and_manually_collision,
     weekly_and_manually_collision,
-    cycle_and_cycle_collision
+    cycle_and_cycle_collision,
+    weekly_and_weekly_collision,
 )
 from database.workshift_db import WorkShiftDB
 from database.day_off_assignation_db import DayOffAssignationDB
@@ -6597,5 +6598,1102 @@ class TestCycleAndCycleCollisionDayOffs():
                     '2020-02-10': 1
                 }
             }
+        }
+        assert detail == expected
+
+
+class TestWeeklyAndWeeklyCollision():
+
+    def test_weekly_and_weekly_collision_1(self):
+
+        workshifts_data = [
+            {
+                'id': 5,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    }
+                ]
+            },
+            {
+                'id': 6,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    }
+                ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 5,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 6,
+            }
+        }
+        assignation2 = create_an_assignation(assignation2, workshift_db)
+
+        detail = weekly_and_weekly_collision(
+            assignation1,
+            assignation2
+        )
+
+        expected = {
+            '2020-02-01': [5, {'current': 5}],
+            '2020-02-02': [6, {'current': 6}],
+            '2020-02-03': [0, {'current': 0}],
+            '2020-02-04': [1, {'current': 1}],
+            '2020-02-05': [2, {'current': 2}],
+            '2020-02-06': [3, {'current': 3}],
+            '2020-02-07': [4, {'current': 4}],
+            '2020-02-08': [5, {'current': 5}],
+            '2020-02-09': [6, {'current': 6}],
+            '2020-02-10': [0, {'current': 0}]
+        }
+        assert detail == expected
+
+    def test_weekly_and_weekly_collision_2(self):
+
+        workshifts_data = [
+            {
+                'id': 5,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '02:00',
+                        'ending_time': '07:59'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    }
+                ]
+            },
+            {
+                'id': 6,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    }
+                ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 5,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 6,
+            }
+        }
+        assignation2 = create_an_assignation(assignation2, workshift_db)
+
+        detail = weekly_and_weekly_collision(
+            assignation1,
+            assignation2
+        )
+
+        expected = {
+            '2020-02-01': [5, {'current': 5}], 
+            '2020-02-02': [6, {'current': 6}],
+            '2020-02-03': [0, {'current': 0}],
+            '2020-02-04': [1, {'current': 1}],
+            '2020-02-05': [2, {'current': 2}],
+            '2020-02-07': [4, {'current': 4}],
+            '2020-02-08': [5, {'current': 5}],
+            '2020-02-09': [6, {'current': 6}],
+            '2020-02-10': [0, {'current': 0}]
+        }
+        assert detail == expected
+
+    def test_weekly_and_weekly_collision_3(self):
+
+        workshifts_data = [
+            {
+                'id': 5,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '02:00',
+                        'ending_time': '07:59'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    }
+                ]
+            },
+            {
+                'id': 6,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    }
+                ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 5,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': '2020-2-4',
+                'ending_date': '2020-2-8',
+                'workshift_id': 6,
+            }
+        }
+        assignation2 = create_an_assignation(assignation2, workshift_db)
+
+        detail = weekly_and_weekly_collision(
+            assignation1,
+            assignation2
+        )
+
+        expected = {
+            '2020-02-04': [1, {'current': 1}],
+            '2020-02-05': [2, {'current': 2}],
+            '2020-02-07': [4, {'current': 4}],
+            '2020-02-08': [5, {'current': 5}]
+        }
+        assert detail == expected
+
+    def test_weekly_and_weekly_collision_4(self):
+
+        workshifts_data = [
+            {
+                'id': 5,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    }
+                ]
+            },
+            {
+                'id': 6,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '18:00',
+                        'ending_time': '08:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '18:00',
+                        'ending_time': '08:00'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '18:00',
+                        'ending_time': '08:00'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '18:00',
+                        'ending_time': '08:00'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '18:00',
+                        'ending_time': '08:00'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '18:00',
+                        'ending_time': '08:00'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '18:00',
+                        'ending_time': '08:00'
+                    }
+                ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 5,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': '2020-2-4',
+                'ending_date': '2020-2-8',
+                'workshift_id': 6,
+            }
+        }
+        assignation2 = create_an_assignation(assignation2, workshift_db)
+
+        detail = weekly_and_weekly_collision(
+            assignation1,
+            assignation2
+        )
+
+        expected = {
+            '2020-02-04': [1, {'prev': 0, 'current': 1}],
+            '2020-02-05': [2, {'prev': 1, 'current': 2}],
+            '2020-02-06': [3, {'prev': 2, 'current': 3}],
+            '2020-02-07': [4, {'prev': 3, 'current': 4}],
+            '2020-02-08': [5, {'prev': 4, 'current': 5}]
+        }
+        assert detail == expected
+
+    def test_weekly_and_weekly_collision_5(self):
+
+        workshifts_data = [
+            {
+                'id': 5,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    }
+                ]
+            },
+            {
+                'id': 6,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '18:01',
+                        'ending_time': '07:59'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '18:01',
+                        'ending_time': '07:59'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '18:01',
+                        'ending_time': '07:59'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '18:01',
+                        'ending_time': '07:59'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '18:01',
+                        'ending_time': '07:59'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '18:01',
+                        'ending_time': '07:59'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '18:01',
+                        'ending_time': '07:59'
+                    }
+                ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 5,
+            }
+        }
+        assignation1 = create_an_assignation(assignation1, workshift_db)
+
+        assignation2 = {
+            'assignation': {
+                'starting_day': None,
+                'starting_date': '2020-2-4',
+                'ending_date': '2020-2-8',
+                'workshift_id': 6,
+            }
+        }
+        assignation2 = create_an_assignation(assignation2, workshift_db)
+
+        detail = weekly_and_weekly_collision(
+            assignation1,
+            assignation2
+        )
+
+        assert not detail
+
+
+class TestWeeklyAndWeeklyCollisionDayOffs():
+
+    def test_weekly_and_weekly_collision_day_off_1(self):
+
+        day_off_assignations_data = [
+            {
+                'person_id': 1,
+                'starting_date': '2020-2-4',
+                'ending_date': '2020-2-4',
+                'starting_time': '08:00',
+                'ending_time': '18:00'
+            }
+        ]
+        day_off_assignations = create_proxy_day_off_assignation(
+            day_off_assignations_data
+        )
+        day_off_assignations_db = DayOffAssignationDB(
+            day_off_assignations,
+            DayOffAssignationProxy
+        )
+
+        workshifts_data = [
+            {
+                'id': 5,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    }
+                ]
+            },
+            {
+                'id': 6,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    }
+                ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'person_id': 1,
+                'starting_day': None,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 5,
+            }
+        }
+        assignation1 = create_an_assignation(
+            assignation1,
+            workshift_db,
+            day_off_assignations_db
+        )
+
+        assignation2 = {
+            'assignation': {
+                'person_id': 1,
+                'starting_day': None,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 6,
+            }
+        }
+        assignation2 = create_an_assignation(
+            assignation2,
+            workshift_db,
+            day_off_assignations_db
+        )
+
+        detail = weekly_and_weekly_collision(
+            assignation1,
+            assignation2
+        )
+
+        expected = {
+            '2020-02-01': [5, {'current': 5}],
+            '2020-02-02': [6, {'current': 6}],
+            '2020-02-03': [0, {'current': 0}],
+            '2020-02-05': [2, {'current': 2}],
+            '2020-02-06': [3, {'current': 3}],
+            '2020-02-07': [4, {'current': 4}],
+            '2020-02-08': [5, {'current': 5}],
+            '2020-02-09': [6, {'current': 6}],
+            '2020-02-10': [0, {'current': 0}]
+        }
+        assert detail == expected
+
+    def test_weekly_and_weekly_collision_day_off_2(self):
+
+        day_off_assignations_data = [
+            {
+                'person_id': 1,
+                'starting_date': '2020-2-4',
+                'ending_date': '2020-2-4',
+                'starting_time': '08:01',
+                'ending_time': '18:00'
+            }
+        ]
+        day_off_assignations = create_proxy_day_off_assignation(
+            day_off_assignations_data
+        )
+        day_off_assignations_db = DayOffAssignationDB(
+            day_off_assignations,
+            DayOffAssignationProxy
+        )
+
+        workshifts_data = [
+            {
+                'id': 5,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    }
+                ]
+            },
+            {
+                'id': 6,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    }
+                ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'person_id': 1,
+                'starting_day': None,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 5,
+            }
+        }
+        assignation1 = create_an_assignation(
+            assignation1,
+            workshift_db,
+            day_off_assignations_db
+        )
+
+        assignation2 = {
+            'assignation': {
+                'person_id': 1,
+                'starting_day': None,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 6,
+            }
+        }
+        assignation2 = create_an_assignation(
+            assignation2,
+            workshift_db,
+            day_off_assignations_db
+        )
+
+        detail = weekly_and_weekly_collision(
+            assignation1,
+            assignation2
+        )
+
+        expected = {
+            '2020-02-01': [5, {'current': 5}],
+            '2020-02-02': [6, {'current': 6}],
+            '2020-02-03': [0, {'current': 0}],
+            '2020-02-04': [1, {'current': 1}],
+            '2020-02-05': [2, {'current': 2}],
+            '2020-02-06': [3, {'current': 3}],
+            '2020-02-07': [4, {'current': 4}],
+            '2020-02-08': [5, {'current': 5}],
+            '2020-02-09': [6, {'current': 6}],
+            '2020-02-10': [0, {'current': 0}]
+        }
+        assert detail == expected
+
+    def test_weekly_and_weekly_collision_day_off_3(self):
+
+        day_off_assignations_data = [
+            {
+                'person_id': 1,
+                'starting_date': '2020-2-4',
+                'ending_date': '2020-2-4',
+                'starting_time': '18:00',
+                'ending_time': '18:00'
+            }
+        ]
+        day_off_assignations = create_proxy_day_off_assignation(
+            day_off_assignations_data
+        )
+        day_off_assignations_db = DayOffAssignationDB(
+            day_off_assignations,
+            DayOffAssignationProxy
+        )
+
+        workshifts_data = [
+            {
+                'id': 5,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '08:00',
+                        'ending_time': '18:00'
+                    }
+                ]
+            },
+            {
+                'id': 6,
+                'total_workshift_days': 7,
+                'workshift_type': 'weekly',
+                'days': [
+                    {
+                        'day_number': 0,
+                        'starting_time': '18:00',
+                        'ending_time': '08:00'
+                    },
+                    {
+                        'day_number': 1,
+                        'starting_time': '18:00',
+                        'ending_time': '08:00'
+                    },
+                    {
+                        'day_number': 2,
+                        'starting_time': '18:00',
+                        'ending_time': '08:00'
+                    },
+                    {
+                        'day_number': 3,
+                        'starting_time': '18:00',
+                        'ending_time': '08:00'
+                    },
+                    {
+                        'day_number': 4,
+                        'starting_time': '18:00',
+                        'ending_time': '08:00'
+                    },
+                    {
+                        'day_number': 5,
+                        'starting_time': '18:00',
+                        'ending_time': '08:00'
+                    },
+                    {
+                        'day_number': 6,
+                        'starting_time': '18:00',
+                        'ending_time': '08:00'
+                    }
+                ]
+            }
+        ]
+        workshifts = create_proxy_workshifts(workshifts_data)
+        workshift_db = WorkShiftDB(workshifts, WorkShiftProxy)
+
+        assignation1 = {
+            'assignation': {
+                'person_id': 1,
+                'starting_day': None,
+                'starting_date': '2020-2-1',
+                'ending_date': '2020-2-10',
+                'workshift_id': 5,
+            }
+        }
+        assignation1 = create_an_assignation(
+            assignation1,
+            workshift_db,
+            day_off_assignations_db
+        )
+
+        assignation2 = {
+            'assignation': {
+                'person_id': 1,
+                'starting_day': None,
+                'starting_date': '2020-2-4',
+                'ending_date': '2020-2-8',
+                'workshift_id': 6,
+            }
+        }
+        assignation2 = create_an_assignation(
+            assignation2,
+            workshift_db,
+            day_off_assignations_db
+        )
+
+        detail = weekly_and_weekly_collision(
+            assignation1,
+            assignation2
+        )
+
+        expected = {
+            '2020-02-04': [1, {'prev': 0}],
+            '2020-02-05': [2, {'prev': 1, 'current': 2}],
+            '2020-02-06': [3, {'prev': 2, 'current': 3}],
+            '2020-02-07': [4, {'prev': 3, 'current': 4}],
+            '2020-02-08': [5, {'prev': 4, 'current': 5}]
         }
         assert detail == expected

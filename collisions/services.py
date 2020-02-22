@@ -11,6 +11,9 @@ from collisions.resolvers.cycle_and_manually_resolver import (
 from collisions.resolvers.week_and_manually_resolver import (
     WeeklyAndManuallyCollision
 )
+from collisions.resolvers.week_and_week_resolver import (
+    WeeklyAndWeeklyCollision
+)
 from collisions.resolvers.cycle_and_cycle_resolver import CycleToCycleColission
 from generic_facades.cycle_assignation_facade import CycleAssignationFacade
 from generic_facades.weekly_assignation_facade import WeeklyAssignationFacade
@@ -72,6 +75,16 @@ def cycle_and_cycle_collision(
     cycle_facade_1 = CycleAssignationFacade(assignation1)
     cycle_facade_2 = CycleAssignationFacade(assignation2)
     resolver = CycleToCycleColission(cycle_facade_1, cycle_facade_2)
+    return resolver.resolve()
+
+
+def weekly_and_weekly_collision(
+    assignation1: AssignationProxy,
+    assignation2: AssignationProxy
+) -> Optional[Dict]:
+    weekly_facade_1 = WeeklyAssignationFacade(assignation1)
+    weekly_facade_2 = WeeklyAssignationFacade(assignation2)
+    resolver = WeeklyAndWeeklyCollision(weekly_facade_1, weekly_facade_2)
     return resolver.resolve()
 
 

@@ -24,6 +24,7 @@ class WeeklyAssignationFacade(GenericAssignationFacade):
         self,
         day_number: str
     ) -> Any:
+        day_number = f'{day_number}'
         dict_days = self.assignation.workshift_proxy.get_dict_days()
         return dict_days[day_number]
 
